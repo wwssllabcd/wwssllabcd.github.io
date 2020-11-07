@@ -2,6 +2,7 @@
 title: 指數型投資(Investment of indexing)
 date: 2020-02-16 04:29:30
 tags: Investment
+toc: true
 ---
 
 前言

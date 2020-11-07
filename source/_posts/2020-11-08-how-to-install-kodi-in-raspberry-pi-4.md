@@ -2,6 +2,7 @@
 title: how-to-install-kodi-in-raspberry-pi-4
 date: 2020-11-08 00:06:48
 tags: [How-To, Raspberry Pi]
+toc: true
 ---
 
 RPI 4 安裝 kodi 的心得
@@ -26,6 +27,7 @@ https://libreelec.tv/raspberry-pi-4/
 
 燒完之後，插入至RPI後，接上電源就可以使用了
 
+<!-- more -->
 
 常見問題
 ------------
