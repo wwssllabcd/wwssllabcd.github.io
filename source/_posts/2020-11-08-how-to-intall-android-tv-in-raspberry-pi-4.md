@@ -72,8 +72,7 @@ toc: true
 使用 TRWP 刷入 GAPP
 --------
 
-接下來你可以把剛剛下載的 gapp 與 recover2boot 放到 usb 上，並且插入 rpi4，此時你在 trwp 應該要可以認的到那隻 usb 
-接下來就要刷 gapp，刷法跟一般的手機刷法是一樣的，唯一不同的是刷 rpi 不會變磚，所以就大膽地刷吧
+接下來你可以把剛剛下載的 gapp 與 recover2boot 放到 usb 上，並且插入 rpi4，此時你在 trwp 應該要可以認的到那隻 usb，接下來就要刷 gapp，刷法跟一般的手機刷法是一樣的，唯一不同的是刷 rpi 不會變磚，所以就大膽地刷吧
 
 這邊列出步驟
 1. Download open_gapps-arm-10.0-tvstock-xxxxxxxx.zip and save it to your device’s internal storage or use an external USB drive
@@ -82,11 +81,7 @@ toc: true
 4. Wipe->Factory reset!
 5. Boot out of recovery (see FAQ)
 
-這邊要注意的是，如果你刷好，並且重開機後，還是回到 TRWP，此時你就必須刷`recover2boot`，他可以切換 partition 到 boot，刷完之後重開機應該就能進入到 android tv 了
-
-重開機之後，你應該就可以使用 googe store 了，之後應該就不用教了，裝自己喜歡的 app 吧
-
-若還是卡關，這邊有其他刷 gapp 的相關教學，你可以參考看看
+這邊要注意的是，如果你刷好，並且重開機後，還是回到 TRWP，此時你就必須刷`recover2boot`，他可以切換 partition 到 boot，刷完之後重開機應該就能進入到 android tv 了，重開機之後，你應該就可以使用 googe store 了，之後應該就不用教了，裝自己喜歡的 app 吧，若還是卡關，這邊有其他刷 gapp 的相關教學，你可以參考看看
 * https://www.makeuseof.com/tag/build-android-tv-box-raspberry-pi/
 * https://itigic.com/install-android-tv-on-raspberry-pi-with-lineageos/
 
