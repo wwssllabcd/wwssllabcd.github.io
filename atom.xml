@@ -6,7 +6,7 @@
   <link href="http://wwssllabcd.github.io/atom.xml" rel="self"/>
   
   <link href="http://wwssllabcd.github.io/"/>
-  <updated>2020-11-07T16:58:13.009Z</updated>
+  <updated>2020-11-07T17:54:19.353Z</updated>
   <id>http://wwssllabcd.github.io/</id>
   
   <author>
@@ -15,6 +15,42 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>RPI-4 安裝 android tv</title>
+    <link href="http://wwssllabcd.github.io/2020/11/08/how-to-intall-android-tv-in-raspberry-pi-4/"/>
+    <id>http://wwssllabcd.github.io/2020/11/08/how-to-intall-android-tv-in-raspberry-pi-4/</id>
+    <published>2020-11-07T17:07:44.000Z</published>
+    <updated>2020-11-07T17:54:19.353Z</updated>
+    
+    <content type="html"><![CDATA[<p>首先你需要下載 android tv for raspberry pi 4 的 image file ，使用的是 LineageOS 17.1 Android TV (Android 10)</p><ul><li><a href="https://konstakang.com/devices/rpi4/LineageOS17.1-ATV/">https://konstakang.com/devices/rpi4/LineageOS17.1-ATV/</a></li></ul><p>在安裝之前有幾點要注意的</p><ul><li>只能支援 HDMI</li><li>最初解析度為 1920*1080</li></ul><p>所以說，如果你的螢幕是 DVI 的話，你可以離開了，因為不會有畫面，先提醒你以免白忙一場</p><p>下載後使用 Win32 Disk Imager 燒錄即可，這邊跟之前的 Rpi 做法並沒有不一樣，如果還是不行，那你可以參考以前的<a href="https://wwssllabcd.github.io/blog/2013/01/31/2013-01-31-how-to-setup-raspberry-pi/#%E5%AE%89%E8%A3%9D-OS">教學</a>，燒完後，插上卡片，直接開機就可以進入到 android tv 了</p><p>這邊有燒錄相關教學</p><ul><li><a href="https://ifunoffice.com/raspberry-pi-install-android9/">https://ifunoffice.com/raspberry-pi-install-android9/</a></li></ul><p>這邊也有一點很重要的要先講，就是如果你等下遇到任何問題找不到答案的，你應該要回去<a href="https://konstakang.com/devices/rpi4/LineageOS17.1-ATV/">官網</a>找，那邊通常都已經有答案了</p><a id="more"></a><h2 id="下載需要的檔案"><a href="#下載需要的檔案" class="headerlink" title="下載需要的檔案"></a>下載需要的檔案</h2><p>在開始之前，我建議你先下載兩個，分別是    * <a href="https://opengapps.org/">gapp</a>    * <a href="https://androidfilehost.com/?fid=8889791610682901035">recover2boot</a> : 要刷這個, 才能從 twrp 回到 android os</p><p>去<a href="https://opengapps.org/">opengapp</a> 下載 gapp，我們要選 </p><ul><li>arm</li><li>android 10</li><li>tv stock</li></ul><p>選好之後就可以下載了</p><p>接下來要準備<code>recover2boot</code>，你可以在以下連結找到</p><ul><li><a href="https://androidfilehost.com/?fid=8889791610682901035">https://androidfilehost.com/?fid=8889791610682901035</a></li></ul><h2 id="關機-android-tv"><a href="#關機-android-tv" class="headerlink" title="關機 android tv "></a>關機 android tv </h2><p>這邊先提一下，關機選項在</p><pre><code>setting/device prrferance/about/shutdown</code></pre><h2 id="安裝-Google-app"><a href="#安裝-Google-app" class="headerlink" title="安裝 Google app"></a>安裝 Google app</h2><p>步驟有點多，主要流程為先打開 Developer option 後，開啟 root 與 terminal 後，你才可以切到 recover mode 做 twrp 並寫入 google app 到 rom 中，其實就是跟刷手機版本的 lineage 的 gapp 大同小異，以下是步驟</p><ul><li>打開 Developer option<ul><li>setting/about 後，按10下&quot;關於&quot;標籤就可以了，跟一般的 android 是一樣的作法，</li></ul></li><li>打開 root 權限<ul><li>一樣在 Developer options</li></ul></li><li>打開本機終端機<ul><li>在 Developer options</li></ul></li></ul><p>如果你在 Developer options 可以順利地打開<code>本機終端機</code>，你就可以去<code>應用程式</code>那邊就會看到，</p><p>進入本機終端機後，先打 </p><pre><code>su rpi4-recovery.sh </code></pre><p>接下來你就可以重開機了，如果順利的話你會進到 TRWP </p><h2 id="使用-TRWP-刷入-GAPP"><a href="#使用-TRWP-刷入-GAPP" class="headerlink" title="使用 TRWP 刷入 GAPP"></a>使用 TRWP 刷入 GAPP</h2><p>接下來你可以把剛剛下載的 gapp 與 recover2boot 放到 usb 上，並且插入 rpi4，此時你在 trwp 應該要可以認的到那隻 usb 接下來就要刷 gapp，刷法跟一般的手機刷法是一樣的，唯一不同的是刷 rpi 不會變磚，所以就大膽地刷吧</p><p>這邊列出步驟</p><ol><li>Download open_gapps-arm-10.0-tvstock-xxxxxxxx.zip and save it to your device’s internal storage or use an external USB drive</li><li>Boot to TWRP recovery (你應該已經進入了)</li><li>Install open_gapps-arm-10.0-tvstock-xxxxxxxx.zip from your selected storage</li><li>Wipe-&gt;Factory reset!</li><li>Boot out of recovery (see FAQ)</li></ol><p>這邊要注意的是，如果你刷好，並且重開機後，還是回到 TRWP，此時你就必須刷<code>recover2boot</code>，他可以切換 partition 到 boot，刷完之後重開機應該就能進入到 android tv 了</p><p>重開機之後，你應該就可以使用 googe store 了，之後應該就不用教了，裝自己喜歡的 app 吧</p><p>若還是卡關，這邊有其他刷 gapp 的相關教學，你可以參考看看</p><ul><li><a href="https://www.makeuseof.com/tag/build-android-tv-box-raspberry-pi/">https://www.makeuseof.com/tag/build-android-tv-box-raspberry-pi/</a></li><li><a href="https://itigic.com/install-android-tv-on-raspberry-pi-with-lineageos/">https://itigic.com/install-android-tv-on-raspberry-pi-with-lineageos/</a></li></ul><h2 id="android-tv-操作"><a href="#android-tv-操作" class="headerlink" title="android tv 操作"></a>android tv 操作</h2><p>這邊列出一些 android tv 的操作 </p><ul><li>F1 = Home, </li><li>F2 = Back, </li><li>F3 = Multi-tasking, </li><li>F4 = Menu, </li><li>F5 = Power, </li><li>F11 = Volume down,</li><li>F12 = Volume up. </li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;首先你需要下載 android tv for raspberry pi 4 的 image file ，使用的是 LineageOS 17.1 Android TV (Android 10)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://konstakang.com/devices/rpi4/LineageOS17.1-ATV/&quot;&gt;https://konstakang.com/devices/rpi4/LineageOS17.1-ATV/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在安裝之前有幾點要注意的&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;只能支援 HDMI&lt;/li&gt;
+&lt;li&gt;最初解析度為 1920*1080&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;所以說，如果你的螢幕是 DVI 的話，你可以離開了，因為不會有畫面，先提醒你以免白忙一場&lt;/p&gt;
+&lt;p&gt;下載後使用 Win32 Disk Imager 燒錄即可，這邊跟之前的 Rpi 做法並沒有不一樣，如果還是不行，那你可以參考以前的&lt;a href=&quot;https://wwssllabcd.github.io/blog/2013/01/31/2013-01-31-how-to-setup-raspberry-pi/#%E5%AE%89%E8%A3%9D-OS&quot;&gt;教學&lt;/a&gt;，燒完後，插上卡片，直接開機就可以進入到 android tv 了&lt;/p&gt;
+&lt;p&gt;這邊有燒錄相關教學&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://ifunoffice.com/raspberry-pi-install-android9/&quot;&gt;https://ifunoffice.com/raspberry-pi-install-android9/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;這邊也有一點很重要的要先講，就是如果你等下遇到任何問題找不到答案的，你應該要回去&lt;a href=&quot;https://konstakang.com/devices/rpi4/LineageOS17.1-ATV/&quot;&gt;官網&lt;/a&gt;找，那邊通常都已經有答案了&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="How-To" scheme="http://wwssllabcd.github.io/tags/How-To/"/>
+    
+    <category term="Raspberry Pi" scheme="http://wwssllabcd.github.io/tags/Raspberry-Pi/"/>
+    
+  </entry>
   
   <entry>
     <title>kodi 教學，心得</title>
@@ -622,33 +658,6 @@ Standalone Image的檔案下載回來後解壓縮，會得到一個img file，�
     <category term="How-To" scheme="http://wwssllabcd.github.io/tags/How-To/"/>
     
     <category term="Raspberry Pi" scheme="http://wwssllabcd.github.io/tags/Raspberry-Pi/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>簡易 GDB Script 教學，應用</title>
-    <link href="http://wwssllabcd.github.io/2013/03/25/how-to-write-gdb-scritp/"/>
-    <id>http://wwssllabcd.github.io/2013/03/25/how-to-write-gdb-scritp/</id>
-    <published>2013-03-25T11:27:00.000Z</published>
-    <updated>2016-06-05T16:01:22.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="緣由"><a href="#緣由" class="headerlink" title="緣由"></a>緣由</h2><p>在 Debug 電腦開機階段時，利用 QEMU 停住 OS, 在遠端的 GDB 每次都要輸入</p><pre><code>set architecture i8086target remote localhost:1234 b *0x7C00</code></pre><p>一兩次到還好，若是有時候常常輸入真的就太累了, 而 GDB 可以以 script 的方式擴充指令，就可以減少了負擔了。<br>首先我們開一個空白文件，取名叫做<code>myGdbScript.txt</code>( myGdbScript.txt 以下稱做GdbScript)</p><a id="more"></a><h2 id="當作批次檔"><a href="#當作批次檔" class="headerlink" title="當作批次檔"></a>當作批次檔</h2><p>直接在文件中輸入</p><pre><code>set architecture i8086target remote localhost:1234 b *0x7C00</code></pre><p>存檔後，在 terminal 輸入 gdb，進入 GDB 後，輸入以下指令(一樣可以用tab快速輸入)</p><pre><code>source myGdbScript.txt</code></pre><p>就會發現他就像批次檔一樣，自動的執行裡面的指令，這樣就不用輸入一堆東西了</p><h2 id="自行定義指令"><a href="#自行定義指令" class="headerlink" title="自行定義指令"></a>自行定義指令</h2><p>以上的方法只能執行一個命令，若想要執行多種命令的話也可使用定義指令的方式，在 GdbScript 中輸入</p><pre><code>define local_connect    set architecture i8086    target remote localhost:1234    b *0x7C00end</code></pre><p>把這串指令叫做`local_connect&#39;然後在 GDB 中，先把 GdbScript 讀進來</p><pre><code>source myGdbScript.txt</code></pre><p>之後就可以打</p><pre><code>local_connect</code></pre><p>你就會發現，他執行 define 裡面的三條指令</p><h2 id="取得-current-intstruction"><a href="#取得-current-intstruction" class="headerlink" title="取得 current intstruction"></a>取得 current intstruction</h2><p>使用 x/5i $cs*16 + $eip 來顯示目前 CS:IP所對應的指令，如下所示</p><pre><code>define cur_intstruction    x/5i $cs*16 + $eipend</code></pre><h2 id="定義變數"><a href="#定義變數" class="headerlink" title="定義變數"></a>定義變數</h2><p>在 GDB 中，也是可以定義變數的，如在GdbScript中輸入</p><pre><code>set $ADDRESS_MASK = 0x1FFFFF</code></pre><h2 id="印出符號"><a href="#印出符號" class="headerlink" title="印出符號"></a>印出符號</h2><p>在script中，輸入如下所示</p><pre><code>printf &quot;---------------------------[ CODE ]----\n&quot;</code></pre><h2 id="取得-cpu-register的值"><a href="#取得-cpu-register的值" class="headerlink" title="取得 cpu register的值"></a>取得 cpu register的值</h2><p>如下所示，可以把某個register的值設定給變數後，印出來</p><pre><code>define compute_regs    set $rax = ((unsigned long)$eax &amp; 0xFFFF)    set $rbx = ((unsigned long)$ebx &amp; 0xFFF    printf &quot;---------------------------[ REG ]----\n&quot;    printf &quot;AX: %04X BX: %04X &quot;, $rax, $rbx    printf &quot;\n&quot;end</code></pre><p>Ref: <a href="http://ternet.fr/wiki/doku.php?id=blog:gdb_real_mode">Remote debugging of real mode code with gdb</a></p>]]></content>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;緣由&quot;&gt;&lt;a href=&quot;#緣由&quot; class=&quot;headerlink&quot; title=&quot;緣由&quot;&gt;&lt;/a&gt;緣由&lt;/h2&gt;&lt;p&gt;在 Debug 電腦開機階段時，利用 QEMU 停住 OS, 在遠端的 GDB 每次都要輸入&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;set architecture i8086
-target remote localhost:1234 
-b *0x7C00&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;一兩次到還好，若是有時候常常輸入真的就太累了, 而 GDB 可以以 script 的方式擴充指令，就可以減少了負擔了。&lt;br&gt;首先我們開一個空白文件，取名叫做&lt;code&gt;myGdbScript.txt&lt;/code&gt;( myGdbScript.txt 以下稱做GdbScript)&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="How-To" scheme="http://wwssllabcd.github.io/tags/How-To/"/>
-    
-    <category term="GDB" scheme="http://wwssllabcd.github.io/tags/GDB/"/>
-    
-    <category term="GDB Script" scheme="http://wwssllabcd.github.io/tags/GDB-Script/"/>
     
   </entry>
   

@@ -79,6 +79,99 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-how-to-setup-Lamobo-m1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2015/01/12/how-to-setup-Lamobo-m1/" class="article-date">
+  <time datetime="2015-01-12T15:32:31.000Z" itemprop="datePublished">2015-01-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2015/01/12/how-to-setup-Lamobo-m1/">Lamobo M1( banana pi ) 安裝心得</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Lamobo M1 (之前比較常見的名稱為 Banana Pi, 又稱香蕉派) 跟 Raspberry pi(以下簡稱 RPI ) 一樣是屬於單版電腦，Lamobo-M1(以下簡稱 M1)
+而 Lamobo M1 與 Banana Pi 是同一片板子，根據該公司的說法，這是透過雙品牌的方式來運營，Banana Pi 專注於開源社群的運營</p>
+<h1 id="評比"><a href="#評比" class="headerlink" title="評比"></a>評比</h1><p>以下為雙方比較大的差異點，見下表</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><a target="_blank" rel="noopener" href="http://zh.wikipedia.org/wiki/%E6%A0%91%E8%8E%93%E6%B4%BE#.E7.A1.AC.E9.AB.94.E8.A7.84.E6.A0.BC.EF.BC.88Spec..EF.BC.89">Raspberry Pi Mode B</a></th>
+<th><a target="_blank" rel="noopener" href="http://lamobo.com/lamobom.html">Lamobo-M1</a></th>
+<th>簡評</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CPU</td>
+<td>Broadcom BCM2835 ARM11系列）700MHz</td>
+<td><a target="_blank" rel="noopener" href="http://linux-sunxi.org/A20">Allwinner A20</a> 1 GHz ARM Cortex-A7 Dual-Core</td>
+<td>M1勝</td>
+</tr>
+<tr>
+<td>GPU</td>
+<td>Broadcom VideoCore IV @ 250 MHz</td>
+<td>ARM Mali400MP2</td>
+<td></td>
+</tr>
+<tr>
+<td>RAM</td>
+<td>512 M</td>
+<td>1GB DDR3</td>
+<td>M1勝</td>
+</tr>
+<tr>
+<td>OS</td>
+<td>支援 XBMC</td>
+<td>支援 RPI 的 OS，也有 andorid, 但有些不能使用</td>
+<td>各有勝負</td>
+</tr>
+<tr>
+<td>sata</td>
+<td>無</td>
+<td>SATA*1</td>
+<td>M1勝</td>
+</tr>
+<tr>
+<td>Lan</td>
+<td>10/100 Ethernet RJ45 x1</td>
+<td>10/100/1000 Ethernet RJ45 x1</td>
+<td>M1勝</td>
+</tr>
+</tbody></table>
+        
+          <p class="article-more-link">
+            <a href="/blog/2015/01/12/how-to-setup-Lamobo-m1/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wwssllabcd.github.io/2015/01/12/how-to-setup-Lamobo-m1/" data-id="ckh7xm3vi0027g8ha11omelpv" class="article-share-link">Share</a>
+      
+        <a href="http://wwssllabcd.github.io/2015/01/12/how-to-setup-Lamobo-m1/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/How-To/" rel="tag">How-To</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Raspberry-Pi/" rel="tag">Raspberry Pi</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-how-to-install-hexo" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/blog/2014/12/22/how-to-install-hexo/" class="article-date">
@@ -564,55 +657,6 @@ Standalone Image的檔案下載回來後解壓縮，會得到一個img file，�
 
 
   
-    <article id="post-how-to-write-gdb-scritp" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/blog/2013/03/25/how-to-write-gdb-scritp/" class="article-date">
-  <time datetime="2013-03-25T11:27:00.000Z" itemprop="datePublished">2013-03-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2013/03/25/how-to-write-gdb-scritp/">簡易 GDB Script 教學，應用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="緣由"><a href="#緣由" class="headerlink" title="緣由"></a>緣由</h2><p>在 Debug 電腦開機階段時，利用 QEMU 停住 OS, 在遠端的 GDB 每次都要輸入</p>
-<pre><code>set architecture i8086
-target remote localhost:1234 
-b *0x7C00</code></pre>
-<p>一兩次到還好，若是有時候常常輸入真的就太累了, 而 GDB 可以以 script 的方式擴充指令，就可以減少了負擔了。<br>首先我們開一個空白文件，取名叫做<code>myGdbScript.txt</code>( myGdbScript.txt 以下稱做GdbScript)</p>
-        
-          <p class="article-more-link">
-            <a href="/blog/2013/03/25/how-to-write-gdb-scritp/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://wwssllabcd.github.io/2013/03/25/how-to-write-gdb-scritp/" data-id="ckh7xm3ux001og8haceet5i5k" class="article-share-link">Share</a>
-      
-        <a href="http://wwssllabcd.github.io/2013/03/25/how-to-write-gdb-scritp/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/GDB/" rel="tag">GDB</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/GDB-Script/" rel="tag">GDB Script</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/How-To/" rel="tag">How-To</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -641,7 +685,7 @@ b *0x7C00</code></pre>
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/blog/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/blog/tags/Android/" style="font-size: 12.5px;">Android</a> <a href="/blog/tags/Bitcoin/" style="font-size: 10px;">Bitcoin</a> <a href="/blog/tags/Boost/" style="font-size: 12.5px;">Boost</a> <a href="/blog/tags/Bugzilla/" style="font-size: 10px;">Bugzilla</a> <a href="/blog/tags/C/" style="font-size: 17.5px;">C++</a> <a href="/blog/tags/Firefox-extension/" style="font-size: 12.5px;">Firefox extension</a> <a href="/blog/tags/GDB/" style="font-size: 12.5px;">GDB</a> <a href="/blog/tags/GDB-Script/" style="font-size: 10px;">GDB Script</a> <a href="/blog/tags/Google-Earth/" style="font-size: 10px;">Google Earth</a> <a href="/blog/tags/Heroku/" style="font-size: 10px;">Heroku</a> <a href="/blog/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/blog/tags/How-To/" style="font-size: 20px;">How-To</a> <a href="/blog/tags/Investment/" style="font-size: 10px;">Investment</a> <a href="/blog/tags/Kodi/" style="font-size: 10px;">Kodi</a> <a href="/blog/tags/Lunux-kernel/" style="font-size: 15px;">Lunux kernel</a> <a href="/blog/tags/Modern-C-Design/" style="font-size: 12.5px;">Modern C++ Design</a> <a href="/blog/tags/Nokogiri/" style="font-size: 12.5px;">Nokogiri</a> <a href="/blog/tags/OO/" style="font-size: 15px;">OO</a> <a href="/blog/tags/Octopress/" style="font-size: 10px;">Octopress</a> <a href="/blog/tags/Programming-pearls/" style="font-size: 10px;">Programming pearls</a> <a href="/blog/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/blog/tags/Qemu/" style="font-size: 10px;">Qemu</a> <a href="/blog/tags/RSS/" style="font-size: 12.5px;">RSS</a> <a href="/blog/tags/Raspberry-Pi/" style="font-size: 17.5px;">Raspberry Pi</a> <a href="/blog/tags/Ruby/" style="font-size: 15px;">Ruby</a> <a href="/blog/tags/SNMP/" style="font-size: 10px;">SNMP</a> <a href="/blog/tags/Subversion/" style="font-size: 10px;">Subversion</a> <a href="/blog/tags/USB/" style="font-size: 10px;">USB</a> <a href="/blog/tags/Ubuntu/" style="font-size: 12.5px;">Ubuntu</a> <a href="/blog/tags/Virtual-Box/" style="font-size: 10px;">Virtual Box</a> <a href="/blog/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/blog/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/blog/tags/bochs/" style="font-size: 10px;">bochs</a> <a href="/blog/tags/linux%EF%BC%8Cmakefile/" style="font-size: 10px;">linux，makefile</a> <a href="/blog/tags/sicp/" style="font-size: 10px;">sicp</a>
+      <a href="/blog/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/blog/tags/Android/" style="font-size: 12px;">Android</a> <a href="/blog/tags/Bitcoin/" style="font-size: 10px;">Bitcoin</a> <a href="/blog/tags/Boost/" style="font-size: 12px;">Boost</a> <a href="/blog/tags/Bugzilla/" style="font-size: 10px;">Bugzilla</a> <a href="/blog/tags/C/" style="font-size: 16px;">C++</a> <a href="/blog/tags/Firefox-extension/" style="font-size: 12px;">Firefox extension</a> <a href="/blog/tags/GDB/" style="font-size: 12px;">GDB</a> <a href="/blog/tags/GDB-Script/" style="font-size: 10px;">GDB Script</a> <a href="/blog/tags/Google-Earth/" style="font-size: 10px;">Google Earth</a> <a href="/blog/tags/Heroku/" style="font-size: 10px;">Heroku</a> <a href="/blog/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/blog/tags/How-To/" style="font-size: 20px;">How-To</a> <a href="/blog/tags/Investment/" style="font-size: 10px;">Investment</a> <a href="/blog/tags/Kodi/" style="font-size: 10px;">Kodi</a> <a href="/blog/tags/Lunux-kernel/" style="font-size: 14px;">Lunux kernel</a> <a href="/blog/tags/Modern-C-Design/" style="font-size: 12px;">Modern C++ Design</a> <a href="/blog/tags/Nokogiri/" style="font-size: 12px;">Nokogiri</a> <a href="/blog/tags/OO/" style="font-size: 14px;">OO</a> <a href="/blog/tags/Octopress/" style="font-size: 10px;">Octopress</a> <a href="/blog/tags/Programming-pearls/" style="font-size: 10px;">Programming pearls</a> <a href="/blog/tags/Python/" style="font-size: 12px;">Python</a> <a href="/blog/tags/Qemu/" style="font-size: 10px;">Qemu</a> <a href="/blog/tags/RSS/" style="font-size: 12px;">RSS</a> <a href="/blog/tags/Raspberry-Pi/" style="font-size: 18px;">Raspberry Pi</a> <a href="/blog/tags/Ruby/" style="font-size: 14px;">Ruby</a> <a href="/blog/tags/SNMP/" style="font-size: 10px;">SNMP</a> <a href="/blog/tags/Subversion/" style="font-size: 10px;">Subversion</a> <a href="/blog/tags/USB/" style="font-size: 10px;">USB</a> <a href="/blog/tags/Ubuntu/" style="font-size: 12px;">Ubuntu</a> <a href="/blog/tags/Virtual-Box/" style="font-size: 10px;">Virtual Box</a> <a href="/blog/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/blog/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/blog/tags/bochs/" style="font-size: 10px;">bochs</a> <a href="/blog/tags/linux%EF%BC%8Cmakefile/" style="font-size: 10px;">linux，makefile</a> <a href="/blog/tags/sicp/" style="font-size: 10px;">sicp</a>
     </div>
   </div>
 
@@ -663,6 +707,10 @@ b *0x7C00</code></pre>
       <ul>
         
           <li>
+            <a href="/blog/2020/11/08/how-to-intall-android-tv-in-raspberry-pi-4/">RPI-4 安裝 android tv</a>
+          </li>
+        
+          <li>
             <a href="/blog/2020/11/08/how-to-use-kodi/">kodi 教學，心得</a>
           </li>
         
@@ -676,10 +724,6 @@ b *0x7C00</code></pre>
         
           <li>
             <a href="/blog/2018/05/21/how-to-install-python-on-windows/">Python windows 安裝, 心得, 教學</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2018/05/21/how-to-install-pyqt/">安裝 PyQt</a>
           </li>
         
       </ul>
