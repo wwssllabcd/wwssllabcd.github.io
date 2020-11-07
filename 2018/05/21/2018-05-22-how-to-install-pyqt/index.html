@@ -18,20 +18,19 @@ ga('send', 'pageview');
 
 
   
-  <title>Raspberry pi 上安裝 samba (網路芳鄰) | printf(&#34; I&#39;m EricWang &#34;)</title>
+  <title>安裝 PyQt | printf(&#34; I&#39;m EricWang &#34;)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="使用 apt 安裝使用 apt 安裝, 就那麼簡單 sudo apt-get install samba 設定 conf 檔設定 conf 檔之前，先備份 sudo cp &#x2F;etc&#x2F;samba&#x2F;smb.conf &#x2F;etc&#x2F;samba&#x2F;smb.conf.org 編輯 smb.conf sudo nano &#x2F;etc&#x2F;samba&#x2F;smb.conf">
+  <meta name="description" content="安裝 PyQt PyQT 為 python 的一款 GUI 程式, 是採用 GPL licence, 但也是不是每一版都有 windows 安裝版注意: 這邊可能會更推薦使用 pip 安裝, 指令為  pip install pyqt5 pip 會自動根據 python 的版本自動匹配, 我這邊使用 python 3.6.5 批配到的是 pyqt 5.10.1 雖然 PyQt 可以自行從官網下載並">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Raspberry pi 上安裝 samba (網路芳鄰)">
-<meta property="og:url" content="http://wwssllabcd.github.io/2013/04/22/2013-04-22-how-to-setup-samba-in-raspberry-pi/index.html">
+<meta property="og:title" content="安裝 PyQt">
+<meta property="og:url" content="http://wwssllabcd.github.io/2018/05/21/2018-05-22-how-to-install-pyqt/index.html">
 <meta property="og:site_name" content="printf(&quot; I&#39;m EricWang &quot;)">
-<meta property="og:description" content="使用 apt 安裝使用 apt 安裝, 就那麼簡單 sudo apt-get install samba 設定 conf 檔設定 conf 檔之前，先備份 sudo cp &#x2F;etc&#x2F;samba&#x2F;smb.conf &#x2F;etc&#x2F;samba&#x2F;smb.conf.org 編輯 smb.conf sudo nano &#x2F;etc&#x2F;samba&#x2F;smb.conf">
+<meta property="og:description" content="安裝 PyQt PyQT 為 python 的一款 GUI 程式, 是採用 GPL licence, 但也是不是每一版都有 windows 安裝版注意: 這邊可能會更推薦使用 pip 安裝, 指令為  pip install pyqt5 pip 會自動根據 python 的版本自動匹配, 我這邊使用 python 3.6.5 批配到的是 pyqt 5.10.1 雖然 PyQt 可以自行從官網下載並">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2013-04-22T08:19:00.000Z">
-<meta property="article:modified_time" content="2016-06-05T16:01:22.000Z">
+<meta property="article:published_time" content="2018-05-20T17:13:59.000Z">
+<meta property="article:modified_time" content="2018-06-19T15:15:40.000Z">
 <meta property="article:author" content="EricWang">
-<meta property="article:tag" content="How-To">
-<meta property="article:tag" content="Raspberry Pi">
+<meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/blog/atom.xml" title="printf(&#34; I&#39;m EricWang &#34;)" type="application/atom+xml">
@@ -83,10 +82,10 @@ ga('send', 'pageview');
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-2013-04-22-how-to-setup-samba-in-raspberry-pi" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-2018-05-22-how-to-install-pyqt" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/blog/2013/04/22/2013-04-22-how-to-setup-samba-in-raspberry-pi/" class="article-date">
-  <time datetime="2013-04-22T08:19:00.000Z" itemprop="datePublished">2013-04-22</time>
+    <a href="/blog/2018/05/21/2018-05-22-how-to-install-pyqt/" class="article-date">
+  <time datetime="2018-05-20T17:13:59.000Z" itemprop="datePublished">2018-05-21</time>
 </a>
     
   </div>
@@ -97,7 +96,7 @@ ga('send', 'pageview');
         
   
     <h1 class="article-title" itemprop="name">
-      Raspberry pi 上安裝 samba (網路芳鄰)
+      安裝 PyQt
     </h1>
   
 
@@ -108,44 +107,91 @@ ga('send', 'pageview');
 
 		
 			<div id="toc" class="toc-article">
-				<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-apt-%E5%AE%89%E8%A3%9D"><span class="toc-number">1.</span> <span class="toc-text">使用 apt 安裝</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A8%AD%E5%AE%9A-conf-%E6%AA%94"><span class="toc-number">2.</span> <span class="toc-text">設定 conf 檔</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Troubleshooting"><span class="toc-number">3.</span> <span class="toc-text">Troubleshooting</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-number">4.</span> <span class="toc-text">Reference</span></a></li></ol>
+				<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-PyQt"><span class="toc-number">1.</span> <span class="toc-text">安裝 PyQt </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-Pyqt5-tools"><span class="toc-number">2.</span> <span class="toc-text">安裝 Pyqt5-tools</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PyQt-%E7%9A%84-ui-%E6%AA%94%E8%BD%89%E6%8F%9B"><span class="toc-number">3.</span> <span class="toc-text">PyQt 的 ui 檔轉換</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8-QT-design-%E4%B8%AD%E8%A7%80%E7%9C%8B-ui-%E9%A0%90%E8%A6%BD"><span class="toc-number">4.</span> <span class="toc-text">在 QT design 中觀看 ui 預覽</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LineEdit-%E8%88%87-TextEdit-%E7%9A%84%E5%B7%AE%E7%95%B0"><span class="toc-number">5.</span> <span class="toc-text">LineEdit 與 TextEdit 的差異</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E9%BA%BC%E6%98%AF-Spacer"><span class="toc-number">6.</span> <span class="toc-text">什麼是 Spacer </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B%E4%B8%80%E5%80%8B%E4%BA%8B%E4%BB%B6"><span class="toc-number">7.</span> <span class="toc-text">建立一個事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-keypass-event"><span class="toc-number">8.</span> <span class="toc-text">使用 keypass event</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%9C%E6%8E%89-QTextEdit-%E7%9A%84-Scoll"><span class="toc-number">9.</span> <span class="toc-text">關掉 QTextEdit 的 Scoll</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A8%AD%E5%AE%9A-dialog-title"><span class="toc-number">10.</span> <span class="toc-text">設定 dialog title</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Combobox-%E4%B8%AD%E7%9A%84%E4%B8%8B%E6%8B%89%E5%BC%8F-item-%E5%8A%A0%E9%95%B7"><span class="toc-number">11.</span> <span class="toc-text">Combobox 中的下拉式 item 加長</span></a></li></ol>
 			</div>
 		
 
-        <h1 id="使用-apt-安裝"><a href="#使用-apt-安裝" class="headerlink" title="使用 apt 安裝"></a>使用 apt 安裝</h1><p>使用 apt 安裝, 就那麼簡單</p>
-<pre><code>sudo apt-get install samba</code></pre>
-<h1 id="設定-conf-檔"><a href="#設定-conf-檔" class="headerlink" title="設定 conf 檔"></a>設定 conf 檔</h1><p>設定 conf 檔之前，先備份</p>
-<pre><code>sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.org</code></pre>
-<p>編輯 smb.conf</p>
-<pre><code>sudo nano /etc/samba/smb.conf</code></pre>
+        <h2 id="安裝-PyQt"><a href="#安裝-PyQt" class="headerlink" title="安裝 PyQt "></a>安裝 PyQt </h2><p>PyQT 為 python 的一款 GUI 程式, 是採用 GPL licence, 但也是不是每一版都有 windows 安裝版<br>注意: 這邊可能會更推薦使用 pip 安裝, 指令為</p>
+<pre><code> pip install pyqt5</code></pre>
+<p>pip 會自動根據 python 的版本自動匹配, 我這邊使用 <code>python 3.6.5</code> 批配到的是 <code>pyqt 5.10.1</code></p>
+<pre><code>雖然 PyQt 可以自行從官網下載並安裝, 但請務必使用 pip 安裝, 後面使用的時候問題會比較少</code></pre>
+<h2 id="安裝-Pyqt5-tools"><a href="#安裝-Pyqt5-tools" class="headerlink" title="安裝 Pyqt5-tools"></a>安裝 Pyqt5-tools</h2><p>使用 pip 安裝 PyQt 時, 並不會把 Pyqt designr 給安裝起來, 所以使用 pip 安裝 Pyqt5-tools, 以便取得 QT designer</p>
+<pre><code>pip install pyqt5-tools</code></pre>
+<p>而 designer 會在 </p>
+<pre><code>D:\Python\Python36-32\Lib\site-packages\pyqt5-tools</code></pre>
+<p>中找到</p>
 <a id="more"></a>
 
+<h2 id="PyQt-的-ui-檔轉換"><a href="#PyQt-的-ui-檔轉換" class="headerlink" title="PyQt 的 ui 檔轉換"></a>PyQt 的 ui 檔轉換</h2><p>安裝好 pyqt5 後, 可以使用 qt design 來設計 UI, 把 UI 設計好了之後存檔, 會產生 .ui檔 接下來要使用此ui 檔, 我們必須把此 ui 檔案轉換成 .py檔，方便我們直接在 Python 中使用, 使用 CMD 切換到設計好的 ui 所在目錄下，執行此指令(ui檔我們取名為 myui.ui) </p>
+<pre><code>pyuic5 myui.ui -o myui.py</code></pre>
+<p>而 pyuic5 路徑如下( python 安裝路徑為 D:\Python36-32 為例)</p>
+<pre><code>D:\Python36-32\Scripts\pyuic5.exe</code></pre>
+<p>接下來把以下文字存成&#39;PyGui.py&#39;  </p>
+<pre><code>import sys
+from PyQt5.QtWidgets import QApplication, QDialog, QMessageBox
+from myui import Ui_Dialog
+class MyDlg(QDialog):
+    def __init__(self):
+        super(MyDlg, self).__init__()
 
-<p>在conf檔最下面加入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[myusb]</span><br><span class="line">comment &#x3D; Mydrive</span><br><span class="line">read only &#x3D; no</span><br><span class="line">locking &#x3D; no</span><br><span class="line">path &#x3D; &#x2F;media&#x2F;myusb</span><br><span class="line">guest ok &#x3D; yes</span><br><span class="line">force user &#x3D; pi</span><br><span class="line">writeable &#x3D; Yes</span><br><span class="line">only guest &#x3D; Yes</span><br><span class="line">create mask &#x3D; 0777</span><br><span class="line">directory mask &#x3D; 0777</span><br></pre></td></tr></table></figure>
+        # Set up the user interface from Designer.
+        self.ui = Ui_Dialog()
+        self.ui.setupUi(self)
 
-<p>注意, 其中 force user 這邊, 因為 RP I登入的帳號是 pi, 若是換了其他系統(如 Lamoba-m1, banana pi香蕉派之類的) 要注意這邊的 force user 可能是 root   </p>
-<p>其中 [myusb]是顯示的資料夾名稱，設定好後重啟服務</p>
-<pre><code>sudo /etc/init.d/samba restart</code></pre>
-<p>也可以設定 samba 使用者及密碼 ( 要先執行 sudo apt-get install samba-common-bin )</p>
-<pre><code>sudo smbpasswd -a lifeshow </code></pre>
-<h1 id="Troubleshooting"><a href="#Troubleshooting" class="headerlink" title="Troubleshooting"></a>Troubleshooting</h1><p>samba 的 debug 的 log 檔可以從 smb.conf 中找到, 打開 smb.conf, 搜尋 log 關鍵字, 可以找到</p>
-<pre><code>#### Debugging/Accounting ####
-# This tells Samba to use a separate log file for each machine
-# that connects
-    log file = /var/log/samba/log.%m</code></pre>
-<p>即可得知 log 檔放在<code> /var/log/samba/log.%m</code> </p>
-<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p>這邊也提供其他網頁的資料，供各位參考<br><a target="_blank" rel="noopener" href="http://simonthepiman.com/how_to_setup_windows_file_server.php">How2SetUp a Raspberry Pi Windows NAS storage server</a>  </p>
+def main_start():
+    app = QApplication(sys.argv)
+    window = MyDlg()
+    window.show()
+    sys.exit(app.exec_())
+
+
+if __name__ == &#39;__main__&#39;:
+    main_start()</code></pre>
+<p>再執行以下指令即可</p>
+<pre><code>python PyGui.py </code></pre>
+<p>ref:</p>
+<p><a target="_blank" rel="noopener" href="http://pyqt.sourceforge.net/Docs/PyQt5/designer.html">http://pyqt.sourceforge.net/Docs/PyQt5/designer.html</a></p>
+<h2 id="在-QT-design-中觀看-ui-預覽"><a href="#在-QT-design-中觀看-ui-預覽" class="headerlink" title="在 QT design 中觀看 ui 預覽"></a>在 QT design 中觀看 ui 預覽</h2><ul>
+<li>表單/預覽, </li>
+<li>或是 Ctrl+R</li>
+</ul>
+<h2 id="LineEdit-與-TextEdit-的差異"><a href="#LineEdit-與-TextEdit-的差異" class="headerlink" title="LineEdit 與 TextEdit 的差異"></a>LineEdit 與 TextEdit 的差異</h2><p>lineEdit: 單行的 edit
+TextEdit: 多行</p>
+<h2 id="什麼是-Spacer"><a href="#什麼是-Spacer" class="headerlink" title="什麼是 Spacer "></a>什麼是 Spacer </h2><p>是當使用 vertical layout 時, 若中間不想放東西的時候用來填空的
+Horizontal Spacer 水平空白条和 Vertical Spacer 垂直空白条，空白条的作用就是填充无用的空隙，如果不希望看到控件拉伸后变丑，就可以塞一个空白条到布局器里面
+<a target="_blank" rel="noopener" href="https://qtguide.ustclug.org/">https://qtguide.ustclug.org/</a></p>
+<h2 id="建立一個事件"><a href="#建立一個事件" class="headerlink" title="建立一個事件"></a>建立一個事件</h2><pre><code>class MyDlg(QtGui.QDialog):
+    def __init__(self, parent=None):
+        QtGui.QWidget.__init__(self, parent)
+        self.ui = Ui_Dialog()
+        self.ui.setupUi(self)
+        self.ui.btnRefresh.clicked.connect(self.chk_fun)
+
+    def chk_fun(self):
+        print(&quot;Good.&quot;)</code></pre>
+<p>直接在 MyDlg 中的 <code>__init__</code> 中加入事件, 並綁定到某個 function 就可以了, 
+例如這邊看到的是一個叫<code>btnRefresh</code> 的button, 我們把這個 button 的 clicked 的事件, 綁訂到 chk_fun 這個 function , 而這個 function 印出 good</p>
+<p>再舉一個例子, 如 combobox 的 index change 綁定事件如下</p>
+<pre><code>myCombobox.currentIndexChanged.connect(self.cmd_idx_change)</code></pre>
+<h2 id="使用-keypass-event"><a href="#使用-keypass-event" class="headerlink" title="使用 keypass event"></a>使用 keypass event</h2><p>只要在該 Qdlog 中, 複寫 def keyPressEvent(self, event): 即可, 如下所示</p>
+<pre><code>def keyPressEvent(self, event):
+    key = event.key()
+    print(key)
+    super(MyDlg, self).keyPressEvent(event)</code></pre>
+<p>要注意的是, 如果現在 focus 的控鍵上有 keypassevent 的話, 會優先呼叫該控鍵的 event, 例如 txtedit 有自己的 page down , 所以 dialog 的不會對他造成影響</p>
+<h2 id="關掉-QTextEdit-的-Scoll"><a href="#關掉-QTextEdit-的-Scoll" class="headerlink" title="關掉 QTextEdit 的 Scoll"></a>關掉 QTextEdit 的 Scoll</h2><p>找到 verticalScrollBarPolicy , 並且把她設成 off 即可</p>
+<h2 id="設定-dialog-title"><a href="#設定-dialog-title" class="headerlink" title="設定 dialog title"></a>設定 dialog title</h2><p>self.setWindowTitle</p>
+<h2 id="Combobox-中的下拉式-item-加長"><a href="#Combobox-中的下拉式-item-加長" class="headerlink" title="Combobox 中的下拉式 item 加長"></a>Combobox 中的下拉式 item 加長</h2><p>有個屬性叫<code>visiable item cnt</code>的數字選大一點</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wwssllabcd.github.io/2013/04/22/2013-04-22-how-to-setup-samba-in-raspberry-pi/" data-id="ckh7v9d3p001looha9pk27z79" class="article-share-link">Share</a>
+      <a data-url="http://wwssllabcd.github.io/2018/05/21/2018-05-22-how-to-install-pyqt/" data-id="ckh7valof000004hagvvaezm7" class="article-share-link">Share</a>
       
-        <a href="http://wwssllabcd.github.io/2013/04/22/2013-04-22-how-to-setup-samba-in-raspberry-pi/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://wwssllabcd.github.io/2018/05/21/2018-05-22-how-to-install-pyqt/#disqus_thread" class="article-comment-link">Comments</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/How-To/" rel="tag">How-To</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Raspberry-Pi/" rel="tag">Raspberry Pi</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Python/" rel="tag">Python</a></li></ul>
 
     </footer>
   </div>
@@ -153,19 +199,19 @@ ga('send', 'pageview');
     
 <nav id="article-nav">
   
-    <a href="/blog/2013/04/22/2013-04-22-how-to-setup-wireless-in-raspberry-pi/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/blog/2018/05/21/2018-05-21-how-to-install-python-on-windows/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          Raspberry pi: 設定無線網路
+          Python windows 安裝, 心得, 教學
         
       </div>
     </a>
   
   
-    <a href="/blog/2013/04/22/2013-04-22-how-to-setup-transmission-deamon-in-raspberry-pi/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/blog/2017/11/12/2017-11-12-how-to-execute-amb-expression/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">打造脫機下載農場，使用Raspberry pi + transmission-daemon</div>
+      <div class="article-nav-title">執行 amb expression</div>
     </a>
   
 </nav>
@@ -272,7 +318,7 @@ ga('send', 'pageview');
 <script>
   var disqus_shortname = 'ericwangsblog';
   
-  var disqus_url = 'http://wwssllabcd.github.io/2013/04/22/2013-04-22-how-to-setup-samba-in-raspberry-pi/';
+  var disqus_url = 'http://wwssllabcd.github.io/2018/05/21/2018-05-22-how-to-install-pyqt/';
   
   (function(){
     var dsq = document.createElement('script');
