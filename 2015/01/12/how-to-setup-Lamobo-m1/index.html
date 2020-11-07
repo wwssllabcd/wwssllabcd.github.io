@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-34321837-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <title>Lamobo M1( banana pi ) 安裝心得 | printf(&#34; I&#39;m EricWang &#34;)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Lamobo M1 (之前比較常見的名稱為 Banana Pi, 又稱香蕉派) 跟 Raspberry pi(以下簡稱 RPI ) 一樣是屬於單版電腦，Lamobo-M1(以下簡稱 M1) 而 Lamobo M1 與 Banana Pi 是同一片板子，根據該公司的說法，這是透過雙品牌的方式來運營，Banana Pi 專注於開源社群的運營 評比以下為雙方比較大的差異點，見下表     Raspber">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lamobo M1( banana pi ) 安裝心得">
+<meta property="og:url" content="http://wwssllabcd.github.io/2015/01/12/how-to-setup-Lamobo-m1/index.html">
+<meta property="og:site_name" content="printf(&quot; I&#39;m EricWang &quot;)">
+<meta property="og:description" content="Lamobo M1 (之前比較常見的名稱為 Banana Pi, 又稱香蕉派) 跟 Raspberry pi(以下簡稱 RPI ) 一樣是屬於單版電腦，Lamobo-M1(以下簡稱 M1) 而 Lamobo M1 與 Banana Pi 是同一片板子，根據該公司的說法，這是透過雙品牌的方式來運營，Banana Pi 專注於開源社群的運營 評比以下為雙方比較大的差異點，見下表     Raspber">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2015-01-12T15:32:31.000Z">
+<meta property="article:modified_time" content="2015-12-18T12:52:56.000Z">
+<meta property="article:author" content="EricWang">
+<meta property="article:tag" content="How-To">
+<meta property="article:tag" content="Raspberry Pi">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/blog/atom.xml" title="printf(&#34; I&#39;m EricWang &#34;)" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://lh3.googleusercontent.com/-4X7H3oQr-Ws/VKchKJJwnSI/AAAAAAAAsy4/NK3uBSzNQlo/s0/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/blog/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">printf(&#34; I&#39;m EricWang &#34;)</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/blog/aboutme.html">AboutMe</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://wwssllabcd.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-how-to-setup-Lamobo-m1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2015/01/12/how-to-setup-Lamobo-m1/" class="article-date">
+  <time datetime="2015-01-12T15:32:31.000Z" itemprop="datePublished">2015-01-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Lamobo M1( banana pi ) 安裝心得
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+		
+
+        <p>Lamobo M1 (之前比較常見的名稱為 Banana Pi, 又稱香蕉派) 跟 Raspberry pi(以下簡稱 RPI ) 一樣是屬於單版電腦，Lamobo-M1(以下簡稱 M1)
+而 Lamobo M1 與 Banana Pi 是同一片板子，根據該公司的說法，這是透過雙品牌的方式來運營，Banana Pi 專注於開源社群的運營</p>
+<h1 id="評比"><a href="#評比" class="headerlink" title="評比"></a>評比</h1><p>以下為雙方比較大的差異點，見下表</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><a target="_blank" rel="noopener" href="http://zh.wikipedia.org/wiki/%E6%A0%91%E8%8E%93%E6%B4%BE#.E7.A1.AC.E9.AB.94.E8.A7.84.E6.A0.BC.EF.BC.88Spec..EF.BC.89">Raspberry Pi Mode B</a></th>
+<th><a target="_blank" rel="noopener" href="http://lamobo.com/lamobom.html">Lamobo-M1</a></th>
+<th>簡評</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CPU</td>
+<td>Broadcom BCM2835 ARM11系列）700MHz</td>
+<td><a target="_blank" rel="noopener" href="http://linux-sunxi.org/A20">Allwinner A20</a> 1 GHz ARM Cortex-A7 Dual-Core</td>
+<td>M1勝</td>
+</tr>
+<tr>
+<td>GPU</td>
+<td>Broadcom VideoCore IV @ 250 MHz</td>
+<td>ARM Mali400MP2</td>
+<td></td>
+</tr>
+<tr>
+<td>RAM</td>
+<td>512 M</td>
+<td>1GB DDR3</td>
+<td>M1勝</td>
+</tr>
+<tr>
+<td>OS</td>
+<td>支援 XBMC</td>
+<td>支援 RPI 的 OS，也有 andorid, 但有些不能使用</td>
+<td>各有勝負</td>
+</tr>
+<tr>
+<td>sata</td>
+<td>無</td>
+<td>SATA*1</td>
+<td>M1勝</td>
+</tr>
+<tr>
+<td>Lan</td>
+<td>10/100 Ethernet RJ45 x1</td>
+<td>10/100/1000 Ethernet RJ45 x1</td>
+<td>M1勝</td>
+</tr>
+</tbody></table>
+<a id="more"></a>
+
+<p>對我而言，M1 硬體的確是大勝 RPI，但我不喜歡對岸的東西，總覺得有可能會偷傳什麼資料的，
+除了大陸製，還有外殼難看以上這幾點外， M1的確沒什麼好挑剔的，NT 1900 就可以買到這種配備，算是佛心來著的  </p>
+<h1 id="安裝-Raspbian"><a href="#安裝-Raspbian" class="headerlink" title="安裝 Raspbian"></a>安裝 Raspbian</h1><p>到 <a target="_blank" rel="noopener" href="http://www.lemaker.org/resources/9-38/image_files.html">Lemaker OS 下載網頁</a>下載，要注意不要下載到 Pro 版本，()通常你買到的是 Banana Pi，如果你版子上有電源按鈕的話，那就是 Pro 版)，
+選 Raspbian 下載後解開得到 img 檔後，使用 <a target="_blank" rel="noopener" href="http://sourceforge.net/projects/win32diskimager/">Win32Diskimager</a> 寫入至 SD 卡，過程與 RPI 相同，
+預設密碼為 <code>root/bananapi</code>，，預設電腦名稱為`lemaker&#39;，進入 OS 後，一樣可執行 Rasp-config 來修改細部設定，詳細情形與RPI相同</p>
+<h1 id="安裝-Bananian"><a href="#安裝-Bananian" class="headerlink" title="安裝 Bananian"></a>安裝 Bananian</h1><p>到 <a target="_blank" rel="noopener" href="http://www.lemaker.org/resources/9-38/image_files.html">Lemaker OS 下載網頁</a>下載，選 Raspbian 下載後解開得到 img 檔後，使用 <a target="_blank" rel="noopener" href="http://sourceforge.net/projects/win32diskimager/">Win32Diskimager</a> 寫入至 SD 卡，
+過程與 RPI 相同，預設密碼為 <code>root/pi</code>，預設電腦名稱為<code>bananapi&#39;，進入 OS 後，可執行 </code>bananian-config` 來修改細部設定</p>
+<h1 id="安裝-XBMC"><a href="#安裝-XBMC" class="headerlink" title="安裝 XBMC"></a>安裝 XBMC</h1><p>到 <a target="_blank" rel="noopener" href="http://www.lemaker.org/resources/9-38/image_files.html">Lemaker OS 下載網頁</a>下載，選 LeMedia 後下載解壓縮完得到 img 檔後，使用 <a target="_blank" rel="noopener" href="http://sourceforge.net/projects/win32diskimager/">Win32Diskimager</a> 刷入即可，不過要注意的是 LeMedia 還在開發階段，很多東西都不太能用，
+播放起來也很 lag，也沒聲音，簡單的來說就是 <em>XBMC for linux on Allwinner devices is NOT READY FOR USE!</em></p>
+<h1 id="安裝-Android"><a href="#安裝-Android" class="headerlink" title="安裝 Android"></a>安裝 Android</h1><p>到 <a target="_blank" rel="noopener" href="http://www.lemaker.org/resources/9-38/image_files.html">Lemaker OS 下載網頁</a>下載，選 Android，解開後得到 img 檔，但這次不能用 <a target="_blank" rel="noopener" href="http://sourceforge.net/projects/win32diskimager/">Win32Diskimager</a> 來刷，要使用全志自己的卡刷工具 PhoenixCard，
+但是這個工具放在大陸的百度雲，下載很麻煩，打開後我卡刷也失敗，所以放棄，這邊提供<a target="_blank" rel="noopener" href="http://forum.lemaker.org/cn/thread-64-1-1-Android+4.2+%E9%95%9C%E5%83%8F%E7%83%A7%E5%BD%95SD%E5%8D%A1%E6%95%99%E7%A8%8B.html">Android 詳細刷機方法</a>，有興趣可以自己參考</p>
+<h1 id="效能"><a href="#效能" class="headerlink" title="效能"></a>效能</h1><p>因為農場是我買該機的原因，所以測試也以農場軟體相關，見下表</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Raspberry pi</th>
+<th>Lamobo-M1</th>
+<th>簡評</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>transmission-daemon</td>
+<td>約 3MB，CPU 負載率超過 95%</td>
+<td>輕鬆上 6MB，CPU 約 20%</td>
+<td>M1勝</td>
+</tr>
+<tr>
+<td>Samba</td>
+<td>約 2.x MB，CUP 與 RAM 負載高</td>
+<td>可上 9MB</td>
+<td>M1勝</td>
+</tr>
+</tbody></table>
+<p>這邊測試的是 Raspbian for Banana Pro 的 OS，而 Raspbian for Banana pi 數據只比 Raspberry Pi 好一點，我不知道為何，這個數據也許不太準，參考看看就好了，
+我後來改安裝 Raspbian for Banana pi ，其 transmission-daemon 的 CPU 老是給我 100%，不知哪裡有問題，不過換回去 Raspbian for Banana Pro 的就正常許多，
+可是我的版子又是 Banana Pi，反而要裝 For Pro 的 OS 才會比較好，真是一整個怪</p>
+<h1 id="相關資源"><a href="#相關資源" class="headerlink" title="相關資源"></a>相關資源</h1><p>Banana pi 有其<a target="_blank" rel="noopener" href="http://forum.lemaker.org/cn/forum.php">中文BPI官方論壇</a>，有中文的，但討論不熱烈，最好還是去<a target="_blank" rel="noopener" href="http://forum.lemaker.org/forum.php">英文BPI官方論壇</a>比較好</p>
+<h1 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h1><p>我測兩次都有不一樣的數據，所以無從推薦，Lamobo 差就差在支援太少，雖然有很多 OS 可玩，但都只是能開機而已，就像是 XBMC 一樣，只是能開機而已，
+根本就是 NOT READY FOR USE  </p>
+<p>Lamobo 目前只有看到在開農場的時候，同時使用 samba 會比較快之外，目前看不到什麼利基，若你喜歡折腾又有閒錢的話，可以試試，
+若要買還是<a target="_blank" rel="noopener" href="http://www.raspberrypi.org/raspberry-pi-2-on-sale/">Raspberry Pi 2</a>會比較理想</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wwssllabcd.github.io/2015/01/12/how-to-setup-Lamobo-m1/" data-id="ckh7xm3vi0027g8ha11omelpv" class="article-share-link">Share</a>
+      
+        <a href="http://wwssllabcd.github.io/2015/01/12/how-to-setup-Lamobo-m1/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/How-To/" rel="tag">How-To</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Raspberry-Pi/" rel="tag">Raspberry Pi</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/blog/2015/08/21/what-is-bitcoin/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Bitcoin 簡介
+        
+      </div>
+    </a>
+  
+  
+    <a href="/blog/2014/12/22/how-to-install-hexo/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hexo 安裝教學、心得筆記</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Bitcoin/" rel="tag">Bitcoin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Boost/" rel="tag">Boost</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Bugzilla/" rel="tag">Bugzilla</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Firefox-extension/" rel="tag">Firefox extension</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/GDB/" rel="tag">GDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/GDB-Script/" rel="tag">GDB Script</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Google-Earth/" rel="tag">Google Earth</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Heroku/" rel="tag">Heroku</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/How-To/" rel="tag">How-To</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Investment/" rel="tag">Investment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Kodi/" rel="tag">Kodi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Lunux-kernel/" rel="tag">Lunux kernel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Modern-C-Design/" rel="tag">Modern C++ Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Nokogiri/" rel="tag">Nokogiri</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/OO/" rel="tag">OO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Octopress/" rel="tag">Octopress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Programming-pearls/" rel="tag">Programming pearls</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Qemu/" rel="tag">Qemu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/RSS/" rel="tag">RSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Raspberry-Pi/" rel="tag">Raspberry Pi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Ruby/" rel="tag">Ruby</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/SNMP/" rel="tag">SNMP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Subversion/" rel="tag">Subversion</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/USB/" rel="tag">USB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Ubuntu/" rel="tag">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Virtual-Box/" rel="tag">Virtual Box</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Windows/" rel="tag">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Wordpress/" rel="tag">Wordpress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/bochs/" rel="tag">bochs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux%EF%BC%8Cmakefile/" rel="tag">linux，makefile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/sicp/" rel="tag">sicp</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/blog/tags/Android/" style="font-size: 12.5px;">Android</a> <a href="/blog/tags/Bitcoin/" style="font-size: 10px;">Bitcoin</a> <a href="/blog/tags/Boost/" style="font-size: 12.5px;">Boost</a> <a href="/blog/tags/Bugzilla/" style="font-size: 10px;">Bugzilla</a> <a href="/blog/tags/C/" style="font-size: 17.5px;">C++</a> <a href="/blog/tags/Firefox-extension/" style="font-size: 12.5px;">Firefox extension</a> <a href="/blog/tags/GDB/" style="font-size: 12.5px;">GDB</a> <a href="/blog/tags/GDB-Script/" style="font-size: 10px;">GDB Script</a> <a href="/blog/tags/Google-Earth/" style="font-size: 10px;">Google Earth</a> <a href="/blog/tags/Heroku/" style="font-size: 10px;">Heroku</a> <a href="/blog/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/blog/tags/How-To/" style="font-size: 20px;">How-To</a> <a href="/blog/tags/Investment/" style="font-size: 10px;">Investment</a> <a href="/blog/tags/Kodi/" style="font-size: 10px;">Kodi</a> <a href="/blog/tags/Lunux-kernel/" style="font-size: 15px;">Lunux kernel</a> <a href="/blog/tags/Modern-C-Design/" style="font-size: 12.5px;">Modern C++ Design</a> <a href="/blog/tags/Nokogiri/" style="font-size: 12.5px;">Nokogiri</a> <a href="/blog/tags/OO/" style="font-size: 15px;">OO</a> <a href="/blog/tags/Octopress/" style="font-size: 10px;">Octopress</a> <a href="/blog/tags/Programming-pearls/" style="font-size: 10px;">Programming pearls</a> <a href="/blog/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/blog/tags/Qemu/" style="font-size: 10px;">Qemu</a> <a href="/blog/tags/RSS/" style="font-size: 12.5px;">RSS</a> <a href="/blog/tags/Raspberry-Pi/" style="font-size: 17.5px;">Raspberry Pi</a> <a href="/blog/tags/Ruby/" style="font-size: 15px;">Ruby</a> <a href="/blog/tags/SNMP/" style="font-size: 10px;">SNMP</a> <a href="/blog/tags/Subversion/" style="font-size: 10px;">Subversion</a> <a href="/blog/tags/USB/" style="font-size: 10px;">USB</a> <a href="/blog/tags/Ubuntu/" style="font-size: 12.5px;">Ubuntu</a> <a href="/blog/tags/Virtual-Box/" style="font-size: 10px;">Virtual Box</a> <a href="/blog/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/blog/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/blog/tags/bochs/" style="font-size: 10px;">bochs</a> <a href="/blog/tags/linux%EF%BC%8Cmakefile/" style="font-size: 10px;">linux，makefile</a> <a href="/blog/tags/sicp/" style="font-size: 10px;">sicp</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/01/">January 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2014/05/">May 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/11/">November 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/10/">October 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/04/">April 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/03/">March 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/01/">January 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/12/">December 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/11/">November 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/10/">October 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/09/">September 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/08/">August 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2007/03/">March 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2006/12/">December 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2004/12/">December 2004</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2003/04/">April 2003</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2020/11/08/how-to-use-kodi/">kodi 教學，心得</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2020/11/08/how-to-install-kodi-in-raspberry-pi-4/">how-to-install-kodi-in-raspberry-pi-4</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2020/02/16/Investment-of-indexing/">指數型投資(Investment of indexing)</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2018/05/21/how-to-install-python-on-windows/">Python windows 安裝, 心得, 教學</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2018/05/21/how-to-install-pyqt/">安裝 PyQt</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 EricWang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/blog/aboutme.html" class="mobile-nav-link">AboutMe</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'ericwangsblog';
+  
+  var disqus_url = 'http://wwssllabcd.github.io/2015/01/12/how-to-setup-Lamobo-m1/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css">
+
+  
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/blog/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

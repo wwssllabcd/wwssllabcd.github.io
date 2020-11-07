@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-34321837-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <title>Policy-Based Programming | printf(&#34; I&#39;m EricWang &#34;)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="考慮以下的 code 是找出vector&quot;中，相同的item出來，並放在另一個vector中， 但是有時後放入vector 的item是 native type( 如 int， char， 等)，有時卻是使用pair type， 而這兩個 template 基本上只差在一個地方，就是取 addr 的部份， 一個 native 版本是直接取，如addr &#x3D; (*iDBlock); ，而 p">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Policy-Based Programming">
+<meta property="og:url" content="http://wwssllabcd.github.io/2013/10/08/policy-based-template-programming/index.html">
+<meta property="og:site_name" content="printf(&quot; I&#39;m EricWang &quot;)">
+<meta property="og:description" content="考慮以下的 code 是找出vector&quot;中，相同的item出來，並放在另一個vector中， 但是有時後放入vector 的item是 native type( 如 int， char， 等)，有時卻是使用pair type， 而這兩個 template 基本上只差在一個地方，就是取 addr 的部份， 一個 native 版本是直接取，如addr &#x3D; (*iDBlock); ，而 p">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2013-10-08T11:02:00.000Z">
+<meta property="article:modified_time" content="2015-12-18T12:52:56.000Z">
+<meta property="article:author" content="EricWang">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="Modern C++ Design">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/blog/atom.xml" title="printf(&#34; I&#39;m EricWang &#34;)" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://lh3.googleusercontent.com/-4X7H3oQr-Ws/VKchKJJwnSI/AAAAAAAAsy4/NK3uBSzNQlo/s0/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/blog/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">printf(&#34; I&#39;m EricWang &#34;)</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/blog/aboutme.html">AboutMe</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://wwssllabcd.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-policy-based-template-programming" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2013/10/08/policy-based-template-programming/" class="article-date">
+  <time datetime="2013-10-08T11:02:00.000Z" itemprop="datePublished">2013-10-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Policy-Based Programming
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+		
+			<div id="toc" class="toc-article">
+				<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Policy-Based-Programming"><span class="toc-number">1.</span> <span class="toc-text">Policy-Based Programming</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%A6%E4%BD%9C-Policy-Classes-Design"><span class="toc-number">2.</span> <span class="toc-text">實作 Policy Classes Design</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E9%BB%9E%E4%B9%9F%E4%B8%8D%E7%BE%8E%E9%BA%97%E7%9A%84%E5%91%BC%E5%8F%AB%E6%96%B9%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text">一點也不美麗的呼叫方式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A8%A1%E7%89%88%E5%81%8F%E7%89%B9%E5%8C%96-partial-specialization"><span class="toc-number">4.</span> <span class="toc-text">模版偏特化( partial specialization )</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%87%8D%E6%96%B0%E6%89%93%E9%80%A0-Policy-Class"><span class="toc-number">5.</span> <span class="toc-text">重新打造 Policy Class</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8B%BF%E6%8E%89%E5%A4%9A%E9%A4%98%E7%9A%84-template-parameter-%E4%BD%BF%E7%94%A8-Traits"><span class="toc-number">6.</span> <span class="toc-text">拿掉多餘的 template parameter -- 使用 Traits</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8A%8A%E4%B8%80%E5%88%87%E7%B5%84%E8%A3%9D%E8%B5%B7%E4%BE%86"><span class="toc-number">7.</span> <span class="toc-text">把一切組裝起來</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BE%8C%E8%A8%98"><span class="toc-number">8.</span> <span class="toc-text">後記</span></a></li></ol>
+			</div>
+		
+
+        <p>考慮以下的 code 是<code>找出vector&quot;中，相同的item出來，並放在另一個vector中</code>，
+但是有時後放入vector 的item是 native type( 如 int， char， 等)，有時卻是使用pair type，
+而這兩個 template 基本上只差在一個地方，就是取 addr 的部份，
+一個 native 版本是直接取，如<code>addr = (*iDBlock);</code> ，而 pair 版本是取他的 first 出來，如 <code>addr = (*iDBlock).first;</code></p>
+<p>Native type 版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">template&lt;bool flag, class T, class U&gt;</span><br><span class="line">static void findDupItem(vector&lt;T&gt;&amp; source, vector&lt;U&gt;&amp; dupColl)&#123;</span><br><span class="line">	typename vector&lt;T&gt;::iterator iDBlock;</span><br><span class="line">	dupColl.clear();</span><br><span class="line"></span><br><span class="line">	T addr&#x3D;0;</span><br><span class="line">	</span><br><span class="line">	for(iDBlock &#x3D; source.begin(); iDBlock!&#x3D;source.end(); iDBlock++)&#123;</span><br><span class="line">		addr &#x3D; (*iDBlock);</span><br><span class="line">		if( _isHit( addr ) &#x3D;&#x3D; true )&#123;</span><br><span class="line">			dupColl.push_back((*iDBlock));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Pair 版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">template&lt; class T, class U &gt;</span><br><span class="line">static void findDupItem(vector&lt; pair&lt;T, U&gt; &gt;&amp; source, vector&lt; pair&lt;T, U&gt; &gt;&amp; dupColl)&#123;</span><br><span class="line">	typename vector&lt; pair&lt;T, U&gt;  &gt;::iterator iDBlock;</span><br><span class="line">	dupColl.clear();</span><br><span class="line"></span><br><span class="line">	T addr&#x3D;0;</span><br><span class="line">	for(iDBlock &#x3D; source.begin(); iDBlock!&#x3D;source.end(); iDBlock++)&#123;</span><br><span class="line">		addr &#x3D; (*iDBlock).first;</span><br><span class="line">		if( _isHit( addr) &#x3D;&#x3D; true )&#123;</span><br><span class="line">			dupColl.push_back((*iDBlock));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+
+<p>基本上 99% 的東西都一樣，違反 DRY( Don&#39;t repeat yourself)原則，但那要如何把他合併起來呢？
+使用一個 flag 也許可以解決問題</p>
+<pre><code>if ( isPairType )&#123;
+    addr = (*iDBlock).first;
+&#125;else&#123;
+    addr = (*iDBlock);
+&#125;</code></pre>
+<p>這解法我們早就做過 N 遍了--   一個醜陋但堪用的解法<br>你我都知道，這個解法一旦複雜度變高可能會變得難以 maintain，接下來就是看誰倒楣</p>
+<p>也許一個 function pointer 去包裝他可能是一個好方法，如</p>
+<pre><code>static void findDupItem(vector&lt; pair&lt;T, U&gt; &gt;&amp; source, vector&lt; pair&lt;T, U&gt; &gt;&amp; dupColl, FP pFun )&#123;
+..略..
+for(iDBlock = source.begin(); iDBlock!=source.end(); iDBlock++)&#123;
+    addr = pFun(iDBlock);
+    ..略..
+&#125;</code></pre>
+<p>嗯，是可以解，但沒有驚喜，有沒有一個更好的解法呢？</p>
+<h1 id="Policy-Based-Programming"><a href="#Policy-Based-Programming" class="headerlink" title="Policy-Based Programming"></a>Policy-Based Programming</h1><p><a target="_blank" rel="noopener" href="http://zh.wikipedia.org/zh-tw/%E5%9F%BA%E6%96%BC%E5%8E%9F%E5%89%87%E8%A8%AD%E8%A8%88">Policy-Based Class Design</a>
+首見於 Andrei Alexandrescu 出版的 《Modern C++ Design》一書，詳細的內容可以參考該書的第一章(見本篇後記)。     </p>
+<ul>
+<li><p>Interface design 的缺點<br>Interface design 不是不好， Interface design 有時也會出現力有未逮的情況，
+當軟體規模擴大到一定程度時，有時會很難避免出現某些 sub class 繼承 interface 時，不需要該 interface 的某些 constraints(約束條件)，
+對於實務上遇到這種況狀，通常會故意忽略掉那些參數(例如傳一個 Null 值進去)，好讓 compiler 可以順利編譯，
+這種語法有效，但語意無效的介面意味著 interface 出現過度設計的 bad smell。    </p>
+</li>
+<li><p>把每個功能切割成為小class<br>對於 interface 出現過度設計的狀況，縮小設計規模可能是一種解法，但是這種作法又會產生大量的設計組合，
+以 smart point 為例，你就會有一堆 class 如下   </p>
+</li>
+</ul>
+<pre><code>SingleThreadSmartPtr  
+MultiThreadSmartPtr  
+RefCountSmartPtr   
+RefLinkSmartPrt  </code></pre>
+<p>若增加一個選項則會面臨大量設計組合，複雜度曲線上升  </p>
+<ul>
+<li>利用多重繼承來處理設計組合？<br>若是利用繼承 BaseSmartPoint去組合SingleThread，RefCount 這些 class 所產生的 SmartPoint，
+的確是可以讓設計組合降低，但除非設計單純，否則大多數得小心繼承帶來的痛苦，
+特別是要去協調那些 class的運轉，就實務上來說繼承並不討喜。  </li>
+</ul>
+<p>繼承組合而來的 class 面對著型別又有著困擾，假設你使用一個 DeepCopy Class 來為你的 SmartPointer 實作 DeepCopy，
+但是 DeepCopy 是怎樣的介面呢？ 舉例來說，假設他要回傳某個東西，那回傳的 type 又是什麼？   </p>
+<p>多重繼承本質上的確是一種<code>組合</code>，但似乎沒有辦法單獨的解決這種問題，特別是 user 在設計時，面對型別的多樣性。   </p>
+<ul>
+<li>Template 帶來曙光<br>哪裡型別最多？就是 Template，那裡擁有大量的型別，而這兩種設計並不衝突，有時還相輔相成，
+比較一下多重繼承與 template，例如 多重繼承 往往缺乏型別，而 temaplte 擁有大量型別。   </li>
+</ul>
+<p>而且一個良好的設計應該在編譯時期強制表現出大部分的 constraints (約束條件)，
+而 Template 剛好可以在 compile time 表現出 constraints 的機制。   </p>
+<p>用多重繼承 + template 來實現有機會產生非常彈性的裝置來當作我們的設計元素。</p>
+<h1 id="實作-Policy-Classes-Design"><a href="#實作-Policy-Classes-Design" class="headerlink" title="實作 Policy Classes Design"></a>實作 Policy Classes Design</h1><p>根據上述的解釋，修改 code 如下  </p>
+<p>先把 GetItem使用 Policy class 封裝起來，
+由於我們不知道他的 ReturnType 與 Collection 的 Iterator 是什麼，反正缺 Type 就往 Template 那邊找就對了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">template&lt; typename Iter, class RT &gt;</span><br><span class="line">struct GetNornalData&#123;</span><br><span class="line">	static RT getItem(Iter iter)&#123;</span><br><span class="line">		return (*iter);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">template&lt; typename Iter, class RT &gt;</span><br><span class="line">struct GetPair_first&#123;</span><br><span class="line">	static RT getItem(Iter iter)&#123;</span><br><span class="line">		return (*iter).first;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>以 vector<int> 來說，這邊的 ReturnType 就是 Int， 而 iter 就是 Vector<int>::iterator 了，
+有了policy，接下來就可以改寫 main function 了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">template&lt; class T, class ReturnType, class GetDataPolicy &gt;</span><br><span class="line">class FindDpu : public GetDataPolicy</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	static void run(vector&lt;T&gt;&amp; source, vector&lt;T&gt;&amp; duplicateColl)&#123;</span><br><span class="line">		typedef vector&lt;T&gt;::iterator Iter;</span><br><span class="line"></span><br><span class="line">		Iter iter;</span><br><span class="line">		ReturnType addr&#x3D;0;</span><br><span class="line"></span><br><span class="line">		...略...</span><br><span class="line"></span><br><span class="line">		for(iter &#x3D; source.begin(); iter!&#x3D;source.end(); iter++)&#123;</span><br><span class="line">			addr &#x3D; getItem(iter); &#x2F;&#x2F; 利用繼承而獲得的 function</span><br><span class="line">			...略...</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>使用的時候如下，先宣告你要那個 Policy，再利用 Policy 去產生哪種 FindDpu class</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;int&gt; source, target;</span><br><span class="line">typedef GetNornalData&lt; vector&lt;int&gt;::iterator, int &gt; Policy;</span><br><span class="line"></span><br><span class="line">FindDpu&lt; int, int, Policy &gt;  fvpd_int;</span><br><span class="line">fvpd_int.run(source, target);</span><br></pre></td></tr></table></figure>
+<p>如果是 pair 的時候，可以使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">typedef pair&lt;char, char&gt; MyPairType;</span><br><span class="line"></span><br><span class="line">vector&lt;MyPairType&gt; source, target;</span><br><span class="line">typedef GetPair_first&lt; vector&lt;MyPairType&gt;::iterator, MyPairType::first_type &gt; Policy;</span><br><span class="line"></span><br><span class="line">FindDpu&lt; MyPairType, char, Policy &gt; fvpd_pair;</span><br><span class="line">fvpd_pair.run(source, target);</span><br></pre></td></tr></table></figure>
+
+<h1 id="一點也不美麗的呼叫方式"><a href="#一點也不美麗的呼叫方式" class="headerlink" title="一點也不美麗的呼叫方式"></a>一點也不美麗的呼叫方式</h1><p>的確是使用了 Policy，但使用上前置作業要好幾行，
+在使用之前先宣告想要的 Policy，呼叫的時候傳入Policy ，這似乎合情合理，
+但使用 pair 的時候傳入 pair policy，使用int的時候傳入 int Policy 又顯得多餘又危險 -- 我總不可能使用 vector &lt; pair &gt; 傳入 int Policy 吧？</p>
+<h1 id="模版偏特化-partial-specialization"><a href="#模版偏特化-partial-specialization" class="headerlink" title="模版偏特化( partial specialization )"></a>模版偏特化( partial specialization )</h1><p>能不能看到我傳 pair 的時候就預設 pair Policy 呢？翻了一下書，利用模版偏特化( partial specialization )也許有機會</p>
+<p>可以看以下例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">template&lt;typename T&gt;</span><br><span class="line">Class Test;</span><br><span class="line"></span><br><span class="line">template&lt;&gt;</span><br><span class="line">Class Test&lt;char&gt;&#123;</span><br><span class="line">	typedef char ReturnType;</span><br><span class="line">	string show()&#123;</span><br><span class="line">		pringf(&quot;ReturnType &#x3D; char&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template&lt;&gt;</span><br><span class="line">Class Test&lt;int&gt;&#123;</span><br><span class="line">	typedef int ReturnType;</span><br><span class="line">	string show()&#123;</span><br><span class="line">		pringf(&quot;ReturnType &#x3D; int&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此時如果使用</p>
+<pre><code>Test&lt;char&gt; t;
+t.show()</code></pre>
+<p>則會顯示</p>
+<pre><code>`ReturnType = char`</code></pre>
+<p>compiler 藉由型別推導選擇了不同的 class，看來我們有機會藉由輸入不同的 Type，而去選擇不同的 Class </p>
+<h1 id="重新打造-Policy-Class"><a href="#重新打造-Policy-Class" class="headerlink" title="重新打造 Policy Class"></a>重新打造 Policy Class</h1><p>根據我們傳入的 T，利用 compiler 型別推導機制，來幫 Policy 作偏特化，藉以自動選擇哪種 Policy，
+重新設計 Policy</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">template&lt;typename RT &gt; </span><br><span class="line">struct GetDataPolicy;</span><br><span class="line"></span><br><span class="line">template&lt; typename RT&gt; </span><br><span class="line">struct GetDataPolicy &lt; std::vector&lt; RT &gt; &gt;	</span><br><span class="line">&#123;</span><br><span class="line">	...略...</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">template&lt; typename RT, typename U &gt; </span><br><span class="line">struct GetDataPolicy &lt; std::vector&lt; std::pair&lt;RT, U&gt; &gt; &gt;</span><br><span class="line">&#123;</span><br><span class="line">	...略...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>這樣一來，只有 <code>T = pair&lt;RT, U&gt;</code> 的時候，compiler 會自動推導 pair Policy 為最佳解，其餘的都是 vector&lt; RT &gt; 解，
+而且是符合最佳解的才會被編譯出來，也就是說，沒用到的 compiler 根本就不會編譯他  </p>
+<p>回到主程式來，先利用預設模版，然後拿 T 當作 Policy 的參數，而 compiler 會拿 T 去 Policy 作型別推導找出最佳解出來  </p>
+<pre><code>template&lt; class T, class ReturnType, class GetDataPolicy&lt;T&gt; &gt;
+class FindDuplicateItem : public Policy
+&#123;
+    ...略...
+&#125;</code></pre>
+<h1 id="拿掉多餘的-template-parameter-使用-Traits"><a href="#拿掉多餘的-template-parameter-使用-Traits" class="headerlink" title="拿掉多餘的 template parameter -- 使用 Traits"></a>拿掉多餘的 template parameter -- 使用 Traits</h1><p>觀察 main function 中的 ReturnType</p>
+<pre><code>template&lt; class T, class ReturnType, class GetDataPolicy&lt;T&gt; &gt;
+class FindDuplicateItem : public Policy
+&#123;
+    ...略...
+&#125;</code></pre>
+<p>基本上 ReturnType 也是一開始就知道的資訊，若使用偏特化的機制，也是讓我們有機會拿掉他，
+檢視一下整個程式可能會需要用到的 Type  </p>
+<ul>
+<li>getItem 所用到的 ReturnType</li>
+<li>用以作for 迴圈的 vector<T>::iterator</li>
+</ul>
+<p>只要在 Policy 中重新定義就好</p>
+<pre><code>template&lt; typename RT&gt; 
+struct GetDataPolicy &lt; std::vector&lt; RT &gt; &gt;    
+&#123;
+    typedef typename RT ReturnType;
+    typedef typename std::vector&lt; RT &gt;::iterator CollItor;
+    ...略...
+&#125;;</code></pre>
+<p>甚至可以建立一個專門作 Trais 的 template，這樣一來所需要的資訊都在 Traits 裡面了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">template&lt; typename Return_Type, typename Colls_Iter  &gt; </span><br><span class="line">struct GetDataPolicyTraits</span><br><span class="line">&#123;</span><br><span class="line">	typedef typename Return_Type  ReturnType;</span><br><span class="line">	typedef typename Colls_Iter   CollsIter;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">template&lt; typename RT&gt; </span><br><span class="line">struct GetDataPolicy &lt; std::vector&lt; RT &gt; &gt;	</span><br><span class="line">&#123;</span><br><span class="line">	typedef GetDataPolicyTraits&lt;RT, typename std::vector&lt;RT&gt;::iterator&gt; Traits;</span><br><span class="line">	typename Traits::ReturnType getItem(typename Traits::CollsIter iter)&#123;</span><br><span class="line">		return (*iter);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>在 main function 中，使用的時候像這樣</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">template&lt; typename T, typename Policy &#x3D; GetDataPolicy&lt;T&gt; &gt;</span><br><span class="line">class FindDuplicateItem : public Policy</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	void run(T&amp; source, T&amp; duplicateColl)&#123;</span><br><span class="line">		Policy::Traits::CollsIter  iter;</span><br><span class="line">		Policy::Traits::ReturnType addr&#x3D;0;</span><br><span class="line">		...略...</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>有趣的是，明明 main function 傳入的是一個被泛化的 Type T，
+居然可以取出<code>std::vector&lt; RT &gt;</code> 或是<code>std::vector&lt; std::pair&lt;RT, U&gt; &gt;</code>的 ReturnType 與 Iterator</p>
+<p>Traits 是一種<code>把T丟進去某個特徵萃取機制中，取出特定特徵</code>的技巧，
+當然不僅僅只是定義 type 而已，參考以下程式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">template &lt;typename T&gt;</span><br><span class="line">class TypeTraits</span><br><span class="line">&#123;</span><br><span class="line">private:</span><br><span class="line">	template &lt;class U&gt; struct PointerTraits</span><br><span class="line">	&#123;</span><br><span class="line">		enum &#123; result &#x3D; false &#125;;</span><br><span class="line">		typedef NullType PointeeType;</span><br><span class="line">	&#125;;</span><br><span class="line">	template &lt;class U&gt; struct PointerTraits&lt;U*&gt;</span><br><span class="line">	&#123;</span><br><span class="line">		enum &#123; result &#x3D; true &#125;;</span><br><span class="line">		typedef U PointeeType;</span><br><span class="line">	&#125;;</span><br><span class="line">public:</span><br><span class="line">	enum &#123; isPointer &#x3D; PointerTraits&lt;T&gt;::result &#125;;</span><br><span class="line">	typedef PointerTraits&lt;T&gt;::PointeeType PointeeType;</span><br><span class="line">	...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>現在我們可以來猜看看，vector<int>::iterator 是不是int 的 pointer ?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	const bool iterIsPtr &#x3D; TypeTraits&lt; vector&lt;int&gt;::iterator &gt;::isPointer;</span><br><span class="line">	cout &lt;&lt; &quot;vector&lt;int&gt;::iterator is &quot; &lt;&lt; iterIsPtr ? &quot;fast&quot; : &quot;smart&quot; &lt;&lt; &#39;\n&#39;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="把一切組裝起來"><a href="#把一切組裝起來" class="headerlink" title="把一切組裝起來"></a>把一切組裝起來</h1><p>藉由 Traits 把缺的 main function 中的 Type 給補足</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">template&lt; typename Return_Type, typename Colls_Iter  &gt; </span><br><span class="line">struct GetDataPolicyTraits</span><br><span class="line">&#123;</span><br><span class="line">	typedef typename Return_Type  ReturnType;</span><br><span class="line">	typedef typename Colls_Iter   CollsIter;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">template&lt;typename RT &gt; </span><br><span class="line">struct GetDataPolicy;</span><br><span class="line"></span><br><span class="line">template&lt; typename RT&gt; </span><br><span class="line">struct GetDataPolicy &lt; std::vector&lt; RT &gt; &gt;	</span><br><span class="line">&#123;</span><br><span class="line">	typedef GetDataPolicyTraits&lt;RT, typename std::vector&lt;RT&gt;::iterator&gt; Traits;</span><br><span class="line">	typename Traits::ReturnType getItem(typename Traits::CollsIter iter)&#123;</span><br><span class="line">		return (*iter);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">template&lt; typename RT, typename U &gt; </span><br><span class="line">struct GetDataPolicy &lt; std::vector&lt; std::pair&lt;RT, U&gt; &gt; &gt;</span><br><span class="line">&#123;</span><br><span class="line">	typedef GetDataPolicyTraits&lt; RT, typename std::vector&lt; std::pair&lt;RT, U&gt; &gt;::iterator &gt; Traits;</span><br><span class="line">	typename Traits::ReturnType getItem(typename Traits::CollsIter iter)&#123;</span><br><span class="line">		return (*iter).first;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">template&lt; typename T, typename Policy &#x3D; GetDataPolicy&lt;T&gt; &gt;</span><br><span class="line">class FindDuplicateItem : public Policy</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	void run(T&amp; source, T&amp; duplicateColl)&#123;</span><br><span class="line">		Policy::Traits::CollsIter  iter;</span><br><span class="line">		Policy::Traits::ReturnType addr&#x3D;0;</span><br><span class="line"></span><br><span class="line">		duplicateColl.clear();</span><br><span class="line"></span><br><span class="line">		&#x2F;&#x2F;let sorting time approach to Big(1) by bitMap</span><br><span class="line">		const size_t MAP_SIZE &#x3D; 0x80000;</span><br><span class="line">		BYTE map[MAP_SIZE]&#x3D;&#123;0&#125;;</span><br><span class="line"></span><br><span class="line">		for(iter &#x3D; source.begin(); iter!&#x3D;source.end(); iter++)&#123;</span><br><span class="line">			addr &#x3D; this-&gt;getItem(iter);</span><br><span class="line">			if( _isHit( addr, map, MAP_SIZE) &#x3D;&#x3D; true )&#123;</span><br><span class="line">				duplicateColl.push_back((*iter));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">private:</span><br><span class="line">	bool _isHit(ULONG value, BYTE* pMap, size_t mapSize)&#123;</span><br><span class="line"></span><br><span class="line">		if( value &gt;&#x3D;mapSize)&#123;</span><br><span class="line">			throw MyException(UTI_PARAM_ERROR, &quot;value&gt;&#x3D;mapSize&quot;); </span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		bool result &#x3D; true;</span><br><span class="line">		if( pMap[ value ] &#x3D;&#x3D;0)&#123;</span><br><span class="line">			pMap[ value ] &#x3D;1;</span><br><span class="line">			result &#x3D; false;</span><br><span class="line">		&#125;</span><br><span class="line">		return result;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>呼叫的時候，也只要傳入最低限度的type即可</p>
+<pre><code>vector&lt;int&gt; source, target;
+FindDuplicateItem&lt; vector&lt;int&gt; &gt; fvpd;
+fvpd.run(source, target);</code></pre>
+<p>這邊沒有選擇使用<code>template template parameter</code>的方式去作，是因為我希望可以在源頭就直接抽換掉 Policy Class 而不受到 &lt; T &gt; 的影響。</p>
+<h1 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h1><p>其實對於軟體工程而言，完成一件事情可以用很多種不同的作法，而且解法似乎一樣好，但是也許就是選擇太多，
+導致沒經驗的工程師選擇了對未來有 side effect 的方案，導致專案越來越難進行，
+這只是一個簡單的 template ，幹嘛搞的那麼複雜，主要的還是觀念上的改變 -- 使用 if else 與使用 Policy 的區別， </p>
+<p>以下兩個 link 對於 Policy-Based Class Design 我覺得寫的很好，版主很用心再寫，可以參考看看  </p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://blog.monkeypotion.net/gameprog/beginner/exploring-the-field-of-policy-based-class-design">探索Policy-Based Class Design新視界</a>  </li>
+<li><a target="_blank" rel="noopener" href="http://blog.monkeypotion.net/gameprog/advanced/diving-into-policy-based-class-design">深入Policy-Based Class Design新大陸</a>  </li>
+</ul>
+<p>本篇很多案例是參考 <a target="_blank" rel="noopener" href="http://jjhou.boolan.com/jjtbooks-modern-cpp-design.htm">Modern C++ Design</a>，
+及 <a target="_blank" rel="noopener" href="http://shopping.pchome.com.tw/?mod=item&func=exhibit&IT_NO=DJAR0F-A16046100">C++ template 全覽</a>，</p>
+<p>而 Policy-based programming 在 Modern C++ Design 的 ch1 有詳細的介紹，
+棒的是，侯傑有 <a target="_blank" rel="noopener" href="http://jjhou.boolan.com/jjtbooks-modern-cpp-design.htm">ch1~ch4 的預覽版本可供下載</a>(真的是佛心來著)，有興趣的朋友可以參考看看</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wwssllabcd.github.io/2013/10/08/policy-based-template-programming/" data-id="ckh7xm3v6001yg8ha04gfbh5u" class="article-share-link">Share</a>
+      
+        <a href="http://wwssllabcd.github.io/2013/10/08/policy-based-template-programming/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/C/" rel="tag">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Modern-C-Design/" rel="tag">Modern C++ Design</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/blog/2013/11/14/how-to-install-archlinux-on-raspberrypi/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Raspberry Pi 安裝 Archlinux
+        
+      </div>
+    </a>
+  
+  
+    <a href="/blog/2013/04/22/how-to-setup-raspbmc-in-raspberry-pi/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">讓 Raspberry pi 變成多媒體播放機 -- 安裝Raspbmc</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Bitcoin/" rel="tag">Bitcoin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Boost/" rel="tag">Boost</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Bugzilla/" rel="tag">Bugzilla</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Firefox-extension/" rel="tag">Firefox extension</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/GDB/" rel="tag">GDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/GDB-Script/" rel="tag">GDB Script</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Google-Earth/" rel="tag">Google Earth</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Heroku/" rel="tag">Heroku</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/How-To/" rel="tag">How-To</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Investment/" rel="tag">Investment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Kodi/" rel="tag">Kodi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Lunux-kernel/" rel="tag">Lunux kernel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Modern-C-Design/" rel="tag">Modern C++ Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Nokogiri/" rel="tag">Nokogiri</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/OO/" rel="tag">OO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Octopress/" rel="tag">Octopress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Programming-pearls/" rel="tag">Programming pearls</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Qemu/" rel="tag">Qemu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/RSS/" rel="tag">RSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Raspberry-Pi/" rel="tag">Raspberry Pi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Ruby/" rel="tag">Ruby</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/SNMP/" rel="tag">SNMP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Subversion/" rel="tag">Subversion</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/USB/" rel="tag">USB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Ubuntu/" rel="tag">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Virtual-Box/" rel="tag">Virtual Box</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Windows/" rel="tag">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Wordpress/" rel="tag">Wordpress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/bochs/" rel="tag">bochs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux%EF%BC%8Cmakefile/" rel="tag">linux，makefile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/sicp/" rel="tag">sicp</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/blog/tags/Android/" style="font-size: 12.5px;">Android</a> <a href="/blog/tags/Bitcoin/" style="font-size: 10px;">Bitcoin</a> <a href="/blog/tags/Boost/" style="font-size: 12.5px;">Boost</a> <a href="/blog/tags/Bugzilla/" style="font-size: 10px;">Bugzilla</a> <a href="/blog/tags/C/" style="font-size: 17.5px;">C++</a> <a href="/blog/tags/Firefox-extension/" style="font-size: 12.5px;">Firefox extension</a> <a href="/blog/tags/GDB/" style="font-size: 12.5px;">GDB</a> <a href="/blog/tags/GDB-Script/" style="font-size: 10px;">GDB Script</a> <a href="/blog/tags/Google-Earth/" style="font-size: 10px;">Google Earth</a> <a href="/blog/tags/Heroku/" style="font-size: 10px;">Heroku</a> <a href="/blog/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/blog/tags/How-To/" style="font-size: 20px;">How-To</a> <a href="/blog/tags/Investment/" style="font-size: 10px;">Investment</a> <a href="/blog/tags/Kodi/" style="font-size: 10px;">Kodi</a> <a href="/blog/tags/Lunux-kernel/" style="font-size: 15px;">Lunux kernel</a> <a href="/blog/tags/Modern-C-Design/" style="font-size: 12.5px;">Modern C++ Design</a> <a href="/blog/tags/Nokogiri/" style="font-size: 12.5px;">Nokogiri</a> <a href="/blog/tags/OO/" style="font-size: 15px;">OO</a> <a href="/blog/tags/Octopress/" style="font-size: 10px;">Octopress</a> <a href="/blog/tags/Programming-pearls/" style="font-size: 10px;">Programming pearls</a> <a href="/blog/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/blog/tags/Qemu/" style="font-size: 10px;">Qemu</a> <a href="/blog/tags/RSS/" style="font-size: 12.5px;">RSS</a> <a href="/blog/tags/Raspberry-Pi/" style="font-size: 17.5px;">Raspberry Pi</a> <a href="/blog/tags/Ruby/" style="font-size: 15px;">Ruby</a> <a href="/blog/tags/SNMP/" style="font-size: 10px;">SNMP</a> <a href="/blog/tags/Subversion/" style="font-size: 10px;">Subversion</a> <a href="/blog/tags/USB/" style="font-size: 10px;">USB</a> <a href="/blog/tags/Ubuntu/" style="font-size: 12.5px;">Ubuntu</a> <a href="/blog/tags/Virtual-Box/" style="font-size: 10px;">Virtual Box</a> <a href="/blog/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/blog/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/blog/tags/bochs/" style="font-size: 10px;">bochs</a> <a href="/blog/tags/linux%EF%BC%8Cmakefile/" style="font-size: 10px;">linux，makefile</a> <a href="/blog/tags/sicp/" style="font-size: 10px;">sicp</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/01/">January 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2014/05/">May 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/11/">November 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/10/">October 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/04/">April 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/03/">March 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/01/">January 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/12/">December 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/11/">November 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/10/">October 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/09/">September 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/08/">August 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2007/03/">March 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2006/12/">December 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2004/12/">December 2004</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2003/04/">April 2003</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2020/11/08/how-to-use-kodi/">kodi 教學，心得</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2020/11/08/how-to-install-kodi-in-raspberry-pi-4/">how-to-install-kodi-in-raspberry-pi-4</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2020/02/16/Investment-of-indexing/">指數型投資(Investment of indexing)</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2018/05/21/how-to-install-python-on-windows/">Python windows 安裝, 心得, 教學</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2018/05/21/how-to-install-pyqt/">安裝 PyQt</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 EricWang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/blog/aboutme.html" class="mobile-nav-link">AboutMe</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'ericwangsblog';
+  
+  var disqus_url = 'http://wwssllabcd.github.io/2013/10/08/policy-based-template-programming/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css">
+
+  
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/blog/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

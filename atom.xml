@@ -6,7 +6,7 @@
   <link href="http://wwssllabcd.github.io/atom.xml" rel="self"/>
   
   <link href="http://wwssllabcd.github.io/"/>
-  <updated>2020-11-07T16:52:11.394Z</updated>
+  <updated>2020-11-07T16:58:13.009Z</updated>
   <id>http://wwssllabcd.github.io/</id>
   
   <author>
@@ -21,16 +21,20 @@
     <link href="http://wwssllabcd.github.io/2020/11/08/how-to-use-kodi/"/>
     <id>http://wwssllabcd.github.io/2020/11/08/how-to-use-kodi/</id>
     <published>2020-11-07T16:24:46.000Z</published>
-    <updated>2020-11-07T16:52:11.394Z</updated>
+    <updated>2020-11-07T16:58:13.009Z</updated>
     
-    <content type="html"><![CDATA[<p>Kodi 是一套 media center 軟體，其前身為 xbmc，這邊列出一些相關的資源</p><h2 id="遠程控制-使用手機-APP-Yatse"><a href="#遠程控制-使用手機-APP-Yatse" class="headerlink" title="遠程控制 -- 使用手機 APP: Yatse"></a>遠程控制 -- 使用手機 APP: Yatse</h2><p>Yastse 是一款 Kodi 的遙控及投放工具，你可以在 google store 找到</p><p>不過你必須要先在 kodi 打開遠程控制，打開的地方在</p><pre><code>控制-&gt;允許通過 HTTP 遠程控制，允許異地程序遠程控制</code></pre><p>你也可以打開Web界面，這樣就可以直接使用瀏覽器控制 kodi</p><h2 id="遠程控制-使用-firefox"><a href="#遠程控制-使用-firefox" class="headerlink" title="遠程控制 -- 使用 firefox "></a>遠程控制 -- 使用 firefox </h2><p>Firefox 有很多 kodi 的套件可供遠端控制，這裡不再詳述</p><h2 id="使用-kodi-檔案總管，並從-usb-copy-檔案到-kodi"><a href="#使用-kodi-檔案總管，並從-usb-copy-檔案到-kodi" class="headerlink" title="使用 kodi 檔案總管，並從 usb copy 檔案到 kodi"></a>使用 kodi 檔案總管，並從 usb copy 檔案到 kodi</h2><p>選擇    系統-&gt;檔案總管</p><p>你就可以啟動 kodi 的檔案總管，左邊的框是操作的地方，按 C 可以叫出選單，按空白可以複選檔案例如你可以按 C 選複製，就會複製到右邊，若右邊的你找不到你要的路徑，就必須要新增瀏覽路徑</p><h2 id="調整音量音量"><a href="#調整音量音量" class="headerlink" title="調整音量音量"></a>調整音量音量</h2><ul><li>使用鍵盤上的 + - 鈕就可以</li><li>Yastse 也可以</li></ul><h2 id="設定-kodi-時間"><a href="#設定-kodi-時間" class="headerlink" title="設定 kodi 時間"></a>設定 kodi 時間</h2><ol><li>選擇 Settings &gt; Interface &gt; Regional.</li><li>注意你的 settings level 是在 Expert</li><li>如果是的話，你就可以看到 time zone 這個選項</li></ol><h2 id="安裝附加元件，遇到-kodi-script-module-urlresolver-error-dependency"><a href="#安裝附加元件，遇到-kodi-script-module-urlresolver-error-dependency" class="headerlink" title="安裝附加元件，遇到 kodi script module urlresolver error dependency"></a>安裝附加元件，遇到 kodi script module urlresolver error dependency</h2><p>請根據 error log, 下載相對應的 add-on，例如 </p><pre><code>urlsolver https://github.com/kodil/kodil/tree/master/repo/script.module.urlresolver</code></pre><p>這個代表你需要安裝 urlsolver</p><h2 id="收看直播電視"><a href="#收看直播電視" class="headerlink" title="收看直播電視"></a>收看直播電視</h2><p>必須要先安裝 add-on : <code>IPTV Simple PVR</code>，這個是 Kodi 的 IPTV 直播電視和廣播 PVR 客戶端插件，安裝完後，我們必須要指定 IPTV 要讀取哪一個直播節目的列表，IPTV 是使用 m3u8 的格式，所以我們必須要找到 m3u8 格式的直播來源</p><p>有很多 m3u8 的連結是可以 google 的到的，甚至你去 github 使用搜尋也可以找到很多，不過這個項目很大很複雜，所以之後會另開專頁說明</p><h2 id="安裝-youtube"><a href="#安裝-youtube" class="headerlink" title="安裝 youtube "></a>安裝 youtube </h2><p>你需要先安裝附加套件 Youtube，在 repository 可以找到，以下是該套件的原作者連結<a href="https://github.com/anxdpanic/plugin.video.youtube">https://github.com/anxdpanic/plugin.video.youtube</a></p><p>這邊是官方連結<a href="https://forum.kodi.tv/showthread.php?tid=356934">https://forum.kodi.tv/showthread.php?tid=356934</a></p><p>安裝完套件後，你還必須要建立 Youtube API key，可見以下連結的教學<a href="https://seo-michael.co.uk/how-to-create-your-own-youtube-api-key-id-and-secret/">https://seo-michael.co.uk/how-to-create-your-own-youtube-api-key-id-and-secret/</a></p><p>好像可以改外觀輸入密碼並允許許可後，您就可以開始了。 但是，它可能看起來不像包含所有視頻縮略圖的普通YouTube主頁。 要獲得該外觀，請從左側面板中將 Vi ewtype 更改為 Wall，如下所示</p><h2 id="安裝-Netflix"><a href="#安裝-Netflix" class="headerlink" title="安裝 Netflix "></a>安裝 Netflix </h2><p>也很麻煩，主要是登入的問題，我後來是使用 auth-key 才能登入</p><p>該套件的原始網站</p><ul><li><a href="https://github.com/CastagnaIT/plugin.video.netflix">https://github.com/CastagnaIT/plugin.video.netflix</a></li></ul><p>login with auth key  </p><ul><li><a href="https://github.com/CastagnaIT/plugin.video.netflix/wiki/Login-with-Authentication-key">https://github.com/CastagnaIT/plugin.video.netflix/wiki/Login-with-Authentication-key</a></li></ul><h2 id="kodi-套件介紹"><a href="#kodi-套件介紹" class="headerlink" title="kodi 套件介紹"></a>kodi 套件介紹</h2><ul><li>kodi 中文套件庫:  <ul><li>他是套件庫，所以只要裝這個的話，你就可以在裡面找到很多中文相關的套件，維護的不錯，很多開發者也會幫忙撰寫一些例如 bilibili, youku 的套件</li><li>該套件庫的官網<ul><li><a href="https://github.com/taxigps/xbmc-addons-chinese">https://github.com/taxigps/xbmc-addons-chinese</a></li></ul></li><li>介紹與安裝教學: <ul><li><a href="https://blog.gtwang.org/iot/openelec-xbmc-kodi-chinese-addons/">https://blog.gtwang.org/iot/openelec-xbmc-kodi-chinese-addons/</a></li><li><a href="https://github.com/imDazui/Tvlist-awesome-m3u-m3u8/blob/master/Kodi-addons.md">https://github.com/imDazui/Tvlist-awesome-m3u-m3u8/blob/master/Kodi-addons.md</a></li></ul></li></ul></li><li>kodi exodus: <ul><li>這是提供國外影片的套件</li><li><a href="https://ppkkkp.blogspot.com/2017/10/exodus-kodi-new.html">https://ppkkkp.blogspot.com/2017/10/exodus-kodi-new.html</a></li></ul></li><li>動畫瘋<ul><li><a href="https://github.com/YWJamesLin/bahamut_anime_player_kodi">https://github.com/YWJamesLin/bahamut_anime_player_kodi</a></li></ul></li><li>kodi 套件介紹<ul><li><a href="https://zh.vpnmentor.com/blog/%E9%9B%BB%E5%BD%B1%E5%8F%8A%E9%9B%BB%E8%A6%96%E5%B0%88%E7%94%A8%E7%9A%84%E6%9C%80%E4%BD%B3kodi%E9%99%84%E5%8A%A0%E5%85%83%E4%BB%B6/">https://zh.vpnmentor.com/blog/%E9%9B%BB%E5%BD%B1%E5%8F%8A%E9%9B%BB%E8%A6%96%E5%B0%88%E7%94%A8%E7%9A%84%E6%9C%80%E4%BD%B3kodi%E9%99%84%E5%8A%A0%E5%85%83%E4%BB%B6/</a></li><li><a href="https://zh.wizcase.com/blog/%E7%94%B5%E8%A7%86%E7%94%A8%E5%A4%A7kodi%E9%99%84%E5%8A%A0%E7%BB%84%E4%BB%B6%EF%BC%88%E5%90%AB%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97%EF%BC%89-%E5%B9%B4%E6%9B%B4%E6%96%B0/">https://zh.wizcase.com/blog/%E7%94%B5%E8%A7%86%E7%94%A8%E5%A4%A7kodi%E9%99%84%E5%8A%A0%E7%BB%84%E4%BB%B6%EF%BC%88%E5%90%AB%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97%EF%BC%89-%E5%B9%B4%E6%9B%B4%E6%96%B0/</a></li></ul></li></ul><h2 id="kodi-播放光碟機-CD-ROM"><a href="#kodi-播放光碟機-CD-ROM" class="headerlink" title="kodi 播放光碟機 (CD-ROM)"></a>kodi 播放光碟機 (CD-ROM)</h2><p>2 wayt to play</p><ul><li>使用主畫面左邊的選項上面會有播放光碟片的圖案，memu 應該會自動出現&quot;光碟&quot;選項才對</li><li>使用 cdrom 的路徑 <code>cdda://local/</code></li></ul><h2 id="自行撰寫-kodi-套件"><a href="#自行撰寫-kodi-套件" class="headerlink" title="自行撰寫 kodi 套件"></a>自行撰寫 kodi 套件</h2><p>這邊提供幾個 resource </p><p>kodi doc</p><ul><li><a href="https://codedocs.xyz/AlwinEsch/kodi/group__python.html">https://codedocs.xyz/AlwinEsch/kodi/group__python.html</a></li></ul><p>其他教學</p><ul><li><a href="https://kodi.wiki/view/HOW-TO:HelloWorld_addon">https://kodi.wiki/view/HOW-TO:HelloWorld_addon</a></li><li><a href="http://kfbiji.com/article/b15db97eceb78756">http://kfbiji.com/article/b15db97eceb78756</a></li><li><a href="https://pypi.org/project/kodi-addon-checker/">https://pypi.org/project/kodi-addon-checker/</a></li></ul>]]></content>
+    <content type="html"><![CDATA[<p>Kodi 是一套 media center 軟體，其前身為 xbmc，這邊列出一些相關的資源</p><h2 id="遠程控制-使用手機-APP-Yatse"><a href="#遠程控制-使用手機-APP-Yatse" class="headerlink" title="遠程控制 -- 使用手機 APP: Yatse"></a>遠程控制 -- 使用手機 APP: Yatse</h2><p>Yastse 是一款 Kodi 的遙控及投放工具，你可以在 google store 找到</p><p>不過你必須要先在 kodi 打開遠程控制，打開的地方在</p><pre><code>控制-&gt;允許通過 HTTP 遠程控制，允許異地程序遠程控制</code></pre><p>你也可以打開Web界面，這樣就可以直接使用瀏覽器控制 kodi</p><h2 id="遠程控制-使用-firefox"><a href="#遠程控制-使用-firefox" class="headerlink" title="遠程控制 -- 使用 firefox "></a>遠程控制 -- 使用 firefox </h2><p>Firefox 有很多 kodi 的套件可供遠端控制，這裡不再詳述</p><h2 id="使用-kodi-檔案總管，並從-usb-copy-檔案到-kodi"><a href="#使用-kodi-檔案總管，並從-usb-copy-檔案到-kodi" class="headerlink" title="使用 kodi 檔案總管，並從 usb copy 檔案到 kodi"></a>使用 kodi 檔案總管，並從 usb copy 檔案到 kodi</h2><p>選擇    系統-&gt;檔案總管</p><p>你就可以啟動 kodi 的檔案總管，左邊的框是操作的地方，按 C 可以叫出選單，按空白可以複選檔案例如你可以按 C 選複製，就會複製到右邊，若右邊的你找不到你要的路徑，就必須要新增瀏覽路徑</p><a id="more"></a><h2 id="調整音量音量"><a href="#調整音量音量" class="headerlink" title="調整音量音量"></a>調整音量音量</h2><ul><li>使用鍵盤上的 + - 鈕就可以</li><li>Yastse 也可以</li></ul><h2 id="設定-kodi-時間"><a href="#設定-kodi-時間" class="headerlink" title="設定 kodi 時間"></a>設定 kodi 時間</h2><ol><li>選擇 Settings &gt; Interface &gt; Regional.</li><li>注意你的 settings level 是在 Expert</li><li>如果是的話，你就可以看到 time zone 這個選項</li></ol><h2 id="安裝附加元件，遇到-kodi-script-module-urlresolver-error-dependency"><a href="#安裝附加元件，遇到-kodi-script-module-urlresolver-error-dependency" class="headerlink" title="安裝附加元件，遇到 kodi script module urlresolver error dependency"></a>安裝附加元件，遇到 kodi script module urlresolver error dependency</h2><p>請根據 error log, 下載相對應的 add-on，例如 </p><pre><code>urlsolver https://github.com/kodil/kodil/tree/master/repo/script.module.urlresolver</code></pre><p>這個代表你需要安裝 urlsolver</p><h2 id="收看直播電視"><a href="#收看直播電視" class="headerlink" title="收看直播電視"></a>收看直播電視</h2><p>必須要先安裝 add-on : <code>IPTV Simple PVR</code>，這個是 Kodi 的 IPTV 直播電視和廣播 PVR 客戶端插件，安裝完後，我們必須要指定 IPTV 要讀取哪一個直播節目的列表，IPTV 是使用 m3u8 的格式，所以我們必須要找到 m3u8 格式的直播來源</p><p>有很多 m3u8 的連結是可以 google 的到的，甚至你去 github 使用搜尋也可以找到很多，不過這個項目很大很複雜，所以之後會另開專頁說明</p><h2 id="安裝-youtube"><a href="#安裝-youtube" class="headerlink" title="安裝 youtube "></a>安裝 youtube </h2><p>你需要先安裝附加套件 Youtube，在 repository 可以找到，以下是該套件的原作者連結<a href="https://github.com/anxdpanic/plugin.video.youtube">https://github.com/anxdpanic/plugin.video.youtube</a></p><p>這邊是官方連結<a href="https://forum.kodi.tv/showthread.php?tid=356934">https://forum.kodi.tv/showthread.php?tid=356934</a></p><p>安裝完套件後，你還必須要建立 Youtube API key，可見以下連結的教學<a href="https://seo-michael.co.uk/how-to-create-your-own-youtube-api-key-id-and-secret/">https://seo-michael.co.uk/how-to-create-your-own-youtube-api-key-id-and-secret/</a></p><p>好像可以改外觀輸入密碼並允許許可後，您就可以開始了。 但是，它可能看起來不像包含所有視頻縮略圖的普通YouTube主頁。 要獲得該外觀，請從左側面板中將 Vi ewtype 更改為 Wall，如下所示</p><h2 id="安裝-Netflix"><a href="#安裝-Netflix" class="headerlink" title="安裝 Netflix "></a>安裝 Netflix </h2><p>也很麻煩，主要是登入的問題，我後來是使用 auth-key 才能登入</p><p>該套件的原始網站</p><ul><li><a href="https://github.com/CastagnaIT/plugin.video.netflix">https://github.com/CastagnaIT/plugin.video.netflix</a></li></ul><p>login with auth key  </p><ul><li><a href="https://github.com/CastagnaIT/plugin.video.netflix/wiki/Login-with-Authentication-key">https://github.com/CastagnaIT/plugin.video.netflix/wiki/Login-with-Authentication-key</a></li></ul><h2 id="kodi-套件介紹"><a href="#kodi-套件介紹" class="headerlink" title="kodi 套件介紹"></a>kodi 套件介紹</h2><ul><li>kodi 中文套件庫:  <ul><li>他是套件庫，所以只要裝這個的話，你就可以在裡面找到很多中文相關的套件，維護的不錯，很多開發者也會幫忙撰寫一些例如 bilibili, youku 的套件</li><li>該套件庫的官網<ul><li><a href="https://github.com/taxigps/xbmc-addons-chinese">https://github.com/taxigps/xbmc-addons-chinese</a></li></ul></li><li>介紹與安裝教學: <ul><li><a href="https://blog.gtwang.org/iot/openelec-xbmc-kodi-chinese-addons/">https://blog.gtwang.org/iot/openelec-xbmc-kodi-chinese-addons/</a></li><li><a href="https://github.com/imDazui/Tvlist-awesome-m3u-m3u8/blob/master/Kodi-addons.md">https://github.com/imDazui/Tvlist-awesome-m3u-m3u8/blob/master/Kodi-addons.md</a></li></ul></li></ul></li><li>kodi exodus: <ul><li>這是提供國外影片的套件</li><li><a href="https://ppkkkp.blogspot.com/2017/10/exodus-kodi-new.html">https://ppkkkp.blogspot.com/2017/10/exodus-kodi-new.html</a></li></ul></li><li>動畫瘋<ul><li><a href="https://github.com/YWJamesLin/bahamut_anime_player_kodi">https://github.com/YWJamesLin/bahamut_anime_player_kodi</a></li></ul></li><li>kodi 套件介紹<ul><li><a href="https://zh.vpnmentor.com/blog/%E9%9B%BB%E5%BD%B1%E5%8F%8A%E9%9B%BB%E8%A6%96%E5%B0%88%E7%94%A8%E7%9A%84%E6%9C%80%E4%BD%B3kodi%E9%99%84%E5%8A%A0%E5%85%83%E4%BB%B6/">https://zh.vpnmentor.com/blog/%E9%9B%BB%E5%BD%B1%E5%8F%8A%E9%9B%BB%E8%A6%96%E5%B0%88%E7%94%A8%E7%9A%84%E6%9C%80%E4%BD%B3kodi%E9%99%84%E5%8A%A0%E5%85%83%E4%BB%B6/</a></li><li><a href="https://zh.wizcase.com/blog/%E7%94%B5%E8%A7%86%E7%94%A8%E5%A4%A7kodi%E9%99%84%E5%8A%A0%E7%BB%84%E4%BB%B6%EF%BC%88%E5%90%AB%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97%EF%BC%89-%E5%B9%B4%E6%9B%B4%E6%96%B0/">https://zh.wizcase.com/blog/%E7%94%B5%E8%A7%86%E7%94%A8%E5%A4%A7kodi%E9%99%84%E5%8A%A0%E7%BB%84%E4%BB%B6%EF%BC%88%E5%90%AB%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97%EF%BC%89-%E5%B9%B4%E6%9B%B4%E6%96%B0/</a></li></ul></li></ul><h2 id="kodi-播放光碟機-CD-ROM"><a href="#kodi-播放光碟機-CD-ROM" class="headerlink" title="kodi 播放光碟機 (CD-ROM)"></a>kodi 播放光碟機 (CD-ROM)</h2><p>2 wayt to play</p><ul><li>使用主畫面左邊的選項上面會有播放光碟片的圖案，memu 應該會自動出現&quot;光碟&quot;選項才對</li><li>使用 cdrom 的路徑 <code>cdda://local/</code></li></ul><h2 id="自行撰寫-kodi-套件"><a href="#自行撰寫-kodi-套件" class="headerlink" title="自行撰寫 kodi 套件"></a>自行撰寫 kodi 套件</h2><p>這邊提供幾個 resource </p><p>kodi doc</p><ul><li><a href="https://codedocs.xyz/AlwinEsch/kodi/group__python.html">https://codedocs.xyz/AlwinEsch/kodi/group__python.html</a></li></ul><p>其他教學</p><ul><li><a href="https://kodi.wiki/view/HOW-TO:HelloWorld_addon">https://kodi.wiki/view/HOW-TO:HelloWorld_addon</a></li><li><a href="http://kfbiji.com/article/b15db97eceb78756">http://kfbiji.com/article/b15db97eceb78756</a></li><li><a href="https://pypi.org/project/kodi-addon-checker/">https://pypi.org/project/kodi-addon-checker/</a></li></ul>]]></content>
     
     
-      
-      
     <summary type="html">&lt;p&gt;Kodi 是一套 media center 軟體，其前身為 xbmc，這邊列出一些相關的資源&lt;/p&gt;
-&lt;h2 id=&quot;遠程控制-使用手機-APP-Yatse&quot;&gt;&lt;a href=&quot;#遠程控制-使用手機-APP-Yatse&quot; class=&quot;headerlink&quot; title=&quot;</summary>
-      
+&lt;h2 id=&quot;遠程控制-使用手機-APP-Yatse&quot;&gt;&lt;a href=&quot;#遠程控制-使用手機-APP-Yatse&quot; class=&quot;headerlink&quot; title=&quot;遠程控制 -- 使用手機 APP: Yatse&quot;&gt;&lt;/a&gt;遠程控制 -- 使用手機 APP: Yatse&lt;/h2&gt;&lt;p&gt;Yastse 是一款 Kodi 的遙控及投放工具，你可以在 google store 找到&lt;/p&gt;
+&lt;p&gt;不過你必須要先在 kodi 打開遠程控制，打開的地方在&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;控制-&amp;gt;允許通過 HTTP 遠程控制，允許異地程序遠程控制&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;你也可以打開Web界面，這樣就可以直接使用瀏覽器控制 kodi&lt;/p&gt;
+&lt;h2 id=&quot;遠程控制-使用-firefox&quot;&gt;&lt;a href=&quot;#遠程控制-使用-firefox&quot; class=&quot;headerlink&quot; title=&quot;遠程控制 -- 使用 firefox &quot;&gt;&lt;/a&gt;遠程控制 -- 使用 firefox &lt;/h2&gt;&lt;p&gt;Firefox 有很多 kodi 的套件可供遠端控制，這裡不再詳述&lt;/p&gt;
+&lt;h2 id=&quot;使用-kodi-檔案總管，並從-usb-copy-檔案到-kodi&quot;&gt;&lt;a href=&quot;#使用-kodi-檔案總管，並從-usb-copy-檔案到-kodi&quot; class=&quot;headerlink&quot; title=&quot;使用 kodi 檔案總管，並從 usb copy 檔案到 kodi&quot;&gt;&lt;/a&gt;使用 kodi 檔案總管，並從 usb copy 檔案到 kodi&lt;/h2&gt;&lt;p&gt;選擇
+    系統-&amp;gt;檔案總管&lt;/p&gt;
+&lt;p&gt;你就可以啟動 kodi 的檔案總管，左邊的框是操作的地方，按 C 可以叫出選單，按空白可以複選檔案例如你可以按 C 選複製，就會複製到右邊，若右邊的你找不到你要的路徑，就必須要新增瀏覽路徑&lt;/p&gt;</summary>
     
     
     
@@ -48,15 +52,19 @@
     <link href="http://wwssllabcd.github.io/2020/11/08/how-to-install-kodi-in-raspberry-pi-4/"/>
     <id>http://wwssllabcd.github.io/2020/11/08/how-to-install-kodi-in-raspberry-pi-4/</id>
     <published>2020-11-07T16:06:48.000Z</published>
-    <updated>2020-11-07T16:24:04.155Z</updated>
+    <updated>2020-11-07T16:58:00.155Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="RPI-4-安裝-kodi-的心得"><a href="#RPI-4-安裝-kodi-的心得" class="headerlink" title="RPI 4 安裝 kodi 的心得"></a>RPI 4 安裝 kodi 的心得</h2><p>因為之前的rpi 效能都不太好，所以, 許久沒碰 rpi, 這次出了8GB 號稱可以接近桌機的效能，所以就買一台試看看</p><p>PS: 寫在前頭，如果你打算使用 DVI 螢幕當作 RPI 的螢幕的話，你可能要注意，rpi 有機會不能輸出畫面</p><h2 id="購買"><a href="#購買" class="headerlink" title="購買"></a>購買</h2><p>我這次是去台灣樹梅派購買的，我購買的是 8GB + 散熱殼，那個散熱殼我蠻滿意的，風扇也是靜音風扇，只是風扇安裝需要一點技巧，好像裝錯邊風扇就會很吵，記得風扇正反不要裝錯，有貼貼紙的地方是反面，否則你的風扇不會轉</p><h2 id="安裝-kodi，使用-LibreElec"><a href="#安裝-kodi，使用-LibreElec" class="headerlink" title="安裝 kodi，使用 LibreElec"></a>安裝 kodi，使用 LibreElec</h2><p>在 rpi 4 上面安裝 kodi 已經很簡單了，LibreElec 這個專案已經把 os + kodi 整合起來，所以我們就直接安裝 libreelec 就可以了，請到以下網站抓取 image file </p><p><a href="https://libreelec.tv/raspberry-pi-4/">https://libreelec.tv/raspberry-pi-4/</a></p><p>該網站提供的下載的檔案叫做 &quot;LibreELEC-RPi4.arm-9.2.6.img.gz&quot;，下載完後使用 7z，解開她得到 img file 後，就可以使用  Win32 Disk Imager 燒錄即可，這邊跟之前的 Rpi 做法並沒有不一樣</p><p>如果還是不行，那你可以參考以前的<a href="https://wwssllabcd.github.io/blog/2013/01/31/2013-01-31-how-to-setup-raspberry-pi/#%E5%AE%89%E8%A3%9D-OS">教學</a></p><p>燒完之後，插入至RPI後，接上電源就可以使用了</p><h2 id="常見問題"><a href="#常見問題" class="headerlink" title="常見問題"></a>常見問題</h2><h2 id="沒有畫面，沒有螢幕"><a href="#沒有畫面，沒有螢幕" class="headerlink" title="沒有畫面，沒有螢幕"></a>沒有畫面，沒有螢幕</h2><p>Raspberry Pi 僅支持具有 DVI-D 插槽的設備如果你的螢幕只能使用 DVI 的話就會很麻煩，特別是那種很古老的 DVI 介面，你必須要取得你螢幕能支援的解析度</p><p>所以你必須要能在 console 執行以下指令</p><pre><code>/opt/vc/bin/tvservice -d edid.dat/opt/vc/bin/edidparser edid.dat</code></pre><p>以便得到你螢幕的參數，但是你又沒螢幕，也看不到，自然也沒法輸入指令，這邊提供兩個做法</p><ol><li>你可以使用 ssh / telnet 的方式登入到 rpi ，自然就可以下指令</li><li>找一台可以順利顯示的螢幕，輸入上述 edid 指令後，先不要執行，然後再把你的螢幕接到不能顯示的螢幕上後，再去執行該指令後，再把螢幕接回來，這樣一來你就可以得到那台無法顯示畫面的螢幕的 edid 檔案了</li></ol><p>拿到參數後，關機後修改 config.txt ，你就可以根據螢幕回報的解析度組合，來設定能支援的參數，以下連結有 video option 可以參考</p><ul><li><a href="https://www.raspberrypi.org/documentation/configuration/config-txt/video.md">https://www.raspberrypi.org/documentation/configuration/config-txt/video.md</a></li><li><a href="https://elinux.org/RPiconfig#Video_mode_options">https://elinux.org/RPiconfig#Video_mode_options</a></li><li><a href="https://pimylifeup.com/raspberry-pi-screen-resolution/">https://pimylifeup.com/raspberry-pi-screen-resolution/</a></li></ul><p>主要就是要修改 <code>hdmi_group</code> 與  <code>hdmi_mode</code> 這兩個參數</p><h2 id="沒有畫面，沒有螢幕-continue"><a href="#沒有畫面，沒有螢幕-continue" class="headerlink" title="沒有畫面，沒有螢幕(continue)"></a>沒有畫面，沒有螢幕(continue)</h2><p>如果還是不行，可以試看看在 <code>config.txt</code> 中，設定 hdmi 的輸出的選項，如以下選項都可以試試</p><pre><code>hdmi_drive chooses between HDMI and DVI modeshdmi_drive=1 Normal DVI mode (No sound)hdmi_drive=2 Normal HDMI mode (Sound will be sent if supported and enabled)</code></pre><p>讓 config.txt 強制設定螢幕介面為你裝置的介面</p><h2 id="kodi-有畫面沒有聲音"><a href="#kodi-有畫面沒有聲音" class="headerlink" title="kodi 有畫面沒有聲音"></a>kodi 有畫面沒有聲音</h2><ul><li>把 hdmi 線改接到比較靠近電源的那個插孔(注意，RPI4 會有兩個 hdmi 輸出的接孔，靠近電源的那一個才是主要的輸出)</li><li>檢查 config.txt 是否為 <code>hdmi_drive=2</code></li><li>檢查 kodi 的設定，是否沒有設定成 hdmi 輸出音效</li><li>在系統設定那邊, 選[設定]-&gt;[音效設定], 檢查輸出設定是否為[hdmi or alalog]</li></ul><h2 id="SSH-打不開"><a href="#SSH-打不開" class="headerlink" title="SSH 打不開"></a>SSH 打不開</h2><p>可能是沒有安裝 ssh ，請使用指令安裝</p><pre><code>sudo service ssh start</code></pre><p>或者是根本沒安裝</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="RPI-4-安裝-kodi-的心得"><a href="#RPI-4-安裝-kodi-的心得" class="headerlink" title="RPI 4 安裝 kodi 的心得"></a>RPI 4 安裝 kodi 的心得</h2><p>因為之前的rpi 效能都不太好，所以, 許久沒碰 rpi, 這次出了8GB 號稱可以接近桌機的效能，所以就買一台試看看</p><p>PS: 寫在前頭，如果你打算使用 DVI 螢幕當作 RPI 的螢幕的話，你可能要注意，rpi 有機會不能輸出畫面</p><h2 id="購買"><a href="#購買" class="headerlink" title="購買"></a>購買</h2><p>我這次是去台灣樹梅派購買的，我購買的是 8GB + 散熱殼，那個散熱殼我蠻滿意的，風扇也是靜音風扇，只是風扇安裝需要一點技巧，好像裝錯邊風扇就會很吵，記得風扇正反不要裝錯，有貼貼紙的地方是反面，否則你的風扇不會轉</p><h2 id="安裝-kodi，使用-LibreElec"><a href="#安裝-kodi，使用-LibreElec" class="headerlink" title="安裝 kodi，使用 LibreElec"></a>安裝 kodi，使用 LibreElec</h2><p>在 rpi 4 上面安裝 kodi 已經很簡單了，LibreElec 這個專案已經把 os + kodi 整合起來，所以我們就直接安裝 libreelec 就可以了，請到以下網站抓取 image file </p><p><a href="https://libreelec.tv/raspberry-pi-4/">https://libreelec.tv/raspberry-pi-4/</a></p><p>該網站提供的下載的檔案叫做 &quot;LibreELEC-RPi4.arm-9.2.6.img.gz&quot;，下載完後使用 7z，解開她得到 img file 後，就可以使用  Win32 Disk Imager 燒錄即可，這邊跟之前的 Rpi 做法並沒有不一樣</p><p>如果還是不行，那你可以參考以前的<a href="https://wwssllabcd.github.io/blog/2013/01/31/2013-01-31-how-to-setup-raspberry-pi/#%E5%AE%89%E8%A3%9D-OS">教學</a></p><p>燒完之後，插入至RPI後，接上電源就可以使用了</p><a id="more"></a><h2 id="常見問題"><a href="#常見問題" class="headerlink" title="常見問題"></a>常見問題</h2><h2 id="沒有畫面，沒有螢幕"><a href="#沒有畫面，沒有螢幕" class="headerlink" title="沒有畫面，沒有螢幕"></a>沒有畫面，沒有螢幕</h2><p>Raspberry Pi 僅支持具有 DVI-D 插槽的設備如果你的螢幕只能使用 DVI 的話就會很麻煩，特別是那種很古老的 DVI 介面，你必須要取得你螢幕能支援的解析度</p><p>所以你必須要能在 console 執行以下指令</p><pre><code>/opt/vc/bin/tvservice -d edid.dat/opt/vc/bin/edidparser edid.dat</code></pre><p>以便得到你螢幕的參數，但是你又沒螢幕，也看不到，自然也沒法輸入指令，這邊提供兩個做法</p><ol><li>你可以使用 ssh / telnet 的方式登入到 rpi ，自然就可以下指令</li><li>找一台可以順利顯示的螢幕，輸入上述 edid 指令後，先不要執行，然後再把你的螢幕接到不能顯示的螢幕上後，再去執行該指令後，再把螢幕接回來，這樣一來你就可以得到那台無法顯示畫面的螢幕的 edid 檔案了</li></ol><p>拿到參數後，關機後修改 config.txt ，你就可以根據螢幕回報的解析度組合，來設定能支援的參數，以下連結有 video option 可以參考</p><ul><li><a href="https://www.raspberrypi.org/documentation/configuration/config-txt/video.md">https://www.raspberrypi.org/documentation/configuration/config-txt/video.md</a></li><li><a href="https://elinux.org/RPiconfig#Video_mode_options">https://elinux.org/RPiconfig#Video_mode_options</a></li><li><a href="https://pimylifeup.com/raspberry-pi-screen-resolution/">https://pimylifeup.com/raspberry-pi-screen-resolution/</a></li></ul><p>主要就是要修改 <code>hdmi_group</code> 與  <code>hdmi_mode</code> 這兩個參數</p><h2 id="沒有畫面，沒有螢幕-continue"><a href="#沒有畫面，沒有螢幕-continue" class="headerlink" title="沒有畫面，沒有螢幕(continue)"></a>沒有畫面，沒有螢幕(continue)</h2><p>如果還是不行，可以試看看在 <code>config.txt</code> 中，設定 hdmi 的輸出的選項，如以下選項都可以試試</p><pre><code>hdmi_drive chooses between HDMI and DVI modeshdmi_drive=1 Normal DVI mode (No sound)hdmi_drive=2 Normal HDMI mode (Sound will be sent if supported and enabled)</code></pre><p>讓 config.txt 強制設定螢幕介面為你裝置的介面</p><h2 id="kodi-有畫面沒有聲音"><a href="#kodi-有畫面沒有聲音" class="headerlink" title="kodi 有畫面沒有聲音"></a>kodi 有畫面沒有聲音</h2><ul><li>把 hdmi 線改接到比較靠近電源的那個插孔(注意，RPI4 會有兩個 hdmi 輸出的接孔，靠近電源的那一個才是主要的輸出)</li><li>檢查 config.txt 是否為 <code>hdmi_drive=2</code></li><li>檢查 kodi 的設定，是否沒有設定成 hdmi 輸出音效</li><li>在系統設定那邊, 選[設定]-&gt;[音效設定], 檢查輸出設定是否為[hdmi or alalog]</li></ul><h2 id="SSH-打不開"><a href="#SSH-打不開" class="headerlink" title="SSH 打不開"></a>SSH 打不開</h2><p>可能是沒有安裝 ssh ，請使用指令安裝</p><pre><code>sudo service ssh start</code></pre><p>或者是根本沒安裝</p>]]></content>
     
     
-      
-      
-    <summary type="html">&lt;h2 id=&quot;RPI-4-安裝-kodi-的心得&quot;&gt;&lt;a href=&quot;#RPI-4-安裝-kodi-的心得&quot; class=&quot;headerlink&quot; title=&quot;RPI 4 安裝 kodi 的心得&quot;&gt;&lt;/a&gt;RPI 4 安裝 kodi 的心得&lt;/h2&gt;&lt;p&gt;因為之前的rpi 效</summary>
-      
+    <summary type="html">&lt;h2 id=&quot;RPI-4-安裝-kodi-的心得&quot;&gt;&lt;a href=&quot;#RPI-4-安裝-kodi-的心得&quot; class=&quot;headerlink&quot; title=&quot;RPI 4 安裝 kodi 的心得&quot;&gt;&lt;/a&gt;RPI 4 安裝 kodi 的心得&lt;/h2&gt;&lt;p&gt;因為之前的rpi 效能都不太好，所以, 許久沒碰 rpi, 這次出了8GB 號稱可以接近桌機的效能，所以就買一台試看看&lt;/p&gt;
+&lt;p&gt;PS: 寫在前頭，如果你打算使用 DVI 螢幕當作 RPI 的螢幕的話，你可能要注意，rpi 有機會不能輸出畫面&lt;/p&gt;
+&lt;h2 id=&quot;購買&quot;&gt;&lt;a href=&quot;#購買&quot; class=&quot;headerlink&quot; title=&quot;購買&quot;&gt;&lt;/a&gt;購買&lt;/h2&gt;&lt;p&gt;我這次是去台灣樹梅派購買的，我購買的是 8GB + 散熱殼，那個散熱殼我蠻滿意的，風扇也是靜音風扇，只是風扇安裝需要一點技巧，好像裝錯邊風扇就會很吵，記得風扇正反不要裝錯，有貼貼紙的地方是反面，否則你的風扇不會轉&lt;/p&gt;
+&lt;h2 id=&quot;安裝-kodi，使用-LibreElec&quot;&gt;&lt;a href=&quot;#安裝-kodi，使用-LibreElec&quot; class=&quot;headerlink&quot; title=&quot;安裝 kodi，使用 LibreElec&quot;&gt;&lt;/a&gt;安裝 kodi，使用 LibreElec&lt;/h2&gt;&lt;p&gt;在 rpi 4 上面安裝 kodi 已經很簡單了，LibreElec 這個專案已經把 os + kodi 整合起來，所以我們就直接安裝 libreelec 就可以了，請到以下網站抓取 image file &lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://libreelec.tv/raspberry-pi-4/&quot;&gt;https://libreelec.tv/raspberry-pi-4/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;該網站提供的下載的檔案叫做 &amp;quot;LibreELEC-RPi4.arm-9.2.6.img.gz&amp;quot;，下載完後使用 7z，解開她得到 img file 後，就可以使用  Win32 Disk Imager 燒錄即可，這邊跟之前的 Rpi 做法並沒有不一樣&lt;/p&gt;
+&lt;p&gt;如果還是不行，那你可以參考以前的&lt;a href=&quot;https://wwssllabcd.github.io/blog/2013/01/31/2013-01-31-how-to-setup-raspberry-pi/#%E5%AE%89%E8%A3%9D-OS&quot;&gt;教學&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;燒完之後，插入至RPI後，接上電源就可以使用了&lt;/p&gt;</summary>
     
     
     
@@ -69,10 +77,10 @@
   
   <entry>
     <title>指數型投資(Investment of indexing)</title>
-    <link href="http://wwssllabcd.github.io/2020/02/16/2020-02-16-Investment-of-indexing/"/>
-    <id>http://wwssllabcd.github.io/2020/02/16/2020-02-16-Investment-of-indexing/</id>
+    <link href="http://wwssllabcd.github.io/2020/02/16/Investment-of-indexing/"/>
+    <id>http://wwssllabcd.github.io/2020/02/16/Investment-of-indexing/</id>
     <published>2020-02-15T20:29:30.000Z</published>
-    <updated>2020-02-17T14:13:53.971Z</updated>
+    <updated>2020-11-07T16:58:07.953Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ul><li>這篇是給目前不能自己挑到好股票, 但又想做投資的人看的</li><li>這邊主要的核心概念是&quot;分散&quot;, 若是能挑到好股票的人看了這篇, 不但沒幫助, 反而會有害</li></ul><h2 id="核心概念-分散投資標的以降低風險"><a href="#核心概念-分散投資標的以降低風險" class="headerlink" title="核心概念 -- 分散投資標的以降低風險"></a>核心概念 -- 分散投資標的以降低風險</h2><ul><li>分散股票種類: 購買 ETF 分散投資目標的風險</li><li>分散購入時機: 定期定額</li><li>分散股票區域性: 購入全球 ETF</li><li>分散股票類型: 股票 + 債的資產配置</li></ul><p>我先講結論, 然後再慢慢解釋我為何這樣推薦, 而作法就是   </p><h3 id="quot-定期定額購買-指數型-ETF-quot"><a href="#quot-定期定額購買-指數型-ETF-quot" class="headerlink" title="&quot;定期定額購買 指數型 ETF &quot;"></a>&quot;定期定額購買 指數型 ETF &quot;</h3><p>方法很多種, 從簡單到複雜:   </p><ol><li>利用富邦證劵, 定期定額購買富邦采吉50(006208) ETF<ul><li>投資低消為 1000元, 適合小資上班族</li><li><a href="https://www.fubon.com/securities/hot_new/open-now/etf.html">富邦定期定額 ETF</a> 1萬元以內, 手續費只要1元</li></ul></li><li>利用複委託, 例如<a href="https://www.dcn.com.tw/re-consigned/charge.htm">大昌證券複委託</a> , 定期定額購買 VT + BNDW, 或是 AOA 系列的 ETF</li><li>開網路劵商, 如 <a href="https://www.firstrade.com/content/zh-tw/welcome">Firstrade</a> or <a href="https://www.tdameritrade.com/">TD Ameritrade</a> 帳戶, 定期定額購買 VT + BNDW + VNQ ... etc</li></ol><a id="more"></a><h2 id="本文開始"><a href="#本文開始" class="headerlink" title="本文開始"></a>本文開始</h2><p>通常我們想要購買股票投資時, 會遇到兩個問題就是</p><ul><li>買哪支股票?</li><li>什麼時候買?</li></ul><p>股票那麼多種, 在規畫退休金時, 從早期的中鋼開始, 經過中華電信, 到現在的金融股, 其實變動很大, 10年前的手機很紅, 如果買了 HTC 當作退休金, 放到現在無法退休吧, 也就是說其實做長期投資, 光是 10 年其實變化就很大, 不論是公司或是產業, 因為時間一拉長的關係, 原本看好的市場或是公司不免產生一些變化, 而把退休金放在這些標的上面, 一旦發生變化那不是很可怕? </p><p>所以主動選擇產業跟公司, 其實是不太好的策略, 要避免這個問題就是要分散產業與公司, 其實有一種簡單的方法就是買市場指數型 ETF(大盤) </p><p>這邊再把這兩個問題整理一下  </p><ul><li>買哪支股票?<ul><li>我不會選股, 也看不出股票真正價值, 所以不買個股</li><li>採用 ETF 指數投資, 例如投資市值前50大的公司的 0050<ul><li>被動投資不見得會輸主動投資, 0050 其實打敗很多人</li><li>不用研究股票, 就有更多的時間拿來運用</li><li>不用怕下市, 台灣市值前50大的公司若都倒了, 那台灣應該也毀了吧, 而且買其他個股的會比你先死</li><li>連股神巴菲特都開始買 SP 500 的ETF了</li><li>買大盤指數也減少了人為操弄, 避免股市巨鯨進出而被影響</li></ul></li></ul></li><li>什麼時候買?<ul><li>世上沒人可以預估進場時機</li><li>所以使用定期購買法分散風險<ul><li>利用平均法, 長時間下來你不會買在低點, 也不會買到高點, 而是買在平均點</li></ul></li></ul></li></ul><p>也就是說, 利用定期定額購買大盤, 你就會獲得到大盤的利潤, 你不會比大盤賺, 你也不會比大盤差, 你就是拿到大盤成長的利潤</p><h2 id="戰勝市場-大盤-很難嗎"><a href="#戰勝市場-大盤-很難嗎" class="headerlink" title="戰勝市場(大盤), 很難嗎?"></a>戰勝市場(大盤), 很難嗎?</h2><p>我參考到的資料是打敗大盤不是不能, 但是很難, 你可能要花上相當大的資源才能打敗大盤, 投報率很低, 這個問題的答案理論基礎在於市場是否為效率市場有關, 大概是說假設去掉手續費, 這其實是一場零和遊戲, 那假設每個人都很厲害, 就代表市場裡的每個人都很有效率的購買股票, 最後這些人也只能拿到跟大盤一樣的利潤, 那今天有一個人比較遜, 跑來市場, 最後那些很有效率的人賺到的錢的總和就是那個比較遜的人虧的總和</p><p>不過我舉另一個例子, 巴菲特在 2008 年跟公開賭50萬美金, 賭沒有任何的對沖基金可以贏的了 Vanguard S&amp;P500 ETF(美國標普500指數型基金, 代號 VOO, 簡單的來說你可以把它想像成美國50), 2018 年巴菲特賭贏了, 這個結論也代表經理人是多餘的 :D, 他在2017 年也說過沒有人可以打敗大盤指數型基金</p><p>這個故事你可以在這邊找到: <a href="https://wealth.businessweekly.com.tw/GArticle.aspx?id=ARTL000124494">從與經理人的10年賭約，看巴菲特價值投資法</a></p><h2 id="市場一定會成長嗎"><a href="#市場一定會成長嗎" class="headerlink" title="市場一定會成長嗎?"></a>市場一定會成長嗎?</h2><p>理論上會的, 人類不斷的產生經濟活動就會創造更多的價值, 所以說你如果長期買空頭的話, 會蠻慘的</p><h2 id="台灣追蹤指數的-ETF-元大台灣-50-0050-VS-富邦台灣采吉-50-006208"><a href="#台灣追蹤指數的-ETF-元大台灣-50-0050-VS-富邦台灣采吉-50-006208" class="headerlink" title="台灣追蹤指數的 ETF -- 元大台灣 50(0050) VS 富邦台灣采吉 50(006208)"></a>台灣追蹤指數的 ETF -- 元大台灣 50(0050) VS 富邦台灣采吉 50(006208)</h2><p>在台灣有兩隻 EFT分別都是追蹤大盤指數, 分別是元大台灣 50(代號: 0050) 與富邦台灣采吉 50(代號: 006208), 基本上這兩隻性質很像, 那我們要選哪一隻呢? </p><p>在評斷 ETF 時, 有幾點要注意的</p><ul><li>追蹤誤差是多少?<ul><li>例如 元大台灣 50(0050) 與 富邦台灣采吉 50(006208) 都是追蹤大盤, 但是大盤今年漲 10%, ETF 不見得會跟著漲 10%, 可能會漲 9.5%, 如果爛一點的話可能會更低, 9%, 8% 之類的, 這種與標的物差太多的就是不好的 ETF, 相反的, 如果該 ETF 比大盤來得高, 例如是賺 10%, 11%, 也不是好的 ETF</li></ul></li><li>內扣費用高低?<ul><li>因為指數型 ETF 不需要靠經理人殺進殺出, 是根據指數做操作的, 所以管理費應該會隨著基金規模變大而下降</li><li>有良心的業者隨著規模變大應該要調降管理費用</li></ul></li></ul><p>綜合以上兩點, 我會建議你買<a href="https://websys.fsit.com.tw/FubonETF/Funds/Profile.aspx?stock=006208">富邦50</a>, 是因為 <em>&quot;富貴要人幫, 買股買這張&quot;</em> 嗎? 並不是, 而是因為他有比較低的手續費與內扣費用, 追蹤大盤的能力也很好的緣故</p><p><a href="https://www.twse.com.tw/zh/ETF/fund/0050">台灣50的費用為 0.355%</a><a href="https://www.twse.com.tw/zh/ETF/fund/00692">富邦50的費用為 0.185%</a></p><p>網路有不少分析文章, 想知道更細部的原因可以看以下幾篇</p><ul><li><a href="https://greenhornfinancefootnote.blogspot.com/2019/10/50etf0062082019.html">台50 vs 富邦 50 -- 綠角</a></li><li><a href="https://rich01.com/0050etf-vs-006208etf/">富邦台50ETF(006208)vs台灣50(0050)報酬與費用比較》小資族挑哪個好</a></li><li><a href="https://wealth.businessweekly.com.tw/GArticle.aspx?id=ARTL000120248">同樣追蹤台股大盤...月投5千買「便宜版0050」，管理費更低、賺更多！</a></li></ul><h2 id="指數型-ETF-VS-存股"><a href="#指數型-ETF-VS-存股" class="headerlink" title="指數型 ETF VS 存股"></a>指數型 ETF VS 存股</h2><p>現在也蠻流行固定購買某些特定的股票, 例如定期定額買入中華電信, 兆豐金等股票, 這些人稱存股族, 那這種投資方式好嗎?</p><p>首先, 投資的方式應該沒什麼好不好, 只有適不適合自己, 只要你能買下去, 晚上能睡好覺的就是好方式, 而&quot;定期定額購買定存股&quot;與&quot;定期定額購買大盤指數型 ETF (如台灣50)&quot; 其實差別只有在買入標, 但我覺得買入 ETF 更好, 以下是推論</p><ul><li>存股不能買了不管<ul><li>退休應該是很久的事情, 至少超過10年</li><li>10年前表現好的定存股, 10年後不見得會好</li><li>指數型 ETF 每年會自動調整, 定存股需要手動調整</li><li>不要買固定股票當存股, 除非你常常盯著他</li></ul></li></ul><p>當然, 也許你會想說定存股也可以自行調整, 這當然可以, 這邊只是提出存股不能放著不管的想法, 所以才建議購買大盤指數型 ETF, 畢竟我們不想花大時間去研究哪個股票適合當定存股, 你如果能時時刻刻照顧你的股票, 那也是 ok 的</p><h2 id="EFT-哪種比較好-元大台灣50-0050-VS-元大高股息-0056-VS-富邦公司治理-006208"><a href="#EFT-哪種比較好-元大台灣50-0050-VS-元大高股息-0056-VS-富邦公司治理-006208" class="headerlink" title="EFT 哪種比較好 -- 元大台灣50(0050) VS 元大高股息(0056) VS 富邦公司治理(006208)"></a>EFT 哪種比較好 -- 元大台灣50(0050) VS 元大高股息(0056) VS 富邦公司治理(006208)</h2><p>這幾隻都是很熱門的 ETF, 哪種比較好呢? 這邊先列出基本資料</p><ul><li>元大台灣50: 是追蹤大盤指數 ETF, 由市值最大的50大公司, 依照市值比例組成</li><li>元大高股息: 是由配股配息高的股票</li><li>富邦公司治理: 追蹤金管會發布的公司治理名單所組成</li></ul><p>直接講結論:<br>挑選 &quot;非人為能介入&quot; 的, 所以就是選大盤指數 ETF (台灣50), 理由是人可以介入的話, 就可能會出問題, 如果你認為它們兩個績效一樣的話, 那你就買指數型就好了, 問題會比較少, 更何況 0056 雖然名稱叫高股息, 但不見得會配贏 0050, 且管理費比 0050 還高, 雖然富邦公司治理(006208)其實跟大盤趨勢很像, 但基本上完全是不同的概念, 一個是主動型選股, 一個是被動選股, 績效相同只是剛巧而已</p><p>現在也看到很多不是以市場當作指數的 ETF , 例如元大高股息(0056) 就是, 雖然也叫做指數型 ETF 但其實跟原本針對市場做的指數型投資概念差很多, 千萬別搞錯了, 同理富邦公司治理(006208)也是</p><h2 id="存退休金的方式"><a href="#存退休金的方式" class="headerlink" title="存退休金的方式"></a>存退休金的方式</h2><p>定期定額其實很適合上班族, 當你每個月定期定額存入5000元到指數型基金, 等到 20 年假設你 60歲, 你可以每個月提 5000 元, 至少可以提 20 年, 至少提領到 80 歲, 當然股票是比較有波動的投資, 所以我們必須不斷地分散風險, 同時又拿到市場成長的果實</p><p>當然光是購買台灣 50 ETF 是遠遠不夠的, 你還需要資產配置, 例如搭配一點點的債劵或是 REIT 等, 這個可能等之後再來討論</p><h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>假設我們決定要買&quot;台灣 50&quot;, 仔細想想, <strong>定期定額購買台灣50</strong> 這決策中, 背後代表什麼?    </p><ul><li>定期定額購買 + 台灣 50 ETF<ul><li>定期定額購買: 代表放棄選擇進入市場的時間, 被動進場</li><li>台灣 50 ETF: 代表放棄選股, 因為是他幫你選好了, 被動選股</li></ul></li></ul><p>最後你會發現, 我的策略其實是叫你 </p><h4 id="quot-放棄選股-也放棄選入場時機來買股票-quot"><a href="#quot-放棄選股-也放棄選入場時機來買股票-quot" class="headerlink" title="&quot;放棄選股, 也放棄選入場時機來買股票&quot;"></a>&quot;放棄選股, 也放棄選入場時機來買股票&quot;</h4><p> 這結論聽起來非常違反人性 😄</p><p>不過我非財經研究專家, 所以上面有些東西推論起來其實是有點卡卡的, 不過工程師就是要做實驗, 這個違反人性的事, 你可以每個月花1000塊, 定期定額購買 ETF, 一年後你可以再來看看這種奇怪的方式到底是好, 還是不好, 結果搞不好會讓你大吃一驚喔</p><p>最後我在文中一直提到個概念就是 <strong>分散標的</strong>, 以降低風險 , 舉一反三的你一定會發現, 我們談到的分散的範圍也只是在台灣這塊市場而已, 若是把每個國家市場都看成一間公司, 其實你會發現我們最終還是在投資一間公司而已, 而這個問題就留在下次討論嚕</p><h2 id="延伸閱讀"><a href="#延伸閱讀" class="headerlink" title="延伸閱讀"></a>延伸閱讀</h2><p>這邊提供更多市場價值的解釋, 可以看看</p><ul><li><a href="https://www.ptt.cc/bbs/Stock/M.1523074420.A.B23.html">被動型ETF投資方式及心得</a></li></ul><p>若你還想看更多有關指數化與被動投資的文章, 可以看看下面的連結</p><ul><li>被動投資是什麼<ul><li><a href="https://rich01.com/what-passive-invest/">https://rich01.com/what-passive-invest/</a></li><li><a href="https://pgfinnote.com/understanding-passive-investing/">https://pgfinnote.com/understanding-passive-investing/</a></li><li><a href="https://www.etf168.com.tw/Article/Article?articleID=211">https://www.etf168.com.tw/Article/Article?articleID=211</a></li><li><a href="http://justin0904.pixnet.net/blog/post/222388512">http://justin0904.pixnet.net/blog/post/222388512</a></li><li><a href="https://as223400.pixnet.net/blog/post/227830082-%E8%A2%AB%E5%8B%95%E6%8A%95%E8%B3%87-%E4%BD%8E%E9%A2%A8%E9%9A%AA%E7%9A%84%E6%87%B6%E4%BA%BA%E6%8A%95%E8%B3%87%E6%96%B9%E6%B3%95">https://as223400.pixnet.net/blog/post/227830082-%E8%A2%AB%E5%8B%95%E6%8A%95%E8%B3%87-%E4%BD%8E%E9%A2%A8%E9%9A%AA%E7%9A%84%E6%87%B6%E4%BA%BA%E6%8A%95%E8%B3%87%E6%96%B9%E6%B3%95</a></li><li><a href="https://www.etf168.com.tw/Article/Article?articleID=211">https://www.etf168.com.tw/Article/Article?articleID=211</a></li></ul></li><li>指數化投資是什麼<ul><li><a href="https://greenhornfinancefootnote.blogspot.com/2013/08/1greenhorns-investment-principles.html">https://greenhornfinancefootnote.blogspot.com/2013/08/1greenhorns-investment-principles.html</a></li><li><a href="https://greenhornfinancefootnote.blogspot.com/2016/02/indexing-best-choice-for-professionals.html">https://greenhornfinancefootnote.blogspot.com/2016/02/indexing-best-choice-for-professionals.html</a></li></ul></li></ul>]]></content>
     
@@ -108,8 +116,8 @@
   
   <entry>
     <title>Python windows 安裝, 心得, 教學</title>
-    <link href="http://wwssllabcd.github.io/2018/05/21/2018-05-21-how-to-install-python-on-windows/"/>
-    <id>http://wwssllabcd.github.io/2018/05/21/2018-05-21-how-to-install-python-on-windows/</id>
+    <link href="http://wwssllabcd.github.io/2018/05/21/how-to-install-python-on-windows/"/>
+    <id>http://wwssllabcd.github.io/2018/05/21/how-to-install-python-on-windows/</id>
     <published>2018-05-20T17:13:59.000Z</published>
     <updated>2018-06-19T15:15:56.000Z</updated>
     
@@ -140,8 +148,8 @@
   
   <entry>
     <title>安裝 PyQt</title>
-    <link href="http://wwssllabcd.github.io/2018/05/21/2018-05-22-how-to-install-pyqt/"/>
-    <id>http://wwssllabcd.github.io/2018/05/21/2018-05-22-how-to-install-pyqt/</id>
+    <link href="http://wwssllabcd.github.io/2018/05/21/how-to-install-pyqt/"/>
+    <id>http://wwssllabcd.github.io/2018/05/21/how-to-install-pyqt/</id>
     <published>2018-05-20T17:13:59.000Z</published>
     <updated>2018-06-19T15:15:40.000Z</updated>
     
@@ -167,8 +175,8 @@
   
   <entry>
     <title>執行 amb expression</title>
-    <link href="http://wwssllabcd.github.io/2017/11/12/2017-11-12-how-to-execute-amb-expression/"/>
-    <id>http://wwssllabcd.github.io/2017/11/12/2017-11-12-how-to-execute-amb-expression/</id>
+    <link href="http://wwssllabcd.github.io/2017/11/12/how-to-execute-amb-expression/"/>
+    <id>http://wwssllabcd.github.io/2017/11/12/how-to-execute-amb-expression/</id>
     <published>2017-11-11T17:13:59.000Z</published>
     <updated>2017-11-30T19:17:22.000Z</updated>
     
@@ -192,8 +200,8 @@
   
   <entry>
     <title>makefile 心得、教學</title>
-    <link href="http://wwssllabcd.github.io/2016/10/03/2016-10-03-how-to-write-make-file/"/>
-    <id>http://wwssllabcd.github.io/2016/10/03/2016-10-03-how-to-write-make-file/</id>
+    <link href="http://wwssllabcd.github.io/2016/10/03/how-to-write-make-file/"/>
+    <id>http://wwssllabcd.github.io/2016/10/03/how-to-write-make-file/</id>
     <published>2016-10-02T17:13:59.000Z</published>
     <updated>2016-10-03T13:20:22.000Z</updated>
     
@@ -228,8 +236,8 @@ Hello World&lt;/code&gt;&lt;/pre&gt;
   
   <entry>
     <title>bochs 使用教學，心得</title>
-    <link href="http://wwssllabcd.github.io/2016/04/20/2016-04-20-how-to-use-bochs/"/>
-    <id>http://wwssllabcd.github.io/2016/04/20/2016-04-20-how-to-use-bochs/</id>
+    <link href="http://wwssllabcd.github.io/2016/04/20/how-to-use-bochs/"/>
+    <id>http://wwssllabcd.github.io/2016/04/20/how-to-use-bochs/</id>
     <published>2016-04-20T09:23:25.000Z</published>
     <updated>2016-06-05T16:01:22.000Z</updated>
     
@@ -258,8 +266,8 @@ sudo make install&lt;/code&gt;&lt;/pre&gt;</summary>
   
   <entry>
     <title>Bitcoin 簡介</title>
-    <link href="http://wwssllabcd.github.io/2015/08/21/2015-08-21-what-is-bitcoin/"/>
-    <id>http://wwssllabcd.github.io/2015/08/21/2015-08-21-what-is-bitcoin/</id>
+    <link href="http://wwssllabcd.github.io/2015/08/21/what-is-bitcoin/"/>
+    <id>http://wwssllabcd.github.io/2015/08/21/what-is-bitcoin/</id>
     <published>2015-08-21T15:32:31.000Z</published>
     <updated>2015-12-18T12:52:56.000Z</updated>
     
@@ -281,8 +289,8 @@ sudo make install&lt;/code&gt;&lt;/pre&gt;</summary>
   
   <entry>
     <title>Lamobo M1( banana pi ) 安裝心得</title>
-    <link href="http://wwssllabcd.github.io/2015/01/12/2015-01-12-how-to-setup-Lamobo-m1/"/>
-    <id>http://wwssllabcd.github.io/2015/01/12/2015-01-12-how-to-setup-Lamobo-m1/</id>
+    <link href="http://wwssllabcd.github.io/2015/01/12/how-to-setup-Lamobo-m1/"/>
+    <id>http://wwssllabcd.github.io/2015/01/12/how-to-setup-Lamobo-m1/</id>
     <published>2015-01-12T15:32:31.000Z</published>
     <updated>2015-12-18T12:52:56.000Z</updated>
     
@@ -382,8 +390,8 @@ sudo make install&lt;/code&gt;&lt;/pre&gt;</summary>
   
   <entry>
     <title>Firefox addon-SDK 介紹, page-mod</title>
-    <link href="http://wwssllabcd.github.io/2014/12/21/2014-12-21-building-an-extension-for-firefox-PageMod/"/>
-    <id>http://wwssllabcd.github.io/2014/12/21/2014-12-21-building-an-extension-for-firefox-PageMod/</id>
+    <link href="http://wwssllabcd.github.io/2014/12/21/building-an-extension-for-firefox-PageMod/"/>
+    <id>http://wwssllabcd.github.io/2014/12/21/building-an-extension-for-firefox-PageMod/</id>
     <published>2014-12-21T08:45:54.000Z</published>
     <updated>2016-06-05T16:01:22.000Z</updated>
     
@@ -416,8 +424,8 @@ pageMod.PageMod(&amp;#123;
   
   <entry>
     <title>打造一個 Firefox 附加元件</title>
-    <link href="http://wwssllabcd.github.io/2014/05/03/2014-05-03-building-an-extension-for-firefox/"/>
-    <id>http://wwssllabcd.github.io/2014/05/03/2014-05-03-building-an-extension-for-firefox/</id>
+    <link href="http://wwssllabcd.github.io/2014/05/03/building-an-extension-for-firefox/"/>
+    <id>http://wwssllabcd.github.io/2014/05/03/building-an-extension-for-firefox/</id>
     <published>2014-05-02T17:32:00.000Z</published>
     <updated>2015-12-18T12:52:56.000Z</updated>
     
@@ -456,8 +464,8 @@ bin\activate&lt;/code&gt;&lt;/pre&gt;</summary>
   
   <entry>
     <title>Raspberry Pi 安裝 Archlinux</title>
-    <link href="http://wwssllabcd.github.io/2013/11/14/2013-11-14-how-to-install-archlinux-on-raspberrypi/"/>
-    <id>http://wwssllabcd.github.io/2013/11/14/2013-11-14-how-to-install-archlinux-on-raspberrypi/</id>
+    <link href="http://wwssllabcd.github.io/2013/11/14/how-to-install-archlinux-on-raspberrypi/"/>
+    <id>http://wwssllabcd.github.io/2013/11/14/how-to-install-archlinux-on-raspberrypi/</id>
     <published>2013-11-14T11:48:00.000Z</published>
     <updated>2015-12-18T12:52:56.000Z</updated>
     
@@ -483,8 +491,8 @@ pacman -Syu&lt;/code&gt;&lt;/pre&gt;</summary>
   
   <entry>
     <title>Policy-Based Programming</title>
-    <link href="http://wwssllabcd.github.io/2013/10/08/2013-10-08-policy-based-template-programming/"/>
-    <id>http://wwssllabcd.github.io/2013/10/08/2013-10-08-policy-based-template-programming/</id>
+    <link href="http://wwssllabcd.github.io/2013/10/08/policy-based-template-programming/"/>
+    <id>http://wwssllabcd.github.io/2013/10/08/policy-based-template-programming/</id>
     <published>2013-10-08T11:02:00.000Z</published>
     <updated>2015-12-18T12:52:56.000Z</updated>
     
@@ -512,8 +520,8 @@ pacman -Syu&lt;/code&gt;&lt;/pre&gt;</summary>
   
   <entry>
     <title>讓 Raspberry pi 變成多媒體播放機 -- 安裝Raspbmc</title>
-    <link href="http://wwssllabcd.github.io/2013/04/22/2013-04-22-how-to-setup-raspbmc-in-raspberry-pi/"/>
-    <id>http://wwssllabcd.github.io/2013/04/22/2013-04-22-how-to-setup-raspbmc-in-raspberry-pi/</id>
+    <link href="http://wwssllabcd.github.io/2013/04/22/how-to-setup-raspbmc-in-raspberry-pi/"/>
+    <id>http://wwssllabcd.github.io/2013/04/22/how-to-setup-raspbmc-in-raspberry-pi/</id>
     <published>2013-04-22T08:26:00.000Z</published>
     <updated>2015-12-18T12:52:56.000Z</updated>
     
@@ -542,8 +550,8 @@ Standalone Image的檔案下載回來後解壓縮，會得到一個img file，�
   
   <entry>
     <title>Raspberry pi: 設定無線網路</title>
-    <link href="http://wwssllabcd.github.io/2013/04/22/2013-04-22-how-to-setup-wireless-in-raspberry-pi/"/>
-    <id>http://wwssllabcd.github.io/2013/04/22/2013-04-22-how-to-setup-wireless-in-raspberry-pi/</id>
+    <link href="http://wwssllabcd.github.io/2013/04/22/how-to-setup-wireless-in-raspberry-pi/"/>
+    <id>http://wwssllabcd.github.io/2013/04/22/how-to-setup-wireless-in-raspberry-pi/</id>
     <published>2013-04-22T08:21:00.000Z</published>
     <updated>2015-12-18T12:52:56.000Z</updated>
     
@@ -566,8 +574,8 @@ Standalone Image的檔案下載回來後解壓縮，會得到一個img file，�
   
   <entry>
     <title>Raspberry pi 上安裝 samba (網路芳鄰)</title>
-    <link href="http://wwssllabcd.github.io/2013/04/22/2013-04-22-how-to-setup-samba-in-raspberry-pi/"/>
-    <id>http://wwssllabcd.github.io/2013/04/22/2013-04-22-how-to-setup-samba-in-raspberry-pi/</id>
+    <link href="http://wwssllabcd.github.io/2013/04/22/how-to-setup-samba-in-raspberry-pi/"/>
+    <id>http://wwssllabcd.github.io/2013/04/22/how-to-setup-samba-in-raspberry-pi/</id>
     <published>2013-04-22T08:19:00.000Z</published>
     <updated>2016-06-05T16:01:22.000Z</updated>
     
@@ -592,8 +600,8 @@ Standalone Image的檔案下載回來後解壓縮，會得到一個img file，�
   
   <entry>
     <title>打造脫機下載農場，使用Raspberry pi + transmission-daemon</title>
-    <link href="http://wwssllabcd.github.io/2013/04/22/2013-04-22-how-to-setup-transmission-deamon-in-raspberry-pi/"/>
-    <id>http://wwssllabcd.github.io/2013/04/22/2013-04-22-how-to-setup-transmission-deamon-in-raspberry-pi/</id>
+    <link href="http://wwssllabcd.github.io/2013/04/22/how-to-setup-transmission-deamon-in-raspberry-pi/"/>
+    <id>http://wwssllabcd.github.io/2013/04/22/how-to-setup-transmission-deamon-in-raspberry-pi/</id>
     <published>2013-04-22T08:13:00.000Z</published>
     <updated>2016-06-05T16:01:22.000Z</updated>
     
@@ -619,8 +627,8 @@ Standalone Image的檔案下載回來後解壓縮，會得到一個img file，�
   
   <entry>
     <title>簡易 GDB Script 教學，應用</title>
-    <link href="http://wwssllabcd.github.io/2013/03/25/2013-03-25-how-to-write-gdb-scritp/"/>
-    <id>http://wwssllabcd.github.io/2013/03/25/2013-03-25-how-to-write-gdb-scritp/</id>
+    <link href="http://wwssllabcd.github.io/2013/03/25/how-to-write-gdb-scritp/"/>
+    <id>http://wwssllabcd.github.io/2013/03/25/how-to-write-gdb-scritp/</id>
     <published>2013-03-25T11:27:00.000Z</published>
     <updated>2016-06-05T16:01:22.000Z</updated>
     

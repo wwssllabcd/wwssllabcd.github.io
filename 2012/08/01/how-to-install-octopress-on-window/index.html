@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-34321837-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <title>Octopress 安裝教學、心得筆記 (Windows) | printf(&#34; I&#39;m EricWang &#34;)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="我發現大部分使用 Octopress 的 Blogger，通常 octopress 的第一篇文章就是 How to install octopress， 大概是安裝完之後，就順手試看看這個專門為 geek 打造的 blog 吧 :D   Why Octopree如果你跟我一樣想找個可以貼 code 的 blog service 又不想花錢，octopress 是不錯的選擇， btw，xdite 大">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Octopress 安裝教學、心得筆記 (Windows)">
+<meta property="og:url" content="http://wwssllabcd.github.io/2012/08/01/how-to-install-octopress-on-window/index.html">
+<meta property="og:site_name" content="printf(&quot; I&#39;m EricWang &quot;)">
+<meta property="og:description" content="我發現大部分使用 Octopress 的 Blogger，通常 octopress 的第一篇文章就是 How to install octopress， 大概是安裝完之後，就順手試看看這個專門為 geek 打造的 blog 吧 :D   Why Octopree如果你跟我一樣想找個可以貼 code 的 blog service 又不想花錢，octopress 是不錯的選擇， btw，xdite 大">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://lh3.googleusercontent.com/-FIG2i3VbXAE/VJexIMo2ZAI/AAAAAAAAst8/Hbxff9T5_RU/s0/rubyInstall.jpg">
+<meta property="article:published_time" content="2012-08-01T06:57:00.000Z">
+<meta property="article:modified_time" content="2016-06-05T16:01:22.000Z">
+<meta property="article:author" content="EricWang">
+<meta property="article:tag" content="How-To">
+<meta property="article:tag" content="Octopress">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lh3.googleusercontent.com/-FIG2i3VbXAE/VJexIMo2ZAI/AAAAAAAAst8/Hbxff9T5_RU/s0/rubyInstall.jpg">
+  
+    <link rel="alternate" href="/blog/atom.xml" title="printf(&#34; I&#39;m EricWang &#34;)" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://lh3.googleusercontent.com/-4X7H3oQr-Ws/VKchKJJwnSI/AAAAAAAAsy4/NK3uBSzNQlo/s0/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/blog/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">printf(&#34; I&#39;m EricWang &#34;)</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/blog/aboutme.html">AboutMe</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://wwssllabcd.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-how-to-install-octopress-on-window" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2012/08/01/how-to-install-octopress-on-window/" class="article-date">
+  <time datetime="2012-08-01T06:57:00.000Z" itemprop="datePublished">2012-08-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Octopress 安裝教學、心得筆記 (Windows)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+		
+
+        <p>我發現大部分使用 Octopress 的 Blogger，通常 octopress 的第一篇文章就是 How to install octopress，
+大概是安裝完之後，就順手試看看這個專門為 geek 打造的 blog 吧 :D  </p>
+<h2 id="Why-Octopree"><a href="#Why-Octopree" class="headerlink" title="Why Octopree"></a>Why Octopree</h2><p>如果你跟我一樣想找個可以貼 code 的 blog service 又不想花錢，octopress 是不錯的選擇，
+btw，xdite 大有一篇很詳細的說明了 <a target="_blank" rel="noopener" href="http://blog.xdite.net/posts/2011/10/07/what-is-octopress/">Why Octopress</a></p>
+<p><strong><em>PS: 因為 Octopress 很久沒更新，且只能用 Ruby 1.9.3，所以我推薦 Hexo 當 Blog system 會更好<br><a href="http://wwssllabcd.github.io/blog/2014/12/22/how-to-install-hexo-on-window/">Hexo 安裝教學</a></em></strong></p>
+<a id="more"></a>
+
+<h2 id="安裝教學"><a href="#安裝教學" class="headerlink" title="安裝教學"></a>安裝教學</h2><p>建議可以照著 <a target="_blank" rel="noopener" href="http://octopress.org/docs/setup/">官方教學</a> 做，裡面的英文不會太難  </p>
+<p>以下也收集幾位不錯的網路教學  </p>
+<p><a target="_blank" rel="noopener" href="http://swind.github.com/blog/2011/10/19/ban-jia-hou-di-1pian/">搬家後的第一篇文章 -Octopress 安裝筆記</a><br><a target="_blank" rel="noopener" href="http://blog.eddie.com.tw/2011/10/11/how-to-install-octopress-on-heroku/">How to Install Octopress on Heroku</a><br><a target="_blank" rel="noopener" href="http://itspg.github.com/blog/2012/02/29/octopress-on-windows-tutorial/">[教學] 在 windows 上安裝 octopress 新手教學 / 初學者指南</a><br><a target="_blank" rel="noopener" href="http://happy-octopress.heroku.com/">How to Install Octopress on Heroku</a>  </p>
+<p>這邊有詳細的QA<br><a target="_blank" rel="noopener" href="http://jokry.com/blog/2012/03/08/octopress/">Octopress 介紹與安裝</a><br><a target="_blank" rel="noopener" href="http://hivan.me/octopress-install-to-windows8/">Windows 8 安裝Octopress 記錄</a>     </p>
+<p>上面的連結是當你看不懂我在寫什麼的時候，可以連去參照別人所寫的步驟，接下來我們就來開始安裝 Octopress</p>
+<h2 id="安裝-Ruby-192"><a href="#安裝-Ruby-192" class="headerlink" title="安裝 Ruby 192"></a>安裝 Ruby 192</h2><p>首先要安裝 <a target="_blank" rel="noopener" href="http://rubyinstaller.org/downloads/">ruby1.9.2 for windows</a>, 我是選 Ruby 1.9.2-p290，點兩下即可安裝, 
+安裝的時候，記得把 ruby 加入系統路徑<br><img src="https://lh3.googleusercontent.com/-FIG2i3VbXAE/VJexIMo2ZAI/AAAAAAAAst8/Hbxff9T5_RU/s0/rubyInstall.jpg" alt="rubyInstall.jpg"></p>
+<p>下載 <a target="_blank" rel="noopener" href="http://rubyinstaller.org/downloads/">Development Kit</a><br>安裝 DevKit，安裝其實就是解壓縮至 c:\devKit 之後，到該目錄執行<br>    cd devkit<br>    ruby dk.rb init<br>    ruby dk.rb install</p>
+<p>這邊一樣有 <a target="_blank" rel="noopener" href="https://github.com/oneclick/rubyinstaller/wiki/Development-Kit">官方教學</a>  </p>
+<h2 id="安裝-Git"><a href="#安裝-Git" class="headerlink" title="安裝 Git"></a>安裝 Git</h2><p>如果要在 Window 下使用 Git，就必須要安裝 <a target="_blank" rel="noopener" href="http://code.google.com/p/msysgit/">msysgit</a> 與 <a target="_blank" rel="noopener" href="http://code.google.com/p/tortoisegit/">tortoisegit</a>，
+請參考<a target="_blank" rel="noopener" href="https://www.google.com/search?q=git+on+window&ie=utf-8&oe=utf-8&aq=t&rls=org.mozilla:zh-TW:official&client=firefox-">網路文章</a>
+，這裡不再詳述</p>
+<h2 id="下載-Octopress"><a href="#下載-Octopress" class="headerlink" title="下載 Octopress"></a>下載 Octopress</h2><p>打開 Git Bash 後鍵入<br>    git clone git://github.com/imathis/octopress.git octopress
+這個動作會把 Octopress 下載回來</p>
+<h2 id="建立-Octopress-基本環境設定"><a href="#建立-Octopress-基本環境設定" class="headerlink" title="建立 Octopress 基本環境設定"></a>建立 Octopress 基本環境設定</h2><p>這邊要利用 Bundle 檢查相依性，在執行 ruby bundle 之前，最好先更新一下 ruby 環境
+    gem update --system
+接下來安裝<code>bundler</code>，bundler 是管理 Gem 相依性的工具，他會根據Gemfile的設定，
+自動下載與管理 gem 的套件，
+    gem install bundler</p>
+<p>進入剛剛下載回來的 Octopress 目錄，在該目錄中，
+利用 bundle 檢查 octopress 的 Gemfile 檔案中的套件相依性，並產生一個叫<code>Gemfile.lock</code>的檔案
+    cd octopress
+    bundle install</p>
+<p>Hit 1: 以後如果使用<code>gem update</code>更新了 gem 裡面的套件，這邊也是要重新執行一次<code>bundle install</code><br>Hit 2: 如果更改了 Gmefile 的檔案，最好把Gemfile.lock砍掉後，再次執行 bundle install<br>Hit 3: 有關bundle可參考<a target="_blank" rel="noopener" href="http://openhome.cc/Gossip/Rails/Bundler.html">簡介 Bundler</a>  </p>
+<p>使用 rake 安裝 octopress 基本環境
+    rake install</p>
+<p>這樣一來就算是完成設定了，接下來就是要準備 Deploy 到 GitHub 上面了  </p>
+<p>Hit:
+rake install 可能發生
+    You have already activated rake 0.9.6, but your Gemfile requires rake 0.9.2.2.
+也就是說，octopress所使用的 rake 是 0.9.2.2，但是你現在的是新版的，解法就是修改Gemfile中的 rake
+    gem &#39;rake&#39;, &#39;<del>&gt; 0.9&#39;
+改成
+    gem &#39;rake&#39;, &#39;</del>&gt; 0.9.6&#39;</p>
+<h2 id="Deploy-Octopress-到-GitHub-上面"><a href="#Deploy-Octopress-到-GitHub-上面" class="headerlink" title="Deploy Octopress 到 GitHub 上面"></a>Deploy Octopress 到 GitHub 上面</h2><p>這邊先提供一篇 <a target="_blank" rel="noopener" href="http://octopress.org/docs/deploying/github/">官方教學 Deploying to Github Pages</a></p>
+<p>這邊假設你擁有了 GitHub 的帳號，建立一個 repo 叫 <code>yourname.github.com</code>，如果你的帳號為 eric 的話，就是建立<code>eric.github.com 的 repository</code>。
+    注意：不要點選 Initialize this repository with a README </p>
+<p>建立完之後，你會在你的repo那邊看到以下這種目錄
+    your_name/your_name.github.com</p>
+<p>然後，使用 Git Bash 進入到剛下載回來的 Octopress 資料夾上<br>    Hint: 不要使用 windows 的 console，否則 git 會失效<br>鍵入
+    rake setup_github_pages
+這個動作會做以下幾點</p>
+<ol>
+<li>要你輸入 Repository 的路徑，這時請將 Github 上面 SSH 的路徑複製下來貼上，如<code>git@github.com:eric/eric.github.io.git</code> </li>
+<li>把你的 octopress remote source name 從 <code>origin</code> 改成 <code>octopress</code></li>
+<li>把你剛剛輸入的git repository 換成 default origin remote.</li>
+<li>切換你的 branch from master to source.</li>
+<li>Configure your blog’s url according to your repository.</li>
+<li>Setup a master branch in the _deploy directory for deployment.</li>
+</ol>
+<p>接下來就是讓 octopress generate blog，輸入<br>    rake generate</p>
+<p>PS: 若 generate 這個指令發生錯誤，則請見文章最後 Troubleshooting 的部份  </p>
+<p>generate 是把網站用 ruby 給 generate 出來，generate 出來的網頁會放在 _deploy 目錄下面，
+deploy 是把 generate 出來的網站，deploy 到 Github 上了，所以 deploy 指令一定要在 Git Bash 裡面下，
+而且是 deploy 到遠端的 master 分支下，貌似 gitHub 如果要作靜態網站的話，都是放在 master 這個分支，
+如果 generate 沒問題的話，就可以把產生過後的blog，deploy上去了，鍵入
+    rake deploy
+這個動作會把產生出來的blog，push 到 master 這個 Base branch 中</p>
+<p>當然，不要忘記也把你的 source code 也一併丟到 Github 上去喔(此時應該為source)<br>    git add .
+    git commit -m &#39;your message&#39;
+    git push origin source</p>
+<h2 id="寫文章與後台"><a href="#寫文章與後台" class="headerlink" title="寫文章與後台"></a>寫文章與後台</h2><p><a target="_blank" rel="noopener" href="http://octopress.org/docs/blogging/">官方教學</a><br><a target="_blank" rel="noopener" href="http://happy-octopress.heroku.com/">不錯的網路教學</a>   </p>
+<p>首先，這東西是沒有後台的，整個 source code 與 local 就是你的後台，
+網站純粹是 ruby 的 jekyll 套件在 local 使用 rake generate 指令產生的 static 網站，
+也就是在 local 是動態 generate 的，push 到 github 是 static 的，酷吧!  </p>
+<p>網站搞定之後，首先要寫第一篇文章，進入命令列模式<br>    rake new_post[&quot;title&quot;]</p>
+<p>此時 Octopress 會幫你 generate 一篇新文章出來，可以在 Octopress 資料夾的 <code>source\_posts</code> 底下看到產生的新文章，
+使用記事本軟體就可以打開，而裡面會出現  </p>
+<pre><code>layout: post
+title: &quot;My First article&quot;
+date: 2012-08-01 14:57
+comments: true
+categories: How-To</code></pre>
+<p>其中要特別說明的是 categories ，分類的方式如下
+    # 單一分類
+    categories: Sass</p>
+<pre><code># 多重分類 ex:1
+categories: [CSS3, Sass, Media Queries]
+
+# 多重分類 ex:2
+categories:
+- CSS3
+- Sass
+- Media Queries</code></pre>
+<p>文章的寫法是使用 markdown 語法，不用太擔心要學習很久，你就當作是再寫 txt file 就可以了，寫個兩三篇文章就會熟了。
+這邊有 <a target="_blank" rel="noopener" href="http://markdown.tw/">markdown 語法說明</a> 可以參考，而 markdown 也是有 window 的編輯器，名子叫 <a target="_blank" rel="noopener" href="http://markdownpad.com/">MarkdownPad</a></p>
+<p>寫好了之後可以下<br>    rake preview</p>
+<p>可以在 <a target="_blank" rel="noopener" href="http://127.0.0.1:4000/">http://127.0.0.1:4000</a> 這邊先預覽，
+這邊值得一提的是，如果更改文章的內容，他也會即時反應，不需要在 rake generate</p>
+<p>確定無誤之後，接下來就是輸入<br>    rake generate
+    rake deploy</p>
+<p>就推上去嚕  </p>
+<h2 id="幫-Octopress-加上分類列表和標籤雲"><a href="#幫-Octopress-加上分類列表和標籤雲" class="headerlink" title="幫 Octopress 加上分類列表和標籤雲"></a>幫 Octopress 加上分類列表和標籤雲</h2><p>我是使用 tokkonopapa 所開發的套件，安裝很簡單，可以見這篇 <a target="_blank" rel="noopener" href="http://gibuloto.com/blog/octopress-categories-tag-cloud/">教學</a>，
+基本上也可以按照 <a target="_blank" rel="noopener" href="https://github.com/tokkonopapa/octopress-tagcloud">官網上面</a> 的做法，
+他提供了兩種 category 的方式，分別是 List 與 cloud，選需要的加入至<code>_config.yml</code>中的<code>default_asides:</code>選項即可  </p>
+<p>喜歡 category_list 的，就加入
+    default_asides: [custom/asides/category_list.html, 原本的東西]
+喜歡 tag_cloud 的，就加入
+    default_asides: [custom/asides/tag_cloud.html, 原本的東西]
+兩個都加我也不反對啦 XD</p>
+<h2 id="幫文章加上繼續閱讀-read-more"><a href="#幫文章加上繼續閱讀-read-more" class="headerlink" title="幫文章加上繼續閱讀 (read more)"></a>幫文章加上繼續閱讀 (read more)</h2><p>非常簡單，在文章中使用<code>&lt;!--more--&gt;</code>這個標籤即可</p>
+<h2 id="幫文章加上-comment-disqus"><a href="#幫文章加上-comment-disqus" class="headerlink" title="幫文章加上 comment(disqus)"></a>幫文章加上 comment(disqus)</h2><p>這邊使用的是 <code>Disqus</code> 這個網站的服務，安裝方式可以參考
+<a target="_blank" rel="noopener" href="http://gangmax.me/blog/2012/01/20/how-to-use-disqus-in-octopress/">How to Use Disqus in Octopress</a></p>
+<h2 id="加入-Google-Analysis-網站分析功能"><a href="#加入-Google-Analysis-網站分析功能" class="headerlink" title="加入 Google Analysis 網站分析功能"></a>加入 Google Analysis 網站分析功能</h2><p>去 Google Analysis 註冊並登入後，
+他會給你一個 ID ，貼在 Octopress 目錄下的 _config.yml 檔案中的 google_analytics_tracking_id 即可，如
+    google_analytics_tracking_id: UA-12345678-9</p>
+<h2 id="如果你要在別地方-checkout-你的-blog"><a href="#如果你要在別地方-checkout-你的-blog" class="headerlink" title="如果你要在別地方 checkout 你的 blog "></a>如果你要在別地方 checkout 你的 blog </h2><p>基本上 Octopress 會有兩個分支: source（文章原始檔)，與 master（靠 rake generate 產生出來的網站)，
+不過是 source 比較重要，因為要靠他 compile 整個網站，記得取來之後，切換至 source ，還是要執行一次<br>    gem install bundler
+    bundle install
+    rake setup_github_pages
+可以看看 <a target="_blank" rel="noopener" href="http://geekontheway.github.com/blog/2011/12/03/octopress-for-freshman/">這篇的教學</a></p>
+<p>例如出現 
+    [[rejected]] master -&gt; master ((non-fast forward))
+這個 non-fast forward 的意思是你的 parent commit 和遠端的不相同，也就是線圖有分岔，需要先 pull 回來處理好 merge 才能 push 上去。</p>
+<p>解法1:<br>砍掉github上面的 repostory 的 master，先去我們的 repostiry 設定那邊把 default branch 從 msater 改成 source，
+然後再回到reopstory那邊，有個branch的頁面，進去之後把 master 砍掉，這樣就不會有 non-fast forward 的問題了  </p>
+<h2 id="貼-code-高亮"><a href="#貼-code-高亮" class="headerlink" title="貼 code 高亮"></a>貼 code 高亮</h2><p>Octopress 貼上的 code 要有高亮必須裝 python，安裝的方式請見 <a target="_blank" rel="noopener" href="http://lishunli.github.com/blog/2012/03/14/hello-world/">這裡</a></p>
+<h2 id="修改背景"><a href="#修改背景" class="headerlink" title="修改背景"></a>修改背景</h2><p>可修改<code>\sass\custom</code>下的 <code>_styles.scss</code>,加入
+    html {
+        background: #555555 url(&quot;/images/bg.png&quot;);
+    }
+或是
+    html {
+        background: #fff
+    }</p>
+<h2 id="修改-Banner"><a href="#修改-Banner" class="headerlink" title="修改 Banner"></a>修改 Banner</h2><p>可修改<code>\sass\custom</code>下的 <code>_styles.scss</code>,加入
+    header[role=&quot;banner&quot;] {
+        background-image: url(/images/bg.png);
+        background-repeat: repeat;
+    }</p>
+<h2 id="Troubleshooting"><a href="#Troubleshooting" class="headerlink" title="Troubleshooting"></a>Troubleshooting</h2><p>以下收集各類疑難雜症</p>
+<h2 id="使用-Ruby-2-0-出現-yajl的錯誤"><a href="#使用-Ruby-2-0-出現-yajl的錯誤" class="headerlink" title="使用 Ruby 2.0 出現 yajl的錯誤  "></a>使用 Ruby 2.0 出現 yajl的錯誤  </h2><pre><code>gem uninstall yajl-ruby
+Ensure all the versions (ruby and x86-mingw32 are uninstalled)
+gem install yajl-ruby --platform=ruby
+bundle check</code></pre>
+<h2 id="錯誤訊息-cannot-load-such-file-yajl"><a href="#錯誤訊息-cannot-load-such-file-yajl" class="headerlink" title="錯誤訊息: cannot load such file -- yajl  "></a>錯誤訊息: <code>cannot load such file -- yajl</code>  </h2><p>使用 rake generate 之後，出現</p>
+<pre><code>`cannot load such file -- yajl`  </code></pre>
+<p>如果是使用ruby 2.0時，貌似ruby 2.0 的 DevKit 中的 yajl 與一般的不符，所以解法就是先移除所有的 yajl 後，再重新安裝   </p>
+<pre><code>gem uninstall yajl-ruby</code></pre>
+<p>再安裝 yajl 就可以了</p>
+<pre><code>gem install yajl-ruby --platform=ruby</code></pre>
+<h2 id="錯誤訊息-read-yaml-invalid-byte-sequence-in-Big5-ArgumentError"><a href="#錯誤訊息-read-yaml-invalid-byte-sequence-in-Big5-ArgumentError" class="headerlink" title="錯誤訊息: read_yaml: invalid byte sequence in Big5 (ArgumentError)  "></a>錯誤訊息: <code>read_yaml: invalid byte sequence in Big5 (ArgumentError)</code>  </h2><p>如果使用 rake generate 後，產生</p>
+<pre><code>C:/Ruby192/lib/ruby/gems/1.9.1/gems/jekyll-0.11.2/lib/jekyll/convertible.rb:29:
+in `read_yaml&#39;: invalid byte sequence in Big5 (ArgumentError)</code></pre>
+<p>這種錯誤是套件<code>jekyll</code>中的 convertible.rb 的編碼轉換的問題(奇怪這個問題很久了也沒解決？)，
+以ruby 2.0 為例，這個檔案位於<code>C:\Ruby200\lib\ruby\gems\2.0.0\gems\jekyll-0.12.0\lib\jekyll\convertible.rb</code><br>使用記事本打開 <code>convertible.rb</code>，尋找以下的 ruby code</p>
+<pre><code>self.content = File.read(File.join(base, name))</code></pre>
+<p>改成</p>
+<pre><code>self.content = File.read(File.join(base, name), :encoding =&gt; &quot;utf-8&quot;)</code></pre>
+<p>就可以了，如果還不行，請檢查你文章編碼是否為UTF-8(無BOM表格式)</p>
+<h2 id="出現-CP950-的錯誤訊息"><a href="#出現-CP950-的錯誤訊息" class="headerlink" title="出現 CP950 的錯誤訊息"></a>出現 CP950 的錯誤訊息</h2><p>rake generate 後，某個文章出現 </p>
+<pre><code>invalid byte sequence in CP950 (ArgumentError)</code></pre>
+<p>請見 錯誤訊息: <code>read_yaml: invalid byte sequence in Big5 (ArgumentError)</code>  </p>
+<h2 id="出現-YAML-Exception-reading-xxx-md-invalid-byte-sequence-in-xxx"><a href="#出現-YAML-Exception-reading-xxx-md-invalid-byte-sequence-in-xxx" class="headerlink" title="出現 YAML Exception reading xxx.md: invalid byte sequence in xxx"></a>出現 YAML Exception reading xxx.md: invalid byte sequence in xxx</h2><p>rake generate 後，某個文章出現 </p>
+<pre><code>YAML Exception reading xxx.md: invalid byte sequence in xxxx</code></pre>
+<p>請檢查該文章的編碼，是否為UTF-8</p>
+<h2 id="出現-rejected-master-gt-master-non-fast-forward"><a href="#出現-rejected-master-gt-master-non-fast-forward" class="headerlink" title="出現 [rejected] master -&gt; master (non-fast-forward)"></a>出現 [rejected] master -&gt; master (non-fast-forward)</h2><pre><code>To git@github.com:xxx/xxx.github.io.git
+! [rejected]        master -&gt; master (non-fast-forward)
+error: failed to push some refs to &#39;git@github.com:xxx/xxx.github.io.git&#39;
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Merge the remote changes (e.g. &#39;git pull&#39;)
+hint: before pushing again.
+hint: See the &#39;Note about fast-forwards&#39; in &#39;git push --help&#39; for details.</code></pre>
+<p>比較快的解法就是去 github 那邊，到你的 repostory 那邊，選 branch 後，把 master 這個 branch 砍掉即可</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wwssllabcd.github.io/2012/08/01/how-to-install-octopress-on-window/" data-id="ckh7xm3tg000fg8haew2tgzv5" class="article-share-link">Share</a>
+      
+        <a href="http://wwssllabcd.github.io/2012/08/01/how-to-install-octopress-on-window/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/How-To/" rel="tag">How-To</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Octopress/" rel="tag">Octopress</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/blog/2012/08/02/kadanes-algorithm/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Kadane`s algorithm
+        
+      </div>
+    </a>
+  
+  
+    <a href="/blog/2007/03/10/elderly-code-transfer-to-new-code/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">從舊 code 過渡到新 Code 的心得</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Bitcoin/" rel="tag">Bitcoin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Boost/" rel="tag">Boost</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Bugzilla/" rel="tag">Bugzilla</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Firefox-extension/" rel="tag">Firefox extension</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/GDB/" rel="tag">GDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/GDB-Script/" rel="tag">GDB Script</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Google-Earth/" rel="tag">Google Earth</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Heroku/" rel="tag">Heroku</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/How-To/" rel="tag">How-To</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Investment/" rel="tag">Investment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Kodi/" rel="tag">Kodi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Lunux-kernel/" rel="tag">Lunux kernel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Modern-C-Design/" rel="tag">Modern C++ Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Nokogiri/" rel="tag">Nokogiri</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/OO/" rel="tag">OO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Octopress/" rel="tag">Octopress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Programming-pearls/" rel="tag">Programming pearls</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Qemu/" rel="tag">Qemu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/RSS/" rel="tag">RSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Raspberry-Pi/" rel="tag">Raspberry Pi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Ruby/" rel="tag">Ruby</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/SNMP/" rel="tag">SNMP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Subversion/" rel="tag">Subversion</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/USB/" rel="tag">USB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Ubuntu/" rel="tag">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Virtual-Box/" rel="tag">Virtual Box</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Windows/" rel="tag">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Wordpress/" rel="tag">Wordpress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/bochs/" rel="tag">bochs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux%EF%BC%8Cmakefile/" rel="tag">linux，makefile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/sicp/" rel="tag">sicp</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/blog/tags/Android/" style="font-size: 12.5px;">Android</a> <a href="/blog/tags/Bitcoin/" style="font-size: 10px;">Bitcoin</a> <a href="/blog/tags/Boost/" style="font-size: 12.5px;">Boost</a> <a href="/blog/tags/Bugzilla/" style="font-size: 10px;">Bugzilla</a> <a href="/blog/tags/C/" style="font-size: 17.5px;">C++</a> <a href="/blog/tags/Firefox-extension/" style="font-size: 12.5px;">Firefox extension</a> <a href="/blog/tags/GDB/" style="font-size: 12.5px;">GDB</a> <a href="/blog/tags/GDB-Script/" style="font-size: 10px;">GDB Script</a> <a href="/blog/tags/Google-Earth/" style="font-size: 10px;">Google Earth</a> <a href="/blog/tags/Heroku/" style="font-size: 10px;">Heroku</a> <a href="/blog/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/blog/tags/How-To/" style="font-size: 20px;">How-To</a> <a href="/blog/tags/Investment/" style="font-size: 10px;">Investment</a> <a href="/blog/tags/Kodi/" style="font-size: 10px;">Kodi</a> <a href="/blog/tags/Lunux-kernel/" style="font-size: 15px;">Lunux kernel</a> <a href="/blog/tags/Modern-C-Design/" style="font-size: 12.5px;">Modern C++ Design</a> <a href="/blog/tags/Nokogiri/" style="font-size: 12.5px;">Nokogiri</a> <a href="/blog/tags/OO/" style="font-size: 15px;">OO</a> <a href="/blog/tags/Octopress/" style="font-size: 10px;">Octopress</a> <a href="/blog/tags/Programming-pearls/" style="font-size: 10px;">Programming pearls</a> <a href="/blog/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/blog/tags/Qemu/" style="font-size: 10px;">Qemu</a> <a href="/blog/tags/RSS/" style="font-size: 12.5px;">RSS</a> <a href="/blog/tags/Raspberry-Pi/" style="font-size: 17.5px;">Raspberry Pi</a> <a href="/blog/tags/Ruby/" style="font-size: 15px;">Ruby</a> <a href="/blog/tags/SNMP/" style="font-size: 10px;">SNMP</a> <a href="/blog/tags/Subversion/" style="font-size: 10px;">Subversion</a> <a href="/blog/tags/USB/" style="font-size: 10px;">USB</a> <a href="/blog/tags/Ubuntu/" style="font-size: 12.5px;">Ubuntu</a> <a href="/blog/tags/Virtual-Box/" style="font-size: 10px;">Virtual Box</a> <a href="/blog/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/blog/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/blog/tags/bochs/" style="font-size: 10px;">bochs</a> <a href="/blog/tags/linux%EF%BC%8Cmakefile/" style="font-size: 10px;">linux，makefile</a> <a href="/blog/tags/sicp/" style="font-size: 10px;">sicp</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/01/">January 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2014/05/">May 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/11/">November 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/10/">October 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/04/">April 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/03/">March 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/01/">January 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/12/">December 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/11/">November 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/10/">October 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/09/">September 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/08/">August 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2007/03/">March 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2006/12/">December 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2004/12/">December 2004</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2003/04/">April 2003</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2020/11/08/how-to-use-kodi/">kodi 教學，心得</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2020/11/08/how-to-install-kodi-in-raspberry-pi-4/">how-to-install-kodi-in-raspberry-pi-4</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2020/02/16/Investment-of-indexing/">指數型投資(Investment of indexing)</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2018/05/21/how-to-install-python-on-windows/">Python windows 安裝, 心得, 教學</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2018/05/21/how-to-install-pyqt/">安裝 PyQt</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 EricWang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/blog/aboutme.html" class="mobile-nav-link">AboutMe</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'ericwangsblog';
+  
+  var disqus_url = 'http://wwssllabcd.github.io/2012/08/01/how-to-install-octopress-on-window/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css">
+
+  
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/blog/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

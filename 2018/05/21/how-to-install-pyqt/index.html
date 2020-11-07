@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-34321837-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <title>安裝 PyQt | printf(&#34; I&#39;m EricWang &#34;)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="安裝 PyQt PyQT 為 python 的一款 GUI 程式, 是採用 GPL licence, 但也是不是每一版都有 windows 安裝版注意: 這邊可能會更推薦使用 pip 安裝, 指令為  pip install pyqt5 pip 會自動根據 python 的版本自動匹配, 我這邊使用 python 3.6.5 批配到的是 pyqt 5.10.1 雖然 PyQt 可以自行從官網下載並">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安裝 PyQt">
+<meta property="og:url" content="http://wwssllabcd.github.io/2018/05/21/how-to-install-pyqt/index.html">
+<meta property="og:site_name" content="printf(&quot; I&#39;m EricWang &quot;)">
+<meta property="og:description" content="安裝 PyQt PyQT 為 python 的一款 GUI 程式, 是採用 GPL licence, 但也是不是每一版都有 windows 安裝版注意: 這邊可能會更推薦使用 pip 安裝, 指令為  pip install pyqt5 pip 會自動根據 python 的版本自動匹配, 我這邊使用 python 3.6.5 批配到的是 pyqt 5.10.1 雖然 PyQt 可以自行從官網下載並">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-05-20T17:13:59.000Z">
+<meta property="article:modified_time" content="2018-06-19T15:15:40.000Z">
+<meta property="article:author" content="EricWang">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/blog/atom.xml" title="printf(&#34; I&#39;m EricWang &#34;)" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://lh3.googleusercontent.com/-4X7H3oQr-Ws/VKchKJJwnSI/AAAAAAAAsy4/NK3uBSzNQlo/s0/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/blog/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">printf(&#34; I&#39;m EricWang &#34;)</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/blog/aboutme.html">AboutMe</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://wwssllabcd.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-how-to-install-pyqt" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2018/05/21/how-to-install-pyqt/" class="article-date">
+  <time datetime="2018-05-20T17:13:59.000Z" itemprop="datePublished">2018-05-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      安裝 PyQt
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+		
+			<div id="toc" class="toc-article">
+				<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-PyQt"><span class="toc-number">1.</span> <span class="toc-text">安裝 PyQt </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-Pyqt5-tools"><span class="toc-number">2.</span> <span class="toc-text">安裝 Pyqt5-tools</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PyQt-%E7%9A%84-ui-%E6%AA%94%E8%BD%89%E6%8F%9B"><span class="toc-number">3.</span> <span class="toc-text">PyQt 的 ui 檔轉換</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8-QT-design-%E4%B8%AD%E8%A7%80%E7%9C%8B-ui-%E9%A0%90%E8%A6%BD"><span class="toc-number">4.</span> <span class="toc-text">在 QT design 中觀看 ui 預覽</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LineEdit-%E8%88%87-TextEdit-%E7%9A%84%E5%B7%AE%E7%95%B0"><span class="toc-number">5.</span> <span class="toc-text">LineEdit 與 TextEdit 的差異</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E9%BA%BC%E6%98%AF-Spacer"><span class="toc-number">6.</span> <span class="toc-text">什麼是 Spacer </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B%E4%B8%80%E5%80%8B%E4%BA%8B%E4%BB%B6"><span class="toc-number">7.</span> <span class="toc-text">建立一個事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-keypass-event"><span class="toc-number">8.</span> <span class="toc-text">使用 keypass event</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%9C%E6%8E%89-QTextEdit-%E7%9A%84-Scoll"><span class="toc-number">9.</span> <span class="toc-text">關掉 QTextEdit 的 Scoll</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A8%AD%E5%AE%9A-dialog-title"><span class="toc-number">10.</span> <span class="toc-text">設定 dialog title</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Combobox-%E4%B8%AD%E7%9A%84%E4%B8%8B%E6%8B%89%E5%BC%8F-item-%E5%8A%A0%E9%95%B7"><span class="toc-number">11.</span> <span class="toc-text">Combobox 中的下拉式 item 加長</span></a></li></ol>
+			</div>
+		
+
+        <h2 id="安裝-PyQt"><a href="#安裝-PyQt" class="headerlink" title="安裝 PyQt "></a>安裝 PyQt </h2><p>PyQT 為 python 的一款 GUI 程式, 是採用 GPL licence, 但也是不是每一版都有 windows 安裝版<br>注意: 這邊可能會更推薦使用 pip 安裝, 指令為</p>
+<pre><code> pip install pyqt5</code></pre>
+<p>pip 會自動根據 python 的版本自動匹配, 我這邊使用 <code>python 3.6.5</code> 批配到的是 <code>pyqt 5.10.1</code></p>
+<pre><code>雖然 PyQt 可以自行從官網下載並安裝, 但請務必使用 pip 安裝, 後面使用的時候問題會比較少</code></pre>
+<h2 id="安裝-Pyqt5-tools"><a href="#安裝-Pyqt5-tools" class="headerlink" title="安裝 Pyqt5-tools"></a>安裝 Pyqt5-tools</h2><p>使用 pip 安裝 PyQt 時, 並不會把 Pyqt designr 給安裝起來, 所以使用 pip 安裝 Pyqt5-tools, 以便取得 QT designer</p>
+<pre><code>pip install pyqt5-tools</code></pre>
+<p>而 designer 會在 </p>
+<pre><code>D:\Python\Python36-32\Lib\site-packages\pyqt5-tools</code></pre>
+<p>中找到</p>
+<a id="more"></a>
+
+<h2 id="PyQt-的-ui-檔轉換"><a href="#PyQt-的-ui-檔轉換" class="headerlink" title="PyQt 的 ui 檔轉換"></a>PyQt 的 ui 檔轉換</h2><p>安裝好 pyqt5 後, 可以使用 qt design 來設計 UI, 把 UI 設計好了之後存檔, 會產生 .ui檔 接下來要使用此ui 檔, 我們必須把此 ui 檔案轉換成 .py檔，方便我們直接在 Python 中使用, 使用 CMD 切換到設計好的 ui 所在目錄下，執行此指令(ui檔我們取名為 myui.ui) </p>
+<pre><code>pyuic5 myui.ui -o myui.py</code></pre>
+<p>而 pyuic5 路徑如下( python 安裝路徑為 D:\Python36-32 為例)</p>
+<pre><code>D:\Python36-32\Scripts\pyuic5.exe</code></pre>
+<p>接下來把以下文字存成&#39;PyGui.py&#39;  </p>
+<pre><code>import sys
+from PyQt5.QtWidgets import QApplication, QDialog, QMessageBox
+from myui import Ui_Dialog
+class MyDlg(QDialog):
+    def __init__(self):
+        super(MyDlg, self).__init__()
+
+        # Set up the user interface from Designer.
+        self.ui = Ui_Dialog()
+        self.ui.setupUi(self)
+
+def main_start():
+    app = QApplication(sys.argv)
+    window = MyDlg()
+    window.show()
+    sys.exit(app.exec_())
+
+
+if __name__ == &#39;__main__&#39;:
+    main_start()</code></pre>
+<p>再執行以下指令即可</p>
+<pre><code>python PyGui.py </code></pre>
+<p>ref:</p>
+<p><a target="_blank" rel="noopener" href="http://pyqt.sourceforge.net/Docs/PyQt5/designer.html">http://pyqt.sourceforge.net/Docs/PyQt5/designer.html</a></p>
+<h2 id="在-QT-design-中觀看-ui-預覽"><a href="#在-QT-design-中觀看-ui-預覽" class="headerlink" title="在 QT design 中觀看 ui 預覽"></a>在 QT design 中觀看 ui 預覽</h2><ul>
+<li>表單/預覽, </li>
+<li>或是 Ctrl+R</li>
+</ul>
+<h2 id="LineEdit-與-TextEdit-的差異"><a href="#LineEdit-與-TextEdit-的差異" class="headerlink" title="LineEdit 與 TextEdit 的差異"></a>LineEdit 與 TextEdit 的差異</h2><p>lineEdit: 單行的 edit
+TextEdit: 多行</p>
+<h2 id="什麼是-Spacer"><a href="#什麼是-Spacer" class="headerlink" title="什麼是 Spacer "></a>什麼是 Spacer </h2><p>是當使用 vertical layout 時, 若中間不想放東西的時候用來填空的
+Horizontal Spacer 水平空白条和 Vertical Spacer 垂直空白条，空白条的作用就是填充无用的空隙，如果不希望看到控件拉伸后变丑，就可以塞一个空白条到布局器里面
+<a target="_blank" rel="noopener" href="https://qtguide.ustclug.org/">https://qtguide.ustclug.org/</a></p>
+<h2 id="建立一個事件"><a href="#建立一個事件" class="headerlink" title="建立一個事件"></a>建立一個事件</h2><pre><code>class MyDlg(QtGui.QDialog):
+    def __init__(self, parent=None):
+        QtGui.QWidget.__init__(self, parent)
+        self.ui = Ui_Dialog()
+        self.ui.setupUi(self)
+        self.ui.btnRefresh.clicked.connect(self.chk_fun)
+
+    def chk_fun(self):
+        print(&quot;Good.&quot;)</code></pre>
+<p>直接在 MyDlg 中的 <code>__init__</code> 中加入事件, 並綁定到某個 function 就可以了, 
+例如這邊看到的是一個叫<code>btnRefresh</code> 的button, 我們把這個 button 的 clicked 的事件, 綁訂到 chk_fun 這個 function , 而這個 function 印出 good</p>
+<p>再舉一個例子, 如 combobox 的 index change 綁定事件如下</p>
+<pre><code>myCombobox.currentIndexChanged.connect(self.cmd_idx_change)</code></pre>
+<h2 id="使用-keypass-event"><a href="#使用-keypass-event" class="headerlink" title="使用 keypass event"></a>使用 keypass event</h2><p>只要在該 Qdlog 中, 複寫 def keyPressEvent(self, event): 即可, 如下所示</p>
+<pre><code>def keyPressEvent(self, event):
+    key = event.key()
+    print(key)
+    super(MyDlg, self).keyPressEvent(event)</code></pre>
+<p>要注意的是, 如果現在 focus 的控鍵上有 keypassevent 的話, 會優先呼叫該控鍵的 event, 例如 txtedit 有自己的 page down , 所以 dialog 的不會對他造成影響</p>
+<h2 id="關掉-QTextEdit-的-Scoll"><a href="#關掉-QTextEdit-的-Scoll" class="headerlink" title="關掉 QTextEdit 的 Scoll"></a>關掉 QTextEdit 的 Scoll</h2><p>找到 verticalScrollBarPolicy , 並且把她設成 off 即可</p>
+<h2 id="設定-dialog-title"><a href="#設定-dialog-title" class="headerlink" title="設定 dialog title"></a>設定 dialog title</h2><p>self.setWindowTitle</p>
+<h2 id="Combobox-中的下拉式-item-加長"><a href="#Combobox-中的下拉式-item-加長" class="headerlink" title="Combobox 中的下拉式 item 加長"></a>Combobox 中的下拉式 item 加長</h2><p>有個屬性叫<code>visiable item cnt</code>的數字選大一點</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wwssllabcd.github.io/2018/05/21/how-to-install-pyqt/" data-id="ckh7xm3vq002jg8ha2mev2f3f" class="article-share-link">Share</a>
+      
+        <a href="http://wwssllabcd.github.io/2018/05/21/how-to-install-pyqt/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/blog/2018/05/21/how-to-install-python-on-windows/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Python windows 安裝, 心得, 教學
+        
+      </div>
+    </a>
+  
+  
+    <a href="/blog/2017/11/12/how-to-execute-amb-expression/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">執行 amb expression</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Bitcoin/" rel="tag">Bitcoin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Boost/" rel="tag">Boost</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Bugzilla/" rel="tag">Bugzilla</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Firefox-extension/" rel="tag">Firefox extension</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/GDB/" rel="tag">GDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/GDB-Script/" rel="tag">GDB Script</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Google-Earth/" rel="tag">Google Earth</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Heroku/" rel="tag">Heroku</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/How-To/" rel="tag">How-To</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Investment/" rel="tag">Investment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Kodi/" rel="tag">Kodi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Lunux-kernel/" rel="tag">Lunux kernel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Modern-C-Design/" rel="tag">Modern C++ Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Nokogiri/" rel="tag">Nokogiri</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/OO/" rel="tag">OO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Octopress/" rel="tag">Octopress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Programming-pearls/" rel="tag">Programming pearls</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Qemu/" rel="tag">Qemu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/RSS/" rel="tag">RSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Raspberry-Pi/" rel="tag">Raspberry Pi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Ruby/" rel="tag">Ruby</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/SNMP/" rel="tag">SNMP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Subversion/" rel="tag">Subversion</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/USB/" rel="tag">USB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Ubuntu/" rel="tag">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Virtual-Box/" rel="tag">Virtual Box</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Windows/" rel="tag">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Wordpress/" rel="tag">Wordpress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/bochs/" rel="tag">bochs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux%EF%BC%8Cmakefile/" rel="tag">linux，makefile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/sicp/" rel="tag">sicp</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/blog/tags/Android/" style="font-size: 12.5px;">Android</a> <a href="/blog/tags/Bitcoin/" style="font-size: 10px;">Bitcoin</a> <a href="/blog/tags/Boost/" style="font-size: 12.5px;">Boost</a> <a href="/blog/tags/Bugzilla/" style="font-size: 10px;">Bugzilla</a> <a href="/blog/tags/C/" style="font-size: 17.5px;">C++</a> <a href="/blog/tags/Firefox-extension/" style="font-size: 12.5px;">Firefox extension</a> <a href="/blog/tags/GDB/" style="font-size: 12.5px;">GDB</a> <a href="/blog/tags/GDB-Script/" style="font-size: 10px;">GDB Script</a> <a href="/blog/tags/Google-Earth/" style="font-size: 10px;">Google Earth</a> <a href="/blog/tags/Heroku/" style="font-size: 10px;">Heroku</a> <a href="/blog/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/blog/tags/How-To/" style="font-size: 20px;">How-To</a> <a href="/blog/tags/Investment/" style="font-size: 10px;">Investment</a> <a href="/blog/tags/Kodi/" style="font-size: 10px;">Kodi</a> <a href="/blog/tags/Lunux-kernel/" style="font-size: 15px;">Lunux kernel</a> <a href="/blog/tags/Modern-C-Design/" style="font-size: 12.5px;">Modern C++ Design</a> <a href="/blog/tags/Nokogiri/" style="font-size: 12.5px;">Nokogiri</a> <a href="/blog/tags/OO/" style="font-size: 15px;">OO</a> <a href="/blog/tags/Octopress/" style="font-size: 10px;">Octopress</a> <a href="/blog/tags/Programming-pearls/" style="font-size: 10px;">Programming pearls</a> <a href="/blog/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/blog/tags/Qemu/" style="font-size: 10px;">Qemu</a> <a href="/blog/tags/RSS/" style="font-size: 12.5px;">RSS</a> <a href="/blog/tags/Raspberry-Pi/" style="font-size: 17.5px;">Raspberry Pi</a> <a href="/blog/tags/Ruby/" style="font-size: 15px;">Ruby</a> <a href="/blog/tags/SNMP/" style="font-size: 10px;">SNMP</a> <a href="/blog/tags/Subversion/" style="font-size: 10px;">Subversion</a> <a href="/blog/tags/USB/" style="font-size: 10px;">USB</a> <a href="/blog/tags/Ubuntu/" style="font-size: 12.5px;">Ubuntu</a> <a href="/blog/tags/Virtual-Box/" style="font-size: 10px;">Virtual Box</a> <a href="/blog/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/blog/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/blog/tags/bochs/" style="font-size: 10px;">bochs</a> <a href="/blog/tags/linux%EF%BC%8Cmakefile/" style="font-size: 10px;">linux，makefile</a> <a href="/blog/tags/sicp/" style="font-size: 10px;">sicp</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/01/">January 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2014/05/">May 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/11/">November 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/10/">October 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/04/">April 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/03/">March 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/01/">January 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/12/">December 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/11/">November 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/10/">October 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/09/">September 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/08/">August 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2007/03/">March 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2006/12/">December 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2004/12/">December 2004</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2003/04/">April 2003</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2020/11/08/how-to-use-kodi/">kodi 教學，心得</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2020/11/08/how-to-install-kodi-in-raspberry-pi-4/">how-to-install-kodi-in-raspberry-pi-4</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2020/02/16/Investment-of-indexing/">指數型投資(Investment of indexing)</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2018/05/21/how-to-install-python-on-windows/">Python windows 安裝, 心得, 教學</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2018/05/21/how-to-install-pyqt/">安裝 PyQt</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 EricWang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/blog/aboutme.html" class="mobile-nav-link">AboutMe</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'ericwangsblog';
+  
+  var disqus_url = 'http://wwssllabcd.github.io/2018/05/21/how-to-install-pyqt/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css">
+
+  
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/blog/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
