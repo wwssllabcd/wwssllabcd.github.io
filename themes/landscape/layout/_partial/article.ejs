@@ -19,6 +19,13 @@
           </p>
         <% } %>
       <% } else { %>
+
+		<% if(post.toc == true){ %>
+			<div id="toc" class="toc-article">
+				<%- toc(post.content) %>
+			</div>
+		<% } %>
+
         <%- post.content %>
       <% } %>
     </div>

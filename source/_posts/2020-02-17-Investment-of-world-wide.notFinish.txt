@@ -1,0 +1,75 @@
+---
+title: 投資全球(Investment of world wide )
+date: 2020-02-17 01:26:00
+tags: Investment
+---
+
+前言
+----------------
+根據上一篇, 我們提到了我們投資的核心思想是 "分散標的以降低風險" 為手段, 但是不管我們在怎麼分散, 我們都還是在台灣這個市場, 萬一台灣經濟發生什麼問題(例如地震, 天災, 人禍, 對岸飛彈), 那不是很危險嗎? 今天就要來探討這些問題
+
+
+投資 "台灣市場" 或是投資 "全球市場"
+--------------
+在台灣, 我們購買市值最大的前50間公司作為分散手段以降低投資風險, 不過你把每個國家都看成一間公司的話, 我們的投資策略還是在買同一間公司, 風險不是很高? 那利用之前討論過的分散的策略, 購買全世界前50大國家的股票, 這個問題不就可以解決了嗎? 
+
+其實是可以的, 不過很遺憾在台灣並沒有這種投資工具, 國外才有, 有一間叫 [Vanguard](https://zh.wikipedia.org/wiki/%E9%A0%98%E8%88%AA%E6%8A%95%E8%B3%87) 的公司就有提供這種服務, 所以今天就要教大家怎樣購買美國的 ETF 以達到全球分散的效果
+
+
+註:   
+Vanguard 是由[約翰·柏格](https://zh.wikipedia.org/wiki/%E7%B4%84%E7%BF%B0%C2%B7%E6%9F%8F%E6%A0%BC_(%E5%9F%BA%E9%87%91%E6%A5%AD%E8%80%85))所創造, 他也被稱作指數型投資之父, 他也有寫過幾本書, 其中有一本叫做"The Little Book of Common Sense Investing -- 約翰柏格投資常識", 取名為常識是因為他覺得投資不需要太高深的學問
+
+這邊有一些該書的心得, 有興趣可以看看
+* [《一本書學識投資》關於投資你必須知道的4個常識](https://readingoutpost.com/common-sense-investing/)
+* [約翰柏格的投資常識"(The Little Book of Common Sense Investing)讀後感](https://hn28082251.blogspot.com/2019/08/The-Little-Book-of-Common-Sense-Investing-1.html)
+
+
+
+全球 50
+-------------
+在教你怎樣前進美股之前, 我先介紹投資工具, 畢竟我還是希望大家能了解投資目的與手段, 而不是怎樣開戶買美股
+
+現在要介紹最重要的一隻 ETF -- Vanguard Total World Stock ETF, 代號 VT.US
+
+我們可以到[VT Profile page](https://investor.vanguard.com/etf/profile/portfolio/vt) 了解一下他的細節, 可以看到投資市場比例為下   
+
+* 59.00% 	North America(北美)  
+* 18.10% 	Europe(歐洲)  
+* 12.40% 	Pacific(亞洲)  
+* 9.90% 	Emerging Markets(新興市場)  
+* 0.20% 	Middle East(中東)  
+* 0.40% 	Other  
+
+可以看到北美其實還是佔最大數, 不過這也沒辦法, 因為美國身為全世界最大的經濟體, 佔全球市值是蠻大的, 接著看一下最大的前10家公司
+
+* Apple Inc.(蘋果)
+* Microsoft Corp.(微軟)
+* Alphabet Inc.(谷歌)
+* Amazon Inc.(亞馬遜)
+* Facebook Inc.(臉書)
+* Berkshire Hathaway Inc.(波克夏)
+* JPMorgan Chase & Co.(JP 摩根)
+* Johnson & Johnson(嬌生公司)
+* Alibaba Group Holding Ltd.(阿里巴巴)
+* Visa Inc.
+
+而這10家公司加起來, 也只不過佔 VT 的 12% 的淨值, 也就是說這 10 家公司若全倒光了, 也不過影響 12% 而已, 而 VT 目前總共擁有 8444 間的股票, 所以也不能說它是全球 50, 應該要說他是全球 8千, 看完是不是覺得很安心, VT 對於地區與公司都做了分散
+
+VT 是一支好的 ETF 嗎?
+--------------
+好, 那麼我們之前說過一支好的 ETF 需要的是
+* 好的追蹤率
+* 低的管理費
+
+那 VT 表現得如何呢? 根據[綠角 VT 分析研究](https://greenhornfinancefootnote.blogspot.com/2019/04/vanguard-total-world-stock-etfvt2019.html), 這邊指數追蹤的差異都不到千分之一, 是很好的追蹤績效
+
+而費用由 VT Profile Page 可以看到 [VT只需要 0.09%](https://investor.vanguard.com/etf/profile/fees/vt) 有多低呢? 比對台灣人最常買的[台灣50的費用為 0.355%](https://www.twse.com.tw/zh/ETF/fund/0050), 而且 Vanguard 這間公司每年都還會調降管理費, 你就知道元大有多黑了
+
+
+不想吃 VT 套餐, 是否可以自組全球 50 ?
+----------------
+可以
+
+結論
+---------------
+購買台灣50 還不如買 VT, VT除了全球分散外, 又有低廉的費用, 是一個很穩定的投資工具

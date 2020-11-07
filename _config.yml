@@ -3,18 +3,18 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: printf(" I'm EricWang ")
 subtitle: ''
 description: ''
 keywords:
-author: John Doe
+author: EricWang
 language: en
 timezone: ''
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
-url: http://example.com
-root: /
+url: http://wwssllabcd.github.io
+root: /blog/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -103,4 +103,30 @@ theme: landscape
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: ''
+  type: git
+  repo: git@github.com:wwssllabcd/blog.git
+  branch: gh-pages
+
+# Disqus
+disqus_shortname: ericwangsblog
+
+#sitemap
+sitemap:
+    path: sitemap.xml
+
+#RSS feed
+feed:
+    type: atom
+    path: atom.xml
+    limit: 20
+    
+
+#markdown
+marked:
+  gfm: true
+  pedantic: false
+  sanitize: false
+  tables: true
+  breaks: false
+  smartLists: false
+  smartypants: false

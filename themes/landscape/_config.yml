@@ -2,6 +2,7 @@
 menu:
   Home: /
   Archives: /archives
+  AboutMe: /aboutme.html
 rss: /atom.xml
 
 # Content
@@ -28,9 +29,9 @@ archive_type: 'monthly'
 show_count: false
 
 # Miscellaneous
-google_analytics:
+google_analytics: UA-34321837-1
 gauges_analytics:
-favicon: /favicon.png
+favicon: https://lh3.googleusercontent.com/-4X7H3oQr-Ws/VKchKJJwnSI/AAAAAAAAsy4/NK3uBSzNQlo/s0/favicon.ico
 twitter:
 google_plus:
 fb_admins:
