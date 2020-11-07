@@ -56,33 +56,6 @@
   </entry>
   
   <entry>
-    <title>安裝 PyQt</title>
-    <link href="http://wwssllabcd.github.io/2018/05/21/2018-05-21-how-to-install-pyqt%20/"/>
-    <id>http://wwssllabcd.github.io/2018/05/21/2018-05-21-how-to-install-pyqt%20/</id>
-    <published>2018-05-20T17:13:59.000Z</published>
-    <updated>2018-06-19T15:15:40.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="安裝-PyQt"><a href="#安裝-PyQt" class="headerlink" title="安裝 PyQt "></a>安裝 PyQt </h2><p>PyQT 為 python 的一款 GUI 程式, 是採用 GPL licence, 但也是不是每一版都有 windows 安裝版<br>注意: 這邊可能會更推薦使用 pip 安裝, 指令為</p><pre><code> pip install pyqt5</code></pre><p>pip 會自動根據 python 的版本自動匹配, 我這邊使用 <code>python 3.6.5</code> 批配到的是 <code>pyqt 5.10.1</code></p><pre><code>雖然 PyQt 可以自行從官網下載並安裝, 但請務必使用 pip 安裝, 後面使用的時候問題會比較少</code></pre><h2 id="安裝-Pyqt5-tools"><a href="#安裝-Pyqt5-tools" class="headerlink" title="安裝 Pyqt5-tools"></a>安裝 Pyqt5-tools</h2><p>使用 pip 安裝 PyQt 時, 並不會把 Pyqt designr 給安裝起來, 所以使用 pip 安裝 Pyqt5-tools, 以便取得 QT designer</p><pre><code>pip install pyqt5-tools</code></pre><p>而 designer 會在 </p><pre><code>D:\Python\Python36-32\Lib\site-packages\pyqt5-tools</code></pre><p>中找到</p><a id="more"></a><h2 id="PyQt-的-ui-檔轉換"><a href="#PyQt-的-ui-檔轉換" class="headerlink" title="PyQt 的 ui 檔轉換"></a>PyQt 的 ui 檔轉換</h2><p>安裝好 pyqt5 後, 可以使用 qt design 來設計 UI, 把 UI 設計好了之後存檔, 會產生 .ui檔 接下來要使用此ui 檔, 我們必須把此 ui 檔案轉換成 .py檔，方便我們直接在 Python 中使用, 使用 CMD 切換到設計好的 ui 所在目錄下，執行此指令(ui檔我們取名為 myui.ui) </p><pre><code>pyuic5 myui.ui -o myui.py</code></pre><p>而 pyuic5 路徑如下( python 安裝路徑為 D:\Python36-32 為例)</p><pre><code>D:\Python36-32\Scripts\pyuic5.exe</code></pre><p>接下來把以下文字存成&#39;PyGui.py&#39;  </p><pre><code>import sysfrom PyQt5.QtWidgets import QApplication, QDialog, QMessageBoxfrom myui import Ui_Dialogclass MyDlg(QDialog):    def __init__(self):        super(MyDlg, self).__init__()        # Set up the user interface from Designer.        self.ui = Ui_Dialog()        self.ui.setupUi(self)def main_start():    app = QApplication(sys.argv)    window = MyDlg()    window.show()    sys.exit(app.exec_())if __name__ == &#39;__main__&#39;:    main_start()</code></pre><p>再執行以下指令即可</p><pre><code>python PyGui.py </code></pre><p>ref:</p><p><a href="http://pyqt.sourceforge.net/Docs/PyQt5/designer.html">http://pyqt.sourceforge.net/Docs/PyQt5/designer.html</a></p><h2 id="在-QT-design-中觀看-ui-預覽"><a href="#在-QT-design-中觀看-ui-預覽" class="headerlink" title="在 QT design 中觀看 ui 預覽"></a>在 QT design 中觀看 ui 預覽</h2><ul><li>表單/預覽, </li><li>或是 Ctrl+R</li></ul><h2 id="LineEdit-與-TextEdit-的差異"><a href="#LineEdit-與-TextEdit-的差異" class="headerlink" title="LineEdit 與 TextEdit 的差異"></a>LineEdit 與 TextEdit 的差異</h2><p>lineEdit: 單行的 editTextEdit: 多行</p><h2 id="什麼是-Spacer"><a href="#什麼是-Spacer" class="headerlink" title="什麼是 Spacer "></a>什麼是 Spacer </h2><p>是當使用 vertical layout 時, 若中間不想放東西的時候用來填空的Horizontal Spacer 水平空白条和 Vertical Spacer 垂直空白条，空白条的作用就是填充无用的空隙，如果不希望看到控件拉伸后变丑，就可以塞一个空白条到布局器里面<a href="https://qtguide.ustclug.org/">https://qtguide.ustclug.org/</a></p><h2 id="建立一個事件"><a href="#建立一個事件" class="headerlink" title="建立一個事件"></a>建立一個事件</h2><pre><code>class MyDlg(QtGui.QDialog):    def __init__(self, parent=None):        QtGui.QWidget.__init__(self, parent)        self.ui = Ui_Dialog()        self.ui.setupUi(self)        self.ui.btnRefresh.clicked.connect(self.chk_fun)    def chk_fun(self):        print(&quot;Good.&quot;)</code></pre><p>直接在 MyDlg 中的 <code>__init__</code> 中加入事件, 並綁定到某個 function 就可以了, 例如這邊看到的是一個叫<code>btnRefresh</code> 的button, 我們把這個 button 的 clicked 的事件, 綁訂到 chk_fun 這個 function , 而這個 function 印出 good</p><p>再舉一個例子, 如 combobox 的 index change 綁定事件如下</p><pre><code>myCombobox.currentIndexChanged.connect(self.cmd_idx_change)</code></pre><h2 id="使用-keypass-event"><a href="#使用-keypass-event" class="headerlink" title="使用 keypass event"></a>使用 keypass event</h2><p>只要在該 Qdlog 中, 複寫 def keyPressEvent(self, event): 即可, 如下所示</p><pre><code>def keyPressEvent(self, event):    key = event.key()    print(key)    super(MyDlg, self).keyPressEvent(event)</code></pre><p>要注意的是, 如果現在 focus 的控鍵上有 keypassevent 的話, 會優先呼叫該控鍵的 event, 例如 txtedit 有自己的 page down , 所以 dialog 的不會對他造成影響</p><h2 id="關掉-QTextEdit-的-Scoll"><a href="#關掉-QTextEdit-的-Scoll" class="headerlink" title="關掉 QTextEdit 的 Scoll"></a>關掉 QTextEdit 的 Scoll</h2><p>找到 verticalScrollBarPolicy , 並且把她設成 off 即可</p><h2 id="設定-dialog-title"><a href="#設定-dialog-title" class="headerlink" title="設定 dialog title"></a>設定 dialog title</h2><p>self.setWindowTitle</p><h2 id="Combobox-中的下拉式-item-加長"><a href="#Combobox-中的下拉式-item-加長" class="headerlink" title="Combobox 中的下拉式 item 加長"></a>Combobox 中的下拉式 item 加長</h2><p>有個屬性叫<code>visiable item cnt</code>的數字選大一點</p>]]></content>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;安裝-PyQt&quot;&gt;&lt;a href=&quot;#安裝-PyQt&quot; class=&quot;headerlink&quot; title=&quot;安裝 PyQt &quot;&gt;&lt;/a&gt;安裝 PyQt &lt;/h2&gt;&lt;p&gt;PyQT 為 python 的一款 GUI 程式, 是採用 GPL licence, 但也是不是每一版都有 windows 安裝版&lt;br&gt;注意: 這邊可能會更推薦使用 pip 安裝, 指令為&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt; pip install pyqt5&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;pip 會自動根據 python 的版本自動匹配, 我這邊使用 &lt;code&gt;python 3.6.5&lt;/code&gt; 批配到的是 &lt;code&gt;pyqt 5.10.1&lt;/code&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;雖然 PyQt 可以自行從官網下載並安裝, 但請務必使用 pip 安裝, 後面使用的時候問題會比較少&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&quot;安裝-Pyqt5-tools&quot;&gt;&lt;a href=&quot;#安裝-Pyqt5-tools&quot; class=&quot;headerlink&quot; title=&quot;安裝 Pyqt5-tools&quot;&gt;&lt;/a&gt;安裝 Pyqt5-tools&lt;/h2&gt;&lt;p&gt;使用 pip 安裝 PyQt 時, 並不會把 Pyqt designr 給安裝起來, 所以使用 pip 安裝 Pyqt5-tools, 以便取得 QT designer&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;pip install pyqt5-tools&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;而 designer 會在 &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;D:\Python\Python36-32\Lib\site-packages\pyqt5-tools&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;中找到&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="Python" scheme="http://wwssllabcd.github.io/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Python windows 安裝, 心得, 教學</title>
     <link href="http://wwssllabcd.github.io/2018/05/21/2018-05-21-how-to-install-python-on-windows/"/>
     <id>http://wwssllabcd.github.io/2018/05/21/2018-05-21-how-to-install-python-on-windows/</id>
@@ -106,6 +79,33 @@
 &lt;li&gt;安裝時選 customize install, 這樣才可以自選安裝路徑&lt;/li&gt;
 &lt;li&gt;也順便選 Add python 3.6 to path&lt;/li&gt;
 &lt;/ul&gt;</summary>
+    
+    
+    
+    
+    <category term="Python" scheme="http://wwssllabcd.github.io/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>安裝 PyQt</title>
+    <link href="http://wwssllabcd.github.io/2018/05/21/2018-05-22-how-to-install-pyqt%20/"/>
+    <id>http://wwssllabcd.github.io/2018/05/21/2018-05-22-how-to-install-pyqt%20/</id>
+    <published>2018-05-20T17:13:59.000Z</published>
+    <updated>2018-06-19T15:15:40.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="安裝-PyQt"><a href="#安裝-PyQt" class="headerlink" title="安裝 PyQt "></a>安裝 PyQt </h2><p>PyQT 為 python 的一款 GUI 程式, 是採用 GPL licence, 但也是不是每一版都有 windows 安裝版<br>注意: 這邊可能會更推薦使用 pip 安裝, 指令為</p><pre><code> pip install pyqt5</code></pre><p>pip 會自動根據 python 的版本自動匹配, 我這邊使用 <code>python 3.6.5</code> 批配到的是 <code>pyqt 5.10.1</code></p><pre><code>雖然 PyQt 可以自行從官網下載並安裝, 但請務必使用 pip 安裝, 後面使用的時候問題會比較少</code></pre><h2 id="安裝-Pyqt5-tools"><a href="#安裝-Pyqt5-tools" class="headerlink" title="安裝 Pyqt5-tools"></a>安裝 Pyqt5-tools</h2><p>使用 pip 安裝 PyQt 時, 並不會把 Pyqt designr 給安裝起來, 所以使用 pip 安裝 Pyqt5-tools, 以便取得 QT designer</p><pre><code>pip install pyqt5-tools</code></pre><p>而 designer 會在 </p><pre><code>D:\Python\Python36-32\Lib\site-packages\pyqt5-tools</code></pre><p>中找到</p><a id="more"></a><h2 id="PyQt-的-ui-檔轉換"><a href="#PyQt-的-ui-檔轉換" class="headerlink" title="PyQt 的 ui 檔轉換"></a>PyQt 的 ui 檔轉換</h2><p>安裝好 pyqt5 後, 可以使用 qt design 來設計 UI, 把 UI 設計好了之後存檔, 會產生 .ui檔 接下來要使用此ui 檔, 我們必須把此 ui 檔案轉換成 .py檔，方便我們直接在 Python 中使用, 使用 CMD 切換到設計好的 ui 所在目錄下，執行此指令(ui檔我們取名為 myui.ui) </p><pre><code>pyuic5 myui.ui -o myui.py</code></pre><p>而 pyuic5 路徑如下( python 安裝路徑為 D:\Python36-32 為例)</p><pre><code>D:\Python36-32\Scripts\pyuic5.exe</code></pre><p>接下來把以下文字存成&#39;PyGui.py&#39;  </p><pre><code>import sysfrom PyQt5.QtWidgets import QApplication, QDialog, QMessageBoxfrom myui import Ui_Dialogclass MyDlg(QDialog):    def __init__(self):        super(MyDlg, self).__init__()        # Set up the user interface from Designer.        self.ui = Ui_Dialog()        self.ui.setupUi(self)def main_start():    app = QApplication(sys.argv)    window = MyDlg()    window.show()    sys.exit(app.exec_())if __name__ == &#39;__main__&#39;:    main_start()</code></pre><p>再執行以下指令即可</p><pre><code>python PyGui.py </code></pre><p>ref:</p><p><a href="http://pyqt.sourceforge.net/Docs/PyQt5/designer.html">http://pyqt.sourceforge.net/Docs/PyQt5/designer.html</a></p><h2 id="在-QT-design-中觀看-ui-預覽"><a href="#在-QT-design-中觀看-ui-預覽" class="headerlink" title="在 QT design 中觀看 ui 預覽"></a>在 QT design 中觀看 ui 預覽</h2><ul><li>表單/預覽, </li><li>或是 Ctrl+R</li></ul><h2 id="LineEdit-與-TextEdit-的差異"><a href="#LineEdit-與-TextEdit-的差異" class="headerlink" title="LineEdit 與 TextEdit 的差異"></a>LineEdit 與 TextEdit 的差異</h2><p>lineEdit: 單行的 editTextEdit: 多行</p><h2 id="什麼是-Spacer"><a href="#什麼是-Spacer" class="headerlink" title="什麼是 Spacer "></a>什麼是 Spacer </h2><p>是當使用 vertical layout 時, 若中間不想放東西的時候用來填空的Horizontal Spacer 水平空白条和 Vertical Spacer 垂直空白条，空白条的作用就是填充无用的空隙，如果不希望看到控件拉伸后变丑，就可以塞一个空白条到布局器里面<a href="https://qtguide.ustclug.org/">https://qtguide.ustclug.org/</a></p><h2 id="建立一個事件"><a href="#建立一個事件" class="headerlink" title="建立一個事件"></a>建立一個事件</h2><pre><code>class MyDlg(QtGui.QDialog):    def __init__(self, parent=None):        QtGui.QWidget.__init__(self, parent)        self.ui = Ui_Dialog()        self.ui.setupUi(self)        self.ui.btnRefresh.clicked.connect(self.chk_fun)    def chk_fun(self):        print(&quot;Good.&quot;)</code></pre><p>直接在 MyDlg 中的 <code>__init__</code> 中加入事件, 並綁定到某個 function 就可以了, 例如這邊看到的是一個叫<code>btnRefresh</code> 的button, 我們把這個 button 的 clicked 的事件, 綁訂到 chk_fun 這個 function , 而這個 function 印出 good</p><p>再舉一個例子, 如 combobox 的 index change 綁定事件如下</p><pre><code>myCombobox.currentIndexChanged.connect(self.cmd_idx_change)</code></pre><h2 id="使用-keypass-event"><a href="#使用-keypass-event" class="headerlink" title="使用 keypass event"></a>使用 keypass event</h2><p>只要在該 Qdlog 中, 複寫 def keyPressEvent(self, event): 即可, 如下所示</p><pre><code>def keyPressEvent(self, event):    key = event.key()    print(key)    super(MyDlg, self).keyPressEvent(event)</code></pre><p>要注意的是, 如果現在 focus 的控鍵上有 keypassevent 的話, 會優先呼叫該控鍵的 event, 例如 txtedit 有自己的 page down , 所以 dialog 的不會對他造成影響</p><h2 id="關掉-QTextEdit-的-Scoll"><a href="#關掉-QTextEdit-的-Scoll" class="headerlink" title="關掉 QTextEdit 的 Scoll"></a>關掉 QTextEdit 的 Scoll</h2><p>找到 verticalScrollBarPolicy , 並且把她設成 off 即可</p><h2 id="設定-dialog-title"><a href="#設定-dialog-title" class="headerlink" title="設定 dialog title"></a>設定 dialog title</h2><p>self.setWindowTitle</p><h2 id="Combobox-中的下拉式-item-加長"><a href="#Combobox-中的下拉式-item-加長" class="headerlink" title="Combobox 中的下拉式 item 加長"></a>Combobox 中的下拉式 item 加長</h2><p>有個屬性叫<code>visiable item cnt</code>的數字選大一點</p>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;安裝-PyQt&quot;&gt;&lt;a href=&quot;#安裝-PyQt&quot; class=&quot;headerlink&quot; title=&quot;安裝 PyQt &quot;&gt;&lt;/a&gt;安裝 PyQt &lt;/h2&gt;&lt;p&gt;PyQT 為 python 的一款 GUI 程式, 是採用 GPL licence, 但也是不是每一版都有 windows 安裝版&lt;br&gt;注意: 這邊可能會更推薦使用 pip 安裝, 指令為&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; pip install pyqt5&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;pip 會自動根據 python 的版本自動匹配, 我這邊使用 &lt;code&gt;python 3.6.5&lt;/code&gt; 批配到的是 &lt;code&gt;pyqt 5.10.1&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;雖然 PyQt 可以自行從官網下載並安裝, 但請務必使用 pip 安裝, 後面使用的時候問題會比較少&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&quot;安裝-Pyqt5-tools&quot;&gt;&lt;a href=&quot;#安裝-Pyqt5-tools&quot; class=&quot;headerlink&quot; title=&quot;安裝 Pyqt5-tools&quot;&gt;&lt;/a&gt;安裝 Pyqt5-tools&lt;/h2&gt;&lt;p&gt;使用 pip 安裝 PyQt 時, 並不會把 Pyqt designr 給安裝起來, 所以使用 pip 安裝 Pyqt5-tools, 以便取得 QT designer&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;pip install pyqt5-tools&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;而 designer 會在 &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;D:\Python\Python36-32\Lib\site-packages\pyqt5-tools&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;中找到&lt;/p&gt;</summary>
     
     
     
