@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-34321837-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <title>how-to-install-kodi-in-raspberry-pi-4 | printf(&#34; I&#39;m EricWang &#34;)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="RPI 4 安裝 kodi 的心得因為之前的rpi 效能都不太好，所以, 許久沒碰 rpi, 這次出了8GB 號稱可以接近桌機的效能，所以就買一台試看看 PS: 寫在前頭，如果你打算使用 DVI 螢幕當作 RPI 的螢幕的話，你可能要注意，rpi 有機會不能輸出畫面 購買我這次是去台灣樹梅派購買的，我購買的是 8GB + 散熱殼，那個散熱殼我蠻滿意的，風扇也是靜音風扇，只是風扇安裝需要一點技巧，好">
+<meta property="og:type" content="article">
+<meta property="og:title" content="how-to-install-kodi-in-raspberry-pi-4">
+<meta property="og:url" content="http://wwssllabcd.github.io/2020/11/08/how-to-install-kodi-in-raspberry-pi-4/index.html">
+<meta property="og:site_name" content="printf(&quot; I&#39;m EricWang &quot;)">
+<meta property="og:description" content="RPI 4 安裝 kodi 的心得因為之前的rpi 效能都不太好，所以, 許久沒碰 rpi, 這次出了8GB 號稱可以接近桌機的效能，所以就買一台試看看 PS: 寫在前頭，如果你打算使用 DVI 螢幕當作 RPI 的螢幕的話，你可能要注意，rpi 有機會不能輸出畫面 購買我這次是去台灣樹梅派購買的，我購買的是 8GB + 散熱殼，那個散熱殼我蠻滿意的，風扇也是靜音風扇，只是風扇安裝需要一點技巧，好">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-11-07T16:06:48.000Z">
+<meta property="article:modified_time" content="2020-11-07T16:24:04.155Z">
+<meta property="article:author" content="EricWang">
+<meta property="article:tag" content="How-To">
+<meta property="article:tag" content="Raspberry Pi">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/blog/atom.xml" title="printf(&#34; I&#39;m EricWang &#34;)" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://lh3.googleusercontent.com/-4X7H3oQr-Ws/VKchKJJwnSI/AAAAAAAAsy4/NK3uBSzNQlo/s0/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/blog/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">printf(&#34; I&#39;m EricWang &#34;)</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/blog/aboutme.html">AboutMe</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://wwssllabcd.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-how-to-install-kodi-in-raspberry-pi-4" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2020/11/08/how-to-install-kodi-in-raspberry-pi-4/" class="article-date">
+  <time datetime="2020-11-07T16:06:48.000Z" itemprop="datePublished">2020-11-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      how-to-install-kodi-in-raspberry-pi-4
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+		
+
+        <h2 id="RPI-4-安裝-kodi-的心得"><a href="#RPI-4-安裝-kodi-的心得" class="headerlink" title="RPI 4 安裝 kodi 的心得"></a>RPI 4 安裝 kodi 的心得</h2><p>因為之前的rpi 效能都不太好，所以, 許久沒碰 rpi, 這次出了8GB 號稱可以接近桌機的效能，所以就買一台試看看</p>
+<p>PS: 寫在前頭，如果你打算使用 DVI 螢幕當作 RPI 的螢幕的話，你可能要注意，rpi 有機會不能輸出畫面</p>
+<h2 id="購買"><a href="#購買" class="headerlink" title="購買"></a>購買</h2><p>我這次是去台灣樹梅派購買的，我購買的是 8GB + 散熱殼，那個散熱殼我蠻滿意的，風扇也是靜音風扇，只是風扇安裝需要一點技巧，好像裝錯邊風扇就會很吵，記得風扇正反不要裝錯，有貼貼紙的地方是反面，否則你的風扇不會轉</p>
+<h2 id="安裝-kodi，使用-LibreElec"><a href="#安裝-kodi，使用-LibreElec" class="headerlink" title="安裝 kodi，使用 LibreElec"></a>安裝 kodi，使用 LibreElec</h2><p>在 rpi 4 上面安裝 kodi 已經很簡單了，LibreElec 這個專案已經把 os + kodi 整合起來，所以我們就直接安裝 libreelec 就可以了，請到以下網站抓取 image file </p>
+<p><a target="_blank" rel="noopener" href="https://libreelec.tv/raspberry-pi-4/">https://libreelec.tv/raspberry-pi-4/</a></p>
+<p>該網站提供的下載的檔案叫做 &quot;LibreELEC-RPi4.arm-9.2.6.img.gz&quot;，下載完後使用 7z，解開她得到 img file 後，就可以使用  Win32 Disk Imager 燒錄即可，這邊跟之前的 Rpi 做法並沒有不一樣</p>
+<p>如果還是不行，那你可以參考以前的<a href="https://wwssllabcd.github.io/blog/2013/01/31/2013-01-31-how-to-setup-raspberry-pi/#%E5%AE%89%E8%A3%9D-OS">教學</a></p>
+<p>燒完之後，插入至RPI後，接上電源就可以使用了</p>
+<h2 id="常見問題"><a href="#常見問題" class="headerlink" title="常見問題"></a>常見問題</h2><h2 id="沒有畫面，沒有螢幕"><a href="#沒有畫面，沒有螢幕" class="headerlink" title="沒有畫面，沒有螢幕"></a>沒有畫面，沒有螢幕</h2><p>Raspberry Pi 僅支持具有 DVI-D 插槽的設備
+如果你的螢幕只能使用 DVI 的話就會很麻煩，特別是那種很古老的 DVI 介面，你必須要取得你螢幕能支援的解析度</p>
+<p>所以你必須要能在 console 執行以下指令</p>
+<pre><code>/opt/vc/bin/tvservice -d edid.dat
+/opt/vc/bin/edidparser edid.dat</code></pre>
+<p>以便得到你螢幕的參數，但是你又沒螢幕，也看不到，自然也沒法輸入指令，這邊提供兩個做法</p>
+<ol>
+<li>你可以使用 ssh / telnet 的方式登入到 rpi ，自然就可以下指令</li>
+<li>找一台可以順利顯示的螢幕，輸入上述 edid 指令後，先不要執行，然後再把你的螢幕接到不能顯示的螢幕上後，再去執行該指令後，再把螢幕接回來，這樣一來你就可以得到那台無法顯示畫面的螢幕的 edid 檔案了</li>
+</ol>
+<p>拿到參數後，關機後修改 config.txt ，你就可以根據螢幕回報的解析度組合，來設定能支援的參數，以下連結有 video option 可以參考</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.raspberrypi.org/documentation/configuration/config-txt/video.md">https://www.raspberrypi.org/documentation/configuration/config-txt/video.md</a></li>
+<li><a target="_blank" rel="noopener" href="https://elinux.org/RPiconfig#Video_mode_options">https://elinux.org/RPiconfig#Video_mode_options</a></li>
+<li><a target="_blank" rel="noopener" href="https://pimylifeup.com/raspberry-pi-screen-resolution/">https://pimylifeup.com/raspberry-pi-screen-resolution/</a></li>
+</ul>
+<p>主要就是要修改 <code>hdmi_group</code> 與  <code>hdmi_mode</code> 這兩個參數</p>
+<h2 id="沒有畫面，沒有螢幕-continue"><a href="#沒有畫面，沒有螢幕-continue" class="headerlink" title="沒有畫面，沒有螢幕(continue)"></a>沒有畫面，沒有螢幕(continue)</h2><p>如果還是不行，可以試看看在 <code>config.txt</code> 中，設定 hdmi 的輸出的選項，如以下選項都可以試試</p>
+<pre><code>hdmi_drive chooses between HDMI and DVI modes
+hdmi_drive=1 Normal DVI mode (No sound)
+hdmi_drive=2 Normal HDMI mode (Sound will be sent if supported and enabled)</code></pre>
+<p>讓 config.txt 強制設定螢幕介面為你裝置的介面</p>
+<h2 id="kodi-有畫面沒有聲音"><a href="#kodi-有畫面沒有聲音" class="headerlink" title="kodi 有畫面沒有聲音"></a>kodi 有畫面沒有聲音</h2><ul>
+<li>把 hdmi 線改接到比較靠近電源的那個插孔(注意，RPI4 會有兩個 hdmi 輸出的接孔，靠近電源的那一個才是主要的輸出)</li>
+<li>檢查 config.txt 是否為 <code>hdmi_drive=2</code></li>
+<li>檢查 kodi 的設定，是否沒有設定成 hdmi 輸出音效</li>
+<li>在系統設定那邊, 選[設定]-&gt;[音效設定], 檢查輸出設定是否為[hdmi or alalog]</li>
+</ul>
+<h2 id="SSH-打不開"><a href="#SSH-打不開" class="headerlink" title="SSH 打不開"></a>SSH 打不開</h2><p>可能是沒有安裝 ssh ，請使用指令安裝</p>
+<pre><code>sudo service ssh start</code></pre>
+<p>或者是根本沒安裝</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wwssllabcd.github.io/2020/11/08/how-to-install-kodi-in-raspberry-pi-4/" data-id="ckh7xfabs0000y0hagffn2tm1" class="article-share-link">Share</a>
+      
+        <a href="http://wwssllabcd.github.io/2020/11/08/how-to-install-kodi-in-raspberry-pi-4/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/How-To/" rel="tag">How-To</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Raspberry-Pi/" rel="tag">Raspberry Pi</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/blog/2020/11/08/how-to-use-kodi/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          kodi 教學，心得
+        
+      </div>
+    </a>
+  
+  
+    <a href="/blog/2020/02/16/2020-02-16-Investment-of-indexing/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">指數型投資(Investment of indexing)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Bitcoin/" rel="tag">Bitcoin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Boost/" rel="tag">Boost</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Bugzilla/" rel="tag">Bugzilla</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Firefox-extension/" rel="tag">Firefox extension</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/GDB/" rel="tag">GDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/GDB-Script/" rel="tag">GDB Script</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Google-Earth/" rel="tag">Google Earth</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Heroku/" rel="tag">Heroku</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/How-To/" rel="tag">How-To</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Investment/" rel="tag">Investment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Kodi/" rel="tag">Kodi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Lunux-kernel/" rel="tag">Lunux kernel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Modern-C-Design/" rel="tag">Modern C++ Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Nokogiri/" rel="tag">Nokogiri</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/OO/" rel="tag">OO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Octopress/" rel="tag">Octopress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Programming-pearls/" rel="tag">Programming pearls</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Qemu/" rel="tag">Qemu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/RSS/" rel="tag">RSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Raspberry-Pi/" rel="tag">Raspberry Pi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Ruby/" rel="tag">Ruby</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/SNMP/" rel="tag">SNMP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Subversion/" rel="tag">Subversion</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/USB/" rel="tag">USB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Ubuntu/" rel="tag">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Virtual-Box/" rel="tag">Virtual Box</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Windows/" rel="tag">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Wordpress/" rel="tag">Wordpress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/bochs/" rel="tag">bochs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux%EF%BC%8Cmakefile/" rel="tag">linux，makefile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/sicp/" rel="tag">sicp</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/blog/tags/Android/" style="font-size: 12.5px;">Android</a> <a href="/blog/tags/Bitcoin/" style="font-size: 10px;">Bitcoin</a> <a href="/blog/tags/Boost/" style="font-size: 12.5px;">Boost</a> <a href="/blog/tags/Bugzilla/" style="font-size: 10px;">Bugzilla</a> <a href="/blog/tags/C/" style="font-size: 17.5px;">C++</a> <a href="/blog/tags/Firefox-extension/" style="font-size: 12.5px;">Firefox extension</a> <a href="/blog/tags/GDB/" style="font-size: 12.5px;">GDB</a> <a href="/blog/tags/GDB-Script/" style="font-size: 10px;">GDB Script</a> <a href="/blog/tags/Google-Earth/" style="font-size: 10px;">Google Earth</a> <a href="/blog/tags/Heroku/" style="font-size: 10px;">Heroku</a> <a href="/blog/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/blog/tags/How-To/" style="font-size: 20px;">How-To</a> <a href="/blog/tags/Investment/" style="font-size: 10px;">Investment</a> <a href="/blog/tags/Kodi/" style="font-size: 10px;">Kodi</a> <a href="/blog/tags/Lunux-kernel/" style="font-size: 15px;">Lunux kernel</a> <a href="/blog/tags/Modern-C-Design/" style="font-size: 12.5px;">Modern C++ Design</a> <a href="/blog/tags/Nokogiri/" style="font-size: 12.5px;">Nokogiri</a> <a href="/blog/tags/OO/" style="font-size: 15px;">OO</a> <a href="/blog/tags/Octopress/" style="font-size: 10px;">Octopress</a> <a href="/blog/tags/Programming-pearls/" style="font-size: 10px;">Programming pearls</a> <a href="/blog/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/blog/tags/Qemu/" style="font-size: 10px;">Qemu</a> <a href="/blog/tags/RSS/" style="font-size: 12.5px;">RSS</a> <a href="/blog/tags/Raspberry-Pi/" style="font-size: 17.5px;">Raspberry Pi</a> <a href="/blog/tags/Ruby/" style="font-size: 15px;">Ruby</a> <a href="/blog/tags/SNMP/" style="font-size: 10px;">SNMP</a> <a href="/blog/tags/Subversion/" style="font-size: 10px;">Subversion</a> <a href="/blog/tags/USB/" style="font-size: 10px;">USB</a> <a href="/blog/tags/Ubuntu/" style="font-size: 12.5px;">Ubuntu</a> <a href="/blog/tags/Virtual-Box/" style="font-size: 10px;">Virtual Box</a> <a href="/blog/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/blog/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/blog/tags/bochs/" style="font-size: 10px;">bochs</a> <a href="/blog/tags/linux%EF%BC%8Cmakefile/" style="font-size: 10px;">linux，makefile</a> <a href="/blog/tags/sicp/" style="font-size: 10px;">sicp</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/01/">January 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2014/05/">May 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/11/">November 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/10/">October 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/04/">April 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/03/">March 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/01/">January 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/12/">December 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/11/">November 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/10/">October 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/09/">September 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/08/">August 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2007/03/">March 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2006/12/">December 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2004/12/">December 2004</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2003/04/">April 2003</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2020/11/08/how-to-use-kodi/">kodi 教學，心得</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2020/11/08/how-to-install-kodi-in-raspberry-pi-4/">how-to-install-kodi-in-raspberry-pi-4</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2020/02/16/2020-02-16-Investment-of-indexing/">指數型投資(Investment of indexing)</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2018/05/21/2018-05-21-how-to-install-python-on-windows/">Python windows 安裝, 心得, 教學</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2018/05/21/2018-05-22-how-to-install-pyqt/">安裝 PyQt</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 EricWang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/blog/aboutme.html" class="mobile-nav-link">AboutMe</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'ericwangsblog';
+  
+  var disqus_url = 'http://wwssllabcd.github.io/2020/11/08/how-to-install-kodi-in-raspberry-pi-4/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css">
+
+  
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/blog/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

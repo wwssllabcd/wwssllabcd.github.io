@@ -79,6 +79,120 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-how-to-install-hexo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2014/12/22/how-to-install-hexo/" class="article-date">
+  <time datetime="2014-12-22T08:48:07.000Z" itemprop="datePublished">2014-12-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2014/12/22/how-to-install-hexo/">Hexo 安裝教學、心得筆記</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>自從用了 Octopress ( static page + markdown 寫 blog 後 )，我發現我回不去了以前那些所謂聰明的 blog system，以前在看 blog 的時候就超討厭 blog 自動產生一些 tag 等東西而把網頁弄得超慢，
+明明每次生成的東西都一樣，每一次都要自動產生的什麼鬼的，看了就不爽  </p>
+<p>不過 Octopress 很久沒更新，且又只能限定使用 Ruby 1.9.3，造成很多不方便，所以我又跳槽到同樣是 Static Page 的 Blog System -- <a target="_blank" rel="noopener" href="http://hexo.io/">Hexo</a>，
+特別是作者 <a target="_blank" rel="noopener" href="https://twitter.com/tommy351">tommy351</a> 是台灣人，所以用起來更是愉快，
+這邊有<a target="_blank" rel="noopener" href="http://zespia.tw/blog/2012/10/11/hexo-debut/">作者對 hexo 的介紹</a><br><img src="https://lh4.googleusercontent.com/-zW5Mdi4neqc/VJkouOcaeCI/AAAAAAAAswE/EMMODfCyNTU/s0/GitHub_icon.jpg" alt="Hexo 可建構在 GitHub 上面，為什麼放這張圖是因為它可愛 XD"></p>
+<h1 id="安裝-Hexo"><a href="#安裝-Hexo" class="headerlink" title="安裝 Hexo "></a>安裝 Hexo </h1><h2 id="安裝-Hexo-所需檔案"><a href="#安裝-Hexo-所需檔案" class="headerlink" title="安裝 Hexo 所需檔案"></a>安裝 Hexo 所需檔案</h2><p>Hexo 是建構在 Node.js 上面，所以第一步就是安裝 Node.js，到 <a target="_blank" rel="noopener" href="http://nodejs.org/">http://nodejs.org/</a> 下載並安裝，
+安裝好 Node.js 後，在程式集中會出現 <code>Node.js command prompt</code>，點開後會進入到命令提示字元，接下來輸入</p>
+<pre><code>npm install hexo-cli -g</code></pre>
+<p>而在 Ubuntu 下面安裝則要加上 sudo， 之後不再詳述此點</p>
+<pre><code>sudo npm install hexo-cli -g</code></pre>
+<p>安裝好後可以鍵入 hexo 看看有沒有反應，若有反應就代表安裝好了</p>
+<pre><code>hexo # 測試 hexo 是否被正確安裝</code></pre>
+        
+          <p class="article-more-link">
+            <a href="/blog/2014/12/22/how-to-install-hexo/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wwssllabcd.github.io/2014/12/22/how-to-install-hexo/" data-id="ckh7v9d3z001yooha066z0t9a" class="article-share-link">Share</a>
+      
+        <a href="http://wwssllabcd.github.io/2014/12/22/how-to-install-hexo/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Hexo/" rel="tag">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/How-To/" rel="tag">How-To</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2014-12-21-building-an-extension-for-firefox-PageMod" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2014/12/21/2014-12-21-building-an-extension-for-firefox-PageMod/" class="article-date">
+  <time datetime="2014-12-21T08:45:54.000Z" itemprop="datePublished">2014-12-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2014/12/21/2014-12-21-building-an-extension-for-firefox-PageMod/">Firefox addon-SDK 介紹, page-mod</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="使用時機"><a href="#使用時機" class="headerlink" title="使用時機"></a>使用時機</h1><p>今天要介紹的是 Firefox addon-SDK 中的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/Add-ons/SDK/High-Level_APIs/page-mod">page-mod</a>, 使用時機為<code>想要把讀回來的網頁, 再加以修改</code>, 
+例如</p>
+<ol>
+<li>把某網站的排版重新排一下, 例如台鐵的火車時刻表</li>
+<li>想把某些網站廣告區塊移除掉</li>
+<li>想把網頁中特定資訊給顯現出來, 例如某影音網站的影片下載連結</li>
+</ol>
+<p>就可以使用這個, 使用的方式如下</p>
+<h1 id="page-mode-簡介"><a href="#page-mode-簡介" class="headerlink" title="page-mode 簡介"></a>page-mode 簡介</h1><p>官方給的範例如下  </p>
+<pre><code>var pageMod = require(&quot;sdk/page-mod&quot;);
+pageMod.PageMod(&#123;
+    include: &quot;*.mozilla.org&quot;,
+    contentScript: &#39;window.alert(&quot;Page matches ruleset&quot;);&#39;
+&#125;);</code></pre>
+        
+          <p class="article-more-link">
+            <a href="/blog/2014/12/21/2014-12-21-building-an-extension-for-firefox-PageMod/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wwssllabcd.github.io/2014/12/21/2014-12-21-building-an-extension-for-firefox-PageMod/" data-id="ckh7v9d3y001woohaa1o16reh" class="article-share-link">Share</a>
+      
+        <a href="http://wwssllabcd.github.io/2014/12/21/2014-12-21-building-an-extension-for-firefox-PageMod/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Firefox-extension/" rel="tag">Firefox extension</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/How-To/" rel="tag">How-To</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2014-05-03-building-an-extension-for-firefox" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/blog/2014/05/03/2014-05-03-building-an-extension-for-firefox/" class="article-date">
@@ -499,135 +613,6 @@ b *0x7C00</code></pre>
 
 
   
-    <article id="post-2013-01-31-how-to-setup-raspberry-pi" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/blog/2013/01/31/2013-01-31-how-to-setup-raspberry-pi/" class="article-date">
-  <time datetime="2013-01-31T09:06:00.000Z" itemprop="datePublished">2013-01-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2013/01/31/2013-01-31-how-to-setup-raspberry-pi/">Raspberry Pi 安裝心得、教學、簡介</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="簡介"><a href="#簡介" class="headerlink" title="簡介"></a>簡介</h1><p><a target="_blank" rel="noopener" href="http://www.raspberrypi.org/raspberry-pi-2-on-sale/">Raspberry Pi 2</a>on sale   </p>
-<p>Raspberry Pi 介紹可見<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E6%A0%91%E8%8E%93%E6%B4%BE">RPI Wiki</a>，以下簡稱 RPi，
-是一款跟名片差不多大小的小電腦，採用 ARM 11架構，CPU大約 700MHz，由於售價便宜，基本上就是一台小電腦，</p>
-<p>目前比較廣泛的應用如  </p>
-<ul>
-<li>當作 NAS 動物機：使用 <code>transmission-daemon</code>  </li>
-<li>當作家庭檔案 Server：使用 <code>Samba Server</code>  </li>
-<li>當作無線 AP：使用 <code>hostapd</code>  </li>
-<li>當作多媒體播放機看PPS之類的：使用 <code>Raspbmc</code>  </li>
-<li>教小朋友寫 python 程式：RPi 最主要的功能  </li>
-</ul>
-<p>當然RPi不只如此，這邊有個<a target="_blank" rel="noopener" href="http://linuxtoy.org/archives/cool-ideas-for-raspberry-pi.html">34 個使用 Raspberry Pi 的酷創意</a>也許你會有興趣</p>
-<h2 id="開始之前"><a href="#開始之前" class="headerlink" title="開始之前"></a>開始之前</h2><p>台灣已經有代理商<a target="_blank" rel="noopener" href="http://www.raspberrypi.com.tw/purchase/">台灣樹莓派</a>可以訂購了，一片雖然只要 1833 元，但是你還是需要加購一些商品，如SD卡等，
-代理商也有賣一些周邊商品，價格也挺合理，各位可以在上面一次購足，而這邊有建議的<a target="_blank" rel="noopener" href="http://elinux.org/RPi_VerifiedPeripherals">硬體相容性清單</a>，
-可以參考看看，否則買到不相容的裝置就麻煩了</p>
-<p>Raspberry pi 2 (簡稱 RPI 2)也已經開賣了，除了之外，也要介紹有另一家叫 <a target="_blank" rel="noopener" href="http://twcn.rs-online.com/">RS 台灣</a>，東西更便宜，大家可以多多比較   </p>
-<p>方便大家以下為購買的 Link，有更便宜的地方也歡迎留言<br><a target="_blank" rel="noopener" href="http://twcn.rs-online.com/web/p/processor-microcontroller-development-kits/832-6274/">RS 台灣 RPI 2</a><br><a target="_blank" rel="noopener" href="http://www.raspberrypi.com.tw/purchase/">台灣樹莓派 RPI 2</a>  </p>
-<h2 id="購買清單"><a href="#購買清單" class="headerlink" title="購買清單"></a>購買清單</h2><p>這邊我列出一些我個人建議的購買清單  </p>
-<ul>
-<li><code>SD卡</code>：最好是選 SanDisk 的，4G以上。  </li>
-<li><code>電源</code>：如果你手邊有 5V，又超過 2000mA 的 +microUSB介面的電源就可以使用了，通常手機的旅充是這樣的東西。不過供電超過 1A 到 mini USB給 pi都沒用，那邊有放保險絲1A。   </li>
-<li><code>外殼</code>：建議購買，如果你不怕跟其他裝置 short 到的話，另外一提的是如果你有 GPIO 的需求，最好找那種可以接線進去的，否則買殼也沒意義。  </li>
-<li><code>鍵盤</code>：可以不用買，因為通常是用 <a target="_blank" rel="noopener" href="http://ntu.csie.org/~piaip/pietty/">pietty</a> terminal 進去使用。  </li>
-<li><code>無線網卡</code>：強力推薦 <a target="_blank" rel="noopener" href="https://www.google.com/search?q=+EW-7822UAn&ie=utf-8&oe=utf-8">EDIMAX 訊舟 EW-7822UAn</a>，不但在 windows、ubuntu、Raspberry pi、Banana Pi、Mac OS 上全部都可以驅動外，可說是一個打十個，
-且傳輸速度比我其他張卡還來的快，真心推薦  </li>
-<li><code>USB-HUB</code>：極重要，外接裝置(USB硬碟，無線網卡..etc)穩不穩就要靠他了，所以從 <a target="_blank" rel="noopener" href="http://elinux.org/RPi_VerifiedPeripherals#Powered_USB_Hubs">USB-HUB 建議清單</a>中購買一個有外接電源的hub，
-我用過不好的 USB-HUB，USB 外接硬碟與 USB 無線網卡都是忽好忽壞的狀況，跑沒 10 min 就會當機的那種，當下很難抓出問題在哪。  </li>
-</ul>
-<p>當然啦，有錢就全部都買也是不反對的。  </p>
-<p>若想要瞭解不同硬體版本間的差異，這篇對 RPi 的硬體有詳細的介紹<br><a target="_blank" rel="noopener" href="http://ruten-proteus.blogspot.tw/2012/10/raspberry-pi-model-b.html">Raspberry Pi (樹莓派) Model B 各版本之間的差異</a>  </p>
-        
-          <p class="article-more-link">
-            <a href="/blog/2013/01/31/2013-01-31-how-to-setup-raspberry-pi/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://wwssllabcd.github.io/2013/01/31/2013-01-31-how-to-setup-raspberry-pi/" data-id="ckh7v9d3m001eooha0to39gtf" class="article-share-link">Share</a>
-      
-        <a href="http://wwssllabcd.github.io/2013/01/31/2013-01-31-how-to-setup-raspberry-pi/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/How-To/" rel="tag">How-To</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Raspberry-Pi/" rel="tag">Raspberry Pi</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2013-01-08-how-to-install-wordpress-on-heroku" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/blog/2013/01/08/2013-01-08-how-to-install-wordpress-on-heroku/" class="article-date">
-  <time datetime="2013-01-08T09:18:00.000Z" itemprop="datePublished">2013-01-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2013/01/08/2013-01-08-how-to-install-wordpress-on-heroku/">在Heroku上，安裝 Wordpress</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>其實在 Heroku 上安裝 Wordpress 不會很難，不過閱讀之前，你可能先要知道 Heroku 與 git 的基本操作，建議可以先參考以下網站<br><a target="_blank" rel="noopener" href="http://yapeshu.invenio.us/2011/10/web-heroku-Wordpress.html">用 Heroku 架設 Wordpress 網站</a></p>
-<h2 id="Heroku-端設定"><a href="#Heroku-端設定" class="headerlink" title="Heroku 端設定"></a>Heroku 端設定</h2><ul>
-<li>使用 Command line，鍵入 Heroku create 建立一個 app</li>
-<li> 上去 Heroku 網站改名</li>
-<li> 使用 git 下載該 app</li>
-<li> 去 Heroku 網站中的 add-on ， 選擇 Heroku PostgreSQL(free)，並且把他加到該 Wordpress 中  </li>
-</ul>
-<p>使用 Clinet 指令為<br>    heroku addons:add heroku-postgresql:dev</p>
-<ul>
-<li> 使用 Command line， 打 Heroku config ，看看有沒DB的資訊出來，如果有東西出來(填 wp-config.php 要使用到) 就可以進行下一階段</li>
-</ul>
-        
-          <p class="article-more-link">
-            <a href="/blog/2013/01/08/2013-01-08-how-to-install-wordpress-on-heroku/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://wwssllabcd.github.io/2013/01/08/2013-01-08-how-to-install-wordpress-on-heroku/" data-id="ckh7v9d3l001booha64990cxa" class="article-share-link">Share</a>
-      
-        <a href="http://wwssllabcd.github.io/2013/01/08/2013-01-08-how-to-install-wordpress-on-heroku/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Heroku/" rel="tag">Heroku</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/How-To/" rel="tag">How-To</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Wordpress/" rel="tag">Wordpress</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -646,7 +631,7 @@ b *0x7C00</code></pre>
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Bitcoin/" rel="tag">Bitcoin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Boost/" rel="tag">Boost</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Bugzilla/" rel="tag">Bugzilla</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Firefox-extension/" rel="tag">Firefox extension</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/GDB/" rel="tag">GDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/GDB-Script/" rel="tag">GDB Script</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Google-Earth/" rel="tag">Google Earth</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Heroku/" rel="tag">Heroku</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/How-To/" rel="tag">How-To</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Investment/" rel="tag">Investment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Lunux-kernel/" rel="tag">Lunux kernel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Modern-C-Design/" rel="tag">Modern C++ Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Nokogiri/" rel="tag">Nokogiri</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/OO/" rel="tag">OO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Octopress/" rel="tag">Octopress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Programming-pearls/" rel="tag">Programming pearls</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Qemu/" rel="tag">Qemu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/RSS/" rel="tag">RSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Raspberry-Pi/" rel="tag">Raspberry Pi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Ruby/" rel="tag">Ruby</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/SNMP/" rel="tag">SNMP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Subversion/" rel="tag">Subversion</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/USB/" rel="tag">USB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Ubuntu/" rel="tag">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Virtual-Box/" rel="tag">Virtual Box</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Windows/" rel="tag">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Wordpress/" rel="tag">Wordpress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/bochs/" rel="tag">bochs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux%EF%BC%8Cmakefile/" rel="tag">linux，makefile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/sicp/" rel="tag">sicp</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Bitcoin/" rel="tag">Bitcoin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Boost/" rel="tag">Boost</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Bugzilla/" rel="tag">Bugzilla</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Firefox-extension/" rel="tag">Firefox extension</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/GDB/" rel="tag">GDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/GDB-Script/" rel="tag">GDB Script</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Google-Earth/" rel="tag">Google Earth</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Heroku/" rel="tag">Heroku</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/How-To/" rel="tag">How-To</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Investment/" rel="tag">Investment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Kodi/" rel="tag">Kodi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Lunux-kernel/" rel="tag">Lunux kernel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Modern-C-Design/" rel="tag">Modern C++ Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Nokogiri/" rel="tag">Nokogiri</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/OO/" rel="tag">OO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Octopress/" rel="tag">Octopress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Programming-pearls/" rel="tag">Programming pearls</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Qemu/" rel="tag">Qemu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/RSS/" rel="tag">RSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Raspberry-Pi/" rel="tag">Raspberry Pi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Ruby/" rel="tag">Ruby</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/SNMP/" rel="tag">SNMP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Subversion/" rel="tag">Subversion</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/USB/" rel="tag">USB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Ubuntu/" rel="tag">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Virtual-Box/" rel="tag">Virtual Box</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Windows/" rel="tag">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Wordpress/" rel="tag">Wordpress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/bochs/" rel="tag">bochs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux%EF%BC%8Cmakefile/" rel="tag">linux，makefile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/sicp/" rel="tag">sicp</a></li></ul>
     </div>
   </div>
 
@@ -656,7 +641,7 @@ b *0x7C00</code></pre>
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/blog/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/blog/tags/Android/" style="font-size: 12px;">Android</a> <a href="/blog/tags/Bitcoin/" style="font-size: 10px;">Bitcoin</a> <a href="/blog/tags/Boost/" style="font-size: 12px;">Boost</a> <a href="/blog/tags/Bugzilla/" style="font-size: 10px;">Bugzilla</a> <a href="/blog/tags/C/" style="font-size: 18px;">C++</a> <a href="/blog/tags/Firefox-extension/" style="font-size: 12px;">Firefox extension</a> <a href="/blog/tags/GDB/" style="font-size: 12px;">GDB</a> <a href="/blog/tags/GDB-Script/" style="font-size: 10px;">GDB Script</a> <a href="/blog/tags/Google-Earth/" style="font-size: 10px;">Google Earth</a> <a href="/blog/tags/Heroku/" style="font-size: 10px;">Heroku</a> <a href="/blog/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/blog/tags/How-To/" style="font-size: 20px;">How-To</a> <a href="/blog/tags/Investment/" style="font-size: 10px;">Investment</a> <a href="/blog/tags/Lunux-kernel/" style="font-size: 14px;">Lunux kernel</a> <a href="/blog/tags/Modern-C-Design/" style="font-size: 12px;">Modern C++ Design</a> <a href="/blog/tags/Nokogiri/" style="font-size: 12px;">Nokogiri</a> <a href="/blog/tags/OO/" style="font-size: 14px;">OO</a> <a href="/blog/tags/Octopress/" style="font-size: 10px;">Octopress</a> <a href="/blog/tags/Programming-pearls/" style="font-size: 10px;">Programming pearls</a> <a href="/blog/tags/Python/" style="font-size: 12px;">Python</a> <a href="/blog/tags/Qemu/" style="font-size: 10px;">Qemu</a> <a href="/blog/tags/RSS/" style="font-size: 12px;">RSS</a> <a href="/blog/tags/Raspberry-Pi/" style="font-size: 16px;">Raspberry Pi</a> <a href="/blog/tags/Ruby/" style="font-size: 14px;">Ruby</a> <a href="/blog/tags/SNMP/" style="font-size: 10px;">SNMP</a> <a href="/blog/tags/Subversion/" style="font-size: 10px;">Subversion</a> <a href="/blog/tags/USB/" style="font-size: 10px;">USB</a> <a href="/blog/tags/Ubuntu/" style="font-size: 12px;">Ubuntu</a> <a href="/blog/tags/Virtual-Box/" style="font-size: 10px;">Virtual Box</a> <a href="/blog/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/blog/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/blog/tags/bochs/" style="font-size: 10px;">bochs</a> <a href="/blog/tags/linux%EF%BC%8Cmakefile/" style="font-size: 10px;">linux，makefile</a> <a href="/blog/tags/sicp/" style="font-size: 10px;">sicp</a>
+      <a href="/blog/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/blog/tags/Android/" style="font-size: 12.5px;">Android</a> <a href="/blog/tags/Bitcoin/" style="font-size: 10px;">Bitcoin</a> <a href="/blog/tags/Boost/" style="font-size: 12.5px;">Boost</a> <a href="/blog/tags/Bugzilla/" style="font-size: 10px;">Bugzilla</a> <a href="/blog/tags/C/" style="font-size: 17.5px;">C++</a> <a href="/blog/tags/Firefox-extension/" style="font-size: 12.5px;">Firefox extension</a> <a href="/blog/tags/GDB/" style="font-size: 12.5px;">GDB</a> <a href="/blog/tags/GDB-Script/" style="font-size: 10px;">GDB Script</a> <a href="/blog/tags/Google-Earth/" style="font-size: 10px;">Google Earth</a> <a href="/blog/tags/Heroku/" style="font-size: 10px;">Heroku</a> <a href="/blog/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/blog/tags/How-To/" style="font-size: 20px;">How-To</a> <a href="/blog/tags/Investment/" style="font-size: 10px;">Investment</a> <a href="/blog/tags/Kodi/" style="font-size: 10px;">Kodi</a> <a href="/blog/tags/Lunux-kernel/" style="font-size: 15px;">Lunux kernel</a> <a href="/blog/tags/Modern-C-Design/" style="font-size: 12.5px;">Modern C++ Design</a> <a href="/blog/tags/Nokogiri/" style="font-size: 12.5px;">Nokogiri</a> <a href="/blog/tags/OO/" style="font-size: 15px;">OO</a> <a href="/blog/tags/Octopress/" style="font-size: 10px;">Octopress</a> <a href="/blog/tags/Programming-pearls/" style="font-size: 10px;">Programming pearls</a> <a href="/blog/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/blog/tags/Qemu/" style="font-size: 10px;">Qemu</a> <a href="/blog/tags/RSS/" style="font-size: 12.5px;">RSS</a> <a href="/blog/tags/Raspberry-Pi/" style="font-size: 17.5px;">Raspberry Pi</a> <a href="/blog/tags/Ruby/" style="font-size: 15px;">Ruby</a> <a href="/blog/tags/SNMP/" style="font-size: 10px;">SNMP</a> <a href="/blog/tags/Subversion/" style="font-size: 10px;">Subversion</a> <a href="/blog/tags/USB/" style="font-size: 10px;">USB</a> <a href="/blog/tags/Ubuntu/" style="font-size: 12.5px;">Ubuntu</a> <a href="/blog/tags/Virtual-Box/" style="font-size: 10px;">Virtual Box</a> <a href="/blog/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/blog/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/blog/tags/bochs/" style="font-size: 10px;">bochs</a> <a href="/blog/tags/linux%EF%BC%8Cmakefile/" style="font-size: 10px;">linux，makefile</a> <a href="/blog/tags/sicp/" style="font-size: 10px;">sicp</a>
     </div>
   </div>
 
@@ -665,7 +650,7 @@ b *0x7C00</code></pre>
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/01/">January 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2014/05/">May 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/11/">November 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/10/">October 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/04/">April 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/03/">March 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/01/">January 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/12/">December 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/11/">November 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/10/">October 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/09/">September 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/08/">August 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2007/03/">March 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2006/12/">December 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2004/12/">December 2004</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2003/04/">April 2003</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/01/">January 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2014/05/">May 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/11/">November 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/10/">October 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/04/">April 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/03/">March 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/01/">January 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/12/">December 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/11/">November 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/10/">October 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/09/">September 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/08/">August 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2007/03/">March 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2006/12/">December 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2004/12/">December 2004</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2003/04/">April 2003</a></li></ul>
     </div>
   </div>
 
@@ -678,6 +663,14 @@ b *0x7C00</code></pre>
       <ul>
         
           <li>
+            <a href="/blog/2020/11/08/how-to-use-kodi/">kodi 教學，心得</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2020/11/08/how-to-install-kodi-in-raspberry-pi-4/">how-to-install-kodi-in-raspberry-pi-4</a>
+          </li>
+        
+          <li>
             <a href="/blog/2020/02/16/2020-02-16-Investment-of-indexing/">指數型投資(Investment of indexing)</a>
           </li>
         
@@ -687,14 +680,6 @@ b *0x7C00</code></pre>
         
           <li>
             <a href="/blog/2018/05/21/2018-05-22-how-to-install-pyqt/">安裝 PyQt</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2017/11/12/2017-11-12-how-to-execute-amb-expression/">執行 amb expression</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2016/10/03/2016-10-03-how-to-write-make-file/">makefile 心得、教學</a>
           </li>
         
       </ul>
