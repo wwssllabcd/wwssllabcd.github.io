@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-34321837-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <title>Kadane`s algorithm | printf(&#34; I&#39;m EricWang &#34;)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="此篇文章有些程式碼遺失，使用時請注意!Kadane&#39;s algorithm 是 Programming Pearls CH8 有提到我只是純粹有興趣，畢竟他可以把 O(n*3) 變成 O(n)題目不長，請見最下面我後來有找一下，題目可以跟這個比擬，找出哪天買股票與賣股票的時間點是賺最多的聽說是 Google Phone Interview 的考題">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kadane&#96;s algorithm">
+<meta property="og:url" content="http://wwssllabcd.github.io/2012/08/02/2012-08-02-kadanes-algorithm/index.html">
+<meta property="og:site_name" content="printf(&quot; I&#39;m EricWang &quot;)">
+<meta property="og:description" content="此篇文章有些程式碼遺失，使用時請注意!Kadane&#39;s algorithm 是 Programming Pearls CH8 有提到我只是純粹有興趣，畢竟他可以把 O(n*3) 變成 O(n)題目不長，請見最下面我後來有找一下，題目可以跟這個比擬，找出哪天買股票與賣股票的時間點是賺最多的聽說是 Google Phone Interview 的考題">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2012-08-02T14:19:00.000Z">
+<meta property="article:modified_time" content="2015-12-18T12:52:56.000Z">
+<meta property="article:author" content="EricWang">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="Algorithm">
+<meta property="article:tag" content="Programming pearls">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/blog/atom.xml" title="printf(&#34; I&#39;m EricWang &#34;)" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://lh3.googleusercontent.com/-4X7H3oQr-Ws/VKchKJJwnSI/AAAAAAAAsy4/NK3uBSzNQlo/s0/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/blog/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">printf(&#34; I&#39;m EricWang &#34;)</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/blog/aboutme.html">AboutMe</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://wwssllabcd.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2012-08-02-kadanes-algorithm" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2012/08/02/2012-08-02-kadanes-algorithm/" class="article-date">
+  <time datetime="2012-08-02T14:19:00.000Z" itemprop="datePublished">2012-08-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Kadane`s algorithm
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+		
+
+        <p>此篇文章有些程式碼遺失，使用時請注意!<br>Kadane&#39;s algorithm 是 Programming Pearls CH8 有提到<br>我只是純粹有興趣，畢竟他可以把 O(n*3) 變成 O(n)<br>題目不長，請見最下面<br>我後來有找一下，題目可以跟這個比擬，找出哪天買股票與賣股票的時間點是賺最多的<br><a target="_blank" rel="noopener" href="http://www.mitbbs.com/article_t/JobHunting/31731345.html">聽說是 Google Phone Interview 的考題</a></p>
+<a id="more"></a>
+
+<p>教主提出來的 k-th largest sum   </p>
+<pre><code>Output: the kth largest sum(a+b) possible. where
+a (any element from array 1)  
+b (any element from array 2)  </code></pre>
+<p>這問題小弟駑鈍，只算出    </p>
+<pre><code>n*k + (n-1)*k +..+ 1*k  
+= k(n +(n-1) +(n-2) + ... 1)
+= k*n(1+n)/2
+= O(n*k)</code></pre>
+<p>Orz  </p>
+<p>剛睡到一半突然全想通了<br>如果 K-th 的題目真的是兩個 array  a[n],b[k] 中，找出任意兩數最大值的組合的話<br>那還真的是 O(n+k)<br>因為 a+b 的最大數必定為 a 陣列中的最大數，與 b 陣列中的最大數的相加<br>找出 a[n] 的最大數只需要 O(n)<br>找出 b[k] 的最大數只需要 O(k)<br>答案就是 O(n+k)  </p>
+<p>這種問題還是不要睡前想比較好，以免睡不著<br>如果我猜的沒錯的話，google 的那個問題是個爛問題<br>然後 programming pearls 的問題，也是 O(n) 就可以解了  </p>
+<h1 id="Programming-pearl-的範例"><a href="#Programming-pearl-的範例" class="headerlink" title="Programming pearl 的範例"></a>Programming pearl 的範例</h1><p>有一個 array x[10] = {31,-41,59,26,-53,58,97,-93,-23,84}<br>找出一區間，令 x[i+...+j] 其值是最大的<br>例如隨便找兩組<br>第一組: i=0, j=2，其總和為 31+(-41)+59    = 49<br>第二組: i=0, j=3，其總和為 31+(-41)+59+26 = 75  </p>
+<p>所以第二組比第一組來的好，以此類推<br>故簡易的演算法為 O(n*3)  </p>
+<pre><code>int const n=10;
+char x[n] = &#123;31,-41,59,26,-53,58,97,-93,-23,84&#125;
+int maxValue = 0;
+int i, j, k;
+for(i=0; i&lt;n; i++)&#123;
+    for(j=i; j&lt;n; j++)&#123;
+        int sum=0;
+        for(k=i; k&lt;j; k++)(&#123;
+            sum+=x[k];
+        &#125;
+        maxValue = max(maxValue, sum);
+    &#125;
+&#125;</code></pre>
+<h1 id="O-n-2-的演算法-書上教的"><a href="#O-n-2-的演算法-書上教的" class="headerlink" title="O(n*2)的演算法(書上教的)"></a>O(n*2)的演算法(書上教的)</h1><p>sum其實可以重複利用  </p>
+<pre><code>char x[n] = &#123;31,-41,59,26,-53,58,97,-93,-23,84&#125;
+int const n=10;
+int maxValue=0;
+int sum=0;
+int i, j;
+for(i=0; i&lt;n; i++)&#123;
+    sum=0;
+    for(j=i; j&lt;n; j++)&#123;
+        sum+=x[j];
+    &#125;
+    maxValue = max(maxValue, sum);
+&#125;</code></pre>
+<h1 id="O-n-的演算法"><a href="#O-n-的演算法" class="headerlink" title="O(n) 的演算法 "></a>O(n) 的演算法 </h1><p>Programming pearls 的解法我是這樣思考  </p>
+<ol>
+<li><p>如果該陣列全部都是正值，那答案就非常簡單，就是全部 array 的總和  </p>
+</li>
+<li><p>假設從 x[0] 開始往右累加，如果累加的值&quot;不為負&quot;，答案就跟 1 一樣<br>就是 array 如果是 {31,-1,59}，因為31-1是30，還是正數，所以代表加上去之後，結果會跟1推導的一樣  </p>
+</li>
+<li><p>上面兩點討論了累加值都是正的狀態，這邊討論累加值出現負的狀態，也就是說假設從 x[0] 開始往右累加，出現累加的值&quot;為負&quot;的話  </p>
+</li>
+</ol>
+<p>這邊特別討論為負的情況，以題目來講
+假設 1：該 x[i] 陣列，i=0 開始累加到 x[1] 的時候，發現其總和 sum_0_1 &lt; 0 （即 31-41 = -10 )
+假設 2：sum x[2~9] 的總和為 sum_2_9(先不管他是否為正為負)  </p>
+<p>根據以上假設，這也意味著 sum_0_1 + sum_2_9 絕對不可能比 sum_2_9 本身還要大 
+簡單的來說，有一數字 X (不論是正數，負數)，加上一個負的值，絕對不會比 X 本身來得大，所以出現負值的區間可以直接丟棄</p>
+<p>也就是說，一旦發生負值，答案就要一定會存在於 sum x[2~9] 這個區間的最大值  </p>
+<p>程式如下  </p>
+<pre><code>int endingHere=0;
+int startHere=0;
+int maxSum=0;
+int curSum=0;
+int const n=10;
+char x[n] = &#123;31,-41,59,26,-53,58,97,-93,-23,84&#125;;
+
+for(int i=0; i&lt;n; i++)&#123;
+    curSum+=x[i];
+    if(curSum &gt;= maxSum)&#123;
+        //record maxSum &amp; endingHere
+        maxSum = curSum;
+        endingHere = i;
+    &#125;
+    if( curSum &lt; 0 )&#123;
+        //reset current sum, just like point to x[6~10]
+        curSum=0;
+        maxSum=0;
+
+        //reset startHere, endHere
+        startHere = i+1;
+        endingHere = i+1;
+    &#125;
+&#125;</code></pre>
+<p>所以這個的 time-complexity 也就從 O(n*3) 變成 O(n)<br>演算法也變成 liner time algorithm 了  </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wwssllabcd.github.io/2012/08/02/2012-08-02-kadanes-algorithm/" data-id="ckh7v2muo000c18ha51ua47pm" class="article-share-link">Share</a>
+      
+        <a href="http://wwssllabcd.github.io/2012/08/02/2012-08-02-kadanes-algorithm/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/C/" rel="tag">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Programming-pearls/" rel="tag">Programming pearls</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/blog/2012/08/02/2012-08-02-solve-broekn-map-of-google-earth-on-ubuntu/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          解決 Ubuntu 上 Google Earth 文字破碎，亂碼的問題
+        
+      </div>
+    </a>
+  
+  
+    <a href="/blog/2012/08/01/2012-08-01-how-to-install-octopress-on-window/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Octopress 安裝教學、心得筆記 (Windows)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Bitcoin/" rel="tag">Bitcoin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Boost/" rel="tag">Boost</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Bugzilla/" rel="tag">Bugzilla</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Firefox-extension/" rel="tag">Firefox extension</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/GDB/" rel="tag">GDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/GDB-Script/" rel="tag">GDB Script</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Google-Earth/" rel="tag">Google Earth</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Heroku/" rel="tag">Heroku</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/How-To/" rel="tag">How-To</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Investment/" rel="tag">Investment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Lunux-kernel/" rel="tag">Lunux kernel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Modern-C-Design/" rel="tag">Modern C++ Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Nokogiri/" rel="tag">Nokogiri</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/OO/" rel="tag">OO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Octopress/" rel="tag">Octopress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Programming-pearls/" rel="tag">Programming pearls</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Qemu/" rel="tag">Qemu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/RSS/" rel="tag">RSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Raspberry-Pi/" rel="tag">Raspberry Pi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Ruby/" rel="tag">Ruby</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/SNMP/" rel="tag">SNMP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Subversion/" rel="tag">Subversion</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/USB/" rel="tag">USB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Ubuntu/" rel="tag">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Virtual-Box/" rel="tag">Virtual Box</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Windows/" rel="tag">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Wordpress/" rel="tag">Wordpress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/bochs/" rel="tag">bochs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux%EF%BC%8Cmakefile/" rel="tag">linux，makefile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/sicp/" rel="tag">sicp</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/blog/tags/Android/" style="font-size: 12px;">Android</a> <a href="/blog/tags/Bitcoin/" style="font-size: 10px;">Bitcoin</a> <a href="/blog/tags/Boost/" style="font-size: 12px;">Boost</a> <a href="/blog/tags/Bugzilla/" style="font-size: 10px;">Bugzilla</a> <a href="/blog/tags/C/" style="font-size: 18px;">C++</a> <a href="/blog/tags/Firefox-extension/" style="font-size: 12px;">Firefox extension</a> <a href="/blog/tags/GDB/" style="font-size: 12px;">GDB</a> <a href="/blog/tags/GDB-Script/" style="font-size: 10px;">GDB Script</a> <a href="/blog/tags/Google-Earth/" style="font-size: 10px;">Google Earth</a> <a href="/blog/tags/Heroku/" style="font-size: 10px;">Heroku</a> <a href="/blog/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/blog/tags/How-To/" style="font-size: 20px;">How-To</a> <a href="/blog/tags/Investment/" style="font-size: 10px;">Investment</a> <a href="/blog/tags/Lunux-kernel/" style="font-size: 14px;">Lunux kernel</a> <a href="/blog/tags/Modern-C-Design/" style="font-size: 12px;">Modern C++ Design</a> <a href="/blog/tags/Nokogiri/" style="font-size: 12px;">Nokogiri</a> <a href="/blog/tags/OO/" style="font-size: 14px;">OO</a> <a href="/blog/tags/Octopress/" style="font-size: 10px;">Octopress</a> <a href="/blog/tags/Programming-pearls/" style="font-size: 10px;">Programming pearls</a> <a href="/blog/tags/Python/" style="font-size: 12px;">Python</a> <a href="/blog/tags/Qemu/" style="font-size: 10px;">Qemu</a> <a href="/blog/tags/RSS/" style="font-size: 12px;">RSS</a> <a href="/blog/tags/Raspberry-Pi/" style="font-size: 16px;">Raspberry Pi</a> <a href="/blog/tags/Ruby/" style="font-size: 14px;">Ruby</a> <a href="/blog/tags/SNMP/" style="font-size: 10px;">SNMP</a> <a href="/blog/tags/Subversion/" style="font-size: 10px;">Subversion</a> <a href="/blog/tags/USB/" style="font-size: 10px;">USB</a> <a href="/blog/tags/Ubuntu/" style="font-size: 12px;">Ubuntu</a> <a href="/blog/tags/Virtual-Box/" style="font-size: 10px;">Virtual Box</a> <a href="/blog/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/blog/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/blog/tags/bochs/" style="font-size: 10px;">bochs</a> <a href="/blog/tags/linux%EF%BC%8Cmakefile/" style="font-size: 10px;">linux，makefile</a> <a href="/blog/tags/sicp/" style="font-size: 10px;">sicp</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/01/">January 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2014/05/">May 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/11/">November 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/10/">October 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/04/">April 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/03/">March 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/01/">January 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/12/">December 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/11/">November 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/10/">October 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/09/">September 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/08/">August 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2007/03/">March 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2006/12/">December 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2004/12/">December 2004</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2003/04/">April 2003</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2020/02/16/2020-02-16-Investment-of-indexing/">指數型投資(Investment of indexing)</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2018/05/21/2018-05-21-how-to-install-pyqt%20/">安裝 PyQt</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2018/05/21/2018-05-21-how-to-install-python-on-windows/">Python windows 安裝, 心得, 教學</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2017/11/12/2017-11-12-how-to-execute-amb-expression/">執行 amb expression</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2016/10/03/2016-10-03-how-to-write-make-file/">makefile 心得、教學</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 EricWang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/blog/aboutme.html" class="mobile-nav-link">AboutMe</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'ericwangsblog';
+  
+  var disqus_url = 'http://wwssllabcd.github.io/2012/08/02/2012-08-02-kadanes-algorithm/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css">
+
+  
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/blog/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

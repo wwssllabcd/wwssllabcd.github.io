@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-34321837-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <title>SNMP 簡介 | printf(&#34; I&#39;m EricWang &#34;)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="SNMP 簡介簡單網路管理協定，可以用來監控網路裝置，簡單的說明大致上可以分為   MIB:存放裝置狀態的資料庫 SNMP Agent:幫你管裝置的代理程式 而資料是存放在管理系統中，因為管理資料的複雜性，它包含多個元件： 管理資訊結構（Structure of Management Information，SMI） 管理資訊庫（Management Information Base， MIB）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SNMP 簡介">
+<meta property="og:url" content="http://wwssllabcd.github.io/2003/04/01/2003-04-01-how-to-use-snmp/index.html">
+<meta property="og:site_name" content="printf(&quot; I&#39;m EricWang &quot;)">
+<meta property="og:description" content="SNMP 簡介簡單網路管理協定，可以用來監控網路裝置，簡單的說明大致上可以分為   MIB:存放裝置狀態的資料庫 SNMP Agent:幫你管裝置的代理程式 而資料是存放在管理系統中，因為管理資料的複雜性，它包含多個元件： 管理資訊結構（Structure of Management Information，SMI） 管理資訊庫（Management Information Base， MIB）">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2003-04-01T00:44:00.000Z">
+<meta property="article:modified_time" content="2015-12-18T12:52:56.000Z">
+<meta property="article:author" content="EricWang">
+<meta property="article:tag" content="How-To">
+<meta property="article:tag" content="SNMP">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/blog/atom.xml" title="printf(&#34; I&#39;m EricWang &#34;)" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://lh3.googleusercontent.com/-4X7H3oQr-Ws/VKchKJJwnSI/AAAAAAAAsy4/NK3uBSzNQlo/s0/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/blog/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">printf(&#34; I&#39;m EricWang &#34;)</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/blog/aboutme.html">AboutMe</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://wwssllabcd.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2003-04-01-how-to-use-snmp" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2003/04/01/2003-04-01-how-to-use-snmp/" class="article-date">
+  <time datetime="2003-04-01T00:44:00.000Z" itemprop="datePublished">2003-04-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SNMP 簡介
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+		
+			<div id="toc" class="toc-article">
+				<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SNMP-%E7%B0%A1%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">SNMP 簡介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MIB%E8%88%87Device"><span class="toc-number">2.</span> <span class="toc-text">MIB與Device</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ANS-1%E8%88%87BER"><span class="toc-number">3.</span> <span class="toc-text">ANS.1與BER</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B3%BB%E7%B5%B1%E7%9B%A3%E6%8E%A7%E8%88%87MRTG"><span class="toc-number">4.</span> <span class="toc-text">系統監控與MRTG</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MRTG-%E5%AE%89%E8%A3%9D"><span class="toc-number">5.</span> <span class="toc-text">MRTG 安裝</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A9%B3%E7%B4%B0%E7%9A%84OIDs"><span class="toc-number">5.1.</span> <span class="toc-text">詳細的OIDs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MIB-%E8%AE%8A%E6%95%B8"><span class="toc-number">5.2.</span> <span class="toc-text">MIB 變數</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LoadMIBs"><span class="toc-number">5.3.</span> <span class="toc-text">LoadMIBs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#XSize-and-YSize"><span class="toc-number">5.4.</span> <span class="toc-text">XSize and YSize  </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#XScale-and-YScale"><span class="toc-number">5.5.</span> <span class="toc-text">XScale and YScale</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#YLegend%EF%BC%8C-ShortLegend%EF%BC%8C-Legend-1234"><span class="toc-number">5.6.</span> <span class="toc-text">YLegend， ShortLegend， Legend[1234]</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MRTG-%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%9D%E6%8C%87%E5%B0%8E1-4"><span class="toc-number">6.</span> <span class="toc-text">MRTG 快速安裝指導1-4</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E5%B0%8F%E9%83%A8%E5%88%86%E7%9A%84MIB%E8%AA%AA%E6%98%8E"><span class="toc-number">7.</span> <span class="toc-text">一小部分的MIB說明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SNMP%E6%BC%8F%E6%B4%9E"><span class="toc-number">8.</span> <span class="toc-text">SNMP漏洞</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BE%8C%E8%A8%98"><span class="toc-number">9.</span> <span class="toc-text">後記</span></a></li></ol>
+			</div>
+		
+
+        <h1 id="SNMP-簡介"><a href="#SNMP-簡介" class="headerlink" title="SNMP 簡介"></a>SNMP 簡介</h1><p>簡單網路管理協定，可以用來監控網路裝置，簡單的說明大致上可以分為  </p>
+<pre><code>MIB:存放裝置狀態的資料庫
+SNMP Agent:幫你管裝置的代理程式</code></pre>
+<p>而資料是存放在管理系統中，因為管理資料的複雜性，它包含多個元件：</p>
+<pre><code>管理資訊結構（Structure of Management Information，SMI）
+管理資訊庫（Management Information Base， MIB）
+協定（如SNMP）</code></pre>
+<a id="more"></a>
+
+<p>SMI指定結構和描述管理資料，MIB詳細記錄各個物件，協定負責使用者和管理者之間的溝通，
+SMI使用樹狀的概念，一些物件代表樹葉，也只有葉節點才有存放MIB值。
+代表的物件是使用ISO ASN.1 (Abstract Syntax Notation-1)的概念。
+SMI對每一個物件分配一個整數，稱為物件識別碼（Object Identifier， OID）來記錄它們在樹狀圖中的位置，
+詳細說明可以參考以下連結<a target="_blank" rel="noopener" href="http://www.microsoft.com/taiwan/technet/book/tcpip/default_part2.htm">SNMP網路管理程序，文魁資訊股份有限公司</a></p>
+<p>注意:
+要注意的是有些系統，有些MIB編號是浮動式的，每次 Enable 或 Disable 一個介面，該編號都會有異動。所以當MRTG
+執行後，會產生 mrtg.ok 檔案，此檔案會紀錄目前哪一個編號對應到哪一個介面，當發生錯誤時，必須要自行核對此檔案，然後手動去修改介面編號的正確值。</p>
+<h1 id="MIB與Device"><a href="#MIB與Device" class="headerlink" title="MIB與Device"></a>MIB與Device</h1><p>每個提供SNMP的裝置都有他的MIB，裡面存放的就是此裝置目前狀態的值，例如說一張網路卡的MIB可能有下列這幾樣，
+網路卡名稱，網路卡現在狀態(on，off)，網路流量...等(有點像物件導向中的物件)，而我們藉由查詢這些MIB的值來瞭解現在裝置的狀況</p>
+<h1 id="ANS-1與BER"><a href="#ANS-1與BER" class="headerlink" title="ANS.1與BER"></a>ANS.1與BER</h1><p><a target="_blank" rel="noopener" href="http://216.239.53.100/search?q=cache:dju_2EF7du8C:www.cyut.edu.tw/~icchang/course/88-1-NM/ASN1/3B4/asn1.htm+ASN.1%E4%B9%8B%E9%87%8D%E9%BB%9E%E6%91%98%E8%A6%81&hl=zh-TW&ie=UTF-8">ANS.1重點摘要</a></p>
+<h1 id="系統監控與MRTG"><a href="#系統監控與MRTG" class="headerlink" title="系統監控與MRTG"></a>系統監控與MRTG</h1><p>如何找出監控項目，當然嚕，就是要看MIB與SMI嚕，很累的，至於SMI與Private的資料，請回到上面的SMI與MIB，有相關連結，
+你也可以看看 Windows 的 MIB，在%System%/System32/下面副檔名為MIB的，用記事本打開就可以看了</p>
+<h1 id="MRTG-安裝"><a href="#MRTG-安裝" class="headerlink" title="MRTG 安裝"></a>MRTG 安裝</h1><p>這裡提供了一個<a target="_blank" rel="noopener" href="http://www.freecoolpages.com/roadhouse/awho/mrtg/win2k/mrtgwin2k.html">在Windows下裝 MRTG的方法</a>，寫的不錯，請自行參照</p>
+<p>Linux的人請自行使用搜尋引擎，有很多可以讓你看，不提供連結了，你可以在 cfgmaker 下一些參數讓你的 cfg 檔產生一些變化，範例如下</p>
+<pre><code>cfgmaker --global &quot;WorkDir: c:\www\mrtg&quot; --global &quot;Refresh: 600&quot; --global
+&quot;Interval: 5&quot; --global &quot;WriteExpires: Yes&quot; --global &quot;Language: big5&quot; --global
+
+&quot;options[_]: bits&quot; --ifdesc=descr --ifref=descr
+public@127.0.0.1</code></pre>
+<p>不過通常來說，我都是這樣下的(在windows下的環境)</p>
+<pre><code>perl cfgmaker public@127.0.0.1 --global &quot;WorkDir: c:\www\mrtg&quot; --global
+&quot;Language: big5&quot; --output mrtg.cfg</code></pre>
+<p>他只是幫你做cfg檔，你也可以直接跳過，自己寫</p>
+<ol>
+<li>再來輸入 perl mrtg mrtg.cfg 按下 ENTER&quot;(在這步驟的時候，你的cfg檔裡面最好不要有 RunAsDaemon:yes的指令)</li>
+<li>接著修改mrtg.cfg ，使用文書編輯軟體，在mrtg.cfg的最後加上一行 RunAsDaemon: yes之後存檔</li>
+<li>再來回到 C:\ 下輸入 start /Dc:\mrtg\bin wperl mrtg --logging=eventlog mrtg.cfg MRTG即開始工作</li>
+</ol>
+<p><strong>Note: 關於第一點, 在這裡 Complier 的時候，若在 &lt; table &gt; 那邊出現錯誤，
+則代表你把 HTML 斷行了，導致他們變成了數個字串，所以 MRTG 不能 Complier，
+這種情況多發生在您去直接 copy 網頁上的 cfg 檔，而導致產生斷行，
+有時候不能 Complier 是你的 target 有問題，有空格或是怎樣的，自行排除</strong></p>
+<p>當你重開機後，他就不會幫你自動的偵測，若要再啟動，只要再做一次第三步驟就可以了，因為如果要做 Polling 的話，
+就必須要加 RunAsDaemon:yes 與 Start 的指令，但是如果在第一步就先加了 RunAsDaemon:yes，則好像會過不了 complier，所以才要那磨麻煩</p>
+<p>這邊節錄了Polling的方法，瞭解一下原理嚕，翻譯至 MRTG 的 Win32</p>
+<pre><code>MRTG Installation Guide 
+MAKE MRTG RUN ALL THE TIME
+
+Starting mrtg by hand every time you want to run it is not going to make you
+happy I guess.
+
+There is a special option you can set in the mrtg configuration file so so
+that mrtg will not terminate after it was started. Instead it will wait for 5
+minutes and then run again.
+
+    Add the option
+    RunAsDaemon: yes
+
+to your mrtg.cfg file and start it with:
+start /Dc:\mrtg-2.9.27\bin wperl mrtg --logging=eventlog mrtg.cfg
+
+If you use wperl instead of perl， no
+console window will show. MRTG is now running in the background. If it runs into
+problems it will tell you so over the EventLog. </code></pre>
+<p>想要停止 MRTG 的話，就打開工作管理員，把 wperl.exe process 停掉，假如MRTG有任何訊息要告訴你，你可以在event log這邊找到這些訊息，
+假如你放一個捷徑</p>
+<pre><code>Target:    wperl mrtg --logging=eventlog mrtg.cfg
+Start in:  c:\mrtg-2.9.27\bin</code></pre>
+<p>進去你的啟動資料夾裡， mrtg will now start whever you login to your NT box.<br>若你想啟動MRTG而不需登入.<a target="_blank" rel="noopener" href="http://www.firedaemon.com/mrtg-howto.html">參考這個網站</a>，這裡有非常多的免費軟體可以讓你啟動 Server，包括 MRTG 的使用者  </p>
+<h2 id="詳細的OIDs"><a href="#詳細的OIDs" class="headerlink" title="詳細的OIDs"></a>詳細的OIDs</h2><p>你可以利用詳細的OID 去查詢語法如下</p>
+<pre><code>syntax &#39;OID_1&amp;OID_2:community@router
+
+The following example will retrieve error counts for input and output on
+interface 1.
+
+MRTG needs to graph two variables， so you need to specify two OID&#39;s such as
+temperature and humidity or error input and error output.
+
+Example:
+    Target[ezwf]: 1.3.6.1.2.1.2.2.1.14.1&amp;1.3.6.1.2.1.2.2.1.20.1:public@myrouter</code></pre>
+<h2 id="MIB-變數"><a href="#MIB-變數" class="headerlink" title="MIB 變數"></a>MIB 變數</h2><p>你也可以利用MRTG所定義的名稱去做查詢，你可以看看MRTG裡的mibhelp.txt 那裡列出了一些他們定義的參數，舉個例來說，我若要查ifInErrors與ifOutErrors. 就可以打入下列這樣</p>
+<pre><code>Example:
+    Target[ezwf]: ifInErrors.1&amp;ifOutErrors.1:public@myrouter</code></pre>
+<p>他會自動去參照mibhelp.txt而找出正確的OID</p>
+<h2 id="LoadMIBs"><a href="#LoadMIBs" class="headerlink" title="LoadMIBs"></a>LoadMIBs</h2><p>Load the MIB file(s) specified and make its OIDs available as symbolic names. For better efficiancy， a cache of MIBs is maintained in the WorkDir.</p>
+<pre><code>Example:(用逗號隔開)
+LoadMIBs: /dept/net/mibs/netapp.mib，/usr/local/lib/ft100m.mib</code></pre>
+<h2 id="XSize-and-YSize"><a href="#XSize-and-YSize" class="headerlink" title="XSize and YSize  "></a>XSize and YSize  </h2><p>MRTG圖形大小的預設值為 100 by 400 pixels wide (plus some more for the labels. In the example we get almost square graphs ...</p>
+<p>Note: XSize 必須在 20 與 600之間 ; YSize 必須大於 20</p>
+<pre><code>Example:
+    XSize[ezwf]: 300
+    YSize[ezwf]: 300
+    XZoom and YZoom
+
+If you want your graphs to have larger pixels， you can ``Zoom&#39;&#39; them.
+
+Example:
+    XZoom[ezwf]: 2.0
+    YZoom[ezwf]: 2.0</code></pre>
+<h2 id="XScale-and-YScale"><a href="#XScale-and-YScale" class="headerlink" title="XScale and YScale"></a>XScale and YScale</h2><p>If you want your graphs to be actually scaled use XScale and YScale. (Beware: while this works，
+the results look ugly (to be frank) so if someone wants to fix this: patches are welcome.</p>
+<pre><code>Example:
+    XScale[ezwf]: 1.5
+    YScale[ezwf]: 1.5</code></pre>
+<p>note : 若想看個更清楚，可以把Xsize調成100，然後把Xscale變成4，這樣一來還是400，不會破壞美觀</p>
+<h2 id="YLegend，-ShortLegend，-Legend-1234"><a href="#YLegend，-ShortLegend，-Legend-1234" class="headerlink" title="YLegend， ShortLegend， Legend[1234]"></a>YLegend， ShortLegend， Legend[1234]</h2><p>The following keywords allow you to override the text displayed for the various
+legends of the graph and in the HTML document:</p>
+<p>YLegend 就是你圖表上Y軸所顯示的文字，但是不要取的太長的名子，否則會被忽略</p>
+<p>ShortLegend 測量的單位(預設為&#39;b/s&#39;) 出現在統計網頁的Max， Average and Current的單位</p>
+<p>Legend[1234IO] 線的說明:在統計圖表最下面那邊，最多可以6個(1234io)</p>
+<pre><code>Example:
+    YLegend[ezwf]: Bits per Second
+    ShortLegend[ezwf]: b/s
+    Legend1[ezwf]: Incoming Traffic in Bits per Second
+    Legend2[ezwf]: Outgoing Traffic in Bits per Second
+    Legend3[ezwf]: Maximal 5 Minute Incoming Traffic
+    Legend4[ezwf]: Maximal 5 Minute Outgoing Traffic
+    LegendI[ezwf]: &amp;nbsp;In:
+    LegendO[ezwf]: &amp;nbsp;Out:</code></pre>
+<p>Note，if LegendI or LegendO are set to an empty string with LegendO[ezwf]: The corresponding line below the graph will not be printed at all.<br>以下還有一些參數，是參考網路上的資料而來的而來的，不過我有補充一些所以跟原文不同，要看原文可以去網路上搜尋</p>
+<h1 id="MRTG-快速安裝指導1-4"><a href="#MRTG-快速安裝指導1-4" class="headerlink" title="MRTG 快速安裝指導1-4"></a>MRTG 快速安裝指導1-4</h1><p>這邊補充一點資料 <a target="_blank" rel="noopener" href="http://netlab.kh.edu.tw/document/%E5%BC%B5%E6%AF%93%E9%BA%9F/MRTG%20%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%9D%E6%8C%87%E5%B0%8E.htm">MRTG 快速安裝指導1-4</a></p>
+<p>Note:
+在這裡Complier的時候，若在<table>那邊出現錯誤，則代表你把HTML斷行了，導致他們變成了數個字串，所以MRTG不能Complier，這種情況多發生在您去直接copy網頁上的cfg檔，而導致產生斷行</p>
+<p>Directory[se2cc]: ROOM
+指示 MRTG 將 se2cc 這一個統計項目的資料， 以及這些資料所產生的 HTML 文件與圖表， 放在 WorkDir 之下的 ROOM 子目錄中， 也就是 /home/www/flux/ROOM</p>
+<p>這個目錄.
+對MRTG參數還想知道更多嗎？全文可參考<a target="_blank" rel="noopener" href="http://people.ee.ethz.ch/~oetiker/webtools/mrtg/reference.html">MRTG的網站</a></p>
+<p>偵測CPU Loading，Process，Memory， HD(Hard Disk)Free Space</p>
+<p>使用Windows XP SP1，並且安裝過了SNMP4PC網站的purch， MRTG是使用MRTG2-9-27， Perl使用ActivePerl-5.6.1.635-MSWin32-x86.msi， 以下是我的 cfg 檔</p>
+<pre><code>CPU使用率
+YLegend[cpuPercentUse]: % Utilization
+WithPeak[cpuPercentUse]: ymw
+XSize[cpuPercentUse]: 300
+Options[cpuPercentUse]: growright，gauge
+Target[cpuPercentUse]:.1.3.6.1.4.1.311.1.1.3.1.1.2.1.5.1.48&amp;.1.3.6.1.4.1.311.1.1.3.1.1.2.1.5.1.48:public@192.168.0.1
+MaxBytes[cpuPercentUse]: 100
+Title[cpuPercentUse]:CPUPercentUse
+ShortLegend[cpuPercentUse]: %
+Legend1[cpuPercentUse]: Proc Load in next minute
+Legend2[cpuPercentUse]: Proc Load in next minute
+Legend3[cpuPercentUse]: Maximal 5 Minute Proc Load
+Legend4[cpuPercentUse]: Maximal 5 Minute Proc Load
+LegendI[cpuPercentUse]: &amp;nbsp;CPU使用率:
+LegendO[cpuPercentUse]: &amp;nbsp;CPU使用率:
+PageTop[cpuPercentUse]: &lt;H1&gt;cpuPercentUse&lt;/H1&gt;&lt;TABLE&gt;&lt;TR&gt;&lt;TD&gt;System: &lt;/TD&gt;&lt;TD&gt;你的系統&lt;/TD&gt;&lt;/TR&gt;&lt;TR&gt;&lt;TD&gt;HostIP&lt;/TD&gt;&lt;TD&gt;你的IP&lt;/TD&gt;&lt;/TR&gt;&lt;TR&gt;&lt;TD&gt;Load MIB:&lt;/TD&gt;&lt;TD&gt;cpuPercentPrivilegedTime&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;
+WorkDir: c:/www/mrtg
+Language: big5
+#RunAsDaemon: yes</code></pre>
+<p>有時候不能Complier是你的target有問題，有空格或是怎樣的，自行排除，讓我蠻驚訝的就是Target居然還支援數學運算，先乘除後加減，也可以使用括號，
+其實還可以偵測 IIS 之類的，自行去SMI的Private裡的331(Microsoft)裡面找吧，包你偵測個三天三夜都還搞不完，其他的自行去研究偵測吧.......</p>
+<h1 id="一小部分的MIB說明"><a href="#一小部分的MIB說明" class="headerlink" title="一小部分的MIB說明"></a>一小部分的MIB說明</h1><p>注意:
+要注意的是有些系統，有些MIB編號是浮動式的，每次 Enable 或 Disable 一個介面，該編號都會有異動。所以當MRTG
+執行後，會產生 mrtg.ok 檔案，此檔案會紀錄目前哪一個編號對應到哪一個介面，當發生錯誤時，必須要自行核對此檔案，然後手動去修改介面編號的正確值。</p>
+<h1 id="SNMP漏洞"><a href="#SNMP漏洞" class="headerlink" title="SNMP漏洞"></a>SNMP漏洞</h1><p>由於SNMPv1在做的時候並沒有考慮到安全部分，所以有很多安全上的問題，SNMPv2，SNMPv3雖加強安全上的議題</p>
+<p>但是基本上很多廠商還是根據SNMPv1來做，所以我們在用的SNMP就有很多安全上的漏洞
+例如: BTT Software SNMP Trap Watcher 遠端阻斷式攻擊</p>
+<p>當遠端使用者創設一個含有多於 306 個字串的 string trap 並送給監督工作站時，監督工作站的軟體將立即出現 &quot;此程式已執行一個違規操作&quot;的錯誤視窗。藉 Linux 的以下指令，
+此攻擊方法可以一直被複製讓遠端 Trap Watcher 當機：</p>
+<pre><code>$ snmptrap vulnerable.host community &#39;&#39; &#39;&#39; 0 0 &#39;&#39;
+interfaces.iftable.ifentry.ifindex.1 `perl -e &#39;print &quot;A&quot;x2000&#39;`</code></pre>
+<p>以下連結為卓蘭實驗室的GSN-CERT/CC 第 0084 號通報 : SNMP
+<a target="_blank" rel="noopener" href="http://cc.cles.mlc.edu.tw/article.php?sid=40">相關弱點</a></p>
+<h1 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h1><p>我發現我這個人，只要興趣一來了，就會一頭栽進去，不眠不休的想去瞭解他，之前是JAVA，現在是SNMP，
+去年聽了蔡老師的課，那時候根本不瞭解什麼是SNMP，有一次看到文儀在用What`sUP，藉由他安裝MRTG給我看，
+我才有一點瞭解，而一直到安裝了第一次的MRTG，才比較清楚他整個運作的過程(果然還是要自己做一次阿)  </p>
+<p>裝了MRTG我也只會監控網路流量，不會監控系統，實在是很可惜，就好像在寶山前面，找不到進去的門一樣，
+於是我上網找資料(我只有找中文的)，結果也找不到較明確的MRTG監控系統的方法，後來也就不了了之，
+直到最近不小心看到國外的文章(我本來是想監控PVPGN線上人數，結果無意中跑去他們的網站)，
+發現國外的SNMP教學實在有夠多  </p>
+<p>雖然我知道國外資料一定很多，但是我就是抱著烏龜的心態，只想看中文的 :)，
+對於英文很破的我，(近代外國荼毒我們中國人的兩樣東西，一個是鴉片，一個是英文)，
+雖不想看，但是好奇心戰勝了懶惰心，不小心看了幾次，就把他們都看完啦，  </p>
+<p>所以呢整理出最近幾天研究 SNMP 的心得，也分享給想瞭解SNMP的網友，有錯請來信指教，以免我誤人子弟<br>2003.04.01 </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wwssllabcd.github.io/2003/04/01/2003-04-01-how-to-use-snmp/" data-id="ckh7v2mua000118hae05td3ar" class="article-share-link">Share</a>
+      
+        <a href="http://wwssllabcd.github.io/2003/04/01/2003-04-01-how-to-use-snmp/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/How-To/" rel="tag">How-To</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/SNMP/" rel="tag">SNMP</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/blog/2004/12/23/2004-12-23-batch-file-of-window/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          用Windows下的批次檔(.bat)加上排定的工作，打造自己的備份系統
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Bitcoin/" rel="tag">Bitcoin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Boost/" rel="tag">Boost</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Bugzilla/" rel="tag">Bugzilla</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Firefox-extension/" rel="tag">Firefox extension</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/GDB/" rel="tag">GDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/GDB-Script/" rel="tag">GDB Script</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Google-Earth/" rel="tag">Google Earth</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Heroku/" rel="tag">Heroku</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/How-To/" rel="tag">How-To</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Investment/" rel="tag">Investment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Lunux-kernel/" rel="tag">Lunux kernel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Modern-C-Design/" rel="tag">Modern C++ Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Nokogiri/" rel="tag">Nokogiri</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/OO/" rel="tag">OO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Octopress/" rel="tag">Octopress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Programming-pearls/" rel="tag">Programming pearls</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Qemu/" rel="tag">Qemu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/RSS/" rel="tag">RSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Raspberry-Pi/" rel="tag">Raspberry Pi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Ruby/" rel="tag">Ruby</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/SNMP/" rel="tag">SNMP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Subversion/" rel="tag">Subversion</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/USB/" rel="tag">USB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Ubuntu/" rel="tag">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Virtual-Box/" rel="tag">Virtual Box</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Windows/" rel="tag">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Wordpress/" rel="tag">Wordpress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/bochs/" rel="tag">bochs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux%EF%BC%8Cmakefile/" rel="tag">linux，makefile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/sicp/" rel="tag">sicp</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/blog/tags/Android/" style="font-size: 12px;">Android</a> <a href="/blog/tags/Bitcoin/" style="font-size: 10px;">Bitcoin</a> <a href="/blog/tags/Boost/" style="font-size: 12px;">Boost</a> <a href="/blog/tags/Bugzilla/" style="font-size: 10px;">Bugzilla</a> <a href="/blog/tags/C/" style="font-size: 18px;">C++</a> <a href="/blog/tags/Firefox-extension/" style="font-size: 12px;">Firefox extension</a> <a href="/blog/tags/GDB/" style="font-size: 12px;">GDB</a> <a href="/blog/tags/GDB-Script/" style="font-size: 10px;">GDB Script</a> <a href="/blog/tags/Google-Earth/" style="font-size: 10px;">Google Earth</a> <a href="/blog/tags/Heroku/" style="font-size: 10px;">Heroku</a> <a href="/blog/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/blog/tags/How-To/" style="font-size: 20px;">How-To</a> <a href="/blog/tags/Investment/" style="font-size: 10px;">Investment</a> <a href="/blog/tags/Lunux-kernel/" style="font-size: 14px;">Lunux kernel</a> <a href="/blog/tags/Modern-C-Design/" style="font-size: 12px;">Modern C++ Design</a> <a href="/blog/tags/Nokogiri/" style="font-size: 12px;">Nokogiri</a> <a href="/blog/tags/OO/" style="font-size: 14px;">OO</a> <a href="/blog/tags/Octopress/" style="font-size: 10px;">Octopress</a> <a href="/blog/tags/Programming-pearls/" style="font-size: 10px;">Programming pearls</a> <a href="/blog/tags/Python/" style="font-size: 12px;">Python</a> <a href="/blog/tags/Qemu/" style="font-size: 10px;">Qemu</a> <a href="/blog/tags/RSS/" style="font-size: 12px;">RSS</a> <a href="/blog/tags/Raspberry-Pi/" style="font-size: 16px;">Raspberry Pi</a> <a href="/blog/tags/Ruby/" style="font-size: 14px;">Ruby</a> <a href="/blog/tags/SNMP/" style="font-size: 10px;">SNMP</a> <a href="/blog/tags/Subversion/" style="font-size: 10px;">Subversion</a> <a href="/blog/tags/USB/" style="font-size: 10px;">USB</a> <a href="/blog/tags/Ubuntu/" style="font-size: 12px;">Ubuntu</a> <a href="/blog/tags/Virtual-Box/" style="font-size: 10px;">Virtual Box</a> <a href="/blog/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/blog/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/blog/tags/bochs/" style="font-size: 10px;">bochs</a> <a href="/blog/tags/linux%EF%BC%8Cmakefile/" style="font-size: 10px;">linux，makefile</a> <a href="/blog/tags/sicp/" style="font-size: 10px;">sicp</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/01/">January 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2014/05/">May 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/11/">November 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/10/">October 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/04/">April 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/03/">March 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/01/">January 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/12/">December 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/11/">November 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/10/">October 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/09/">September 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/08/">August 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2007/03/">March 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2006/12/">December 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2004/12/">December 2004</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2003/04/">April 2003</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2020/02/16/2020-02-16-Investment-of-indexing/">指數型投資(Investment of indexing)</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2018/05/21/2018-05-21-how-to-install-pyqt%20/">安裝 PyQt</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2018/05/21/2018-05-21-how-to-install-python-on-windows/">Python windows 安裝, 心得, 教學</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2017/11/12/2017-11-12-how-to-execute-amb-expression/">執行 amb expression</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2016/10/03/2016-10-03-how-to-write-make-file/">makefile 心得、教學</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 EricWang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/blog/aboutme.html" class="mobile-nav-link">AboutMe</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'ericwangsblog';
+  
+  var disqus_url = 'http://wwssllabcd.github.io/2003/04/01/2003-04-01-how-to-use-snmp/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css">
+
+  
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/blog/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

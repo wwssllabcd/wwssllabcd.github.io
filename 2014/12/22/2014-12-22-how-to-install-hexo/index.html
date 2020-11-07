@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-34321837-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <title>Hexo 安裝教學、心得筆記 | printf(&#34; I&#39;m EricWang &#34;)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="自從用了 Octopress ( static page + markdown 寫 blog 後 )，我發現我回不去了以前那些所謂聰明的 blog system，以前在看 blog 的時候就超討厭 blog 自動產生一些 tag 等東西而把網頁弄得超慢， 明明每次生成的東西都一樣，每一次都要自動產生的什麼鬼的，看了就不爽   不過 Octopress 很久沒更新，且又只能限定使用 Ruby 1.9">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo 安裝教學、心得筆記">
+<meta property="og:url" content="http://wwssllabcd.github.io/2014/12/22/2014-12-22-how-to-install-hexo/index.html">
+<meta property="og:site_name" content="printf(&quot; I&#39;m EricWang &quot;)">
+<meta property="og:description" content="自從用了 Octopress ( static page + markdown 寫 blog 後 )，我發現我回不去了以前那些所謂聰明的 blog system，以前在看 blog 的時候就超討厭 blog 自動產生一些 tag 等東西而把網頁弄得超慢， 明明每次生成的東西都一樣，每一次都要自動產生的什麼鬼的，看了就不爽   不過 Octopress 很久沒更新，且又只能限定使用 Ruby 1.9">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://lh4.googleusercontent.com/-zW5Mdi4neqc/VJkouOcaeCI/AAAAAAAAswE/EMMODfCyNTU/s0/GitHub_icon.jpg">
+<meta property="article:published_time" content="2014-12-22T08:48:07.000Z">
+<meta property="article:modified_time" content="2020-11-07T14:48:24.513Z">
+<meta property="article:author" content="EricWang">
+<meta property="article:tag" content="How-To">
+<meta property="article:tag" content="Hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lh4.googleusercontent.com/-zW5Mdi4neqc/VJkouOcaeCI/AAAAAAAAswE/EMMODfCyNTU/s0/GitHub_icon.jpg">
+  
+    <link rel="alternate" href="/blog/atom.xml" title="printf(&#34; I&#39;m EricWang &#34;)" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://lh3.googleusercontent.com/-4X7H3oQr-Ws/VKchKJJwnSI/AAAAAAAAsy4/NK3uBSzNQlo/s0/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/blog/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">printf(&#34; I&#39;m EricWang &#34;)</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/blog/aboutme.html">AboutMe</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://wwssllabcd.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2014-12-22-how-to-install-hexo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2014/12/22/2014-12-22-how-to-install-hexo/" class="article-date">
+  <time datetime="2014-12-22T08:48:07.000Z" itemprop="datePublished">2014-12-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Hexo 安裝教學、心得筆記
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+		
+			<div id="toc" class="toc-article">
+				<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-Hexo"><span class="toc-number">1.</span> <span class="toc-text">安裝 Hexo </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-Hexo-%E6%89%80%E9%9C%80%E6%AA%94%E6%A1%88"><span class="toc-number">1.1.</span> <span class="toc-text">安裝 Hexo 所需檔案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BB%BA%E7%BD%AE%E4%BD%A0%E7%9A%84-Hexo-Blog"><span class="toc-number">1.2.</span> <span class="toc-text">建置你的 Hexo Blog</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%8A-Blog-%E6%94%BE%E5%9C%A8-Github-%E4%B8%8A"><span class="toc-number">1.3.</span> <span class="toc-text">把 Blog 放在 Github 上</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%A8%99%E6%BA%96%E7%9A%84-markdown"><span class="toc-number">1.4.</span> <span class="toc-text">使用標準的 markdown</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B%E6%96%B0%E6%96%87%E7%AB%A0"><span class="toc-number">1.5.</span> <span class="toc-text">建立新文章</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A2%9E%E5%8A%A0%E5%85%B6%E4%BB%96%E5%8A%9F%E8%83%BD"><span class="toc-number">2.</span> <span class="toc-text">增加其他功能</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E5%85%A5%E7%95%99%E8%A8%80"><span class="toc-number">2.1.</span> <span class="toc-text">加入留言 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E5%85%A5-Google-Analytics"><span class="toc-number">2.2.</span> <span class="toc-text">加入 Google Analytics</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E5%85%A5-TOC-Table-Of-Content"><span class="toc-number">2.3.</span> <span class="toc-text">加入 TOC ( Table Of Content) </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E5%85%A5-sitemap"><span class="toc-number">2.4.</span> <span class="toc-text">加入 sitemap </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E5%85%A5-RSS-Feed"><span class="toc-number">2.5.</span> <span class="toc-text">加入 RSS Feed </span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BE%9E-Octopress-%E8%BD%89%E6%8F%9B%E5%88%B0-Hexo"><span class="toc-number">3.</span> <span class="toc-text">從 Octopress 轉換到 Hexo</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B6%B2%E7%AB%99%E7%9A%84%E6%A0%B9%E7%9B%AE%E9%8C%84"><span class="toc-number">3.1.</span> <span class="toc-text">網站的根目錄</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Octopress-%E7%9A%84%E6%96%87%E7%AB%A0%E6%94%BE%E5%9C%A8-hexo-%E4%B8%8A-Compile"><span class="toc-number">3.2.</span> <span class="toc-text">Octopress 的文章放在 hexo 上 Compile</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E6%96%87%E7%AB%A0%E7%9A%84%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.3.</span> <span class="toc-text">新文章的格式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8F%9B%E4%BD%88%E6%99%AF%E4%B8%BB%E9%A1%8C"><span class="toc-number">4.</span> <span class="toc-text">換佈景主題</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9-default-theme-%E7%9A%84%E5%B0%81%E9%9D%A2"><span class="toc-number">4.1.</span> <span class="toc-text">修改 default theme 的封面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9-theme-cover"><span class="toc-number">4.2.</span> <span class="toc-text">修改 theme -- cover</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Troubleshooting"><span class="toc-number">5.</span> <span class="toc-text">Troubleshooting</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%B7%E8%A1%8C-hexo-g-%E5%BE%8C%EF%BC%8C%E5%87%BA%E7%8F%BE-warning-LF-will-be-replaced-by-CRLF"><span class="toc-number">5.1.</span> <span class="toc-text">執行 hexo g 後，出現 warning: LF will be replaced by CRLF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E5%85%B6%E4%BB%96%E7%9A%84%E5%9C%B0%E6%96%B9-%E5%88%A5%E5%8F%B0%E9%9B%BB%E8%85%A6-check-out-%E4%B8%8B%E4%BE%86%E4%BD%A0%E7%9A%84-blog-src"><span class="toc-number">5.2.</span> <span class="toc-text">在其他的地方(別台電腦) check out 下來你的 blog src  </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BA%E7%8F%BE-src-refspec-master-does-not-match-any"><span class="toc-number">5.3.</span> <span class="toc-text">出現 src refspec master does not match any</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BA%E7%8F%BE-spawn-ENOENT-at-errnoException-childprocess-js-1001-11"><span class="toc-number">5.4.</span> <span class="toc-text">出現 spawn ENOENT at errnoException childprocess.js:1001:11</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BA%E7%8F%BE-fatal-Could-not-read-from-remote-repository"><span class="toc-number">5.5.</span> <span class="toc-text">出現 fatal: Could not read from remote repository.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BA%E7%8F%BE-events-js-85-%E7%9A%84%E9%8C%AF%E8%AA%A4"><span class="toc-number">5.6.</span> <span class="toc-text">出現 events.js:85 的錯誤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%B7%E8%A1%8C-hexo-d-%E5%87%BA%E7%8F%BE-permission-denied-publickey"><span class="toc-number">5.7.</span> <span class="toc-text">執行 hexo d 出現 permission denied (publickey).</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-number">6.</span> <span class="toc-text">Reference</span></a></li></ol>
+			</div>
+		
+
+        <p>自從用了 Octopress ( static page + markdown 寫 blog 後 )，我發現我回不去了以前那些所謂聰明的 blog system，以前在看 blog 的時候就超討厭 blog 自動產生一些 tag 等東西而把網頁弄得超慢，
+明明每次生成的東西都一樣，每一次都要自動產生的什麼鬼的，看了就不爽  </p>
+<p>不過 Octopress 很久沒更新，且又只能限定使用 Ruby 1.9.3，造成很多不方便，所以我又跳槽到同樣是 Static Page 的 Blog System -- <a target="_blank" rel="noopener" href="http://hexo.io/">Hexo</a>，
+特別是作者 <a target="_blank" rel="noopener" href="https://twitter.com/tommy351">tommy351</a> 是台灣人，所以用起來更是愉快，
+這邊有<a target="_blank" rel="noopener" href="http://zespia.tw/blog/2012/10/11/hexo-debut/">作者對 hexo 的介紹</a><br><img src="https://lh4.googleusercontent.com/-zW5Mdi4neqc/VJkouOcaeCI/AAAAAAAAswE/EMMODfCyNTU/s0/GitHub_icon.jpg" alt="Hexo 可建構在 GitHub 上面，為什麼放這張圖是因為它可愛 XD"></p>
+<h1 id="安裝-Hexo"><a href="#安裝-Hexo" class="headerlink" title="安裝 Hexo "></a>安裝 Hexo </h1><h2 id="安裝-Hexo-所需檔案"><a href="#安裝-Hexo-所需檔案" class="headerlink" title="安裝 Hexo 所需檔案"></a>安裝 Hexo 所需檔案</h2><p>Hexo 是建構在 Node.js 上面，所以第一步就是安裝 Node.js，到 <a target="_blank" rel="noopener" href="http://nodejs.org/">http://nodejs.org/</a> 下載並安裝，
+安裝好 Node.js 後，在程式集中會出現 <code>Node.js command prompt</code>，點開後會進入到命令提示字元，接下來輸入</p>
+<pre><code>npm install hexo-cli -g</code></pre>
+<p>而在 Ubuntu 下面安裝則要加上 sudo， 之後不再詳述此點</p>
+<pre><code>sudo npm install hexo -g</code></pre>
+<p>安裝好後可以鍵入 hexo 看看有沒有反應，若有反應就代表安裝好了</p>
+<pre><code>hexo # 測試 hexo 是否被正確安裝</code></pre>
+<a id="more"></a>
+
+<h2 id="建置你的-Hexo-Blog"><a href="#建置你的-Hexo-Blog" class="headerlink" title="建置你的 Hexo Blog"></a>建置你的 Hexo Blog</h2><p>選定你所要的目錄後(這邊取名叫<code>Blog</code>)，輸入</p>
+<pre><code>hexo init Blog
+cd Blog
+npm install</code></pre>
+<p>接著再增加這些套件，這些套件會被安裝在<code>node_modules</code>中</p>
+<pre><code>npm install hexo-renderer-ejs --save
+npm install hexo-renderer-marked --save
+npm install hexo-renderer-stylus --save</code></pre>
+<p>這樣就完成了初步的建置，這樣大致的就完成了建置了，簡單吧，若要檢視Blog可以使用</p>
+<pre><code>hexo g  # 產生 blog
+hexo s  # 讓 blog 可以在 local 端檢視</code></pre>
+<p>然後打開瀏覽器，輸入 <a target="_blank" rel="noopener" href="http://127.0.0.1:4000/">http://127.0.0.1:4000</a> 就可以看到你的 Blog 了</p>
+<h2 id="把-Blog-放在-Github-上"><a href="#把-Blog-放在-Github-上" class="headerlink" title="把 Blog 放在 Github 上"></a>把 Blog 放在 Github 上</h2><p>首先先開一個 Repostory，取名叫 Blog 後，記住該 Repostory 的 clone 路徑後，打開本地端 Blog 中的_config.yml，
+尋找 <code>deploy:</code>後，type 輸入 github，repository 就去 github 那邊，把你專案的 repo 路徑抄在這，最好是選 ssh 的，
+branch 選 gh-pages <code>(固定，很重要，因為 github 固定以此 branch 作為網站的目錄)</code>，
+最後會長成像以下這個樣子</p>
+<pre><code>deploy:
+    type: github
+    repository: git@github.com:yourname/yourRepo.git
+    branch: gh-pages</code></pre>
+<p>記住，repository 後面的 yourname，請改成你的帳號，而 yourRepo 就是你剛剛取的名子，其實這個也是 git clone 使用的路徑<br>若真的不行的話，請參考<a target="_blank" rel="noopener" href="http://www.jianshu.com/p/05289a4bc8b2">如何搭建一個獨立博客</a>，這邊就不再詳述  </p>
+<p>PS: 而新版的 Hexo 已把 deploy 的方式改變，詳見 <a target="_blank" rel="noopener" href="http://hexo.io/docs/deployment.html">Hexo Deployment</a>  </p>
+<p>若發生 ERROR Deployer not found: git，請執行以下指令試試</p>
+<pre><code>npm install hexo-deployer-git --save</code></pre>
+<p>接下來找到 URL 的部份，root 那邊必須要跟你的 repo 一樣，如下所示</p>
+<pre><code># URL
+## If your site is put in a subdirectory, set url as &#39;http://yoursite.com/child&#39; and root as &#39;/child/&#39;
+url: http://xxx.github.io/Blog
+root: /Blog/</code></pre>
+<p>設好後，回到 nodejs，鍵入</p>
+<pre><code>hexo d  # 部署 blog 到 GitHub 上</code></pre>
+<p>就可以上傳你的 blog 到 github 了</p>
+<h2 id="使用標準的-markdown"><a href="#使用標準的-markdown" class="headerlink" title="使用標準的 markdown"></a>使用標準的 markdown</h2><p>由於新版的 Hexo 使用 hexo-renderer-marked 來控制 Markdown ，而所以還要在調整一下，
+在 _config.yml 中，鍵入以下參數   </p>
+<pre><code>marked:
+    gfm: true
+    pedantic: false
+    sanitize: false
+    tables: false
+    breaks: false
+    smartLists: false
+    smartypants: false</code></pre>
+<p>其中 breaks 是控制斷行的，一般來說 markdown 是採用兩個空格( two space )來代表<code>&lt;p&gt;</code>，
+若喜歡用 markdown 的格式的話，這邊要設為 false，建議除了 gfm 是設 true 之外. 都設為 false 比較好  </p>
+<h2 id="建立新文章"><a href="#建立新文章" class="headerlink" title="建立新文章"></a>建立新文章</h2><pre><code>hexo new &quot;postName&quot;  # 建立一個新的文章</code></pre>
+<h1 id="增加其他功能"><a href="#增加其他功能" class="headerlink" title="增加其他功能"></a>增加其他功能</h1><h2 id="加入留言"><a href="#加入留言" class="headerlink" title="加入留言 "></a>加入留言 </h2><p>使用 <a target="_blank" rel="noopener" href="https://disqus.com/">Disqus</a>，在_config.yml中，尋找 disqus_shortname ，並把後面加成你 Disqus 的 id </p>
+<pre><code># Disqus
+disqus_shortname: 名稱</code></pre>
+<h2 id="加入-Google-Analytics"><a href="#加入-Google-Analytics" class="headerlink" title="加入 Google Analytics"></a>加入 Google Analytics</h2><p>Hexo 有兩個 _config.yml，一個在根目錄，一個則是 theme 使用，這邊的就要用到 theme 的 _config.yml，
+而以預設的 theme 來做範例，編輯 theme 目錄下的 _config.yml</p>
+<pre><code>./themes/light/_config.yml</code></pre>
+<p>找到<code>google_analytics:</code>後，把 ID 貼在這邊即可</p>
+<h2 id="加入-TOC-Table-Of-Content"><a href="#加入-TOC-Table-Of-Content" class="headerlink" title="加入 TOC ( Table Of Content) "></a>加入 TOC ( Table Of Content) </h2><p>以預設的 theme 為例，在.\themes\landscape\layout_partial\article.ejs中，找到<code>&lt;%- post.content %&gt;</code>後，
+再把以下的段落，加在<code>&lt;%- post.content %&gt;</code>之前</p>
+<pre><code>&lt;% if(post.toc == true)&#123; %&gt;
+        &lt;div id=&quot;toc&quot; class=&quot;toc-article&quot;&gt;
+            &lt;%- toc(post.content) %&gt;
+        &lt;/div&gt;
+&lt;% &#125; %&gt;</code></pre>
+<p>以上段落就是加入 TOC 的位置，適時上可以在任何你喜歡的地方加入<br>然後在每篇文章的屬性那邊，加入</p>
+<pre><code>toc: true </code></pre>
+<p>就可以決定要不要打開該文章，而這邊可以利用 markdown 的<code>===</code>與<code>---</code>做 TOC 一級、二級的控制<br>題外話，這邊也可以觀察到，post 其實就是對應到文章的屬性  </p>
+<pre><code>post.content: 文章內容
+post.title: 文章標題
+post.toc: 這邊 toc 屬性其實是自己加的，若沒設定應該是 null 的值吧</code></pre>
+<h2 id="加入-sitemap"><a href="#加入-sitemap" class="headerlink" title="加入 sitemap "></a>加入 sitemap </h2><p>使用 sitemap 可以讓搜尋引擎可以快一點把你的網站抓回去, 加入的方法也很簡單, 鍵入</p>
+<pre><code>npm install hexo-generator-sitemap --save</code></pre>
+<p>然後在 <code>_config.yml</code> 中加入以下選項即可</p>
+<pre><code>sitemap:
+    path: sitemap.xml</code></pre>
+<h2 id="加入-RSS-Feed"><a href="#加入-RSS-Feed" class="headerlink" title="加入 RSS Feed "></a>加入 RSS Feed </h2><p>使用 feed 可以讓別人訂閱你的文章, 鍵入</p>
+<pre><code>npm install hexo-generator-feed</code></pre>
+<p>然後在 <code>_config.yml</code> 中加入</p>
+<pre><code>#Feed Atom
+feed:
+    type: atom
+    path: atom.xml
+    limit: 20</code></pre>
+<p>即可</p>
+<h1 id="從-Octopress-轉換到-Hexo"><a href="#從-Octopress-轉換到-Hexo" class="headerlink" title="從 Octopress 轉換到 Hexo"></a>從 Octopress 轉換到 Hexo</h1><p>其實要轉換不會太麻煩，只是有幾個地方要注意的就是了  </p>
+<h2 id="網站的根目錄"><a href="#網站的根目錄" class="headerlink" title="網站的根目錄"></a>網站的根目錄</h2><p>在 _config.yml 中，網站的根目錄最好設為 <code>blog</code>(注意大小寫)，如下所示</p>
+<pre><code>root: /blog/</code></pre>
+<h2 id="Octopress-的文章放在-hexo-上-Compile"><a href="#Octopress-的文章放在-hexo-上-Compile" class="headerlink" title="Octopress 的文章放在 hexo 上 Compile"></a>Octopress 的文章放在 hexo 上 Compile</h2><p>文章可以直接放過去，只是 categories 要換成 tag 會比較好，不換也可以，只是 hexo 會變成 categories 而已</p>
+<h2 id="新文章的格式"><a href="#新文章的格式" class="headerlink" title="新文章的格式"></a>新文章的格式</h2><p>Octopress 產生的 markdown 檔案是有帶日期的，但 Hexo 沒有，如果想讓 Hexo 帶日期，可以修改 _config.yml中的 <code>new_post_name</code>，
+改成下列格式即可</p>
+<pre><code>new_post_name: :year-:month-:day-:title.md</code></pre>
+<p>不過這樣改，hexo 產生文章的 link 依然是以 title 為主，這樣剛好相容於 octopress，真是太棒了  </p>
+<h1 id="換佈景主題"><a href="#換佈景主題" class="headerlink" title="換佈景主題"></a>換佈景主題</h1><p>可先到 <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/wiki/Themes">Hexo Theme</a> 先決定好一個主題後，把該主題clone 下來，放在/theme 目錄中，
+如我想要換 daisy 這個主題，則需要做以下步驟</p>
+<pre><code>git clone https://github.com/imbyron/hexo-theme-daisy.git ./themes/daisy  </code></pre>
+<p>接著在_config.yml中，尋找 theme 這個關鍵字後，輸入剛載下來的那個目錄的名稱，如下所示</p>
+<pre><code>theme: daisy</code></pre>
+<h2 id="修改-default-theme-的封面"><a href="#修改-default-theme-的封面" class="headerlink" title="修改 default theme 的封面"></a>修改 default theme 的封面</h2><p>修改封面，各家的都不太一樣，要自己去找，而修改 landscape 的封面為以下兩個<br>修改封面圖案(圖片大小為 1920x1200 )</p>
+<pre><code>YourBlogPath/themes/landscape/source/css/images/banner.jpg</code></pre>
+<p>使用外部封面圖案</p>
+<pre><code>YourBlogPath/themes/landscape/source/css/_variables.styl</code></pre>
+<p>裡面的<code>banner-url = &quot;images/banner.jpg&quot;</code><br>在這邊提供一個小技巧, 因為原始的 theme 是搭配黑色為底， 所以我們可以去 Flickr 那邊找CC授權的<a target="_blank" rel="noopener" href="https://www.flickr.com/search/?q=milkway">銀河(milk way)</a>照片，看到滿意的就抓下來當封面
+這樣就可以弄得跟預設的不一樣了</p>
+<h2 id="修改-theme-cover"><a href="#修改-theme-cover" class="headerlink" title="修改 theme -- cover"></a>修改 theme -- cover</h2><p>Hexo 的 theme 中，有個叫 <a target="_blank" rel="noopener" href="https://github.com/daisygao/hexo-themes-cover">theme cover</a> 做的蠻可愛的，也蠻乾淨的，所以這邊拿來當作範例  </p>
+<ul>
+<li>修改封面: 在 theme/cover下的 _comfig.yml 中修改   </li>
+<li>修改中間的小圖: 放在/source/logo.png  </li>
+<li>修改 brower 的 ico: 放在/source/favicon.ico</li>
+</ul>
+<p>而_comfig.yml中的 auto_change 最好也關掉，如果不想再文章下面出現分享到微博之類的，就把 add this 也關掉，
+留言系統，若想使用原本的 default 值，就把 comment_provider 槓掉即可</p>
+<h1 id="Troubleshooting"><a href="#Troubleshooting" class="headerlink" title="Troubleshooting"></a>Troubleshooting</h1><h2 id="執行-hexo-g-後，出現-warning-LF-will-be-replaced-by-CRLF"><a href="#執行-hexo-g-後，出現-warning-LF-will-be-replaced-by-CRLF" class="headerlink" title="執行 hexo g 後，出現 warning: LF will be replaced by CRLF"></a>執行 hexo g 後，出現 warning: LF will be replaced by CRLF</h2><p>輸入以下指令</p>
+<pre><code>git config --global core.autocrlf false</code></pre>
+<h2 id="在其他的地方-別台電腦-check-out-下來你的-blog-src"><a href="#在其他的地方-別台電腦-check-out-下來你的-blog-src" class="headerlink" title="在其他的地方(別台電腦) check out 下來你的 blog src  "></a>在其他的地方(別台電腦) check out 下來你的 blog src  </h2><p>因為 Hexo 的 Module 是跟著目錄的，所以如果把 code check out 下來，還是要在該目錄執行  </p>
+<pre><code>npm install</code></pre>
+<p>或者是</p>
+<pre><code>npm install hexo-renderer-ejs --save
+npm install hexo-renderer-marked --save
+npm install hexo-renderer-stylus --save</code></pre>
+<p>這三個，你會觀察到 ./node_modules 多了一些檔案  </p>
+<h2 id="出現-src-refspec-master-does-not-match-any"><a href="#出現-src-refspec-master-does-not-match-any" class="headerlink" title="出現 src refspec master does not match any"></a>出現 src refspec master does not match any</h2><p>檢查一下你的 repo 是否還沒有上傳檔案，你可以先把 src 上傳之後，在做 deploy 的動作看看</p>
+<h2 id="出現-spawn-ENOENT-at-errnoException-childprocess-js-1001-11"><a href="#出現-spawn-ENOENT-at-errnoException-childprocess-js-1001-11" class="headerlink" title="出現 spawn ENOENT at errnoException childprocess.js:1001:11"></a>出現 spawn ENOENT at errnoException childprocess.js:1001:11</h2><ul>
+<li>輸入 git 檢查一下你的環境是否可以使用 git，如果不行的話，要把 git 加入到環境變數中才行   </li>
+<li>輸入 node -v  檢查一下你的環境是否可以使用 node    </li>
+<li>輸入 hexo --version 檢查一下你的環境是否可以使用 hexo   </li>
+</ul>
+<h2 id="出現-fatal-Could-not-read-from-remote-repository"><a href="#出現-fatal-Could-not-read-from-remote-repository" class="headerlink" title="出現 fatal: Could not read from remote repository."></a>出現 fatal: Could not read from remote repository.</h2><p>檢查 Git ssh 設定，或者是在 Git Bash 中執行</p>
+<h2 id="出現-events-js-85-的錯誤"><a href="#出現-events-js-85-的錯誤" class="headerlink" title="出現 events.js:85 的錯誤"></a>出現 events.js:85 的錯誤</h2><p>執行 hexo d 發生錯誤，錯誤訊息如下所示</p>
+<pre><code>INFO  Deploying: git
+INFO  Clearing .deploy folder...
+INFO  Copying files from public folder...
+events.js:85
+    throw er; // Unhandled &#39;error&#39; event
+        ^
+Error: spawn git ENOENT
+    at exports._errnoException (util.js:746:11)
+    at Process.ChildProcess._handle.onexit (child_process.js:1053:32)
+    at child_process.js:1144:20
+    at process._tickCallback (node.js:355:11)</code></pre>
+<p>解法: 在 Git Bash 中執行 hexo d 即可</p>
+<h2 id="執行-hexo-d-出現-permission-denied-publickey"><a href="#執行-hexo-d-出現-permission-denied-publickey" class="headerlink" title="執行 hexo d 出現 permission denied (publickey)."></a>執行 hexo d 出現 permission denied (publickey).</h2><ul>
+<li><p>先檢查自己的 .ssh 目錄( windows 是放在 C:\Users\yourname.ssh\  ) 有沒有放入 id_rsa</p>
+</li>
+<li><p>若有id_rsa檔案，但是還是有問題的話，可能是權限問題，特別是用 window 系統 copy 過去，修改成以下即可</p>
+<p>  cd ~/.ssh
+  chmod 700 id_rsa</p>
+</li>
+</ul>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="http://dreamerslab.com/blog/tw/how-to-setup-a-node-js-development-environment-on-windows/">如何在 Windows 上設定 node.js 的開發環境</a><br><a target="_blank" rel="noopener" href="http://www.jianshu.com/p/05289a4bc8b2">如何搭建一個獨立博客——簡明Github Pages與Hexo教程</a><br><a target="_blank" rel="noopener" href="http://ibruce.info/2013/11/22/hexo-your-blog/">hexo你的博客</a><br><a target="_blank" rel="noopener" href="http://code.wileam.com/update-hexo/">升級hexo的一些坑</a><br><a target="_blank" rel="noopener" href="http://blog.sunnyxx.com/2014/03/07/hexo_customize/">hexo的私人訂製</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wwssllabcd.github.io/2014/12/22/2014-12-22-how-to-install-hexo/" data-id="ckh7v2mvp001y18haa089b3mx" class="article-share-link">Share</a>
+      
+        <a href="http://wwssllabcd.github.io/2014/12/22/2014-12-22-how-to-install-hexo/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Hexo/" rel="tag">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/How-To/" rel="tag">How-To</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/blog/2015/01/12/2015-01-12-how-to-setup-Lamobo-m1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Lamobo M1( banana pi ) 安裝心得
+        
+      </div>
+    </a>
+  
+  
+    <a href="/blog/2014/12/21/2014-12-21-building-an-extension-for-firefox-PageMod/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Firefox addon-SDK 介紹, page-mod</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Bitcoin/" rel="tag">Bitcoin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Boost/" rel="tag">Boost</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Bugzilla/" rel="tag">Bugzilla</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Firefox-extension/" rel="tag">Firefox extension</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/GDB/" rel="tag">GDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/GDB-Script/" rel="tag">GDB Script</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Google-Earth/" rel="tag">Google Earth</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Heroku/" rel="tag">Heroku</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/How-To/" rel="tag">How-To</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Investment/" rel="tag">Investment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Lunux-kernel/" rel="tag">Lunux kernel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Modern-C-Design/" rel="tag">Modern C++ Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Nokogiri/" rel="tag">Nokogiri</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/OO/" rel="tag">OO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Octopress/" rel="tag">Octopress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Programming-pearls/" rel="tag">Programming pearls</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Qemu/" rel="tag">Qemu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/RSS/" rel="tag">RSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Raspberry-Pi/" rel="tag">Raspberry Pi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Ruby/" rel="tag">Ruby</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/SNMP/" rel="tag">SNMP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Subversion/" rel="tag">Subversion</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/USB/" rel="tag">USB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Ubuntu/" rel="tag">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Virtual-Box/" rel="tag">Virtual Box</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Windows/" rel="tag">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Wordpress/" rel="tag">Wordpress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/bochs/" rel="tag">bochs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux%EF%BC%8Cmakefile/" rel="tag">linux，makefile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/sicp/" rel="tag">sicp</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/blog/tags/Android/" style="font-size: 12px;">Android</a> <a href="/blog/tags/Bitcoin/" style="font-size: 10px;">Bitcoin</a> <a href="/blog/tags/Boost/" style="font-size: 12px;">Boost</a> <a href="/blog/tags/Bugzilla/" style="font-size: 10px;">Bugzilla</a> <a href="/blog/tags/C/" style="font-size: 18px;">C++</a> <a href="/blog/tags/Firefox-extension/" style="font-size: 12px;">Firefox extension</a> <a href="/blog/tags/GDB/" style="font-size: 12px;">GDB</a> <a href="/blog/tags/GDB-Script/" style="font-size: 10px;">GDB Script</a> <a href="/blog/tags/Google-Earth/" style="font-size: 10px;">Google Earth</a> <a href="/blog/tags/Heroku/" style="font-size: 10px;">Heroku</a> <a href="/blog/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/blog/tags/How-To/" style="font-size: 20px;">How-To</a> <a href="/blog/tags/Investment/" style="font-size: 10px;">Investment</a> <a href="/blog/tags/Lunux-kernel/" style="font-size: 14px;">Lunux kernel</a> <a href="/blog/tags/Modern-C-Design/" style="font-size: 12px;">Modern C++ Design</a> <a href="/blog/tags/Nokogiri/" style="font-size: 12px;">Nokogiri</a> <a href="/blog/tags/OO/" style="font-size: 14px;">OO</a> <a href="/blog/tags/Octopress/" style="font-size: 10px;">Octopress</a> <a href="/blog/tags/Programming-pearls/" style="font-size: 10px;">Programming pearls</a> <a href="/blog/tags/Python/" style="font-size: 12px;">Python</a> <a href="/blog/tags/Qemu/" style="font-size: 10px;">Qemu</a> <a href="/blog/tags/RSS/" style="font-size: 12px;">RSS</a> <a href="/blog/tags/Raspberry-Pi/" style="font-size: 16px;">Raspberry Pi</a> <a href="/blog/tags/Ruby/" style="font-size: 14px;">Ruby</a> <a href="/blog/tags/SNMP/" style="font-size: 10px;">SNMP</a> <a href="/blog/tags/Subversion/" style="font-size: 10px;">Subversion</a> <a href="/blog/tags/USB/" style="font-size: 10px;">USB</a> <a href="/blog/tags/Ubuntu/" style="font-size: 12px;">Ubuntu</a> <a href="/blog/tags/Virtual-Box/" style="font-size: 10px;">Virtual Box</a> <a href="/blog/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/blog/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/blog/tags/bochs/" style="font-size: 10px;">bochs</a> <a href="/blog/tags/linux%EF%BC%8Cmakefile/" style="font-size: 10px;">linux，makefile</a> <a href="/blog/tags/sicp/" style="font-size: 10px;">sicp</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/01/">January 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2014/05/">May 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/11/">November 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/10/">October 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/04/">April 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/03/">March 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/01/">January 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/12/">December 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/11/">November 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/10/">October 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/09/">September 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/08/">August 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2007/03/">March 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2006/12/">December 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2004/12/">December 2004</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2003/04/">April 2003</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2020/02/16/2020-02-16-Investment-of-indexing/">指數型投資(Investment of indexing)</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2018/05/21/2018-05-21-how-to-install-pyqt%20/">安裝 PyQt</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2018/05/21/2018-05-21-how-to-install-python-on-windows/">Python windows 安裝, 心得, 教學</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2017/11/12/2017-11-12-how-to-execute-amb-expression/">執行 amb expression</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2016/10/03/2016-10-03-how-to-write-make-file/">makefile 心得、教學</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 EricWang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/blog/aboutme.html" class="mobile-nav-link">AboutMe</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'ericwangsblog';
+  
+  var disqus_url = 'http://wwssllabcd.github.io/2014/12/22/2014-12-22-how-to-install-hexo/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css">
+
+  
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/blog/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

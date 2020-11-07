@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-34321837-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <title>Raspberry Pi 安裝心得、教學、簡介 | printf(&#34; I&#39;m EricWang &#34;)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="簡介Raspberry Pi 2on sale    Raspberry Pi 介紹可見RPI Wiki，以下簡稱 RPi， 是一款跟名片差不多大小的小電腦，採用 ARM 11架構，CPU大約 700MHz，由於售價便宜，基本上就是一台小電腦， 目前比較廣泛的應用如    當作 NAS 動物機：使用 transmission-daemon   當作家庭檔案 Server：使用 Samba Serv">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Raspberry Pi 安裝心得、教學、簡介">
+<meta property="og:url" content="http://wwssllabcd.github.io/2013/01/31/2013-01-31-how-to-setup-raspberry-pi/index.html">
+<meta property="og:site_name" content="printf(&quot; I&#39;m EricWang &quot;)">
+<meta property="og:description" content="簡介Raspberry Pi 2on sale    Raspberry Pi 介紹可見RPI Wiki，以下簡稱 RPi， 是一款跟名片差不多大小的小電腦，採用 ARM 11架構，CPU大約 700MHz，由於售價便宜，基本上就是一台小電腦， 目前比較廣泛的應用如    當作 NAS 動物機：使用 transmission-daemon   當作家庭檔案 Server：使用 Samba Serv">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://lh6.googleusercontent.com/-zua64AqY5Ao/VJewOfYFPXI/AAAAAAAAsr8/JqhfGSuq7ho/s0/pietty_utf8.jpg">
+<meta property="article:published_time" content="2013-01-31T09:06:00.000Z">
+<meta property="article:modified_time" content="2016-06-05T16:01:22.000Z">
+<meta property="article:author" content="EricWang">
+<meta property="article:tag" content="How-To">
+<meta property="article:tag" content="Raspberry Pi">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lh6.googleusercontent.com/-zua64AqY5Ao/VJewOfYFPXI/AAAAAAAAsr8/JqhfGSuq7ho/s0/pietty_utf8.jpg">
+  
+    <link rel="alternate" href="/blog/atom.xml" title="printf(&#34; I&#39;m EricWang &#34;)" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://lh3.googleusercontent.com/-4X7H3oQr-Ws/VKchKJJwnSI/AAAAAAAAsy4/NK3uBSzNQlo/s0/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/blog/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">printf(&#34; I&#39;m EricWang &#34;)</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/blog/aboutme.html">AboutMe</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://wwssllabcd.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2013-01-31-how-to-setup-raspberry-pi" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2013/01/31/2013-01-31-how-to-setup-raspberry-pi/" class="article-date">
+  <time datetime="2013-01-31T09:06:00.000Z" itemprop="datePublished">2013-01-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Raspberry Pi 安裝心得、教學、簡介
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+		
+			<div id="toc" class="toc-article">
+				<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B0%A1%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">簡介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%96%8B%E5%A7%8B%E4%B9%8B%E5%89%8D"><span class="toc-number">1.1.</span> <span class="toc-text">開始之前</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B3%BC%E8%B2%B7%E6%B8%85%E5%96%AE"><span class="toc-number">1.2.</span> <span class="toc-text">購買清單</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D"><span class="toc-number">2.</span> <span class="toc-text">安裝</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-OS"><span class="toc-number">2.1.</span> <span class="toc-text">安裝 OS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%B2%E5%85%A5-OS-%E4%B9%8B%E5%89%8D"><span class="toc-number">2.2.</span> <span class="toc-text">進入 OS 之前</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HDMI-%E7%84%A1%E6%B3%95%E6%AD%A3%E5%B8%B8%E9%A1%AF%E7%A4%BA"><span class="toc-number">2.3.</span> <span class="toc-text">HDMI 無法正常顯示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pietty-%E4%B8%AD%E6%96%87%E9%A1%AF%E7%A4%BA"><span class="toc-number">2.4.</span> <span class="toc-text">pietty 中文顯示</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%99%BB%E5%85%A5-OS-%E4%BB%A5%E5%8F%8A%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6"><span class="toc-number">3.</span> <span class="toc-text">登入 OS 以及安裝套件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AC%A1%E9%80%B2%E5%85%A5-OS"><span class="toc-number">3.1.</span> <span class="toc-text">第一次進入 OS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-VNC-server"><span class="toc-number">3.2.</span> <span class="toc-text">安裝 VNC server</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%96%E6%8E%A5-2-5-%E5%90%8B-USB-HDD-%E7%A1%AC%E7%A2%9F%E8%AA%8D%E4%B8%8D%E5%88%B0"><span class="toc-number">3.3.</span> <span class="toc-text">外接 2.5 吋 USB HDD 硬碟認不到</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%80%E5%8F%96-NTFS-%E6%A0%BC%E5%BC%8F%EF%BC%8C%E4%BD%BF%E7%94%A8-NTFS-3G-%E5%A5%97%E4%BB%B6"><span class="toc-number">3.4.</span> <span class="toc-text">讀取 NTFS 格式，使用 NTFS-3G 套件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%AA%94%E6%A1%88%E7%B3%BB%E7%B5%B1%E7%82%BA-ext4"><span class="toc-number">3.5.</span> <span class="toc-text">格式化檔案系統為 ext4</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%9B%E8%BC%89%E5%A4%96%E9%83%A8-usb-storage"><span class="toc-number">3.6.</span> <span class="toc-text">掛載外部 usb storage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-RasPBX"><span class="toc-number">3.7.</span> <span class="toc-text">安裝 RasPBX</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-transmission-daemon"><span class="toc-number">3.8.</span> <span class="toc-text">安裝 transmission-daemon </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A8%AD%E5%AE%9A%E7%84%A1%E7%B7%9A%E7%B6%B2%E8%B7%AF"><span class="toc-number">3.9.</span> <span class="toc-text">設定無線網路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-Samba-%E7%B6%B2%E8%B7%AF%E8%8A%B3%E9%84%B0"><span class="toc-number">3.10.</span> <span class="toc-text">安裝 Samba (網路芳鄰)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-Raspbmc"><span class="toc-number">3.11.</span> <span class="toc-text">安裝 Raspbmc</span></a></li></ol></li></ol>
+			</div>
+		
+
+        <h1 id="簡介"><a href="#簡介" class="headerlink" title="簡介"></a>簡介</h1><p><a target="_blank" rel="noopener" href="http://www.raspberrypi.org/raspberry-pi-2-on-sale/">Raspberry Pi 2</a>on sale   </p>
+<p>Raspberry Pi 介紹可見<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E6%A0%91%E8%8E%93%E6%B4%BE">RPI Wiki</a>，以下簡稱 RPi，
+是一款跟名片差不多大小的小電腦，採用 ARM 11架構，CPU大約 700MHz，由於售價便宜，基本上就是一台小電腦，</p>
+<p>目前比較廣泛的應用如  </p>
+<ul>
+<li>當作 NAS 動物機：使用 <code>transmission-daemon</code>  </li>
+<li>當作家庭檔案 Server：使用 <code>Samba Server</code>  </li>
+<li>當作無線 AP：使用 <code>hostapd</code>  </li>
+<li>當作多媒體播放機看PPS之類的：使用 <code>Raspbmc</code>  </li>
+<li>教小朋友寫 python 程式：RPi 最主要的功能  </li>
+</ul>
+<p>當然RPi不只如此，這邊有個<a target="_blank" rel="noopener" href="http://linuxtoy.org/archives/cool-ideas-for-raspberry-pi.html">34 個使用 Raspberry Pi 的酷創意</a>也許你會有興趣</p>
+<h2 id="開始之前"><a href="#開始之前" class="headerlink" title="開始之前"></a>開始之前</h2><p>台灣已經有代理商<a target="_blank" rel="noopener" href="http://www.raspberrypi.com.tw/purchase/">台灣樹莓派</a>可以訂購了，一片雖然只要 1833 元，但是你還是需要加購一些商品，如SD卡等，
+代理商也有賣一些周邊商品，價格也挺合理，各位可以在上面一次購足，而這邊有建議的<a target="_blank" rel="noopener" href="http://elinux.org/RPi_VerifiedPeripherals">硬體相容性清單</a>，
+可以參考看看，否則買到不相容的裝置就麻煩了</p>
+<p>Raspberry pi 2 (簡稱 RPI 2)也已經開賣了，除了之外，也要介紹有另一家叫 <a target="_blank" rel="noopener" href="http://twcn.rs-online.com/">RS 台灣</a>，東西更便宜，大家可以多多比較   </p>
+<p>方便大家以下為購買的 Link，有更便宜的地方也歡迎留言<br><a target="_blank" rel="noopener" href="http://twcn.rs-online.com/web/p/processor-microcontroller-development-kits/832-6274/">RS 台灣 RPI 2</a><br><a target="_blank" rel="noopener" href="http://www.raspberrypi.com.tw/purchase/">台灣樹莓派 RPI 2</a>  </p>
+<h2 id="購買清單"><a href="#購買清單" class="headerlink" title="購買清單"></a>購買清單</h2><p>這邊我列出一些我個人建議的購買清單  </p>
+<ul>
+<li><code>SD卡</code>：最好是選 SanDisk 的，4G以上。  </li>
+<li><code>電源</code>：如果你手邊有 5V，又超過 2000mA 的 +microUSB介面的電源就可以使用了，通常手機的旅充是這樣的東西。不過供電超過 1A 到 mini USB給 pi都沒用，那邊有放保險絲1A。   </li>
+<li><code>外殼</code>：建議購買，如果你不怕跟其他裝置 short 到的話，另外一提的是如果你有 GPIO 的需求，最好找那種可以接線進去的，否則買殼也沒意義。  </li>
+<li><code>鍵盤</code>：可以不用買，因為通常是用 <a target="_blank" rel="noopener" href="http://ntu.csie.org/~piaip/pietty/">pietty</a> terminal 進去使用。  </li>
+<li><code>無線網卡</code>：強力推薦 <a target="_blank" rel="noopener" href="https://www.google.com/search?q=+EW-7822UAn&ie=utf-8&oe=utf-8">EDIMAX 訊舟 EW-7822UAn</a>，不但在 windows、ubuntu、Raspberry pi、Banana Pi、Mac OS 上全部都可以驅動外，可說是一個打十個，
+且傳輸速度比我其他張卡還來的快，真心推薦  </li>
+<li><code>USB-HUB</code>：極重要，外接裝置(USB硬碟，無線網卡..etc)穩不穩就要靠他了，所以從 <a target="_blank" rel="noopener" href="http://elinux.org/RPi_VerifiedPeripherals#Powered_USB_Hubs">USB-HUB 建議清單</a>中購買一個有外接電源的hub，
+我用過不好的 USB-HUB，USB 外接硬碟與 USB 無線網卡都是忽好忽壞的狀況，跑沒 10 min 就會當機的那種，當下很難抓出問題在哪。  </li>
+</ul>
+<p>當然啦，有錢就全部都買也是不反對的。  </p>
+<p>若想要瞭解不同硬體版本間的差異，這篇對 RPi 的硬體有詳細的介紹<br><a target="_blank" rel="noopener" href="http://ruten-proteus.blogspot.tw/2012/10/raspberry-pi-model-b.html">Raspberry Pi (樹莓派) Model B 各版本之間的差異</a>  </p>
+<a id="more"></a>
+
+<h1 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h1><h2 id="安裝-OS"><a href="#安裝-OS" class="headerlink" title="安裝 OS"></a>安裝 OS</h2><p>要安裝OS，必須要有張SD卡，並且去<a target="_blank" rel="noopener" href="http://www.raspberrypi.org/downloads">RPI OS 官方下載頁面</a>看看，裡面有很多選擇，不過官方推薦 <a target="_blank" rel="noopener" href="https://www.raspberrypi.org/downloads/">Raspbian</a> 這套，
+<a target="_blank" rel="noopener" href="https://www.raspberrypi.org/downloads/">下載 Raspbian</a> 回來解開得到img檔，也需要去下載 <a target="_blank" rel="noopener" href="http://sourceforge.net/projects/win32diskimager/">Win32DiskImager</a> 這套程式，將剛剛解出來的 img 還原到SD卡上。</p>
+<p>等到寫完後，直接插入到 RPI 上就可以使用了，可說是很簡單。  </p>
+<p>若還是不行，這邊提供幾個比較詳細的教學，可以交互參考看看。<br><a target="_blank" rel="noopener" href="http://elinux.org/RPi_Easy_SD_Card_Setup#Easy_way">RPI官方燒錄 SD 卡教學</a><br><a target="_blank" rel="noopener" href="http://life-of-raspberrypi.blogspot.tw/2013/01/raspberry-pi-sd-14-raspbian.html">燒錄 Raspberry Pi 的 SD 卡</a><br><a target="_blank" rel="noopener" href="http://bkdragonker.blogspot.tw/2012/12/raspberry-pios.html">Raspberry Pi：安裝OS、簡易設定</a><br><a target="_blank" rel="noopener" href="http://www.mobile01.com/topicdetail.php?f=514&t=3085129">Raspberry Pi Model B 512MB 開箱、安裝與應用</a>   </p>
+<p>如果對各種 OS 的差異有興趣的話，以下這篇<a target="_blank" rel="noopener" href="http://ruten-proteus.blogspot.tw/2012/10/raspberry-pi.html">安裝於 Raspberry Pi 中的作業系統概觀</a>，有針對不同的 image file 作一些介紹<br>對 RPI OS 有興趣的話，這邊也有自製的 RPI OS 叫<a target="_blank" rel="noopener" href="http://karosesblog.blogspot.tw/2015/03/raspberry-pi.html">Raspberry Pi 上自幹一個微小作業系統</a>可以參考看看，()應該很少人對 OS 有興趣吧 )   </p>
+<h2 id="進入-OS-之前"><a href="#進入-OS-之前" class="headerlink" title="進入 OS 之前"></a>進入 OS 之前</h2><p>RPI 的顯示方式有兩種，使用 HDMI 接到顯示裝置可能會有相容性問題，很有可能無法顯示，而使用AV端子就保險的多，
+不過我比較推薦使用 terminal 的方式，既不用買線材，也不用多準備一套鍵盤滑鼠，只要你把網路線插上去，
+由無線 AP 得知現在配到的 IP，就可以用 pietty 之類的 ssh 軟體登入</p>
+<h2 id="HDMI-無法正常顯示"><a href="#HDMI-無法正常顯示" class="headerlink" title="HDMI 無法正常顯示"></a>HDMI 無法正常顯示</h2><p>如果 HDMI 可以正常顯示的可以跳過這段</p>
+<p>有時候顯示裝置老舊, 就必須要特別設定 HDMI 參數
+首先找到SD卡根目錄下面的 config.txt，打開來, 開始設定參數(若找不到該參數, 則自己加上去即可)
+設定</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sdtv_mode &#x3D; 0</span><br><span class="line">sdtv_aspect &#x3D; 3</span><br><span class="line">hdmi_group &#x3D; 1</span><br><span class="line">hdmi_mode &#x3D; 1</span><br></pre></td></tr></table></figure>
+
+<p>sdtv_aspect 代表你的螢幕比例, 定義如下</p>
+<pre><code>sdtv_aspect=1  4:3
+sdtv_aspect=2  14:9
+sdtv_aspect=3  16:9</code></pre>
+<p>hdmi_group=1 及 hdmi_mode=1 是代表使用 CEA + VGA 模式, 通常設定完 HDMI 會以最低標準顯示，
+這兩個參數模式的組合在<a target="_blank" rel="noopener" href="http://elinux.org/RPi_config.txt#Video_mode_options">RPi_config.txt -- Video_mode_options</a> 有列出來，這裡不再解釋</p>
+<p>接下來你可以讓 RPI 抓你的螢幕有哪些模式可以選<br>輸入以下指令</p>
+<pre><code>/opt/vc/bin/tvservice -d edid.dat
+/opt/vc/bin/edidparser edid.dat</code></pre>
+<p>edidparser 會列出建議的組合，照著設定就可以了</p>
+<h2 id="pietty-中文顯示"><a href="#pietty-中文顯示" class="headerlink" title="pietty 中文顯示"></a>pietty 中文顯示</h2><p>當 OS 裝好之後，就可以使用 terminal 的方式進入系統，使用 <a target="_blank" rel="noopener" href="http://ntu.csie.org/~piaip/pietty/">Pietty</a>  透過 ssh 方式連線 Linux系統，中文字會變亂碼
+解決方式為把字元編碼設為 UTF-8
+<img src="https://lh6.googleusercontent.com/-zua64AqY5Ao/VJewOfYFPXI/AAAAAAAAsr8/JqhfGSuq7ho/s0/pietty_utf8.jpg" alt="pietty_utf8">  </p>
+<h1 id="登入-OS-以及安裝套件"><a href="#登入-OS-以及安裝套件" class="headerlink" title="登入 OS 以及安裝套件"></a>登入 OS 以及安裝套件</h1><h2 id="第一次進入-OS"><a href="#第一次進入-OS" class="headerlink" title="第一次進入 OS"></a>第一次進入 OS</h2><p>登入的預設帳號/密碼為  </p>
+<pre><code>pi/raspberry</code></pre>
+<p>進去之後，可以先執行以下指令換密碼  </p>
+<pre><code>passwd pi</code></pre>
+<p>換完密碼，也順便執行  </p>
+<pre><code>sudo raspi-config</code></pre>
+<p>進行一些基本設定，基本上會建議改好幾個選項，分述如下  </p>
+<ul>
+<li><code>expand_rootfs</code>: 如果你使用大於4G以上的 SD 卡， 建議選一下，這樣才可以讓SD卡使用到全部容量   </li>
+<li><code>configure_keyboard</code>: 建議選 Generic 105-key (Intl) PC鍵盤    </li>
+<li><code>change_locale</code>: 去掉 en.GB, 加入 zh_TW.UTF-8 與 en_us.UTF8   </li>
+<li><code>change_timezone </code>: 可以選 etc -&gt; GMT+8的地區   </li>
+<li><code>memory_split</code>: 要配置多少記憶體給 GPU，如果你是 Raspbmc 之類的 OS，可以給多一點，這個部分也可以在 SD 卡中根目錄的 config.txt 的 gpu_mem 選項修改   </li>
+</ul>
+<p>詳細的設定可以看<br><a target="_blank" rel="noopener" href="http://elinux.org/RPi_raspi-config">RPi_raspi-config</a>，<a target="_blank" rel="noopener" href="http://bbs.shumeipai.org/thread-46-1-1.html">使用raspi-config工具配置樹莓派</a>  </p>
+<p>設定完之後，也可以進行apt的更新，如  </p>
+<pre><code>sudo apt-get update
+sudo apt-get upgrade</code></pre>
+<h2 id="安裝-VNC-server"><a href="#安裝-VNC-server" class="headerlink" title="安裝 VNC server"></a>安裝 VNC server</h2><p>使用 apt 安裝  </p>
+<pre><code>sudo apt-get install tightvncserver</code></pre>
+<p>安裝完，鍵入  </p>
+<pre><code>vncserver :1 -geometry 1280x800 -depth 16 -pixelformat rgb565</code></pre>
+<p>即代表開啟 VNC server，此時再用 VNC client連入即可</p>
+<h2 id="外接-2-5-吋-USB-HDD-硬碟認不到"><a href="#外接-2-5-吋-USB-HDD-硬碟認不到" class="headerlink" title="外接 2.5 吋 USB HDD 硬碟認不到"></a>外接 2.5 吋 USB HDD 硬碟認不到</h2><p>基本上直接接上去就可以了，如果還是認不到的話，就換條線試看看，有時候是線的品質太差所導致供電不足<br>若還是不行，請把 SD 卡中的 config.txt 中，加入以下參數</p>
+<pre><code>max_usb_current=1</code></pre>
+<p>這樣會讓 USB 電壓供電到 1200 mA，不過有沒有後遺症我是不知道，若怕的話，還是接個外接 Usb-Hub 比較保險。<br>其他的參數請見 <a target="_blank" rel="noopener" href="http://elinux.org/RPiconfig">RPiconfig</a></p>
+<h2 id="讀取-NTFS-格式，使用-NTFS-3G-套件"><a href="#讀取-NTFS-格式，使用-NTFS-3G-套件" class="headerlink" title="讀取 NTFS 格式，使用 NTFS-3G 套件"></a>讀取 NTFS 格式，使用 NTFS-3G 套件</h2><p>若要讀取 NTFS 的資料，必須要安裝 NTFS-3G 這個套件，使用 apt 指令  </p>
+<pre><code>sudo apt-get install ntfs-3g</code></pre>
+<p>使用 ntfs-3g 在傳輸的時候會有點小耗 cpu 資源，所以還是建議沒必要，還是使用 ext4 會比較好</p>
+<h2 id="格式化檔案系統為-ext4"><a href="#格式化檔案系統為-ext4" class="headerlink" title="格式化檔案系統為 ext4"></a>格式化檔案系統為 ext4</h2><p>記得要先把系統 umount 之後，使用  </p>
+<pre><code>sudo fdisk -l </code></pre>
+<p>查看目前硬碟狀況，如果不是 ext4 的格式的話，則必須要做刪除 partation 的動作，使用  </p>
+<pre><code>sudo fdisk /dev/sda    # sda 代表整個硬碟, 而 sda1 代表第一個 partition</code></pre>
+<p>進入到 fdisk 之後，可以使用<code>p</code>來列印目前有多少 partation，使用<code>d</code>來刪除，使用<code>n</code>來新增，最後使用<code>w</code>來寫入 partation 的資料後，再使用   </p>
+<pre><code>sudo fdisk -l </code></pre>
+<p>來查看，應該就可以看到該硬碟轉換成 linux file system 的格式了，接下來使用  </p>
+<pre><code>sudo mkfs.ext4 /dev/sda1</code></pre>
+<p>再把 sda1 格式化為 ext4, 若想要查看是否硬碟格式是否正確為 ext4 , 可使用  </p>
+<pre><code>sudo parted</code></pre>
+<p>進入到 parted 後, 鍵入<code>print</code>, 即可查看目前硬碟的格式</p>
+<p>若是有 GDT 的問題, 可以改用 parted 來做分割, 如  </p>
+<pre><code>sudo parted /dev/sda</code></pre>
+<h2 id="掛載外部-usb-storage"><a href="#掛載外部-usb-storage" class="headerlink" title="掛載外部 usb storage"></a>掛載外部 usb storage</h2><p>先使用 <code>lsusb</code> 來觀察 usb device 有沒有正確連上 RPI</p>
+<p>先在 /media 下面建立一個資料夾叫做myusb  </p>
+<pre><code>sudo mkdir /media/myusb</code></pre>
+<p>使用 mount 指令，這邊以 NTFS 的外部儲存媒體作為範例  </p>
+<pre><code>sudo mount -t ntfs-3g /dev/sda1 /media/myusb</code></pre>
+<p>如果要掛載 ext4 ，可以使用                </p>
+<pre><code>sudo mount -t ext4 /dev/sda1 /media/myusb</code></pre>
+<p>掛載後, 可以使用<code>df</code>指令來查看是否有掛載成功  </p>
+<p>不過這種掛載是暫時性的, 每次開機都要掛載一次, 如果要開機自動掛載的話, 必須修改<code>/etc/fstab</code>這個檔案, 加入以下設定  </p>
+<pre><code>/dev/sda1       /media/myusb    ext4    defaults          0       0</code></pre>
+<p>即可在開機的時候,自動掛載<code>sda1</code>到<code>myusb</code>這個資料夾上
+而檢查有無掛載成功的方式可以輸入</p>
+<pre><code>mount</code></pre>
+<p>這個指令會把目前掛載的裝置與掛載點列出來, 這樣就可以做檢查了</p>
+<p>這邊也提供其他網頁的資料，供各位參考。<br><a target="_blank" rel="noopener" href="http://raspi.tv/2012/how-to-mount-and-use-a-usb-hard-disk-with-the-raspberry-pi">How to mount and use a USB hard disk with the Raspberry Pi</a><br><a target="_blank" rel="noopener" href="http://kwilson.me.uk/blog/force-your-raspberry-pi-to-mount-an-external-usb-drive-every-time-it-starts-up/">Force your Raspberry Pi to mount an external USB drive every time it starts up</a>  </p>
+<h2 id="安裝-RasPBX"><a href="#安裝-RasPBX" class="headerlink" title="安裝 RasPBX"></a>安裝 RasPBX</h2><p>安裝 RasPBX，在 RPI 上跑的 asterisk (網路電話)  </p>
+<p>可參考<a target="_blank" rel="noopener" href="http://www.raspberry-asterisk.org/">Asterisk for RPI 官方網頁</a>，下載他們專屬的<a target="_blank" rel="noopener" href="http://www.raspberry-asterisk.org/?page_id=30">Asterisk OS image file</a>安裝，
+安裝說明在該網站的<a target="_blank" rel="noopener" href="http://www.raspberry-asterisk.org/?page_id=10">Document for Asterisk</a>中，由於這部份要整個替換掉系統，所以我就沒試了，有興趣的可以自行嘗試
+網路上也有不少的中文資源如下<br><a target="_blank" rel="noopener" href="http://www.telecom-cafe.com/forum/viewthread.php?tid=5046">Asterisk -【Raspberry Pi】— 攻略</a>  </p>
+<p>如果要安裝在 官方image上面的好像也是可以，raspbx 論壇有一篇有提供說明<br><a target="_blank" rel="noopener" href="http://sourceforge.net/p/raspbx/discussion/general/thread/03fdae0e/">Use raspbx repo on a Rasbian Official image </a><br><a target="_blank" rel="noopener" href="http://www.raspberry-asterisk.org/?page_id=159#pistore">What is the difference between the RasPBX image and the Pi Store edition?</a>  </p>
+<p>使用 Pi Store 也可以找到 asterisk 的套件，不過要安裝很多東西，如 Asterisk, FreePBX and Apache/PHP/Mysql  等重量級套件，
+基於我已經把他變成BT機了，目前沒有研究的打算  </p>
+<h2 id="安裝-transmission-daemon"><a href="#安裝-transmission-daemon" class="headerlink" title="安裝 transmission-daemon "></a>安裝 transmission-daemon </h2><p>請見<a href="http://wwssllabcd.github.io/blog/2013/04/22/how-to-setup-transmission-deamon-in-raspberry-pi/">打造脫機下載農場，使用Raspberry Pi + Transmission-daemon</a></p>
+<h2 id="設定無線網路"><a href="#設定無線網路" class="headerlink" title="設定無線網路"></a>設定無線網路</h2><p>請見<a href="http://wwssllabcd.github.io/blog/2013/04/22/how-to-setup-wireless-in-raspberry-pi/">Raspberry Pi: 設定無線網路</a></p>
+<h2 id="安裝-Samba-網路芳鄰"><a href="#安裝-Samba-網路芳鄰" class="headerlink" title="安裝 Samba (網路芳鄰)"></a>安裝 Samba (網路芳鄰)</h2><p>請見<a href="http://wwssllabcd.github.io/blog/2013/04/22/how-to-setup-samba-in-raspberry-pi/">Raspberry Pi 上安裝 Samba</a></p>
+<h2 id="安裝-Raspbmc"><a href="#安裝-Raspbmc" class="headerlink" title="安裝 Raspbmc"></a>安裝 Raspbmc</h2><p>請見 <a href="http://wwssllabcd.github.io/blog/2013/04/22/how-to-setup-raspbmc-in-raspberry-pi/">Raspberry Pi 變成多媒體播放機 -- 安裝 Raspbmc</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wwssllabcd.github.io/2013/01/31/2013-01-31-how-to-setup-raspberry-pi/" data-id="ckh7v2mvd001e18haeeoadcvu" class="article-share-link">Share</a>
+      
+        <a href="http://wwssllabcd.github.io/2013/01/31/2013-01-31-how-to-setup-raspberry-pi/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/How-To/" rel="tag">How-To</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Raspberry-Pi/" rel="tag">Raspberry Pi</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/blog/2013/03/25/2013-03-25-how-to-write-gdb-scritp/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          簡易 GDB Script 教學，應用
+        
+      </div>
+    </a>
+  
+  
+    <a href="/blog/2013/01/08/2013-01-08-how-to-install-wordpress-on-heroku/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">在Heroku上，安裝 Wordpress</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Bitcoin/" rel="tag">Bitcoin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Boost/" rel="tag">Boost</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Bugzilla/" rel="tag">Bugzilla</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Firefox-extension/" rel="tag">Firefox extension</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/GDB/" rel="tag">GDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/GDB-Script/" rel="tag">GDB Script</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Google-Earth/" rel="tag">Google Earth</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Heroku/" rel="tag">Heroku</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/How-To/" rel="tag">How-To</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Investment/" rel="tag">Investment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Lunux-kernel/" rel="tag">Lunux kernel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Modern-C-Design/" rel="tag">Modern C++ Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Nokogiri/" rel="tag">Nokogiri</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/OO/" rel="tag">OO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Octopress/" rel="tag">Octopress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Programming-pearls/" rel="tag">Programming pearls</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Qemu/" rel="tag">Qemu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/RSS/" rel="tag">RSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Raspberry-Pi/" rel="tag">Raspberry Pi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Ruby/" rel="tag">Ruby</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/SNMP/" rel="tag">SNMP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Subversion/" rel="tag">Subversion</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/USB/" rel="tag">USB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Ubuntu/" rel="tag">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Virtual-Box/" rel="tag">Virtual Box</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Windows/" rel="tag">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Wordpress/" rel="tag">Wordpress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/bochs/" rel="tag">bochs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/linux%EF%BC%8Cmakefile/" rel="tag">linux，makefile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/sicp/" rel="tag">sicp</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/blog/tags/Android/" style="font-size: 12px;">Android</a> <a href="/blog/tags/Bitcoin/" style="font-size: 10px;">Bitcoin</a> <a href="/blog/tags/Boost/" style="font-size: 12px;">Boost</a> <a href="/blog/tags/Bugzilla/" style="font-size: 10px;">Bugzilla</a> <a href="/blog/tags/C/" style="font-size: 18px;">C++</a> <a href="/blog/tags/Firefox-extension/" style="font-size: 12px;">Firefox extension</a> <a href="/blog/tags/GDB/" style="font-size: 12px;">GDB</a> <a href="/blog/tags/GDB-Script/" style="font-size: 10px;">GDB Script</a> <a href="/blog/tags/Google-Earth/" style="font-size: 10px;">Google Earth</a> <a href="/blog/tags/Heroku/" style="font-size: 10px;">Heroku</a> <a href="/blog/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/blog/tags/How-To/" style="font-size: 20px;">How-To</a> <a href="/blog/tags/Investment/" style="font-size: 10px;">Investment</a> <a href="/blog/tags/Lunux-kernel/" style="font-size: 14px;">Lunux kernel</a> <a href="/blog/tags/Modern-C-Design/" style="font-size: 12px;">Modern C++ Design</a> <a href="/blog/tags/Nokogiri/" style="font-size: 12px;">Nokogiri</a> <a href="/blog/tags/OO/" style="font-size: 14px;">OO</a> <a href="/blog/tags/Octopress/" style="font-size: 10px;">Octopress</a> <a href="/blog/tags/Programming-pearls/" style="font-size: 10px;">Programming pearls</a> <a href="/blog/tags/Python/" style="font-size: 12px;">Python</a> <a href="/blog/tags/Qemu/" style="font-size: 10px;">Qemu</a> <a href="/blog/tags/RSS/" style="font-size: 12px;">RSS</a> <a href="/blog/tags/Raspberry-Pi/" style="font-size: 16px;">Raspberry Pi</a> <a href="/blog/tags/Ruby/" style="font-size: 14px;">Ruby</a> <a href="/blog/tags/SNMP/" style="font-size: 10px;">SNMP</a> <a href="/blog/tags/Subversion/" style="font-size: 10px;">Subversion</a> <a href="/blog/tags/USB/" style="font-size: 10px;">USB</a> <a href="/blog/tags/Ubuntu/" style="font-size: 12px;">Ubuntu</a> <a href="/blog/tags/Virtual-Box/" style="font-size: 10px;">Virtual Box</a> <a href="/blog/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/blog/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/blog/tags/bochs/" style="font-size: 10px;">bochs</a> <a href="/blog/tags/linux%EF%BC%8Cmakefile/" style="font-size: 10px;">linux，makefile</a> <a href="/blog/tags/sicp/" style="font-size: 10px;">sicp</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/01/">January 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2014/05/">May 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/11/">November 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/10/">October 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/04/">April 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/03/">March 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2013/01/">January 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/12/">December 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/11/">November 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/10/">October 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/09/">September 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2012/08/">August 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2007/03/">March 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2006/12/">December 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2004/12/">December 2004</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2003/04/">April 2003</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2020/02/16/2020-02-16-Investment-of-indexing/">指數型投資(Investment of indexing)</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2018/05/21/2018-05-21-how-to-install-pyqt%20/">安裝 PyQt</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2018/05/21/2018-05-21-how-to-install-python-on-windows/">Python windows 安裝, 心得, 教學</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2017/11/12/2017-11-12-how-to-execute-amb-expression/">執行 amb expression</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2016/10/03/2016-10-03-how-to-write-make-file/">makefile 心得、教學</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 EricWang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/blog/aboutme.html" class="mobile-nav-link">AboutMe</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'ericwangsblog';
+  
+  var disqus_url = 'http://wwssllabcd.github.io/2013/01/31/2013-01-31-how-to-setup-raspberry-pi/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css">
+
+  
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/blog/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
