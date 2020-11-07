@@ -24,7 +24,7 @@ Hexo 是建構在 Node.js 上面，所以第一步就是安裝 Node.js，到 htt
 
 而在 Ubuntu 下面安裝則要加上 sudo， 之後不再詳述此點
 	
-	sudo npm install hexo -g
+	sudo npm install hexo-cli -g
 
 安裝好後可以鍵入 hexo 看看有沒有反應，若有反應就代表安裝好了
 
@@ -39,12 +39,6 @@ Hexo 是建構在 Node.js 上面，所以第一步就是安裝 Node.js，到 htt
 	hexo init Blog
 	cd Blog
 	npm install
-
-接著再增加這些套件，這些套件會被安裝在`node_modules`中
-
-	npm install hexo-renderer-ejs --save
-	npm install hexo-renderer-marked --save
-	npm install hexo-renderer-stylus --save
 
 這樣就完成了初步的建置，這樣大致的就完成了建置了，簡單吧，若要檢視Blog可以使用
 
@@ -243,6 +237,10 @@ Hexo 的 theme 中，有個叫 [theme cover] 做的蠻可愛的，也蠻乾淨�
 
 Troubleshooting
 ===============
+
+執行 hexo d 後，出現 xxx page not found 
+---------------
+檢查文章檔案名稱是否包含空白
 
 執行 hexo g 後，出現 warning: LF will be replaced by CRLF
 ---------------
