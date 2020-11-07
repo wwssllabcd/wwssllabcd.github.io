@@ -17,6 +17,10 @@ Yastse 是一款 Kodi 的遙控及投放工具，你可以在 google store 找�
 
 你也可以打開Web界面，這樣就可以直接使用瀏覽器控制 kodi
 
+遠程控制 -- 使用 firefox 
+-------
+Firefox 有很多 kodi 的套件可供遠端控制，這裡不再詳述
+
 
 使用 kodi 檔案總管，並從 usb copy 檔案到 kodi
 ------------
@@ -54,7 +58,7 @@ Yastse 是一款 Kodi 的遙控及投放工具，你可以在 google store 找�
 
 有很多 m3u8 的連結是可以 google 的到的，甚至你去 github 使用搜尋也可以找到很多，不過這個項目很大很複雜，所以之後會另開專頁說明
 
-安裝  youtube 
+安裝 youtube 
 ----------
 你需要先安裝附加套件 Youtube，在 repository 可以找到，以下是該套件的原作者連結
 https://github.com/anxdpanic/plugin.video.youtube
@@ -97,4 +101,24 @@ kodi 套件介紹
 * kodi 套件介紹
   * https://zh.vpnmentor.com/blog/%E9%9B%BB%E5%BD%B1%E5%8F%8A%E9%9B%BB%E8%A6%96%E5%B0%88%E7%94%A8%E7%9A%84%E6%9C%80%E4%BD%B3kodi%E9%99%84%E5%8A%A0%E5%85%83%E4%BB%B6/
   * https://zh.wizcase.com/blog/%E7%94%B5%E8%A7%86%E7%94%A8%E5%A4%A7kodi%E9%99%84%E5%8A%A0%E7%BB%84%E4%BB%B6%EF%BC%88%E5%90%AB%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97%EF%BC%89-%E5%B9%B4%E6%9B%B4%E6%96%B0/
+
+
+kodi 播放光碟機 (CD-ROM)
+--------
+2 wayt to play
+* 使用主畫面左邊的選項上面會有播放光碟片的圖案，memu 應該會自動出現"光碟"選項才對
+* 使用 cdrom 的路徑 `cdda://local/`
+
+
+自行撰寫 kodi 套件
+----------
+這邊提供幾個 resource 
+
+kodi doc
+* https://codedocs.xyz/AlwinEsch/kodi/group__python.html
+
+其他教學
+* https://kodi.wiki/view/HOW-TO:HelloWorld_addon
+* http://kfbiji.com/article/b15db97eceb78756
+* https://pypi.org/project/kodi-addon-checker/
 
