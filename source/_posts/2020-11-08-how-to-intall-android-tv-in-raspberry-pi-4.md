@@ -27,9 +27,9 @@ toc: true
 
 下載需要的檔案
 ---------
-在開始之前，我建議你先下載兩個，分別是
-	* [gapp](https://opengapps.org/)
-	* [recover2boot](https://androidfilehost.com/?fid=8889791610682901035) : 要刷這個, 才能從 twrp 回到 android os
+在開始之前，我建議你先下載兩個，分別是  
+	* [gapp](https://opengapps.org/)  
+	* [recover2boot](https://androidfilehost.com/?fid=8889791610682901035): 要刷這個, 才能從 twrp 回到 android os
 
 去[opengapp](https://opengapps.org/) 下載 gapp，我們要選 
 * arm

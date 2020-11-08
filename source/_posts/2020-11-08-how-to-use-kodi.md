@@ -3,6 +3,7 @@ title: kodi 教學，心得
 date: 2020-11-08 00:24:46
 tags: [How-To, Raspberry Pi, Kodi]
 toc: true
+type: adsense
 ---
 
 Kodi 是一套 media center 軟體，其前身為 xbmc，這邊列出一些相關的資源
