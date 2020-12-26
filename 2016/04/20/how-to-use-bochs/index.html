@@ -17,6 +17,7 @@ ga('send', 'pageview');
 <!-- End Google Analytics -->
 
 
+  <script data-ad-client="ca-pub-1911244070880149" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   
   <title>bochs 使用教學，心得 | printf(&#34; I&#39;m EricWang &#34;)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -110,8 +111,6 @@ ga('send', 'pageview');
 				<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D"><span class="toc-number">1.</span> <span class="toc-text">安裝</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Bochs-ini-%E9%85%8D%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text">Bochs ini 配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#bochs-%E8%BC%89%E5%85%A5-debug-symbols"><span class="toc-number">3.</span> <span class="toc-text">bochs 載入 debug symbols </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9-symbol-%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.1.</span> <span class="toc-text">修改 symbol 格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-ini-%E8%BC%89%E5%85%A5-debug-file"><span class="toc-number">3.2.</span> <span class="toc-text">使用 ini 載入 debug file </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bochs-%E6%89%8B%E5%8B%95%E8%BC%89%E5%85%A5-symbol"><span class="toc-number">3.3.</span> <span class="toc-text">Bochs 手動載入 symbol</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-gdb-%E7%95%B6%E4%BD%9C%E6%B8%AC%E8%A9%A6-client"><span class="toc-number">3.4.</span> <span class="toc-text">使用 gdb 當作測試 client</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#bochs-debug-%E6%8C%87%E4%BB%A4"><span class="toc-number">4.</span> <span class="toc-text">bochs debug 指令 </span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#troubleshooting"><span class="toc-number">5.</span> <span class="toc-text">troubleshooting </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#fatal-error-X11-extensions-Xrandr-h-No-such-file-or-directory"><span class="toc-number">5.1.</span> <span class="toc-text">fatal error: X11&#x2F;extensions&#x2F;Xrandr.h: No such file or directory</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#display-library-39-sdl-39-not-available"><span class="toc-number">5.2.</span> <span class="toc-text">display library &#39;sdl&#39; not available</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BIOS-No-bootable-device"><span class="toc-number">5.3.</span> <span class="toc-text">[BIOS ] No bootable device</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-number">6.</span> <span class="toc-text">Reference:</span></a></li></ol>
 			</div>
 		
-
-		<script data-ad-client="ca-pub-1911244070880149" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <h1 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h1><p>使用 apt 安裝的是沒有debug 功能的，bochs 通常一出現視窗運行會沒辦法輸入指令，
 如果你只是要單純的執行環境的話，就使用 apt安裝吧，如果要 debug 功能的話，就要自行 compile</p>
 <p>下載 <a target="_blank" rel="noopener" href="https://sourceforge.net/projects/bochs/files/bochs/2.6.8/">bochs 2.6.8 source code</a></p>
@@ -333,7 +332,7 @@ display_library: x
   </div>
 
   
-    <script data-ad-client="ca-pub-1911244070880149" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
   
 </aside>
         

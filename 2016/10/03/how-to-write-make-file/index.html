@@ -17,6 +17,7 @@ ga('send', 'pageview');
 <!-- End Google Analytics -->
 
 
+  <script data-ad-client="ca-pub-1911244070880149" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   
   <title>makefile 心得、教學 | printf(&#34; I&#39;m EricWang &#34;)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -110,8 +111,6 @@ ga('send', 'pageview');
 				<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-GCC-%E7%B7%A8%E8%AD%AF%E5%91%BD%E4%BB%A4%EF%BC%8C%E4%B8%A6%E4%B8%94%E5%8D%B0%E5%87%BA-hello-world"><span class="toc-number">1.</span> <span class="toc-text">使用 GCC 編譯命令，並且印出 hello world </span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-makefile-%E7%B0%A1%E5%8C%96"><span class="toc-number">2.</span> <span class="toc-text">使用 makefile 簡化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%B7%E8%A1%8C-makefile"><span class="toc-number">3.</span> <span class="toc-text">執行 makefile</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%9A%E5%80%8B%E6%AA%94%E6%A1%88%E7%9A%84-makefile"><span class="toc-number">4.</span> <span class="toc-text">多個檔案的 makefile</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%92%B0%E5%AF%AB-makefile-%E7%9A%84%E4%B8%80%E4%BA%9B%E5%BF%83%E5%BE%97"><span class="toc-number">5.</span> <span class="toc-text">撰寫 makefile 的一些心得</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B7%A8%E8%AD%AF%E5%89%8D%E7%9A%84-pre-task"><span class="toc-number">6.</span> <span class="toc-text">編譯前的 pre-task </span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#make-%E6%99%82%E4%B8%8D%E9%A1%AF%E7%A4%BA%E6%8C%87%E4%BB%A4"><span class="toc-number">7.</span> <span class="toc-text">make 時不顯示指令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PHONY-%E7%AC%A6%E8%99%9F%E7%9A%84%E7%94%A8%E6%B3%95"><span class="toc-number">8.</span> <span class="toc-text">.PHONY 符號的用法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9C%A8-make-file-%E4%B8%AD%E4%BD%BF%E7%94%A8-awk"><span class="toc-number">9.</span> <span class="toc-text">在 make file 中使用 awk</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#makefile-%E4%B8%AD%EF%BC%8C%E5%AE%9A%E7%BE%A9%E8%AE%8A%E6%95%B8"><span class="toc-number">10.</span> <span class="toc-text">makefile 中，定義變數</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#quot-%E8%AA%9E%E6%B3%95-quot"><span class="toc-number">11.</span> <span class="toc-text">&quot;?&#x3D; 語法&quot; </span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AA%9E%E6%B3%95"><span class="toc-number">12.</span> <span class="toc-text">:&#x3D; 語法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B7%A2%E7%8B%80-make"><span class="toc-number">13.</span> <span class="toc-text">巢狀 make</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#makefile-%E5%BB%BA%E7%AB%8B%E7%9B%AE%E9%8C%84"><span class="toc-number">14.</span> <span class="toc-text">makefile 建立目錄</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#make-%E5%85%A7%E9%83%A8%E8%AE%8A%E6%95%B8"><span class="toc-number">15.</span> <span class="toc-text">make 內部變數</span></a></li></ol>
 			</div>
 		
-
-		<script data-ad-client="ca-pub-1911244070880149" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <p>要寫 makefile 之前，首先我們必須要先從最基本的 GCC 編譯指令開始學起，才可以一步一步地建立起 makefile，幸好這不會花我們太多時間</p>
 <h1 id="使用-GCC-編譯命令，並且印出-hello-world"><a href="#使用-GCC-編譯命令，並且印出-hello-world" class="headerlink" title="使用 GCC 編譯命令，並且印出 hello world "></a>使用 GCC 編譯命令，並且印出 hello world </h1><p>建立一個檔案叫做 main.c 後，輸入以下指令</p>
 <pre><code>#include&lt;stdio.h&gt;
@@ -331,7 +330,7 @@ makeDir: $&#123;OBJDIR&#125;</code></pre>
   </div>
 
   
-    <script data-ad-client="ca-pub-1911244070880149" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
   
 </aside>
         
