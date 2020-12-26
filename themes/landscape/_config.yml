@@ -17,7 +17,6 @@ widgets:
 - tagcloud
 - archive
 - recent_posts
-- adsense
 
 # display widgets at the bottom of index pages (pagination == 2)
 index_widgets:
