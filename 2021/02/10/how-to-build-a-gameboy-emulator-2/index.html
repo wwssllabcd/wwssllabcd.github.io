@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-34321837-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  <script data-ad-client="ca-pub-1911244070880149" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <title>從零開始的 Gameboy 模擬器開發 -- Step 2 | printf(&#34; I&#39;m EricWang &#34;)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="建立 opcode map 在開始之前讀取第一道指令之前，我們要做一件很不有趣的事情，就是建立所有 op code 的 map 首先我們建立 opcode_map.c，裡面的內容如下 123456789101112131415161718192021222324void not_support_cb_code() &amp;#123; ASSERT_CODE(0, &quot;not support CB">
+<meta property="og:type" content="article">
+<meta property="og:title" content="從零開始的 Gameboy 模擬器開發 -- Step 2">
+<meta property="og:url" content="http://wwssllabcd.github.io/2021/02/10/how-to-build-a-gameboy-emulator-2/index.html">
+<meta property="og:site_name" content="printf(&quot; I&#39;m EricWang &quot;)">
+<meta property="og:description" content="建立 opcode map 在開始之前讀取第一道指令之前，我們要做一件很不有趣的事情，就是建立所有 op code 的 map 首先我們建立 opcode_map.c，裡面的內容如下 123456789101112131415161718192021222324void not_support_cb_code() &amp;#123; ASSERT_CODE(0, &quot;not support CB">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-02-09T16:24:46.000Z">
+<meta property="article:modified_time" content="2021-02-09T18:57:37.726Z">
+<meta property="article:author" content="EricWang">
+<meta property="article:tag" content="How-To">
+<meta property="article:tag" content="c">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="printf(&#34; I&#39;m EricWang &#34;)" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://lh3.googleusercontent.com/-4X7H3oQr-Ws/VKchKJJwnSI/AAAAAAAAsy4/NK3uBSzNQlo/s0/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">printf(&#34; I&#39;m EricWang &#34;)</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/aboutme.html">AboutMe</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://wwssllabcd.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-how-to-build-a-gameboy-emulator-2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/10/how-to-build-a-gameboy-emulator-2/" class="article-date">
+  <time datetime="2021-02-09T16:24:46.000Z" itemprop="datePublished">2021-02-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      從零開始的 Gameboy 模擬器開發 -- Step 2
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+		
+			<div id="toc" class="toc-article">
+				<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B-opcode-map"><span class="toc-number">1.</span> <span class="toc-text">建立 opcode map </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#boot-code-%E7%9A%84%E9%81%B8%E6%93%87"><span class="toc-number">2.</span> <span class="toc-text">boot code 的選擇</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B%E8%B5%B7-256-256-%E5%80%8B-opcode"><span class="toc-number">3.</span> <span class="toc-text">建立起 256 + 256 個 opcode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LD-r1-r2-%E6%8C%87%E4%BB%A4"><span class="toc-number">4.</span> <span class="toc-text">LD, r1 r2 指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bit-b-r%EF%BC%8Cres-b-r-%E8%88%87-set-b-r-%E6%8C%87%E4%BB%A4"><span class="toc-number">5.</span> <span class="toc-text">bit b, r，res, b r 與 set, b r 指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#add-a-n-%E8%88%87-adc-a-n-%E6%8C%87%E4%BB%A4"><span class="toc-number">6.</span> <span class="toc-text">add_a_n 與 adc_a_n 指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rlc-%E6%8C%87%E4%BB%A4"><span class="toc-number">7.</span> <span class="toc-text">rlc 指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jr-cc-n-%E6%8C%87%E4%BB%A4"><span class="toc-number">8.</span> <span class="toc-text">jr cc, n 指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#di-%E8%88%87-ei-%E6%8C%87%E4%BB%A4"><span class="toc-number">9.</span> <span class="toc-text">di 與 ei 指令</span></a></li></ol>
+			</div>
+		
+        <h2 id="建立-opcode-map"><a href="#建立-opcode-map" class="headerlink" title="建立 opcode map "></a>建立 opcode map </h2><p>在開始之前讀取第一道指令之前，我們要做一件很不有趣的事情，就是建立所有 op code 的 map</p>
+<p>首先我們建立 opcode_map.c，裡面的內容如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">void not_support_cb_code() &#123; ASSERT_CODE(0, &quot;not support CB code&quot;); &#125;</span><br><span class="line">void not_support_op_code() &#123; ASSERT_CODE(0, &quot;not support op code&quot;); &#125;</span><br><span class="line"></span><br><span class="line">void op_00() &#123; not_support_op_code(); &#125;</span><br><span class="line">.......</span><br><span class="line">void op_FF() &#123; not_support_op_code(); &#125;</span><br><span class="line"></span><br><span class="line">void op_cb_00() &#123; not_support_cb_code(); &#125;</span><br><span class="line">.......</span><br><span class="line">void op_cb_FF() &#123; not_support_cb_code(); &#125;</span><br><span class="line"></span><br><span class="line">opcode_fun g_opcode_fun_map[0x100] &#x3D; &#123;</span><br><span class="line">    GEN_FUN_MAP(, 0), GEN_FUN_MAP(, 1), GEN_FUN_MAP(, 2), GEN_FUN_MAP(, 3),</span><br><span class="line">    GEN_FUN_MAP(, 4), GEN_FUN_MAP(, 5), GEN_FUN_MAP(, 6), GEN_FUN_MAP(, 7),</span><br><span class="line">    GEN_FUN_MAP(, 8), GEN_FUN_MAP(, 9), GEN_FUN_MAP(, A), GEN_FUN_MAP(, B),</span><br><span class="line">    GEN_FUN_MAP(, C), GEN_FUN_MAP(, D), GEN_FUN_MAP(, E), GEN_FUN_MAP(, F)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">opcode_fun g_opcode_cb_fun_map[0x100] &#x3D; &#123;</span><br><span class="line">    GEN_FUN_MAP(cb_, 0), GEN_FUN_MAP(cb_, 1), GEN_FUN_MAP(cb_, 2), GEN_FUN_MAP(cb_, 3),</span><br><span class="line">    GEN_FUN_MAP(cb_, 4), GEN_FUN_MAP(cb_, 5), GEN_FUN_MAP(cb_, 6), GEN_FUN_MAP(cb_, 7),</span><br><span class="line">    GEN_FUN_MAP(cb_, 8), GEN_FUN_MAP(cb_, 9), GEN_FUN_MAP(cb_, A), GEN_FUN_MAP(cb_, B),</span><br><span class="line">    GEN_FUN_MAP(cb_, C), GEN_FUN_MAP(cb_, D), GEN_FUN_MAP(cb_, E), GEN_FUN_MAP(cb_, F)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>其中 GEN_FUN_MAP() macro 是幫你產生 op_00(), op_01 ... op_FF 的格式，因為一個一個打實在太累了，當然你有毅力我也不反對</p>
+<a id="more"></a>
+
+<p>這邊的重點放在兩個 array, 分別是 <code>opcode_fun g_opcode_fun_map[0x100]</code> 與 <code>opcode_fun g_opcode_cb_fun_map[0x100]</code>，也就是說，我們使用一個 function pointer 的 array，然後使用該 array 的 index 當作 op code 呼叫號碼，這樣就不用寫落落長的 switch case 了，有了 opcode 了，我們就可以開始 fetch 指令了。新增以下的 code 到 cpu.c 中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">eu8 fetch(void) &#123;</span><br><span class="line">    eu8 val &#x3D; get_ram(REG_PC);</span><br><span class="line">    INC_REG(pc);</span><br><span class="line">    return val;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">eu8 execute_opcode() &#123;</span><br><span class="line">    eu8 opcode &#x3D; fetch();</span><br><span class="line">    opcode_fun_usp op_map &#x3D; g_opcode_fun_map;</span><br><span class="line">    bool is_cb_cmd &#x3D; false;</span><br><span class="line"></span><br><span class="line">    if (opcode &#x3D;&#x3D; PREFIX_CMD) &#123;</span><br><span class="line">        opcode &#x3D; fetch();</span><br><span class="line">        op_map &#x3D; g_opcode_cb_fun_map;</span><br><span class="line">        is_cb_cmd &#x3D; true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    op_map[opcode]();</span><br><span class="line">    return 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">eu8 cpu_tick() &#123;</span><br><span class="line">    return execute_opcode();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void tick() &#123;</span><br><span class="line">    cpu_tick();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void run_cpu() &#123;</span><br><span class="line">    while (g_cpu.running) &#123;</span><br><span class="line">        tick();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>fetch() 其實就是以 pc 當作記憶體位置，然後把該記憶體位置的值取出來，取出來後 pc 就要步進1</li>
+<li>Gameboy 的 op code 有兩種，一種是 normal 的，一種是老任新增的 -- 以 0xCB 做前綴的 external op code ，所以我們這邊一旦遇到 cb cmd 的時候，就使用 cb cmd 的 function array，反之則用正常的 function array</li>
+</ul>
+<hr>
+<h2 id="boot-code-的選擇"><a href="#boot-code-的選擇" class="headerlink" title="boot code 的選擇"></a>boot code 的選擇</h2><p>好，在開始之前，還有一件事很重要就是，這顆 cpu 的 pc 是從 0 開始讀，然後我們又把 game rom 放到 0 ~ 32k 的地方，理論上 pc = 0 開始讀的位置是 game rom 的第 0 byte，但是呢，如果你有注意到的話，其實 address 0 ~ 255 這個位置會跟 boot rom 重疊，也就是說 boot rom 與 game com 在 address 0 ~ 255 byte 的地方產生了 overlay</p>
+<p>那既然 overlay 了，那我去讀 address 0，到底是讀到的是 game rom 的第一個 byte，還是 boot rom 的第一個 byte 呢? 為了讓 fw 可以選擇使用哪個 code，所以有個 0xFF50 這個 boot_rom_disable 的 register  會做切換的功能，當我們要存取 0 ~ 255 的位置時，就要先去看一下這個 reg，當 boot_rom_disable 設為 0 時，我們的 mmu 就要送出 boot rom 的值，反之就會讀到 game rom 的位置，這個 reg 預設是讀 boot rom， 而一旦當要開始執行遊戲畫面時，fw 就會把這個 register 切到 1，這樣 mmu 就必須把這塊記憶體 mapping 到 game rom 去</p>
+<p>那這個 isp 的功能要實作也很簡單，就是在額外宣告一個 eu8 boot_rom_dmg[0x100] ，並且在 get_ram_ptr 動手腳就可以了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">eu8_p get_ram_ptr(RamAddr address) &#123;</span><br><span class="line">    if (address &lt; BOOT_ROM_LENGTH) &#123;</span><br><span class="line">        if (g_zero_page-&gt;boot_rom_disable &#x3D;&#x3D; 0) &#123;</span><br><span class="line">            return (eu8_p)&amp;boot_rom_dmg[address];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return (eu8_p)&amp;g_ram[address];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果 ok 之後，我們就可以正式的 fatch 第一個指令了，此時順利的話，你會 fetch 第一個 op code ，這個是從 boot rom 提出來的，號碼為 0x31，此時如果繼續執行的話會碰到 error ，因為我們在所有沒有實作的 cmd 裡面都加上了 not_support_op_code()，進而會引發 assert，所以我們的目標就是把所有的 cmd 給做出來</p>
+<hr>
+<h2 id="建立起-256-256-個-opcode"><a href="#建立起-256-256-個-opcode" class="headerlink" title="建立起 256 + 256 個 opcode"></a>建立起 256 + 256 個 opcode</h2><p>這邊雖然一共有 normal op + external op 最多 512 道指令，但你如果仔細觀察的話，其實很多指令都相同，只是來源 register 或是目標 register 不同，我的建議是按照手冊一個一個做下去，這樣在實作的時候也比較不會亂</p>
+<p>回到教學這邊，雖然每個 cmd 都是短短的，即便如此，若講解每道指令的話會使用很多篇幅，所以這邊只會挑重點講</p>
+<p>首先我們先做點前置作業，在 cpu.c 中加入等下會用到的 function，如下所示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">void disable_halt() &#123;</span><br><span class="line">    g_cpu.halt &#x3D; false;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void enable_halt() &#123;</span><br><span class="line">    g_cpu.halt &#x3D; true;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void stack_push(WordReg_p reg) &#123;</span><br><span class="line">    DEC_REG(sp);</span><br><span class="line">    set_ram(REG_SP, REG_VAL(REG_HIGH(reg)));</span><br><span class="line">    DEC_REG(sp);</span><br><span class="line">    set_ram(REG_SP, REG_VAL(REG_LOW(reg)));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void stack_pop(WordReg_p reg) &#123;</span><br><span class="line">    REG_VAL(REG_LOW(reg)) &#x3D; get_ram(REG_SP);</span><br><span class="line">    INC_REG(sp);</span><br><span class="line">    REG_VAL(REG_HIGH(reg)) &#x3D; get_ram(REG_SP);</span><br><span class="line">    INC_REG(sp);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">eu16 fetch_word() &#123;</span><br><span class="line">    eu16 val &#x3D; 0;</span><br><span class="line">    val |&#x3D; fetch();</span><br><span class="line">    val |&#x3D; fetch() &lt;&lt; 8;</span><br><span class="line">    return val;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">eu8 cpu_tick() &#123;</span><br><span class="line">    if (g_cpu.halt) &#123;</span><br><span class="line">        return 1;</span><br><span class="line">    &#125;</span><br><span class="line">    return execute_opcode();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>你可以看到其實實作的方式都很簡單， fetch_word 就是使用 fetch 兩次，而 stack_push 就是先把 sp 減一後，在把 pc 所指向的 ram 的值讀出來放到 sp 所指的位置，stack 的操作大多是以 WordRegister 的方式
+而 stack_pop 就是反過來做，此外，我們也增加了 halt 的 function ，並在原本的 cpu_tick() 中，加入 check g_cpu.halt 來模擬 halt 的指令</p>
+<hr>
+<h2 id="LD-r1-r2-指令"><a href="#LD-r1-r2-指令" class="headerlink" title="LD, r1 r2 指令"></a>LD, r1 r2 指令</h2><p>這個指令是最多使用的，從 op code 0x40~0x7F 都是用它做出來的，所以一下子 64 個指令就完成了，
+他的實作方式也很簡單，就是把 r2 這個 byte ，設給 r1 這個 byte register</p>
+<p>而有時候設值目標不是 register ，而是記憶體位置，所以這邊就又弄一個 opcode_ld_r1_r2_addr() ，C 不支援同名異式的 Polymorphism ，所以抽象表現力就比較差一點，不過對於這個小專案來說還是可以忍受的範圍內就是了，當然 reg 與記憶體位置你也可以看成都是這隻模擬器的記憶體位置，真的發狠起來要搞合併也不是不行，只是這樣 code 會變成更難理解，這樣就本末倒置了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">void opcode_ld_r1_r2(ByteReg_p r1, eu8 r2) &#123;</span><br><span class="line">    REG_VAL(r1) &#x3D; r2;</span><br><span class="line">&#125;</span><br><span class="line">void opcode_ld_r1_r2_addr(RamAddr address, eu8 r2) &#123;</span><br><span class="line">    set_ram(address, r2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>這邊也稍微貼一下他在 opcode_map.c 中的樣子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">void op_40() &#123; opcode_ld_r1_r2(b, REG_B); &#125;</span><br><span class="line">void op_41() &#123; opcode_ld_r1_r2(b, REG_C); &#125;</span><br><span class="line">void op_42() &#123; opcode_ld_r1_r2(b, REG_D); &#125;</span><br><span class="line">void op_43() &#123; opcode_ld_r1_r2(b, REG_E); &#125;</span><br><span class="line">void op_44() &#123; opcode_ld_r1_r2(b, REG_H); &#125;</span><br><span class="line">void op_45() &#123; opcode_ld_r1_r2(b, REG_L); &#125;</span><br><span class="line">void op_46() &#123; opcode_ld_r1_r2(b, RAM_VAL_HL); &#125;</span><br><span class="line">....</span><br><span class="line">void op_48() &#123; opcode_ld_r1_r2(c, REG_B); &#125;</span><br><span class="line">void op_49() &#123; opcode_ld_r1_r2(c, REG_C); &#125;</span><br><span class="line">void op_4A() &#123; opcode_ld_r1_r2(c, REG_D); &#125;</span><br><span class="line">void op_4B() &#123; opcode_ld_r1_r2(c, REG_E); &#125;</span><br><span class="line">void op_4C() &#123; opcode_ld_r1_r2(c, REG_H); &#125;</span><br><span class="line">void op_4D() &#123; opcode_ld_r1_r2(c, REG_L); &#125;</span><br><span class="line">void op_4E() &#123; opcode_ld_r1_r2(c, RAM_VAL_HL); &#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="bit-b-r，res-b-r-與-set-b-r-指令"><a href="#bit-b-r，res-b-r-與-set-b-r-指令" class="headerlink" title="bit b, r，res, b r 與 set, b r 指令"></a>bit b, r，res, b r 與 set, b r 指令</h2><p>在 cb cmd 中，也是有跟 opcode_ld_r1_r2 一樣廣泛使用的 cmd ，那就是 opcode_cb_bit_b_r() ， opcode_cb_res_b_r()與 opcode_cb_set_b_r()，他們也是各占 64 個 opcode，算是很補的 cmd， 作法如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">void opcode_cb_bit_b_r(eu8 val, eu8 bit) &#123;</span><br><span class="line">    set_z(CHECK_BIT(val, bit) &#x3D;&#x3D; 0);</span><br><span class="line">    set_n(false);</span><br><span class="line">    set_h(true);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void opcode_cb_res_b_r(ByteReg_p reg, eu8 bit) &#123;</span><br><span class="line">    CLEAR_BIT(REG_VAL(reg), bit);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void opcode_cb_res_b_r_addr(RamAddr addr, eu8 bit) &#123;</span><br><span class="line">    eu8 res &#x3D; get_ram(addr);</span><br><span class="line">    CLEAR_BIT(res, bit);</span><br><span class="line">    set_ram(addr, res);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void opcode_cb_set_b_r(ByteReg_p reg, eu8 bit) &#123;</span><br><span class="line">    SET_BIT(REG_VAL(reg), bit);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>這3個 function 只有  opcode_cb_bit_b_r 需要注意的就是，你必須要開始設定 flags，不過這3個 function 的 flag 比較沒那麼複雜，我挑一個比較複雜的運算來討論一下</p>
+<hr>
+<h2 id="add-a-n-與-adc-a-n-指令"><a href="#add-a-n-與-adc-a-n-指令" class="headerlink" title="add_a_n 與 adc_a_n 指令"></a>add_a_n 與 adc_a_n 指令</h2><p>以下是 opcode 0x80 ~ 0x87 的 add_a_n 與 opcode 0x88 ~ 0x8F 的 adc_a_n 的實作，順帶一提的是，這邊 function 的命名規則是，如果是對應到 op code 的話就會以 &quot;opcode_ &quot; 為開頭，如果沒這開頭的就都是 base function 了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">bool check_hc_add(eu32 summand, eu32 addend, eu32 mask) &#123;</span><br><span class="line">    return ((summand &amp; mask) + (addend &amp; mask) &gt; mask);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">eu32 add_a_b(eu32 summand, eu32 addend, eu32 mask) &#123;</span><br><span class="line">    eu32 result &#x3D; summand + addend;</span><br><span class="line"></span><br><span class="line">    set_z((result &amp; mask) &#x3D;&#x3D; 0);</span><br><span class="line">    set_n(false);</span><br><span class="line">    set_h(check_hc_add(summand, addend, mask &gt;&gt; 4));</span><br><span class="line">    set_c(result &gt; mask);</span><br><span class="line"></span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void opcode_add_a_n(eu8 n) &#123;</span><br><span class="line">    REG_VAL(a) &#x3D; (eu8)add_a_b(REG_VAL(a), n, 0xFF);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void opcode_adc_a_n(eu8 n) &#123;</span><br><span class="line">    opcode_add_a_n(n + flags-&gt;c);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>opcode_adc_a_n 與 opcode_add_a_n 其實是由 add_a_b 組成，這邊可看到 add 指令對 flag 的變化，在大部分的狀況規則整理如下</p>
+<ul>
+<li>flag-&gt;z: 是用來判斷運算結果是不是為0</li>
+<li>flag-&gt;n: 代表是不是減法</li>
+<li>flag-&gt;h: 代表 bit 4 有沒有產生變化，也就是 halt carry 的意思</li>
+<li>flag-&gt;c: 就是代表 carry，也就是運算結果本身有無溢位</li>
+</ul>
+<p>對於 flag-&gt;c 來說，要判斷兩個值相加是否 overflow，所以就直接設了一個 eu32 result 的變數來存放相加過的值，並且判斷相加後是否超過 0x100 即可，反正我們是 32 位元的 cpu，要觀察兩個 8 bit regsiter 相加後是否溢位其實是一塊小蛋糕</p>
+<hr>
+<h2 id="rlc-指令"><a href="#rlc-指令" class="headerlink" title="rlc 指令"></a>rlc 指令</h2><p>除了加/減法會影響到 flag 外，它們也會拿去支援一些 cmd，可說是多才多藝，例如 cb cmd 的 opcde 0x00 ~ 0x07 的 rlc，
+他的內容是把輸入值左移一位，那這樣最高位就會消失，不過這個指令會把最高位的 bit，保存在 flag-&gt;c 中，不過這個指令有趣的地方就在於它其實也把消失的 bit，又加回到 bit 0 的地方</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">eu8 rlx_n(eu8 value, eu8 plus) &#123;</span><br><span class="line">    eu8 result &#x3D; (value &lt;&lt; 1) | plus;</span><br><span class="line"></span><br><span class="line">    set_z(result &#x3D;&#x3D; 0);</span><br><span class="line">    set_n(false);</span><br><span class="line">    set_h(false);</span><br><span class="line">    set_c(CHECK_BIT(value, 7));</span><br><span class="line"></span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void opcode_cb_rlc_n(ByteReg_p reg) &#123;</span><br><span class="line">    eu8 plus &#x3D; CHECK_BIT(REG_VAL(reg), 7);</span><br><span class="line">    REG_VAL(reg) &#x3D; rlx_n(REG_VAL(reg), plus);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void opcode_cb_rlc_n_addr(RamAddr addr) &#123;</span><br><span class="line">    eu8 plus &#x3D; CHECK_BIT(get_ram(addr), 7);</span><br><span class="line">    set_ram(addr, rlx_n(get_ram(addr), plus));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="jr-cc-n-指令"><a href="#jr-cc-n-指令" class="headerlink" title="jr cc, n 指令"></a>jr cc, n 指令</h2><p>最後講一下 opcode_jr_cc_n()，他其實是用 jr_n 組合出來的，特別要提的是，如果判斷是不需要 jump 的話，PC 也必須要往前移動一個，所以這邊就使用 INC_REG(pc) 來達到這個目的</p>
+<p>而跳轉命令的實作也很簡單，就是改變 pc 值就可以了，所以 jr_n 指令的作法就是把現在的 pc 加上一個 offset，而這個 offset 的是從 fetch 而來，不過 jr_n 這邊是有順序性的，你一定要先 fetch 才可以做 offset 的動作，因為 fetch 會改變 pc 的值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">void opcode_jr_n() &#123;</span><br><span class="line">    es8 offset &#x3D; fetch();</span><br><span class="line">    REG_PC &#x3D; REG_PC + offset;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void opcode_jr_cc_n(bool condition) &#123;</span><br><span class="line">    if (condition) &#123;</span><br><span class="line">        opcode_jr_n();</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        INC_REG(pc);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="di-與-ei-指令"><a href="#di-與-ei-指令" class="headerlink" title="di 與 ei 指令"></a>di 與 ei 指令</h2><p>再來比較特別的就是 di 與 ei，這個是打開 interrupt，我的感覺有點像是 8051 中的 EA=1 的感覺</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">void opcode_di() &#123;</span><br><span class="line">    g_cpu.enable_interrupt &#x3D; false;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void opcode_ei() &#123;</span><br><span class="line">    g_cpu.enable_interrupt &#x3D; true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>其實 op code 大概就是這樣，真正需要認真實作的部分約100行左右，除了一個叫 daa 指令之外, 剩下的大部分都很簡單，就是組合再組合就搞定了，接下來下一篇就是要寫 gb 的 video 與 tile 系統了</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wwssllabcd.github.io/2021/02/10/how-to-build-a-gameboy-emulator-2/" data-id="ckkybrisy0000jghaaa3q9vc4" class="article-share-link">Share</a>
+      
+        <a href="http://wwssllabcd.github.io/2021/02/10/how-to-build-a-gameboy-emulator-2/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-To/" rel="tag">How-To</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/" rel="tag">c</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2021/02/08/how-to-build-a-gameboy-emulator-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">從零開始的 Gameboy 模擬器開發 -- Step 1</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bitcoin/" rel="tag">Bitcoin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Boost/" rel="tag">Boost</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bugzilla/" rel="tag">Bugzilla</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Firefox-extension/" rel="tag">Firefox extension</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GDB/" rel="tag">GDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GDB-Script/" rel="tag">GDB Script</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-Earth/" rel="tag">Google Earth</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Heroku/" rel="tag">Heroku</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/How-To/" rel="tag">How-To</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Investment/" rel="tag">Investment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kodi/" rel="tag">Kodi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lunux-kernel/" rel="tag">Lunux kernel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modern-C-Design/" rel="tag">Modern C++ Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nokogiri/" rel="tag">Nokogiri</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OO/" rel="tag">OO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Octopress/" rel="tag">Octopress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programming-pearls/" rel="tag">Programming pearls</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Qemu/" rel="tag">Qemu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RSS/" rel="tag">RSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Raspberry-Pi/" rel="tag">Raspberry Pi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby/" rel="tag">Ruby</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SNMP/" rel="tag">SNMP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Subversion/" rel="tag">Subversion</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/USB/" rel="tag">USB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Virtual-Box/" rel="tag">Virtual Box</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/" rel="tag">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wordpress/" rel="tag">Wordpress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bochs/" rel="tag">bochs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">c</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux%EF%BC%8Cmakefile/" rel="tag">linux，makefile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sicp/" rel="tag">sicp</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 12px;">Android</a> <a href="/tags/Bitcoin/" style="font-size: 10px;">Bitcoin</a> <a href="/tags/Boost/" style="font-size: 12px;">Boost</a> <a href="/tags/Bugzilla/" style="font-size: 10px;">Bugzilla</a> <a href="/tags/C/" style="font-size: 16px;">C++</a> <a href="/tags/Firefox-extension/" style="font-size: 12px;">Firefox extension</a> <a href="/tags/GDB/" style="font-size: 12px;">GDB</a> <a href="/tags/GDB-Script/" style="font-size: 10px;">GDB Script</a> <a href="/tags/Google-Earth/" style="font-size: 10px;">Google Earth</a> <a href="/tags/Heroku/" style="font-size: 10px;">Heroku</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/How-To/" style="font-size: 20px;">How-To</a> <a href="/tags/Investment/" style="font-size: 10px;">Investment</a> <a href="/tags/Kodi/" style="font-size: 10px;">Kodi</a> <a href="/tags/Lunux-kernel/" style="font-size: 14px;">Lunux kernel</a> <a href="/tags/Modern-C-Design/" style="font-size: 12px;">Modern C++ Design</a> <a href="/tags/Nokogiri/" style="font-size: 12px;">Nokogiri</a> <a href="/tags/OO/" style="font-size: 14px;">OO</a> <a href="/tags/Octopress/" style="font-size: 10px;">Octopress</a> <a href="/tags/Programming-pearls/" style="font-size: 10px;">Programming pearls</a> <a href="/tags/Python/" style="font-size: 12px;">Python</a> <a href="/tags/Qemu/" style="font-size: 10px;">Qemu</a> <a href="/tags/RSS/" style="font-size: 12px;">RSS</a> <a href="/tags/Raspberry-Pi/" style="font-size: 18px;">Raspberry Pi</a> <a href="/tags/Ruby/" style="font-size: 14px;">Ruby</a> <a href="/tags/SNMP/" style="font-size: 10px;">SNMP</a> <a href="/tags/Subversion/" style="font-size: 10px;">Subversion</a> <a href="/tags/USB/" style="font-size: 10px;">USB</a> <a href="/tags/Ubuntu/" style="font-size: 12px;">Ubuntu</a> <a href="/tags/Virtual-Box/" style="font-size: 10px;">Virtual Box</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/tags/bochs/" style="font-size: 10px;">bochs</a> <a href="/tags/c/" style="font-size: 14px;">c</a> <a href="/tags/linux%EF%BC%8Cmakefile/" style="font-size: 10px;">linux，makefile</a> <a href="/tags/sicp/" style="font-size: 10px;">sicp</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/10/">October 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">October 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/09/">September 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/03/">March 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/12/">December 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2004/12/">December 2004</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2003/04/">April 2003</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/02/10/how-to-build-a-gameboy-emulator-2/">從零開始的 Gameboy 模擬器開發 -- Step 2</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/08/how-to-build-a-gameboy-emulator-1/">從零開始的 Gameboy 模擬器開發 -- Step 1</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/07/how-to-build-a-gameboy-emulator-0/">從零開始的 Gameboy 模擬器開發 -- Step 0</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/08/how-to-intall-android-tv-in-raspberry-pi-4/">RPI-4 安裝 android tv</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/08/how-to-use-kodi/">kodi 教學，心得</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 EricWang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/aboutme.html" class="mobile-nav-link">AboutMe</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'ericwangsblog';
+  
+  var disqus_url = 'http://wwssllabcd.github.io/2021/02/10/how-to-build-a-gameboy-emulator-2/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
