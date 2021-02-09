@@ -80,6 +80,62 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-how-to-use-bochs" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/20/how-to-use-bochs/" class="article-date">
+  <time datetime="2016-04-20T09:23:25.000Z" itemprop="datePublished">2016-04-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/20/how-to-use-bochs/">bochs 使用教學，心得</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h1><p>使用 apt 安裝的是沒有debug 功能的，bochs 通常一出現視窗運行會沒辦法輸入指令，
+如果你只是要單純的執行環境的話，就使用 apt安裝吧，如果要 debug 功能的話，就要自行 compile</p>
+<p>下載 <a target="_blank" rel="noopener" href="https://sourceforge.net/projects/bochs/files/bochs/2.6.8/">bochs 2.6.8 source code</a></p>
+<p>安裝(可參考 orange&#39;s P10)
+輸入下列指令 </p>
+<pre><code>tar vxzf bochs-2.6.8.tar.gz</code></pre>
+<p>進入目錄後，開始設定</p>
+<pre><code>./configure --enable-disasm  --enable-debugger</code></pre>
+<p>如果要使用 gdb 的話，就不能用 <code>--enable-debugger</code> ，要換成  <code>--enable-gdbstub</code>
+接下來就是</p>
+<pre><code>make
+sudo make install</code></pre>
+        
+          <p class="article-more-link">
+            <a href="/2016/04/20/how-to-use-bochs/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wwssllabcd.github.io/2016/04/20/how-to-use-bochs/" data-id="ckky6jk1n002tusha9vd9egcj" class="article-share-link">Share</a>
+      
+        <a href="http://wwssllabcd.github.io/2016/04/20/how-to-use-bochs/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bochs/" rel="tag">bochs</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-what-is-bitcoin" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/08/21/what-is-bitcoin/" class="article-date">
@@ -617,56 +673,6 @@ Standalone Image的檔案下載回來後解壓縮，會得到一個img file，�
 
 
   
-    <article id="post-how-to-setup-samba-in-raspberry-pi" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2013/04/22/how-to-setup-samba-in-raspberry-pi/" class="article-date">
-  <time datetime="2013-04-22T08:19:00.000Z" itemprop="datePublished">2013-04-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/04/22/how-to-setup-samba-in-raspberry-pi/">Raspberry pi 上安裝 samba (網路芳鄰)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="使用-apt-安裝"><a href="#使用-apt-安裝" class="headerlink" title="使用 apt 安裝"></a>使用 apt 安裝</h1><p>使用 apt 安裝, 就那麼簡單</p>
-<pre><code>sudo apt-get install samba</code></pre>
-<h1 id="設定-conf-檔"><a href="#設定-conf-檔" class="headerlink" title="設定 conf 檔"></a>設定 conf 檔</h1><p>設定 conf 檔之前，先備份</p>
-<pre><code>sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.org</code></pre>
-<p>編輯 smb.conf</p>
-<pre><code>sudo nano /etc/samba/smb.conf</code></pre>
-        
-          <p class="article-more-link">
-            <a href="/2013/04/22/how-to-setup-samba-in-raspberry-pi/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://wwssllabcd.github.io/2013/04/22/how-to-setup-samba-in-raspberry-pi/" data-id="ckky6jk1c0025ushadxi92uc2" class="article-share-link">Share</a>
-      
-        <a href="http://wwssllabcd.github.io/2013/04/22/how-to-setup-samba-in-raspberry-pi/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-To/" rel="tag">How-To</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Raspberry-Pi/" rel="tag">Raspberry Pi</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -695,7 +701,7 @@ Standalone Image的檔案下載回來後解壓縮，會得到一個img file，�
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 12px;">Android</a> <a href="/tags/Bitcoin/" style="font-size: 10px;">Bitcoin</a> <a href="/tags/Boost/" style="font-size: 12px;">Boost</a> <a href="/tags/Bugzilla/" style="font-size: 10px;">Bugzilla</a> <a href="/tags/C/" style="font-size: 16px;">C++</a> <a href="/tags/Firefox-extension/" style="font-size: 12px;">Firefox extension</a> <a href="/tags/GDB/" style="font-size: 12px;">GDB</a> <a href="/tags/GDB-Script/" style="font-size: 10px;">GDB Script</a> <a href="/tags/Google-Earth/" style="font-size: 10px;">Google Earth</a> <a href="/tags/Heroku/" style="font-size: 10px;">Heroku</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/How-To/" style="font-size: 20px;">How-To</a> <a href="/tags/Investment/" style="font-size: 10px;">Investment</a> <a href="/tags/Kodi/" style="font-size: 10px;">Kodi</a> <a href="/tags/Lunux-kernel/" style="font-size: 14px;">Lunux kernel</a> <a href="/tags/Modern-C-Design/" style="font-size: 12px;">Modern C++ Design</a> <a href="/tags/Nokogiri/" style="font-size: 12px;">Nokogiri</a> <a href="/tags/OO/" style="font-size: 14px;">OO</a> <a href="/tags/Octopress/" style="font-size: 10px;">Octopress</a> <a href="/tags/Programming-pearls/" style="font-size: 10px;">Programming pearls</a> <a href="/tags/Python/" style="font-size: 12px;">Python</a> <a href="/tags/Qemu/" style="font-size: 10px;">Qemu</a> <a href="/tags/RSS/" style="font-size: 12px;">RSS</a> <a href="/tags/Raspberry-Pi/" style="font-size: 18px;">Raspberry Pi</a> <a href="/tags/Ruby/" style="font-size: 14px;">Ruby</a> <a href="/tags/SNMP/" style="font-size: 10px;">SNMP</a> <a href="/tags/Subversion/" style="font-size: 10px;">Subversion</a> <a href="/tags/USB/" style="font-size: 10px;">USB</a> <a href="/tags/Ubuntu/" style="font-size: 12px;">Ubuntu</a> <a href="/tags/Virtual-Box/" style="font-size: 10px;">Virtual Box</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/tags/bochs/" style="font-size: 10px;">bochs</a> <a href="/tags/c/" style="font-size: 10px;">c</a> <a href="/tags/linux%EF%BC%8Cmakefile/" style="font-size: 10px;">linux，makefile</a> <a href="/tags/sicp/" style="font-size: 10px;">sicp</a>
+      <a href="/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 12px;">Android</a> <a href="/tags/Bitcoin/" style="font-size: 10px;">Bitcoin</a> <a href="/tags/Boost/" style="font-size: 12px;">Boost</a> <a href="/tags/Bugzilla/" style="font-size: 10px;">Bugzilla</a> <a href="/tags/C/" style="font-size: 16px;">C++</a> <a href="/tags/Firefox-extension/" style="font-size: 12px;">Firefox extension</a> <a href="/tags/GDB/" style="font-size: 12px;">GDB</a> <a href="/tags/GDB-Script/" style="font-size: 10px;">GDB Script</a> <a href="/tags/Google-Earth/" style="font-size: 10px;">Google Earth</a> <a href="/tags/Heroku/" style="font-size: 10px;">Heroku</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/How-To/" style="font-size: 20px;">How-To</a> <a href="/tags/Investment/" style="font-size: 10px;">Investment</a> <a href="/tags/Kodi/" style="font-size: 10px;">Kodi</a> <a href="/tags/Lunux-kernel/" style="font-size: 14px;">Lunux kernel</a> <a href="/tags/Modern-C-Design/" style="font-size: 12px;">Modern C++ Design</a> <a href="/tags/Nokogiri/" style="font-size: 12px;">Nokogiri</a> <a href="/tags/OO/" style="font-size: 14px;">OO</a> <a href="/tags/Octopress/" style="font-size: 10px;">Octopress</a> <a href="/tags/Programming-pearls/" style="font-size: 10px;">Programming pearls</a> <a href="/tags/Python/" style="font-size: 12px;">Python</a> <a href="/tags/Qemu/" style="font-size: 10px;">Qemu</a> <a href="/tags/RSS/" style="font-size: 12px;">RSS</a> <a href="/tags/Raspberry-Pi/" style="font-size: 18px;">Raspberry Pi</a> <a href="/tags/Ruby/" style="font-size: 14px;">Ruby</a> <a href="/tags/SNMP/" style="font-size: 10px;">SNMP</a> <a href="/tags/Subversion/" style="font-size: 10px;">Subversion</a> <a href="/tags/USB/" style="font-size: 10px;">USB</a> <a href="/tags/Ubuntu/" style="font-size: 12px;">Ubuntu</a> <a href="/tags/Virtual-Box/" style="font-size: 10px;">Virtual Box</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/tags/bochs/" style="font-size: 10px;">bochs</a> <a href="/tags/c/" style="font-size: 12px;">c</a> <a href="/tags/linux%EF%BC%8Cmakefile/" style="font-size: 10px;">linux，makefile</a> <a href="/tags/sicp/" style="font-size: 10px;">sicp</a>
     </div>
   </div>
 
@@ -717,7 +723,11 @@ Standalone Image的檔案下載回來後解壓縮，會得到一個img file，�
       <ul>
         
           <li>
-            <a href="/2021/02/09/how-to-build-a-gameboy-emulator-0/">從零開始的 Gameboy 模擬器開發 -- Step 0</a>
+            <a href="/2021/02/08/how-to-build-a-gameboy-emulator-1/">從零開始的 Gameboy 模擬器開發 -- Step 1</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/07/how-to-build-a-gameboy-emulator-0/">從零開始的 Gameboy 模擬器開發 -- Step 0</a>
           </li>
         
           <li>
@@ -730,10 +740,6 @@ Standalone Image的檔案下載回來後解壓縮，會得到一個img file，�
         
           <li>
             <a href="/2020/11/08/how-to-install-kodi-in-raspberry-pi-4/">how-to-install-kodi-in-raspberry-pi-4</a>
-          </li>
-        
-          <li>
-            <a href="/2020/02/16/Investment-of-indexing/">指數型投資(Investment of indexing)</a>
           </li>
         
       </ul>
