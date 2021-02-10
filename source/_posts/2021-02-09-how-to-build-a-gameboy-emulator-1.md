@@ -1,7 +1,7 @@
 ---
 title: 從零開始的 Gameboy 模擬器開發 -- Step 1
 date: 2021-02-08 00:24:46
-tags: [How-To, c]
+tags: [How-To, c, emulator]
 toc: true
 type: adsense
 ---
@@ -96,6 +96,8 @@ ERIC_GEN_POINTER_TYPE(Cpu);
 - enable_interrupt 是用來支援 ei 與 di 命令，它給我的感覺很像是 8051 中的 EA
 - clock_cnt 是用來模擬 cpu 內部的 clock，這個 clock 會跟產生畫面有關係
 
+這邊有個比較特別的 FlagReg_p，他其實就 AF 裡面的 F，又稱為 flags，他只有 4 個 bit 是有用的，所以我們使用分號的方式把那幾個 flag 都限定為 1 bit
+
 ---
 
 有了一個 Cpu type 後，我們就可以建立一個全域變數 g_cpu 了，這邊我們全域變數一律使用 `g_` 開頭，我們只有針對全域變數使用匈牙利命名法外，其他情況則不使用，方便我們對全域變數的管制
@@ -118,7 +120,7 @@ Cpu g_cpu = {
 
 ---
 
-為了方便起見，我們也建立一些全域變數，可以讓我們之後在寫 opcode 的時候比較直覺一點，這邊的全域變數又都沒有加 `g_` ，直接光速打臉上面的原則，原因是加上去真的很醜，所以這邊會有個 trade off，反正我們都知道 af 是全域的 Register 就好
+為了方便起見，我們也對比較常用的 register 建立對應的全域變數，可以讓我們之後在寫 opcode 的時候比較直覺一點，也可以少打幾個字，這邊的全域變數又都沒有加 `g_` ，直接光速打臉上面的原則，原因是加上去真的很醜，所以這邊會有個 trade off，反正我們都知道 af 是全域的 Register 就好
 
 ```
 WordReg_p af = &g_cpu.af;
@@ -142,7 +144,7 @@ ByteReg_p l = &g_cpu.l;
 
 ---
 
-這邊有個比較特別的 FlagReg_p，他其實就 AF 裡面的 F，又稱為 flags，他只有 4 個 bit 是有用的，所以我們也建立一些對 flags 設定的方式，如下所示，而其中的 SET_FLAG 只是幫你把 bool 轉成 1 or 0 而已，如果是 true，他就會回傳1，反之則0
+所以我們也建立一些對 flags 設定的方式，如下所示，而其中的 SET_FLAG 只是幫你把 bool 轉成 1 or 0 而已，如果是 true，他就會回傳1，反之則0
 ```
 void set_z(bool val) {
     flags->z = SET_FLAG(val);
