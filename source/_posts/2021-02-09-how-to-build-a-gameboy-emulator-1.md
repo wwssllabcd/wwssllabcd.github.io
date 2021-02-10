@@ -256,6 +256,8 @@ void power_on_cpu(eu8_p rom) {
 
 我們也順便把 game rom 讀進來，game rom 的檔案請自己想辦法嚕，我們在 main 中把 rom 讀進來，並且傳入 power_on_cpu，這段 code 你可以想像成把遊戲 rom 插入主機後，然後 power on 的樣子
 
+`注意: 目前我們只支援 32k 的 rom，像是 MBC 格式的我們目前是不支援的`
+
 ```
 #include <stdio.h>
 #include <Windows.h>
