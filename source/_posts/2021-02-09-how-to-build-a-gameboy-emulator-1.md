@@ -234,7 +234,7 @@ void init_mmu(eu8_p rom) {
 
 對應到 cpu 的 rom 就是 g_ram[_64K] 了，然後提供 gettter / setter，還有 init_mmu()
 
-g_ram 利用 `eu8 g_ram[GB_RAM_SIZE] = {0}` 的方式來達到 init buffer 的功能，不過我們還需要一個 init_mmu() 的 functin，它會把 game-rom copy 到 rom 0 ~ 32k 的位置，addres 0的位置有點特別，蠻重要的，晚一點會在說明，這邊還有一點比較特別的是 `0xFF00` 與 `0xFF02` 的初始值是 0x3F 與 0xFF，這邊就先照填吧
+g_ram 利用 `eu8 g_ram[GB_RAM_SIZE] = {0}` 的方式來達到 init buffer 的功能，不過我們還需要一個 init_mmu() 的 function，它會把 game-rom copy 到 rom 0 ~ 32k 的位置，addres 0的位置有點特別，蠻重要的，晚一點會在說明，這邊還有一點比較特別的是 `0xFF00` 與 `0xFF02` 的初始值是 0x3F 與 0xFF，這邊就先照填吧
 
 cpu.c 這邊也增加 run code ，其中 tick 就是執行 opcode 的地方，基本上 cpu 進到 run_cpu() 會在這邊無限循環直到關機為止，不過這邊我們先讓他強制停止，等晚一點再來處理 opcode 
 ```
