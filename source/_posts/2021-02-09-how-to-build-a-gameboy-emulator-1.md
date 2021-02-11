@@ -292,4 +292,4 @@ int main(int argc, char* argv[]){
 
 到目前為止，我們基本上已經完成了初步的架構，一個 cpu，一個記憶體，然後我們也把 rom 讀進來了，接下來就可以開始化身成 cpu ，去執行一道道 op code 了
 
-[從零開始的 Gameboy 模擬器開發 -- Step 2 ](https://wwssllabcd.github.io/2021/02/08/how-to-build-a-gameboy-emulator-2/)
+[從零開始的 Gameboy 模擬器開發 -- Step 2 ](https://wwssllabcd.github.io/2021/02/10/how-to-build-a-gameboy-emulator-2/)
