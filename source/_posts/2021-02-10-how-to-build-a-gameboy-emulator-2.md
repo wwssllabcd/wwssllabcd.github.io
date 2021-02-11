@@ -315,7 +315,7 @@ jr cc, n 指令
 ```
 void opcode_jr_n() {
     es8 offset = fetch();
-    REG_PC = REG_PC + offset;
+    REG_PC += offset;
 }
 
 void opcode_jr_cc_n(bool condition) {
