@@ -7,7 +7,7 @@ type: adsense
 ---
 
 建立 opcode map 
----------
+========
 
 在開始之前讀取第一道指令之前，我們要做一件很不有趣的事情，就是建立所有 op code 的 map
 
@@ -87,7 +87,7 @@ void run_cpu() {
 ----
 
 boot code 的選擇
----------
+========
 
 好，在開始之前，還有一件事很重要就是，這顆 cpu 的 pc 是從 0 開始讀，然後我們又把 game rom 放到 0 ~ 32k 的地方，理論上 pc = 0 開始讀的位置是 game rom 的第 0 byte，但是呢，如果你有注意到的話，其實 address 0 ~ 255 這個位置會跟 boot rom 重疊，也就是說 boot rom 與 game com 在 address 0 ~ 255 byte 的地方產生了 overlay
 
@@ -111,7 +111,7 @@ eu8_p get_ram_ptr(RamAddr address) {
 ----
 
 建立起 256 + 256 個 opcode
----
+========
 
 這邊雖然一共有 normal op + external op 最多 512 道指令，但你如果仔細觀察的話，其實很多指令都相同，只是來源 register 或是目標 register 不同，我的建議是按照手冊一個一個做下去，這樣在實作的時候也比較不會亂
 
@@ -243,7 +243,10 @@ bool check_hc_add(eu32 summand, eu32 addend, eu32 mask) {
 eu32 add_a_b(eu32 summand, eu32 addend, eu32 mask) {
     eu32 result = summand + addend;
 
-    set_z((result & mask) == 0);
+    if (mask == 0xFF) {
+        set_z((result & mask) == 0);
+    }
+    
     set_n(false);
     set_h(check_hc_add(summand, addend, mask >> 4));
     set_c(result > mask);
@@ -268,6 +271,8 @@ opcode_adc_a_n 與 opcode_add_a_n 其實是由 add_a_b 組成，這邊可看到 
 * flag->c: 就是代表 carry，也就是運算結果本身有無溢位
 
 對於 flag->c 來說，要判斷兩個值相加是否 overflow，所以就直接設了一個 eu32 result 的變數來存放相加過的值，並且判斷相加後是否超過 0x100 即可，反正我們是 32 位元的 cpu，要觀察兩個 8 bit regsiter 相加後是否溢位其實是一塊小蛋糕
+
+這邊要注意的是, add u8 與 add u16 對於 flag 的設定有一點點不同
 
 -------
 
@@ -341,3 +346,82 @@ void opcode_ei() {
 
 
 其實 op code 大概就是這樣，真正需要認真實作的部分約100行左右，除了一個叫 daa 指令之外, 剩下的大部分都很簡單，就是組合再組合就搞定了，接下來下一篇就是要寫 gb 的 video 與 tile 系統了
+
+
+如何 Debug 
+========
+
+其實剩下的指令都很短，也不複雜，但就是多，東西一多起來就很難不出錯，把每個步驟執行後的每個 register 都印出來是一個好方法，不過即便如此，光是開機到開頭動畫，可能就會執行 30~40 萬筆指令，若把所有的東西都寫進 log 中，log 會很龐大，所以我們會需要一些有效率的 debug 方式，新增一個 debug.c 並加入以下的 code
+
+```
+#define START_CNT (0x0)
+#define END_CNT   (0x0)
+
+void print_ram(RamAddr ptr, eu32 len) {
+   print_ram_base(ptr, len, get_ram);
+}
+
+void set_debug_flag() {
+    if ((START_CNT <= g_cmdCnt) && (g_cmdCnt < END_CNT)) {
+        g_debug = true;
+    } else {
+        g_debug = false;
+        }
+
+    if (g_cmdCnt < START_CNT) {
+        if ((g_cmdCnt % 0x1000) == 0) {
+            g_debug = true;
+    } else {
+            g_debug = false;
+        }
+    }
+}
+
+void show_reg_ram(bool is_cb_cmd, eu8 opcode, eu8 clock) {
+    if (is_cb_cmd) {
+        printf("\n\nccnt=%X, cbc=%02X, ", g_cmdCnt, opcode);
+    } else {
+        printf("\n\nccnt=%X, opc=%02X, ", g_cmdCnt, opcode);
+    }
+    printf("af=%04X, bc=%04X, de=%04X, hl=%04X, pc=%04X, sp=%04X, clk=%X\n", af->all, bc->all, de->all, hl->all, pc->all, sp->all, clock);
+
+    print_ram(0x0, 0x10);
+    print_ram(0x100, 0x10);
+    print_ram(0x2000, 0x10);
+    print_ram(0x4000, 0x10);
+    print_ram(0x8000, 0x10);
+    print_ram(0x9800, 0x10);
+    print_ram(0xFE00, 0x10);
+    print_ram(0xFF00, 0x10);
+    print_ram(0xFF40, 0x11);
+    print_ram(0xFFA0, 0x10);
+    printf("\n");
+}
+
+void debug_show_reg_ram(bool is_cb_cmd, eu8 opcode, eu8 clock) {
+    set_debug_flag();
+    if (g_debug) {
+        show_reg_ram(is_cb_cmd, opcode, clock);
+    }
+}
+```
+
+這邊會使用兩種印指令的方式，一種是每隔 0x1000 就印一次，一種是指定區域印，這有個好處就是，你每次比較的時候，都可以知道錯誤大概在哪個區間，然後知道區間之後，再用詳細印的方式，就可以知道是哪一筆出錯了， log 也部會太大
+
+把印 register 的指令插入到 execute_opcode 內，這樣你就可以得到每次執行指令後，register 的變化了
+```
+eu8 execute_opcode() {
+    eu8 opcode = fetch();
+    
+	....
+	....
+
+    opcodeFunMap[opcode]();
+    debug_show_reg_ram(is_cb_cmd, opcode, clock);
+
+    ....
+
+    return clock;
+}
+```
+
