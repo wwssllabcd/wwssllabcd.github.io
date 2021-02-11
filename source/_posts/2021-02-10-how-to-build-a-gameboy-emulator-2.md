@@ -51,7 +51,7 @@ eu8 fetch(void) {
     return val;
 }
 
-eu8 execute_opcode() {
+void execute_opcode() {
     eu8 opcode = fetch();
     opcode_fun_usp op_map = g_opcode_fun_map;
     bool is_cb_cmd = false;
@@ -63,7 +63,6 @@ eu8 execute_opcode() {
     }
 
     op_map[opcode]();
-    return 1;
 }
 
 eu8 cpu_tick() {
@@ -82,7 +81,7 @@ void run_cpu() {
 ```
 
 - fetch() 其實就是以 pc 當作記憶體位置，然後把該記憶體位置的值取出來，取出來後 pc 就要步進1
-- Gameboy 的 op code 有兩種，一種是 normal 的，一種是老任新增的 -- 以 0xCB 做前綴的 external op code ，所以我們這邊一旦遇到 cb cmd 的時候，就使用 cb cmd 的 function array，反之則用正常的 function array
+- Gameboy 的 op code 有兩種，一種是 normal 的，一種是老任新增的 -- 以 0xCB 做前綴的 external op code ，所以我們這邊一旦遇到 cb cmd 的時候，就使用 cb cmd 的 function array，反之則用正常的 function array，而遇到 0xCB cmd 則必須要在 fatch 一次，以便讀出真正的 cb cmd opcode
 
 ----
 
@@ -157,12 +156,12 @@ eu8 cpu_tick() {
 }
 ```
 
-你可以看到其實實作的方式都很簡單， fetch_word 就是使用 fetch 兩次，而 stack_push 就是先把 sp 減一後，在把 pc 所指向的 ram 的值讀出來放到 sp 所指的位置，stack 的操作大多是以 WordRegister 的方式
+你可以看到其實實作的方式都很簡單， fetch_word 就是使用 fetch 兩次，而 stack_push 就是先把 sp 減一後，在把 Word Reg 的 High byte 取值後填入 sp 所指的位置，stack 的操作大多是以 WordRegister 的方式
 而 stack_pop 就是反過來做，此外，我們也增加了 halt 的 function ，並在原本的 cpu_tick() 中，加入 check g_cpu.halt 來模擬 halt 的指令
 
 -----
 
-LD, r1 r2 指令
+LD r1, r2 指令
 -----------
 
 這個指令是最多使用的，從 op code 0x40~0x7F 都是用它做出來的，所以一下子 64 個指令就完成了，
@@ -200,7 +199,7 @@ void op_4E() { opcode_ld_r1_r2(c, RAM_VAL_HL); }
 
 -------
 
-bit b, r，res, b r 與 set, b r 指令
+bit b, r，res b, r 與 set b, r 指令
 ---------
 
 在 cb cmd 中，也是有跟 opcode_ld_r1_r2 一樣廣泛使用的 cmd ，那就是 opcode_cb_bit_b_r() ， opcode_cb_res_b_r()與 opcode_cb_set_b_r()，他們也是各占 64 個 opcode，算是很補的 cmd， 作法如下
@@ -406,6 +405,8 @@ void debug_show_reg_ram(bool is_cb_cmd, eu8 opcode, eu8 clock) {
 }
 ```
 
+我們把 debug code 集中在 debug.c 一起管理，盡量不要去汙染到原本的 code
+
 這邊會使用兩種印指令的方式，一種是每隔 0x1000 就印一次，一種是指定區域印，這有個好處就是，你每次比較的時候，都可以知道錯誤大概在哪個區間，然後知道區間之後，再用詳細印的方式，就可以知道是哪一筆出錯了， log 也部會太大
 
 把印 register 的指令插入到 execute_opcode 內，這樣你就可以得到每次執行指令後，register 的變化了
@@ -425,3 +426,4 @@ eu8 execute_opcode() {
 }
 ```
 
+然後你應該可以找一個 GB Emu project，讓他也印出相同的東西，跟你的 log 一比，很快就會知道你錯在哪裡

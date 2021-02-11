@@ -144,7 +144,7 @@ ByteReg_p h = &g_cpu.h;
 ByteReg_p l = &g_cpu.l;
 ```
 
-我們故意地把所有的 register 都變成了 pointer 型態，原因是要統一存取的格式，例如我今天要取一個 byre reg 與 word reg 的方式都是使用 reg->all
+我們故意地把所有的 register 都變成了 pointer 型態，原因是要統一存取的格式，例如我今天要取一個 byre reg 與 word reg 的方式都是使用 reg->all，而不需要去想說到底要使用 .all 還是 ->all
 
 ---
 
@@ -167,34 +167,34 @@ void set_c(bool val) {
 接下來建立一些 macro 也是讓我們可以使用比較直覺的方式去存取 Register 的值，而不是依賴 ->all 或是 ->high 這種特定的方式讀取，我們可以利用 macro 去隱藏底層的實作
 
 ```
-#define REG_VAL(REG)                ((REG)->all)
+#define REG_VAL(REG)       ((REG)->all)
 
-#define INC_REG(REG)                (REG_VAL(REG)++)
-#define DEC_REG(REG)                (REG_VAL(REG)--)
+#define INC_REG(REG)       (REG_VAL(REG)++)
+#define DEC_REG(REG)       (REG_VAL(REG)--)
 
-#define REG_HIGH(REG)               (&(REG)->high)
-#define REG_LOW(REG)                (&(REG)->low)
+#define REG_HIGH(REG)      (&(REG)->high)
+#define REG_LOW(REG)       (&(REG)->low)
 
-#define REG_A                       REG_VAL(a)
-#define REG_B                       REG_VAL(b)
-#define REG_C                       REG_VAL(c)
-#define REG_D                       REG_VAL(d)
-#define REG_E                       REG_VAL(e)
-#define REG_H                       REG_VAL(h)
-#define REG_L                       REG_VAL(l)
+#define REG_A              REG_VAL(a)
+#define REG_B              REG_VAL(b)
+#define REG_C              REG_VAL(c)
+#define REG_D              REG_VAL(d)
+#define REG_E              REG_VAL(e)
+#define REG_H              REG_VAL(h)
+#define REG_L              REG_VAL(l)
 
-#define REG_AF                      REG_VAL(af)
-#define REG_BC                      REG_VAL(bc)
-#define REG_DE                      REG_VAL(de)
-#define REG_HL                      REG_VAL(hl)
-#define REG_SP                      REG_VAL(sp)
-#define REG_PC                      REG_VAL(pc)
+#define REG_AF             REG_VAL(af)
+#define REG_BC             REG_VAL(bc)
+#define REG_DE             REG_VAL(de)
+#define REG_HL             REG_VAL(hl)
+#define REG_SP             REG_VAL(sp)
+#define REG_PC             REG_VAL(pc)
 
-#define FLAG_Z                      (flags->z)
-#define FLAG_NZ                     (!flags->z)
+#define FLAG_Z             (flags->z)
+#define FLAG_NZ            (!flags->z)
 
-#define FLAG_C                      (flags->c)
-#define FLAG_NC                     (!flags->c)
+#define FLAG_C             (flags->c)
+#define FLAG_NC            (!flags->c)
 ```
 
 這邊的規則大概是
