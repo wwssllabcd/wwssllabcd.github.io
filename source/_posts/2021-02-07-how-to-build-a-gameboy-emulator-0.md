@@ -135,4 +135,4 @@ int main(int argc, char* argv[])
 
 到此我們 Step 0 就告一個段落了，接下來就是真正要開發 code 了
 
-[從零開始的 Gameboy 模擬器開發 -- Step 1 ](http://localhost:4000/2021/02/08/how-to-build-a-gameboy-emulator-1/)
+[從零開始的 Gameboy 模擬器開發 -- Step 1 ](https://wwssllabcd.github.io/2021/02/08/how-to-build-a-gameboy-emulator-1/)
