@@ -20,6 +20,8 @@ type: adsense
 
 
 ```
+typedef eu16 RamAddr;
+
 typedef struct {
     eu8 all;
 }ByteReg;
@@ -75,14 +77,15 @@ typedef struct {
             ByteReg h;
         };
     };
+
     WordReg sp;
     WordReg pc;
-	
+
     bool halt;
     bool running;
-    bool enable_interrupt;
-    eu32 clock_cnt;
-	
+    bool enableInterrupt;
+
+    eu32 clockCnt;
 }Cpu;
 ERIC_GEN_POINTER_TYPE(Cpu);
 
@@ -96,7 +99,7 @@ ERIC_GEN_POINTER_TYPE(Cpu);
 - enable_interrupt 是用來支援 ei 與 di 命令，它給我的感覺很像是 8051 中的 EA
 - clock_cnt 是用來模擬 cpu 內部的 clock，這個 clock 會跟產生畫面有關係
 
-這邊有個比較特別的 FlagReg_p，他其實就 AF 裡面的 F，又稱為 flags，他只有 4 個 bit 是有用的，所以我們使用分號的方式把那幾個 flag 都限定為 1 bit
+這邊有個比較特別的 FlagReg_p，他其實就 AF 裡面的 F，又稱為 flags，他只有 4 個 bit 是有用的，所以我們使用分號的方式把那幾個 flag 都限定為 1 bit，並且把 low nibble bit 都遮掉
 
 ---
 
@@ -110,12 +113,13 @@ Cpu g_cpu = {
     .hl = 0,
     .sp = 0,
     .pc = 0,
+
     .halt = false,
     .running = true,
-    .enable_interrupt= false,
-    .clock_cnt = 0,
-};
+    .enableInterrupt = false,
 
+    .clockCnt = 0,
+};
 ```
 
 ---
@@ -163,21 +167,22 @@ void set_c(bool val) {
 接下來建立一些 macro 也是讓我們可以使用比較直覺的方式去存取 Register 的值，而不是依賴 ->all 或是 ->high 這種特定的方式讀取，我們可以利用 macro 去隱藏底層的實作
 
 ```
-#define REG_VAL(REG)                              ((REG)->all)
-#define INC_REG(REG)                              (REG_VAL(REG)++)
-#define DEC_REG(REG)                              (REG_VAL(REG)--)
+#define REG_VAL(REG)                ((REG)->all)
 
-#define REG_HIGH(REG)                             (&(REG)->high)
-#define REG_LOW(REG)                              (&(REG)->low)
+#define INC_REG(REG)                (REG_VAL(REG)++)
+#define DEC_REG(REG)                (REG_VAL(REG)--)
+
+#define REG_HIGH(REG)               (&(REG)->high)
+#define REG_LOW(REG)                (&(REG)->low)
 
 #define REG_A                       REG_VAL(a)
 #define REG_B                       REG_VAL(b)
 #define REG_C                       REG_VAL(c)
 #define REG_D                       REG_VAL(d)
 #define REG_E                       REG_VAL(e)
-#define REG_F                       REG_VAL(f)
 #define REG_H                       REG_VAL(h)
 #define REG_L                       REG_VAL(l)
+
 #define REG_AF                      REG_VAL(af)
 #define REG_BC                      REG_VAL(bc)
 #define REG_DE                      REG_VAL(de)
@@ -186,10 +191,10 @@ void set_c(bool val) {
 #define REG_PC                      REG_VAL(pc)
 
 #define FLAG_Z                      (flags->z)
-#define FLAG_NZ                    (!flags->z)
-#define FLAG_C                      (flags->c)
-#define FLAG_NC                    (!flags->c)
+#define FLAG_NZ                     (!flags->z)
 
+#define FLAG_C                      (flags->c)
+#define FLAG_NC                     (!flags->c)
 ```
 
 這邊的規則大概是
@@ -286,3 +291,5 @@ int main(int argc, char* argv[]){
 ```
 
 到目前為止，我們基本上已經完成了初步的架構，一個 cpu，一個記憶體，然後我們也把 rom 讀進來了，接下來就可以開始化身成 cpu ，去執行一道道 op code 了
+
+[從零開始的 Gameboy 模擬器開發 -- Step 2 ](http://localhost:4000/2021/02/10/how-to-build-a-gameboy-emulator-2/)
