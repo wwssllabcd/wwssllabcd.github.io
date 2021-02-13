@@ -19,14 +19,21 @@ ga('send', 'pageview');
 
   <script data-ad-client="ca-pub-1911244070880149" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   
-  <title>printf(&#34; I&#39;m EricWang &#34;)</title>
+  <title>從零開始的 Gameboy 模擬器開發 -- Step 3 | printf(&#34; I&#39;m EricWang &#34;)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="printf(&quot; I&#39;m EricWang &quot;)">
-<meta property="og:url" content="http://wwssllabcd.github.io/index.html">
+  <meta name="description" content="gameboy 的 tile 系統與繪圖接著要來做有關繪圖的部分，這部分說簡單也不簡單，說難也不會難，難的部分是因為我們沒有碰過 tile 系統，所以要花點時間去理解，當理解後，實作部分其實很簡單一點也不難，如果你還沒去看最前面介紹的影片，我建議你趕快去看，因為看完之後會比較好理解 首先我再幫大家整理一下概念  一個 tile 由 8*8 個 pixel 所組成 GB 整個顯示的部分是 256 *">
+<meta property="og:type" content="article">
+<meta property="og:title" content="從零開始的 Gameboy 模擬器開發 -- Step 3">
+<meta property="og:url" content="http://wwssllabcd.github.io/2021/02/12/how-to-build-a-gameboy-emulator-3/index.html">
 <meta property="og:site_name" content="printf(&quot; I&#39;m EricWang &quot;)">
+<meta property="og:description" content="gameboy 的 tile 系統與繪圖接著要來做有關繪圖的部分，這部分說簡單也不簡單，說難也不會難，難的部分是因為我們沒有碰過 tile 系統，所以要花點時間去理解，當理解後，實作部分其實很簡單一點也不難，如果你還沒去看最前面介紹的影片，我建議你趕快去看，因為看完之後會比較好理解 首先我再幫大家整理一下概念  一個 tile 由 8*8 個 pixel 所組成 GB 整個顯示的部分是 256 *">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-02-11T16:24:46.000Z">
+<meta property="article:modified_time" content="2021-02-13T08:59:11.864Z">
 <meta property="article:author" content="EricWang">
+<meta property="article:tag" content="How-To">
+<meta property="article:tag" content="c">
+<meta property="article:tag" content="emulator">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="printf(&#34; I&#39;m EricWang &#34;)" type="application/atom+xml">
@@ -78,9 +85,7 @@ ga('send', 'pageview');
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-how-to-build-a-gameboy-emulator-3" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-how-to-build-a-gameboy-emulator-3" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/02/12/how-to-build-a-gameboy-emulator-3/" class="article-date">
   <time datetime="2021-02-11T16:24:46.000Z" itemprop="datePublished">2021-02-12</time>
@@ -93,8 +98,8 @@ ga('send', 'pageview');
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/12/how-to-build-a-gameboy-emulator-3/">從零開始的 Gameboy 模擬器開發 -- Step 3</a>
+    <h1 class="article-title" itemprop="name">
+      從零開始的 Gameboy 模擬器開發 -- Step 3
     </h1>
   
 
@@ -363,500 +368,26 @@ sprite 的畫法就單純很多，去 oam 把 40 個 sprite 取出來後，再�
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-how-to-build-a-gameboy-emulator-2" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/02/10/how-to-build-a-gameboy-emulator-2/" class="article-date">
-  <time datetime="2021-02-09T16:24:46.000Z" itemprop="datePublished">2021-02-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/10/how-to-build-a-gameboy-emulator-2/">從零開始的 Gameboy 模擬器開發 -- Step 2</a>
-    </h1>
+    <a href="/2021/02/10/how-to-build-a-gameboy-emulator-2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">從零開始的 Gameboy 模擬器開發 -- Step 2</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="建立-opcode-map"><a href="#建立-opcode-map" class="headerlink" title="建立 opcode map "></a>建立 opcode map </h1><p>在開始之前讀取第一道指令之前，我們要做一件很不有趣的事情，就是建立所有 op code 的 map</p>
-<p>首先我們建立 opcode_map.c，裡面的內容如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">void not_support_cb_code() &#123; ASSERT_CODE(0, &quot;not support CB code&quot;); &#125;</span><br><span class="line">void not_support_op_code() &#123; ASSERT_CODE(0, &quot;not support op code&quot;); &#125;</span><br><span class="line"></span><br><span class="line">void op_00() &#123; not_support_op_code(); &#125;</span><br><span class="line">.......</span><br><span class="line">void op_FF() &#123; not_support_op_code(); &#125;</span><br><span class="line"></span><br><span class="line">void op_cb_00() &#123; not_support_cb_code(); &#125;</span><br><span class="line">.......</span><br><span class="line">void op_cb_FF() &#123; not_support_cb_code(); &#125;</span><br><span class="line"></span><br><span class="line">opcode_fun g_opcode_fun_map[0x100] &#x3D; &#123;</span><br><span class="line">    GEN_FUN_MAP(, 0), GEN_FUN_MAP(, 1), GEN_FUN_MAP(, 2), GEN_FUN_MAP(, 3),</span><br><span class="line">    GEN_FUN_MAP(, 4), GEN_FUN_MAP(, 5), GEN_FUN_MAP(, 6), GEN_FUN_MAP(, 7),</span><br><span class="line">    GEN_FUN_MAP(, 8), GEN_FUN_MAP(, 9), GEN_FUN_MAP(, A), GEN_FUN_MAP(, B),</span><br><span class="line">    GEN_FUN_MAP(, C), GEN_FUN_MAP(, D), GEN_FUN_MAP(, E), GEN_FUN_MAP(, F)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">opcode_fun g_opcode_cb_fun_map[0x100] &#x3D; &#123;</span><br><span class="line">    GEN_FUN_MAP(cb_, 0), GEN_FUN_MAP(cb_, 1), GEN_FUN_MAP(cb_, 2), GEN_FUN_MAP(cb_, 3),</span><br><span class="line">    GEN_FUN_MAP(cb_, 4), GEN_FUN_MAP(cb_, 5), GEN_FUN_MAP(cb_, 6), GEN_FUN_MAP(cb_, 7),</span><br><span class="line">    GEN_FUN_MAP(cb_, 8), GEN_FUN_MAP(cb_, 9), GEN_FUN_MAP(cb_, A), GEN_FUN_MAP(cb_, B),</span><br><span class="line">    GEN_FUN_MAP(cb_, C), GEN_FUN_MAP(cb_, D), GEN_FUN_MAP(cb_, E), GEN_FUN_MAP(cb_, F)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>其中 GEN_FUN_MAP() macro 是幫你產生 op_00(), op_01 ... op_FF 的格式，因為一個一個打實在太累了，當然你有毅力我也不反對</p>
-        
-          <p class="article-more-link">
-            <a href="/2021/02/10/how-to-build-a-gameboy-emulator-2/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://wwssllabcd.github.io/2021/02/10/how-to-build-a-gameboy-emulator-2/" data-id="ckkybrisy0000jghaaa3q9vc4" class="article-share-link">Share</a>
-      
-        <a href="http://wwssllabcd.github.io/2021/02/10/how-to-build-a-gameboy-emulator-2/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-To/" rel="tag">How-To</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/" rel="tag">c</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/emulator/" rel="tag">emulator</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
 
 
-  
-    <article id="post-how-to-build-a-gameboy-emulator-1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/02/08/how-to-build-a-gameboy-emulator-1/" class="article-date">
-  <time datetime="2021-02-07T16:24:46.000Z" itemprop="datePublished">2021-02-08</time>
-</a>
-    
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/08/how-to-build-a-gameboy-emulator-1/">從零開始的 Gameboy 模擬器開發 -- Step 1</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="建立硬體描述"><a href="#建立硬體描述" class="headerlink" title="建立硬體描述"></a>建立硬體描述</h1><p>我們首先對 cpu 做描述， 先介紹 LR35902 這顆 cpu 其中的 4 個 word Register(Register，以後均簡稱 Reg) 分別為 <code>AF，BC，DE，HL</code>，這 4 個 word reg，比較特別的是，它們個別又可以拆成 byte reg ，例如 AF 就可以拆成兩個 byte reg <code>A(accumulator)</code>與 <code>F(Flags)</code> 來使用的，或者是合併讀取，例如 HL 常常當作 ram address 使用</p>
-<p>到這邊如果你覺得陌生的話，建議你可以去惡補一下 cpu 暫存器的知識</p>
-<p>考量 reg 可以分開讀取，或是合併讀取的特性，所以我們需要建立某種的描述，是可以分開，也可以合併的讀寫，翻翻 C 的手冊，發現使用 union 就可以達到這種目的了，所以我們使用 typedef 建立起對 byte reg 與 wordd reg 的描述</p>
-        
-          <p class="article-more-link">
-            <a href="/2021/02/08/how-to-build-a-gameboy-emulator-1/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://wwssllabcd.github.io/2021/02/08/how-to-build-a-gameboy-emulator-1/" data-id="ckky8ug180000s8ha1d1gass0" class="article-share-link">Share</a>
-      
-        <a href="http://wwssllabcd.github.io/2021/02/08/how-to-build-a-gameboy-emulator-1/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-To/" rel="tag">How-To</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/" rel="tag">c</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/emulator/" rel="tag">emulator</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-how-to-build-a-gameboy-emulator-0" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/02/07/how-to-build-a-gameboy-emulator-0/" class="article-date">
-  <time datetime="2021-02-06T16:24:46.000Z" itemprop="datePublished">2021-02-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/07/how-to-build-a-gameboy-emulator-0/">從零開始的 Gameboy 模擬器開發 -- Step 0</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="緣由"><a href="#緣由" class="headerlink" title="緣由"></a>緣由</h1><p>工作上使用 8051 蠻多年了，以前就有想要寫一個 cpu 模擬器的念頭，某一陣子還收到一間美商寫 arm 模擬器的工作邀約，不過以不熟為理由推掉了，後來看到 Jserv 與 <a target="_blank" rel="noopener" href="https://yodalee.me/2020/12/2020_rust_gameboy/">yodalee 的文章</a>，想說我應該也可以做到這件事，就像是 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%B9%94%E6%B2%BB%C2%B7%E9%A9%AC%E6%B4%9B%E9%87%8C">George Mallory</a> 說的，&quot;因為山就在那，所以我登山(Because it&#39;s there)&quot;，做這件事的起因也沒什麼特別的，差不多也就是因為我覺得我可以，所以我去做看看的感覺</p>
-<hr>
-<h2 id="語言的選擇"><a href="#語言的選擇" class="headerlink" title="語言的選擇"></a>語言的選擇</h2><p>使用 C 語言，原因很單純就是，我只有找到一個 project 的 code 是比較乾淨的，然後他剛好是 C code 這樣，我之前有找到幾個 gbe 的 project ，但 source code 實在是太亂了，對於一個模擬器的新手要看他們的code 進而理出整個邏輯是很困難的，所以這次先選擇使用 C 開發，可能之後做完後會找機會 porting 到其他語言像是 rust、python 這兩個抽象性較高的語言，或是使用 Java Script，這樣也許會有機會可以在 web 上玩，或是 Haskell 感覺也蠻有趣的</p>
-        
-          <p class="article-more-link">
-            <a href="/2021/02/07/how-to-build-a-gameboy-emulator-0/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://wwssllabcd.github.io/2021/02/07/how-to-build-a-gameboy-emulator-0/" data-id="ckky8vdvb0000o0ha6i9ehgat" class="article-share-link">Share</a>
-      
-        <a href="http://wwssllabcd.github.io/2021/02/07/how-to-build-a-gameboy-emulator-0/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-To/" rel="tag">How-To</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/" rel="tag">c</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/emulator/" rel="tag">emulator</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-how-to-intall-android-tv-in-raspberry-pi-4" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/11/08/how-to-intall-android-tv-in-raspberry-pi-4/" class="article-date">
-  <time datetime="2020-11-07T17:07:44.000Z" itemprop="datePublished">2020-11-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/11/08/how-to-intall-android-tv-in-raspberry-pi-4/">RPI-4 安裝 android tv</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>首先你需要下載 android tv for raspberry pi 4 的 image file ，使用的是 LineageOS 17.1 Android TV (Android 10)</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://konstakang.com/devices/rpi4/LineageOS17.1-ATV/">https://konstakang.com/devices/rpi4/LineageOS17.1-ATV/</a></li>
-</ul>
-<p>在安裝之前有幾點要注意的</p>
-<ul>
-<li>只能支援 HDMI</li>
-<li>最初解析度為 1920*1080</li>
-</ul>
-<p>所以說，如果你的螢幕是 DVI 的話，你可以離開了，因為不會有畫面，先提醒你以免白忙一場</p>
-<p>下載後使用 Win32 Disk Imager 燒錄即可，這邊跟之前的 Rpi 做法並沒有不一樣，如果還是不行，那你可以參考以前的<a href="https://wwssllabcd.github.io/blog/2013/01/31/2013-01-31-how-to-setup-raspberry-pi/#%E5%AE%89%E8%A3%9D-OS">教學</a>，燒完後，插上卡片，直接開機就可以進入到 android tv 了</p>
-<p>這邊有燒錄相關教學</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://ifunoffice.com/raspberry-pi-install-android9/">https://ifunoffice.com/raspberry-pi-install-android9/</a></li>
-</ul>
-<p>這邊也有一點很重要的要先講，就是如果你等下遇到任何問題找不到答案的，你應該要回去<a target="_blank" rel="noopener" href="https://konstakang.com/devices/rpi4/LineageOS17.1-ATV/">官網</a>找，那邊通常都已經有答案了</p>
-        
-          <p class="article-more-link">
-            <a href="/2020/11/08/how-to-intall-android-tv-in-raspberry-pi-4/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://wwssllabcd.github.io/2020/11/08/how-to-intall-android-tv-in-raspberry-pi-4/" data-id="ckky6jk1u003aushagfqf61lo" class="article-share-link">Share</a>
-      
-        <a href="http://wwssllabcd.github.io/2020/11/08/how-to-intall-android-tv-in-raspberry-pi-4/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-To/" rel="tag">How-To</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Raspberry-Pi/" rel="tag">Raspberry Pi</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-how-to-use-kodi" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/11/08/how-to-use-kodi/" class="article-date">
-  <time datetime="2020-11-07T16:24:46.000Z" itemprop="datePublished">2020-11-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/11/08/how-to-use-kodi/">kodi 教學，心得</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Kodi 是一套 media center 軟體，其前身為 xbmc，這邊列出一些相關的資源</p>
-<h2 id="遠程控制-使用手機-APP-Yatse"><a href="#遠程控制-使用手機-APP-Yatse" class="headerlink" title="遠程控制 -- 使用手機 APP: Yatse"></a>遠程控制 -- 使用手機 APP: Yatse</h2><p>Yastse 是一款 Kodi 的遙控及投放工具，你可以在 google store 找到</p>
-<p>不過你必須要先在 kodi 打開遠程控制，打開的地方在</p>
-<pre><code>控制-&gt;允許通過 HTTP 遠程控制，允許異地程序遠程控制</code></pre>
-<p>你也可以打開Web界面，這樣就可以直接使用瀏覽器控制 kodi</p>
-<h2 id="遠程控制-使用-firefox"><a href="#遠程控制-使用-firefox" class="headerlink" title="遠程控制 -- 使用 firefox "></a>遠程控制 -- 使用 firefox </h2><p>Firefox 有很多 kodi 的套件可供遠端控制，這裡不再詳述</p>
-<h2 id="使用-kodi-檔案總管，並從-usb-copy-檔案到-kodi"><a href="#使用-kodi-檔案總管，並從-usb-copy-檔案到-kodi" class="headerlink" title="使用 kodi 檔案總管，並從 usb copy 檔案到 kodi"></a>使用 kodi 檔案總管，並從 usb copy 檔案到 kodi</h2><p>選擇
-    系統-&gt;檔案總管</p>
-<p>你就可以啟動 kodi 的檔案總管，左邊的框是操作的地方，按 C 可以叫出選單，按空白可以複選檔案例如你可以按 C 選複製，就會複製到右邊，若右邊的你找不到你要的路徑，就必須要新增瀏覽路徑</p>
-        
-          <p class="article-more-link">
-            <a href="/2020/11/08/how-to-use-kodi/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://wwssllabcd.github.io/2020/11/08/how-to-use-kodi/" data-id="ckky6jk1v003cushag1apguwc" class="article-share-link">Share</a>
-      
-        <a href="http://wwssllabcd.github.io/2020/11/08/how-to-use-kodi/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-To/" rel="tag">How-To</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kodi/" rel="tag">Kodi</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Raspberry-Pi/" rel="tag">Raspberry Pi</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-how-to-install-kodi-in-raspberry-pi-4" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/11/08/how-to-install-kodi-in-raspberry-pi-4/" class="article-date">
-  <time datetime="2020-11-07T16:06:48.000Z" itemprop="datePublished">2020-11-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/11/08/how-to-install-kodi-in-raspberry-pi-4/">how-to-install-kodi-in-raspberry-pi-4</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="RPI-4-安裝-kodi-的心得"><a href="#RPI-4-安裝-kodi-的心得" class="headerlink" title="RPI 4 安裝 kodi 的心得"></a>RPI 4 安裝 kodi 的心得</h2><p>因為之前的rpi 效能都不太好，所以, 許久沒碰 rpi, 這次出了8GB 號稱可以接近桌機的效能，所以就買一台試看看</p>
-<p>PS: 寫在前頭，如果你打算使用 DVI 螢幕當作 RPI 的螢幕的話，你可能要注意，rpi 有機會不能輸出畫面</p>
-<h2 id="購買"><a href="#購買" class="headerlink" title="購買"></a>購買</h2><p>我這次是去台灣樹梅派購買的，我購買的是 8GB + 散熱殼，那個散熱殼我蠻滿意的，風扇也是靜音風扇，只是風扇安裝需要一點技巧，好像裝錯邊風扇就會很吵，記得風扇正反不要裝錯，有貼貼紙的地方是反面，否則你的風扇不會轉</p>
-<h2 id="安裝-kodi，使用-LibreElec"><a href="#安裝-kodi，使用-LibreElec" class="headerlink" title="安裝 kodi，使用 LibreElec"></a>安裝 kodi，使用 LibreElec</h2><p>在 rpi 4 上面安裝 kodi 已經很簡單了，LibreElec 這個專案已經把 os + kodi 整合起來，所以我們就直接安裝 libreelec 就可以了，請到以下網站抓取 image file </p>
-<p><a target="_blank" rel="noopener" href="https://libreelec.tv/raspberry-pi-4/">https://libreelec.tv/raspberry-pi-4/</a></p>
-<p>該網站提供的下載的檔案叫做 &quot;LibreELEC-RPi4.arm-9.2.6.img.gz&quot;，下載完後使用 7z，解開她得到 img file 後，就可以使用  Win32 Disk Imager 燒錄即可，這邊跟之前的 Rpi 做法並沒有不一樣</p>
-<p>如果還是不行，那你可以參考以前的<a href="https://wwssllabcd.github.io/blog/2013/01/31/2013-01-31-how-to-setup-raspberry-pi/#%E5%AE%89%E8%A3%9D-OS">教學</a></p>
-<p>燒完之後，插入至RPI後，接上電源就可以使用了</p>
-        
-          <p class="article-more-link">
-            <a href="/2020/11/08/how-to-install-kodi-in-raspberry-pi-4/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://wwssllabcd.github.io/2020/11/08/how-to-install-kodi-in-raspberry-pi-4/" data-id="ckky6jk1t0037usha5rwkdsfs" class="article-share-link">Share</a>
-      
-        <a href="http://wwssllabcd.github.io/2020/11/08/how-to-install-kodi-in-raspberry-pi-4/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-To/" rel="tag">How-To</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Raspberry-Pi/" rel="tag">Raspberry Pi</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Investment-of-indexing" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/02/16/Investment-of-indexing/" class="article-date">
-  <time datetime="2020-02-15T20:29:30.000Z" itemprop="datePublished">2020-02-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/16/Investment-of-indexing/">指數型投資(Investment of indexing)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ul>
-<li>這篇是給目前不能自己挑到好股票, 但又想做投資的人看的</li>
-<li>這邊主要的核心概念是&quot;分散&quot;, 若是能挑到好股票的人看了這篇, 不但沒幫助, 反而會有害</li>
-</ul>
-<h2 id="核心概念-分散投資標的以降低風險"><a href="#核心概念-分散投資標的以降低風險" class="headerlink" title="核心概念 -- 分散投資標的以降低風險"></a>核心概念 -- 分散投資標的以降低風險</h2><ul>
-<li>分散股票種類: 購買 ETF 分散投資目標的風險</li>
-<li>分散購入時機: 定期定額</li>
-<li>分散股票區域性: 購入全球 ETF</li>
-<li>分散股票類型: 股票 + 債的資產配置</li>
-</ul>
-<p>我先講結論, 然後再慢慢解釋我為何這樣推薦, 而作法就是   </p>
-<h3 id="quot-定期定額購買-指數型-ETF-quot"><a href="#quot-定期定額購買-指數型-ETF-quot" class="headerlink" title="&quot;定期定額購買 指數型 ETF &quot;"></a>&quot;定期定額購買 指數型 ETF &quot;</h3><p>方法很多種, 從簡單到複雜:   </p>
-<ol>
-<li>利用富邦證劵, 定期定額購買富邦采吉50(006208) ETF<ul>
-<li>投資低消為 1000元, 適合小資上班族</li>
-<li><a target="_blank" rel="noopener" href="https://www.fubon.com/securities/hot_new/open-now/etf.html">富邦定期定額 ETF</a> 1萬元以內, 手續費只要1元</li>
-</ul>
-</li>
-<li>利用複委託, 例如<a target="_blank" rel="noopener" href="https://www.dcn.com.tw/re-consigned/charge.htm">大昌證券複委託</a> , 定期定額購買 VT + BNDW, 或是 AOA 系列的 ETF</li>
-<li>開網路劵商, 如 <a target="_blank" rel="noopener" href="https://www.firstrade.com/content/zh-tw/welcome">Firstrade</a> or <a target="_blank" rel="noopener" href="https://www.tdameritrade.com/">TD Ameritrade</a> 帳戶, 定期定額購買 VT + BNDW + VNQ ... etc</li>
-</ol>
-        
-          <p class="article-more-link">
-            <a href="/2020/02/16/Investment-of-indexing/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://wwssllabcd.github.io/2020/02/16/Investment-of-indexing/" data-id="ckky6jk1s0035ushacrbc2orz" class="article-share-link">Share</a>
-      
-        <a href="http://wwssllabcd.github.io/2020/02/16/Investment-of-indexing/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Investment/" rel="tag">Investment</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-how-to-install-python-on-windows" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/21/how-to-install-python-on-windows/" class="article-date">
-  <time datetime="2018-05-20T17:13:59.000Z" itemprop="datePublished">2018-05-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/21/how-to-install-python-on-windows/">Python windows 安裝, 心得, 教學</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="下載並安裝-Python"><a href="#下載並安裝-Python" class="headerlink" title="下載並安裝 Python"></a>下載並安裝 Python</h2><p>請至 <a target="_blank" rel="noopener" href="https://www.python.org/downloads/windows/">Python windows 下載頁面</a>, 不是每個版本都有 window 的安裝版</p>
-<ol>
-<li>最好選擇 Python 3.x, 因為選 2.7 會有檔名多國語言問題, dos 下讀檔會亂碼, py 3 就沒有這問題  </li>
-<li>最好選 32bit 的, 因為如果要打包成單一執行檔(exe file), 打包完在 32 bit 的環境跑不起來, 且有 include dll 批配的問題  </li>
-<li>要選 32bit 還是 64 bit, 基本上要看你用到的 DLL 決定, 例如你有些額外的 dll 是使用 w32 的, 那基本上你使用 64bit 的 ptyhon 就不行, 使用而且 64 bit dll 還有 ctype call address 的問題, 建議如果不想搞死自己, 那就最好是選 32bit 的比較保險</li>
-</ol>
-<p>這邊是選 <a target="_blank" rel="noopener" href="https://www.python.org/ftp/python/3.6.5/python-3.6.5.exe">Python 3.6.5</a> 下載</p>
-<p>安裝時請注意以下幾點</p>
-<ul>
-<li>請注意安裝路徑, 他預設是在&quot;使用者&quot;目錄下面, 最好換到非中文目錄底下</li>
-<li>要移除時, 必須執行安裝程式後, 裡面有個uninstall, 在 window 那邊好像找不到移除方式</li>
-<li>安裝時選 customize install, 這樣才可以自選安裝路徑</li>
-<li>也順便選 Add python 3.6 to path</li>
-</ul>
-        
-          <p class="article-more-link">
-            <a href="/2018/05/21/how-to-install-python-on-windows/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://wwssllabcd.github.io/2018/05/21/how-to-install-python-on-windows/" data-id="ckky6jk1r0031ushabitybeat" class="article-share-link">Share</a>
-      
-        <a href="http://wwssllabcd.github.io/2018/05/21/how-to-install-python-on-windows/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-how-to-install-pyqt" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/21/how-to-install-pyqt/" class="article-date">
-  <time datetime="2018-05-20T17:13:59.000Z" itemprop="datePublished">2018-05-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/21/how-to-install-pyqt/">安裝 PyQt</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="安裝-PyQt"><a href="#安裝-PyQt" class="headerlink" title="安裝 PyQt "></a>安裝 PyQt </h2><p>PyQT 為 python 的一款 GUI 程式, 是採用 GPL licence, 但也是不是每一版都有 windows 安裝版<br>注意: 這邊可能會更推薦使用 pip 安裝, 指令為</p>
-<pre><code> pip install pyqt5</code></pre>
-<p>pip 會自動根據 python 的版本自動匹配, 我這邊使用 <code>python 3.6.5</code> 批配到的是 <code>pyqt 5.10.1</code></p>
-<pre><code>雖然 PyQt 可以自行從官網下載並安裝, 但請務必使用 pip 安裝, 後面使用的時候問題會比較少</code></pre>
-<h2 id="安裝-Pyqt5-tools"><a href="#安裝-Pyqt5-tools" class="headerlink" title="安裝 Pyqt5-tools"></a>安裝 Pyqt5-tools</h2><p>使用 pip 安裝 PyQt 時, 並不會把 Pyqt designr 給安裝起來, 所以使用 pip 安裝 Pyqt5-tools, 以便取得 QT designer</p>
-<pre><code>pip install pyqt5-tools</code></pre>
-<p>而 designer 會在 </p>
-<pre><code>D:\Python\Python36-32\Lib\site-packages\pyqt5-tools</code></pre>
-<p>中找到</p>
-        
-          <p class="article-more-link">
-            <a href="/2018/05/21/how-to-install-pyqt/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://wwssllabcd.github.io/2018/05/21/how-to-install-pyqt/" data-id="ckky6jk1r0033usha5rw25omy" class="article-share-link">Share</a>
-      
-        <a href="http://wwssllabcd.github.io/2018/05/21/how-to-install-pyqt/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
-  </nav>
-
+</section>
 </section>
         
           <aside id="sidebar">
@@ -950,11 +481,13 @@ sprite 的畫法就單純很多，去 oam 把 40 個 sprite 取出來後，再�
 <script>
   var disqus_shortname = 'ericwangsblog';
   
+  var disqus_url = 'http://wwssllabcd.github.io/2021/02/12/how-to-build-a-gameboy-emulator-3/';
+  
   (function(){
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
 </script>

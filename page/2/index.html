@@ -80,6 +80,57 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-how-to-execute-amb-expression" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/12/how-to-execute-amb-expression/" class="article-date">
+  <time datetime="2017-11-11T17:13:59.000Z" itemprop="datePublished">2017-11-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/12/how-to-execute-amb-expression/">執行 amb expression</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="建立-amb-環境"><a href="#建立-amb-環境" class="headerlink" title="建立 amb 環境"></a>建立 amb 環境</h2><p>先去這邊下載</p>
+<pre><code>https://mitpress.mit.edu/sicp/code/</code></pre>
+<p>amb 是 chapter 4 的, 所以選以下這個下載</p>
+<pre><code>ch4-ambeval.scm     Amb Evaluator (section 4.3)</code></pre>
+<p>然後再scheme 中執行, 會發現 load 不進去另一個檔, 其實把兩個檔案合起來就可以了, 存成一個檔案後, 就可以使用指令 load 出來, 如下</p>
+<pre><code>( load &quot;e:\\a.scm&quot;) </code></pre>
+<p><code>PS：按CTRL-Y 可以貼上文字</code></p>
+        
+          <p class="article-more-link">
+            <a href="/2017/11/12/how-to-execute-amb-expression/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wwssllabcd.github.io/2017/11/12/how-to-execute-amb-expression/" data-id="ckky6jk1p002yusha5almhybc" class="article-share-link">Share</a>
+      
+        <a href="http://wwssllabcd.github.io/2017/11/12/how-to-execute-amb-expression/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sicp/" rel="tag">sicp</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-how-to-write-make-file" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/10/03/how-to-write-make-file/" class="article-date">
@@ -633,60 +684,6 @@ pacman -Syu</code></pre>
 
 
   
-    <article id="post-how-to-setup-raspbmc-in-raspberry-pi" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2013/04/22/how-to-setup-raspbmc-in-raspberry-pi/" class="article-date">
-  <time datetime="2013-04-22T08:26:00.000Z" itemprop="datePublished">2013-04-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/04/22/how-to-setup-raspbmc-in-raspberry-pi/">讓 Raspberry pi 變成多媒體播放機 -- 安裝Raspbmc</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>RPi可以透過安裝 XBMC，讓自己可以變成類似 <a target="_blank" rel="noopener" href="http://www.himedia-tech.cn/">海美迪(Himedia)</a> 那種高清播放機的功能，也有插件可以看PPS等網路電視，
-不過他不像 transmission、samba等 service 只要裝套件就好了，必須要安裝他們的OS image，所以比較常見的方法是再拿一張SD卡專門使用</p>
-<h1 id="安裝-RaspBMC"><a href="#安裝-RaspBMC" class="headerlink" title="安裝 RaspBMC"></a>安裝 RaspBMC</h1><h2 id="下載與安裝"><a href="#下載與安裝" class="headerlink" title="下載與安裝"></a>下載與安裝</h2><p>到<a target="_blank" rel="noopener" href="http://www.raspbmc.com/">Raspbmc</a>網站下載image，下載有兩種方式  </p>
-<ul>
-<li>一種是下載16mb大小的前導，安裝完後，他會自己下載剩下的程式安裝  </li>
-<li>Standalone Image 是下載完整的離線安裝檔  </li>
-</ul>
-<p>我推薦下載<a target="_blank" rel="noopener" href="http://download.raspbmc.com/downloads/bin/filesystem/prebuilt/raspbmc-final.img.gz">Standalone Image</a>，因為有時後用前導的方式會下載很久，
-Standalone Image的檔案下載回來後解壓縮，會得到一個img file，安裝的方式就跟官方OS一樣，使用<a target="_blank" rel="noopener" href="https://launchpad.net/win32-image-writer/+download">Win32DiskImager</a>寫入即可</p>
-<p>寫入完成後，插上RPI並接上網路，等個10min，就差不多安裝好了，基本上安裝不會有什麼大問題，順利的話，就會直接進入到 XBMC 的畫面。</p>
-        
-          <p class="article-more-link">
-            <a href="/2013/04/22/how-to-setup-raspbmc-in-raspberry-pi/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://wwssllabcd.github.io/2013/04/22/how-to-setup-raspbmc-in-raspberry-pi/" data-id="ckky6jk1b0022ushacr47atbx" class="article-share-link">Share</a>
-      
-        <a href="http://wwssllabcd.github.io/2013/04/22/how-to-setup-raspbmc-in-raspberry-pi/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-To/" rel="tag">How-To</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Raspberry-Pi/" rel="tag">Raspberry Pi</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -715,7 +712,7 @@ Standalone Image的檔案下載回來後解壓縮，會得到一個img file，�
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 12px;">Android</a> <a href="/tags/Bitcoin/" style="font-size: 10px;">Bitcoin</a> <a href="/tags/Boost/" style="font-size: 12px;">Boost</a> <a href="/tags/Bugzilla/" style="font-size: 10px;">Bugzilla</a> <a href="/tags/C/" style="font-size: 16px;">C++</a> <a href="/tags/Firefox-extension/" style="font-size: 12px;">Firefox extension</a> <a href="/tags/GDB/" style="font-size: 12px;">GDB</a> <a href="/tags/GDB-Script/" style="font-size: 10px;">GDB Script</a> <a href="/tags/Google-Earth/" style="font-size: 10px;">Google Earth</a> <a href="/tags/Heroku/" style="font-size: 10px;">Heroku</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/How-To/" style="font-size: 20px;">How-To</a> <a href="/tags/Investment/" style="font-size: 10px;">Investment</a> <a href="/tags/Kodi/" style="font-size: 10px;">Kodi</a> <a href="/tags/Lunux-kernel/" style="font-size: 14px;">Lunux kernel</a> <a href="/tags/Modern-C-Design/" style="font-size: 12px;">Modern C++ Design</a> <a href="/tags/Nokogiri/" style="font-size: 12px;">Nokogiri</a> <a href="/tags/OO/" style="font-size: 14px;">OO</a> <a href="/tags/Octopress/" style="font-size: 10px;">Octopress</a> <a href="/tags/Programming-pearls/" style="font-size: 10px;">Programming pearls</a> <a href="/tags/Python/" style="font-size: 12px;">Python</a> <a href="/tags/Qemu/" style="font-size: 10px;">Qemu</a> <a href="/tags/RSS/" style="font-size: 12px;">RSS</a> <a href="/tags/Raspberry-Pi/" style="font-size: 18px;">Raspberry Pi</a> <a href="/tags/Ruby/" style="font-size: 14px;">Ruby</a> <a href="/tags/SNMP/" style="font-size: 10px;">SNMP</a> <a href="/tags/Subversion/" style="font-size: 10px;">Subversion</a> <a href="/tags/USB/" style="font-size: 10px;">USB</a> <a href="/tags/Ubuntu/" style="font-size: 12px;">Ubuntu</a> <a href="/tags/Virtual-Box/" style="font-size: 10px;">Virtual Box</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/tags/bochs/" style="font-size: 10px;">bochs</a> <a href="/tags/c/" style="font-size: 14px;">c</a> <a href="/tags/emulator/" style="font-size: 14px;">emulator</a> <a href="/tags/linux%EF%BC%8Cmakefile/" style="font-size: 10px;">linux，makefile</a> <a href="/tags/sicp/" style="font-size: 10px;">sicp</a>
+      <a href="/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 11.67px;">Android</a> <a href="/tags/Bitcoin/" style="font-size: 10px;">Bitcoin</a> <a href="/tags/Boost/" style="font-size: 11.67px;">Boost</a> <a href="/tags/Bugzilla/" style="font-size: 10px;">Bugzilla</a> <a href="/tags/C/" style="font-size: 16.67px;">C++</a> <a href="/tags/Firefox-extension/" style="font-size: 11.67px;">Firefox extension</a> <a href="/tags/GDB/" style="font-size: 11.67px;">GDB</a> <a href="/tags/GDB-Script/" style="font-size: 10px;">GDB Script</a> <a href="/tags/Google-Earth/" style="font-size: 10px;">Google Earth</a> <a href="/tags/Heroku/" style="font-size: 10px;">Heroku</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/How-To/" style="font-size: 20px;">How-To</a> <a href="/tags/Investment/" style="font-size: 10px;">Investment</a> <a href="/tags/Kodi/" style="font-size: 10px;">Kodi</a> <a href="/tags/Lunux-kernel/" style="font-size: 13.33px;">Lunux kernel</a> <a href="/tags/Modern-C-Design/" style="font-size: 11.67px;">Modern C++ Design</a> <a href="/tags/Nokogiri/" style="font-size: 11.67px;">Nokogiri</a> <a href="/tags/OO/" style="font-size: 13.33px;">OO</a> <a href="/tags/Octopress/" style="font-size: 10px;">Octopress</a> <a href="/tags/Programming-pearls/" style="font-size: 10px;">Programming pearls</a> <a href="/tags/Python/" style="font-size: 11.67px;">Python</a> <a href="/tags/Qemu/" style="font-size: 10px;">Qemu</a> <a href="/tags/RSS/" style="font-size: 11.67px;">RSS</a> <a href="/tags/Raspberry-Pi/" style="font-size: 18.33px;">Raspberry Pi</a> <a href="/tags/Ruby/" style="font-size: 13.33px;">Ruby</a> <a href="/tags/SNMP/" style="font-size: 10px;">SNMP</a> <a href="/tags/Subversion/" style="font-size: 10px;">Subversion</a> <a href="/tags/USB/" style="font-size: 10px;">USB</a> <a href="/tags/Ubuntu/" style="font-size: 11.67px;">Ubuntu</a> <a href="/tags/Virtual-Box/" style="font-size: 10px;">Virtual Box</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/tags/bochs/" style="font-size: 10px;">bochs</a> <a href="/tags/c/" style="font-size: 15px;">c</a> <a href="/tags/emulator/" style="font-size: 15px;">emulator</a> <a href="/tags/linux%EF%BC%8Cmakefile/" style="font-size: 10px;">linux，makefile</a> <a href="/tags/sicp/" style="font-size: 10px;">sicp</a>
     </div>
   </div>
 
@@ -737,6 +734,10 @@ Standalone Image的檔案下載回來後解壓縮，會得到一個img file，�
       <ul>
         
           <li>
+            <a href="/2021/02/12/how-to-build-a-gameboy-emulator-3/">從零開始的 Gameboy 模擬器開發 -- Step 3</a>
+          </li>
+        
+          <li>
             <a href="/2021/02/10/how-to-build-a-gameboy-emulator-2/">從零開始的 Gameboy 模擬器開發 -- Step 2</a>
           </li>
         
@@ -750,10 +751,6 @@ Standalone Image的檔案下載回來後解壓縮，會得到一個img file，�
         
           <li>
             <a href="/2020/11/08/how-to-intall-android-tv-in-raspberry-pi-4/">RPI-4 安裝 android tv</a>
-          </li>
-        
-          <li>
-            <a href="/2020/11/08/how-to-use-kodi/">kodi 教學，心得</a>
           </li>
         
       </ul>
