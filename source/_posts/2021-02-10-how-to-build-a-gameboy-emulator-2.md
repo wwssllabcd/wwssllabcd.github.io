@@ -346,6 +346,65 @@ void opcode_ei() {
 
 其實 op code 大概就是這樣，真正需要認真實作的部分約100行左右，除了一個叫 daa 指令之外, 剩下的大部分都很簡單，就是組合再組合就搞定了，接下來下一篇就是要寫 gb 的 video 與 tile 系統了
 
+其他的功能
+========
+有一個比較特別的東西要拉出來講，就是 Z80 在 0xFF46 有提供一個 DMA 的功能，當那個記憶體被寫入的時候，我們就要執行 dma 的功能，他的 code 也很簡單
+
+```
+void start_hw_dma(eu8 byte) {
+    RamAddr base = byte * 0x100;
+    for (eu8 i = 0x0; i < 0xA0; i++) {
+        RamAddr src = base + i;
+        RamAddr dst = SPRITE_MAP_START_ADDR + i;
+        set_ram(dst, get_ram(src));
+    }
+}
+
+eu8 get_ram(RamAddr addr) {
+    if (addr == IO_P1) {
+        return input_read();
+    }
+
+    // fix 0xFF
+    if (addr == IO_SERIAL) {
+        return 0xFF;
+    }
+    // DMA, fix 0
+    if (addr == IO_DMA) {
+        return 0x0;
+    }
+
+    return (*get_ram_ptr(addr));
+}
+
+void set_ram(RamAddr addr, eu8 value) {
+    //can not write when Non-MBC mode 
+    if (addr < 0x8000) {
+        PRINTF_ALWAYS("inhibit write rom addr=%X, val=%X", addr, value);
+        return;
+    }
+
+    // debug: workaround
+    if (addr == IO_TIMER_MODULE) {
+        return;
+    }
+
+    if (addr == IO_TIMER_CTRL) {
+        return;
+    }
+
+    // start DMA
+    if (addr == IO_DMA) {
+        start_hw_dma(value);
+        return;
+    }
+
+    (*get_ram_ptr(addr)) = value;
+}
+```
+
+fw 會寫入一個 byte，這個 byte 就代表 dma 的來源，而 DMA 的目的地就是 0xFE00，這是固定的，般的長度是 0xA0，也是固定的
+
 
 如何 Debug 
 ========
