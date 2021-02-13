@@ -29,7 +29,7 @@ ga('send', 'pageview');
 <meta property="og:description" content="建立 opcode map 在開始之前讀取第一道指令之前，我們要做一件很不有趣的事情，就是建立所有 op code 的 map 首先我們建立 opcode_map.c，裡面的內容如下 123456789101112131415161718192021222324void not_support_cb_code() &amp;#123; ASSERT_CODE(0, &quot;not support CB">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-02-09T16:24:46.000Z">
-<meta property="article:modified_time" content="2021-02-11T19:05:15.198Z">
+<meta property="article:modified_time" content="2021-02-13T10:23:58.815Z">
 <meta property="article:author" content="EricWang">
 <meta property="article:tag" content="How-To">
 <meta property="article:tag" content="c">
@@ -193,6 +193,7 @@ ga('send', 'pageview');
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">eu8 execute_opcode() &#123;</span><br><span class="line">    eu8 opcode &#x3D; fetch();</span><br><span class="line">    </span><br><span class="line">	....</span><br><span class="line">	....</span><br><span class="line"></span><br><span class="line">    opcodeFunMap[opcode]();</span><br><span class="line">    debug_show_reg_ram(is_cb_cmd, opcode, clock);</span><br><span class="line"></span><br><span class="line">    ....</span><br><span class="line"></span><br><span class="line">    return clock;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>然後你應該可以找一個 GB Emu project，讓他也印出相同的東西，跟你的 log 一比，很快就會知道你錯在哪裡</p>
+<p><a href="https://wwssllabcd.github.io/2021/02/12/how-to-build-a-gameboy-emulator-3/">從零開始的 Gameboy 模擬器開發 -- Step 3 </a></p>
 
       
     </div>
