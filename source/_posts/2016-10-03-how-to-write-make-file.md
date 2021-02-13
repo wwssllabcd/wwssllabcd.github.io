@@ -1,6 +1,6 @@
 title: makefile 心得、教學
 date: 2016-10-03 01:13:59
-tags: C++, Makefile
+tags: [C++, Makefile]
 toc: true
 ---
 
