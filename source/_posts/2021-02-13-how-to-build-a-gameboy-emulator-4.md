@@ -1,6 +1,6 @@
 ---
 title: 從零開始的 Gameboy 模擬器開發 -- Step 4
-date: 2021-02-12 00:24:46
+date: 2021-02-13 00:24:46
 tags: [How-To, C, Emulator]
 toc: true
 type: adsense
@@ -14,6 +14,8 @@ Gameboy 的輸入系統
 從 sdl2 接收輸入很簡單，他已經幫我們弄好了 void process_events() 算是定番了，照著打就對了，最後會轉一手傳入到 key_down_event() or key_up_event() 裡面
 
 
+<!--more-->
+
 ```
 enum {
     GB_KEY_NULL = 0,
@@ -26,7 +28,6 @@ enum {
     GB_KEY_SELECT,
     GB_KEY_START,
 };
-
 
 eu8 get_gb_key_event_code(SDL_Keycode keyCode) {
     switch (keyCode) {
@@ -166,6 +167,8 @@ void key_up_event(eu8 code) {
 ```
 
 最後 input_read 會負責丟給 fw，那怎麼丟給 fw 呢? joypad 與 fw 的溝通是靠 0xFF00 這個位置，而這個位置有特定的格式，大家再去找手冊看吧
+
+也就是說，我們的 input_read() 會假裝成 0xFF00 的那個 byte, 而這個 byte 的內容就是根據目前 joypad 的 flag 所產生的
 
 ```
 #define IO_P1                        (0xFF00)
