@@ -665,6 +665,89 @@ void write_sprites() {
 
 ------
 
+
+接上顯示系統
+=======
+我們使用 sdl 2 來當作顯示系統，照著 以下的 code 輸入即可，這邊會在最後一刻把 gb 的四種顏色，轉成 sdl 所顯示的 RGB 顏色，如果順利的話，就會顯示出遊戲畫面
+
+```
+typedef void(*SetPixelsFun)(eu32 x, eu32 y, eu8 color);
+
+eu32 get_real_color(eu8 pixelColor) {
+    // for compile error
+    eu8 r = 0;
+    eu8 g = 0;
+    eu8 b = 0;
+
+    switch (pixelColor) {
+        case 0:
+            r = g = b = 255;
+            break;  // white
+        case 1:
+            r = g = b = 170;
+            break;
+        case 2:
+            r = g = b = 85;
+            break;
+        case 3:
+            r = g = b = 0;
+            break;  // black
+        default:
+            ASSERT_CODE(0, "Wrong pixel color = %X", pixelColor);
+    }
+
+    return (r << 16) | (g << 8) | (b << 0);
+}
+
+void set_pixel(eu32 x, eu32 y, eu8 color) {
+    g_sdlPixels[SCREEN_WIDTH * SDL_PIXEL_SIZE * y + x] = get_real_color(color);
+}
+
+void set_pixels(eu8 frameBuffer[SCREEN_HEIGHT][SCREEN_WIDTH], SetPixelsFun set_pixel_fun) {
+    for (eu8 y = 0; y < SCREEN_HEIGHT; y++) {
+        for (eu8 x = 0; x < SCREEN_WIDTH; x++) {
+            set_pixel_fun(x, y, frameBuffer[y][x]);
+        }
+    }
+}
+
+void draw_sdl2(eu8 frameBuffer[SCREEN_HEIGHT][SCREEN_WIDTH]) {
+    process_events();
+
+    SDL_RenderClear(g_renderer);
+
+    void* pixelsPtr;
+    int pitch;
+
+    SDL_LockTexture(g_texture, NULL_PTR, &pixelsPtr, &pitch);
+
+    g_sdlPixels =(uint32_t*)(pixelsPtr);
+
+    set_pixels(frameBuffer, set_pixel);
+
+    SDL_UnlockTexture(g_texture);
+    SDL_RenderCopy(g_renderer, g_texture, NULL_PTR, NULL_PTR);
+    SDL_RenderPresent(g_renderer);
+}
+```
+
+此時你會發現，螢幕太小，我們要想辦法放大，所以我們做了一個放大的程式 set_large_pixels()，其策略是一個 1 * 1 的點，讓他變成 2 * 2，把原本的 function 替換成放大版的即可
+
+```
+void set_large_pixels(eu32 x, eu32 y, eu8 color) {
+    for (eu8 w = 0; w < SDL_PIXEL_SIZE; w++) {
+        for (eu8 h = 0; h < SDL_PIXEL_SIZE; h++) {
+            eu32 fin_x = x * SDL_PIXEL_SIZE + w;
+            eu32 fin_y = y * SDL_PIXEL_SIZE + h;
+            set_pixel(fin_x, fin_y, color);
+        }
+    }
+}
+```
+
+這樣一來就可以顯示出較大的螢幕了，記得一開始的 init_sdl() 的參數也要一起替換喔
+
+
 最後
 =====
 
