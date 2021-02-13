@@ -80,6 +80,59 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-policy-based-template-programming" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/10/08/policy-based-template-programming/" class="article-date">
+  <time datetime="2013-10-08T11:02:00.000Z" itemprop="datePublished">2013-10-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/10/08/policy-based-template-programming/">Policy-Based Programming</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>考慮以下的 code 是<code>找出vector&quot;中，相同的item出來，並放在另一個vector中</code>，
+但是有時後放入vector 的item是 native type( 如 int， char， 等)，有時卻是使用pair type，
+而這兩個 template 基本上只差在一個地方，就是取 addr 的部份，
+一個 native 版本是直接取，如<code>addr = (*iDBlock);</code> ，而 pair 版本是取他的 first 出來，如 <code>addr = (*iDBlock).first;</code></p>
+<p>Native type 版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">template&lt;bool flag, class T, class U&gt;</span><br><span class="line">static void findDupItem(vector&lt;T&gt;&amp; source, vector&lt;U&gt;&amp; dupColl)&#123;</span><br><span class="line">	typename vector&lt;T&gt;::iterator iDBlock;</span><br><span class="line">	dupColl.clear();</span><br><span class="line"></span><br><span class="line">	T addr&#x3D;0;</span><br><span class="line">	</span><br><span class="line">	for(iDBlock &#x3D; source.begin(); iDBlock!&#x3D;source.end(); iDBlock++)&#123;</span><br><span class="line">		addr &#x3D; (*iDBlock);</span><br><span class="line">		if( _isHit( addr ) &#x3D;&#x3D; true )&#123;</span><br><span class="line">			dupColl.push_back((*iDBlock));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Pair 版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">template&lt; class T, class U &gt;</span><br><span class="line">static void findDupItem(vector&lt; pair&lt;T, U&gt; &gt;&amp; source, vector&lt; pair&lt;T, U&gt; &gt;&amp; dupColl)&#123;</span><br><span class="line">	typename vector&lt; pair&lt;T, U&gt;  &gt;::iterator iDBlock;</span><br><span class="line">	dupColl.clear();</span><br><span class="line"></span><br><span class="line">	T addr&#x3D;0;</span><br><span class="line">	for(iDBlock &#x3D; source.begin(); iDBlock!&#x3D;source.end(); iDBlock++)&#123;</span><br><span class="line">		addr &#x3D; (*iDBlock).first;</span><br><span class="line">		if( _isHit( addr) &#x3D;&#x3D; true )&#123;</span><br><span class="line">			dupColl.push_back((*iDBlock));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2013/10/08/policy-based-template-programming/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wwssllabcd.github.io/2013/10/08/policy-based-template-programming/" data-id="ckky6jk1f002cushafyx5hziw" class="article-share-link">Share</a>
+      
+        <a href="http://wwssllabcd.github.io/2013/10/08/policy-based-template-programming/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-C-Design/" rel="tag">Modern C++ Design</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-how-to-setup-raspbmc-in-raspberry-pi" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2013/04/22/how-to-setup-raspbmc-in-raspberry-pi/" class="article-date">
@@ -558,53 +611,6 @@ sudo apt-get install gnome-tweak-tool</code></pre>
 
 
   
-    <article id="post-usb-emulation" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2012/11/28/usb-emulation/" class="article-date">
-  <time datetime="2012-11-28T14:14:00.000Z" itemprop="datePublished">2012-11-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2012/11/28/usb-emulation/">USB 列舉教學，詳解</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>當 USB 插上 HUB 時，HUB 此時正在不斷的 Polling port 的狀態，一旦偵測到電位改變時，Hub 就會通知 Host 有新的裝置，
-當然會有一些USB 全速與高速的判別，這部份請參考<a target="_blank" rel="noopener" href="http://wenku.baidu.com/view/359fa76d7e21af45b307a8db.html">全速和低速識別</a>，就不再提了，
-這邊只針對CATC所錄到的 USB 列舉作解析。</p>
-        
-          <p class="article-more-link">
-            <a href="/2012/11/28/usb-emulation/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://wwssllabcd.github.io/2012/11/28/usb-emulation/" data-id="ckky6jk14001oushaa07v2xsn" class="article-share-link">Share</a>
-      
-        <a href="http://wwssllabcd.github.io/2012/11/28/usb-emulation/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-To/" rel="tag">How-To</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/USB/" rel="tag">USB</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -655,6 +661,10 @@ sudo apt-get install gnome-tweak-tool</code></pre>
       <ul>
         
           <li>
+            <a href="/2021/02/13/how-to-build-a-gameboy-emulator-4/">從零開始的 Gameboy 模擬器開發 -- Step 4</a>
+          </li>
+        
+          <li>
             <a href="/2021/02/12/how-to-build-a-gameboy-emulator-3/">從零開始的 Gameboy 模擬器開發 -- Step 3</a>
           </li>
         
@@ -668,10 +678,6 @@ sudo apt-get install gnome-tweak-tool</code></pre>
         
           <li>
             <a href="/2021/02/07/how-to-build-a-gameboy-emulator-0/">從零開始的 Gameboy 模擬器開發 -- Step 0</a>
-          </li>
-        
-          <li>
-            <a href="/2020/11/08/how-to-intall-android-tv-in-raspberry-pi-4/">RPI-4 安裝 android tv</a>
           </li>
         
       </ul>

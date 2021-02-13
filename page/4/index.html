@@ -80,6 +80,53 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-usb-emulation" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2012/11/28/usb-emulation/" class="article-date">
+  <time datetime="2012-11-28T14:14:00.000Z" itemprop="datePublished">2012-11-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2012/11/28/usb-emulation/">USB 列舉教學，詳解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>當 USB 插上 HUB 時，HUB 此時正在不斷的 Polling port 的狀態，一旦偵測到電位改變時，Hub 就會通知 Host 有新的裝置，
+當然會有一些USB 全速與高速的判別，這部份請參考<a target="_blank" rel="noopener" href="http://wenku.baidu.com/view/359fa76d7e21af45b307a8db.html">全速和低速識別</a>，就不再提了，
+這邊只針對CATC所錄到的 USB 列舉作解析。</p>
+        
+          <p class="article-more-link">
+            <a href="/2012/11/28/usb-emulation/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wwssllabcd.github.io/2012/11/28/usb-emulation/" data-id="ckky6jk14001oushaa07v2xsn" class="article-share-link">Share</a>
+      
+        <a href="http://wwssllabcd.github.io/2012/11/28/usb-emulation/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-To/" rel="tag">How-To</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/USB/" rel="tag">USB</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-how-to-make-linux-module" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2012/11/13/how-to-make-linux-module/" class="article-date">
@@ -517,56 +564,6 @@ require &#39;open-uri&#39;</code></pre>
 
 
   
-    <article id="post-how-to-install-bugzilla" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2012/08/03/how-to-install-bugzilla/" class="article-date">
-  <time datetime="2012-08-03T10:18:00.000Z" itemprop="datePublished">2012-08-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2012/08/03/how-to-install-bugzilla/">Bugzilla 安裝心得</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-		
-        <a id="more"></a>
-<ol>
-<li>安裝 MySQL 時，使用 Community Edition(mysql-essential-5.0.51a-win32.msi)，不要用 MySQL 6.0 的，不穩  </li>
-<li>安裝 MySQL 時，請注意編碼設定，使用 UTF-8，不要無腦按下一步，否則妳將無法使用 UTF-8</li>
-<li>安裝 perl，最好使用 ActivePerl-5.8.8.822，不要用 5.10 的，5.10 的有些模組沒有安裝  </li>
-<li>Bugzilla 的 localconfig 檔案是要使用 checksetup.pl. 產生出來的  </li>
-</ol>
-<p>安裝步驟可參考<br><a target="_blank" rel="noopener" href="http://www.bugzilla.org/docs/win32install.html">http://www.bugzilla.org/docs/win32install.html</a><br><a target="_blank" rel="noopener" href="http://bbs.51testing.com/thread-105958-1-1.html">http://bbs.51testing.com/thread-105958-1-1.html</a>   </p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://wwssllabcd.github.io/2012/08/03/how-to-install-bugzilla/" data-id="ckky6jk0p000vusha4df7b3cy" class="article-share-link">Share</a>
-      
-        <a href="http://wwssllabcd.github.io/2012/08/03/how-to-install-bugzilla/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bugzilla/" rel="tag">Bugzilla</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-To/" rel="tag">How-To</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -617,6 +614,10 @@ require &#39;open-uri&#39;</code></pre>
       <ul>
         
           <li>
+            <a href="/2021/02/13/how-to-build-a-gameboy-emulator-4/">從零開始的 Gameboy 模擬器開發 -- Step 4</a>
+          </li>
+        
+          <li>
             <a href="/2021/02/12/how-to-build-a-gameboy-emulator-3/">從零開始的 Gameboy 模擬器開發 -- Step 3</a>
           </li>
         
@@ -630,10 +631,6 @@ require &#39;open-uri&#39;</code></pre>
         
           <li>
             <a href="/2021/02/07/how-to-build-a-gameboy-emulator-0/">從零開始的 Gameboy 模擬器開發 -- Step 0</a>
-          </li>
-        
-          <li>
-            <a href="/2020/11/08/how-to-intall-android-tv-in-raspberry-pi-4/">RPI-4 安裝 android tv</a>
           </li>
         
       </ul>
