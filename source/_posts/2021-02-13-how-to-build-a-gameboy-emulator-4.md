@@ -37,8 +37,8 @@ eu8 get_gb_key_event_code(SDL_Keycode keyCode) {
         case SDLK_RIGHT: return GB_KEY_RIGHT;
         case SDLK_k: return GB_KEY_A;
         case SDLK_l: return GB_KEY_B;
-        case SDLK_1: return GB_KEY_SELECT;
-        case SDLK_2: return GB_KEY_START;
+        case SDLK_SPACE: return GB_KEY_SELECT;
+        case SDLK_RETURN: return GB_KEY_START;
         default: return GB_KEY_NULL;
     }
 }
