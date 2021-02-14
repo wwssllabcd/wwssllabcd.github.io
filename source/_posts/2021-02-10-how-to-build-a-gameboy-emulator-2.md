@@ -374,6 +374,10 @@ eu8 get_ram(RamAddr addr) {
         return 0x0;
     }
 
+    if ((0xFEA0 <= addr) && (addr < 0xFF00)) {
+        return 0xFF;
+    }
+
     return (*get_ram_ptr(addr));
 }
 
