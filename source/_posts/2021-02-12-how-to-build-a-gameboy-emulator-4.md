@@ -522,19 +522,20 @@ eu8 get_pixel_data(eu8 byte_0, eu8 byte_1, eu8 px_offset) {
 ======
 
 
-畫出 window 
+畫出 background 
 -------
 
 一切準備就緒後，就可以把一切的東西組合起來嚕，開始寫 get_bg_line_data()，如下所示
 
 ```
-void draw_bg_window_line(eu8 screen_x, eu8 screen_y, ScrollPx scroll_x, ScrollPx scroll_y) {
+void draw_bg_window_line(eu8 screen_x, eu8 screen_y, ScrollPx scroll_x, ScrollPx scroll_y, 
+                         TileIdMap_sp screenTileIdMap) 
+{
     TilePatternMap_sp tileDataTable = get_tile_data_table_bg_window();
-    TileIdMap_sp screenTileIdTable = get_screen_window_tile_id_table();
-    eu8 tile_id = screenTileIdTable->map_xy[scroll_y.tile_id][scroll_x.tile_id];
+    eu8 tile_id = screenTileIdMap->map_xy[scroll_y.tile_id][scroll_x.tile_id];
 
     if (!LCD_CTRL.bg_and_window_tile_data_select) {
-        tile_id += 128;
+        tile_id -= 0x80;
     }
 
     TileLine_sp tileLine = &tileDataTable->pattern_map[tile_id].line_map[scroll_y.tile_px];
@@ -545,49 +546,56 @@ void get_bg_line_data(eu8 screen_y) {
     eu8 scrolled_x = LCD.scx;
     eu8 scrolled_y = screen_y + LCD.scy;
 
+    TileIdMap_usp screenTileIdMap = get_bg_tile_id_map();
+
     for (eu8 screen_x = 0; screen_x < SCREEN_WIDTH; screen_x++) {
+        // we need to roll back to 0 when scrolled_x > 256
         ScrollPx scroll_x = {.all = (scrolled_x + screen_x) % BG_MAP_PIXEL_SIZE};
         ScrollPx scroll_y = {.all = (scrolled_y) % BG_MAP_PIXEL_SIZE};
 
-        draw_bg_window_line(screen_x, screen_y, scroll_x, scroll_y);
+        draw_bg_window_line(screen_x, screen_y, scroll_x, scroll_y, screenTileIdMap);
     }
 }
 ```
 
-如果你有看過其他人的 code ，應該會對這邊簡短的 code 感到訝異，事實上 tile 的概念就是這樣，沒有很複雜，讓我解釋一下裡面用到的變數，這邊為了避免混淆虛擬螢幕與顯示螢幕，這邊命名 scroll 的是代表虛體螢幕(也就是256 * 256 的拼圖)，而 screen 代表顯示的螢幕(也就是 144 * 160 白色方框)
+算是蠻簡潔的 code，不過 tile 的概念就是這樣，沒有很複雜，讓我解釋一下裡面用到的變數，這邊為了避免混淆虛擬螢幕與顯示螢幕，這邊命名 scroll 的是代表虛體螢幕(也就是256 * 256 的拼圖)，而 screen 代表顯示的螢幕(也就是 144 * 160 白色方框)
 
 - scrolled_x 與 scrolled_y : 代表 BG 要從 256 *256 的實體螢幕上的哪一點 x,y 開始畫，還記得我們之前拼圖，白色方框的比喻嗎? 這個就是決定白色方框的 x, y 
 - scroll_x 與 scroll_y: 代表每一次要取的 scroll x, y ，這邊有做一個取餘數 % 的動作，可以讓你畫到超出界外的時候，roll back 到最前面
 
-接下來講解 draw_bg_window_line ()
+接下來講解 draw_bg_window_line ()，而這邊的 code 有跟畫 window 共用的 code，所以這邊需要傳入一個參數進去，藉以區分 screenTileTidMap
 
 取出目前對應的 tileDataTable  與 screenTileIdTable，screenTileIdTable->map 代表著整個虛擬螢幕所對應的 tile id ，不過我們這邊是使用他的 map_xy 來取值，因為我們有他的 x,y 座標
 
 
-取到正確 id 後，就根據 tile id 去 tilePatternMap 去取出 tileline 的兩個 byte了，然後再利用我們剛剛提到的function 把他們通通組合起來就可以了
+取到正確 id 後，就根據 tile id 去 tilePatternMap 去取出 tileline 的兩個 byte了，然後再利用我們剛剛提到的function 把他們通通組合起來就可以了，這邊所有定位與計算的動作都是使用之前定義的 type 巧妙地閃過
 
-這邊所有定位與計算的動作都是使用之前定義的 type 巧妙地閃過
+比較特別的是， 如果 bg_and_window_tile_data_select == 0 的話，tileId 要減去 128，這是因為 tileId 的編號是從 0x8000 開始，每16 byte 一組。所以編到 0x8800 的時候，此時的 TileId 依然是 0x80，到了 0x9000 的時候，由於 u8 只能存 256 個號碼，所以這邊又變成 0，也就是即便他的 base address 是從 0x8800 開始的，tileId 編號規則也是相同的從 0x8000 開始編
+
+當使用 0x8000 當作 base address 的時候，編號 0 ~ 0xFF 的範圍就是 0x8000 ~ 0x8FFF，當使用 0x8800 當作 base address 的時候， 0x8800 的那組 TileId 的編號依然是 0x80，反而是 0x9000 那組的編號是 0
+
+所以當我們一旦使用 0x8800 當作 base address 的時候，我們的 tileId 反而要減掉 0x80，這樣才是正確的 array index ，當然加上 0x80 也是可以，因為運算過意思經過溢位其值是一樣的
 
 ---------
 
 畫出 window 
 -------
-也是利用類似方法，先取出 patternMap 與 screenTileIdMap之後，再查表即可，比較特別的是， 如果 bg_and_window_tile_data_select == 0 的話，tileId 要再加上 128
+也是利用類似方法，先取出 patternMap 與 screenTileIdMap之後，再查表即可
 
 ```
-void draw_bg_window_line(eu8 screen_x, eu8 screen_y, ScrollPx scroll_x, ScrollPx scroll_y) {
-    TilePatternMap_sp tileDataTable = get_tile_data_table_bg_window();
-    TileIdMap_sp screenTileIdTable = get_screen_window_tile_id_table();
-    eu8 tile_id = screenTileIdTable->map_xy[scroll_y.tile_id][scroll_x.tile_id];
+void draw_window_line(eu8 screen_y) {
+    eu8 scrolled_x = LCD.wx - 7;
+    eu8 scrolled_y = screen_y - LCD.wy;
 
-    if (!LCD_CTRL.bg_and_window_tile_data_select) {
-        // In the second case, patterns have signed numbers from - 128 to 127
-        //(i.e. pattern #0 lies at address $9000).
-        tile_id += 128;
+    if (scrolled_y >= SCREEN_HEIGHT) { return; }
+
+    TileIdMap_usp screenTileIdMap = get_window_tile_id_map();
+
+    for (eu8 screen_x = 0; screen_x < SCREEN_WIDTH; screen_x++) {
+        ScrollPx scroll_x = { .all = scrolled_x + screen_x };
+        ScrollPx scroll_y = { .all = scrolled_y };
+        draw_bg_window_line(screen_x, screen_y, scroll_x, scroll_y, screenTileIdMap);
     }
-
-    TileLine_sp tileLine = &tileDataTable->pattern_map[tile_id].line_map[scroll_y.tile_px];
-    write_screen_frame_buffer(screen_x, screen_y, get_bg_palette(get_pixel_data(tileLine->byte0, tileLine->byte1, scroll_x.tile_px)));
 }
 ```
 
