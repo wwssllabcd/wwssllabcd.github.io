@@ -492,4 +492,4 @@ eu8 execute_opcode() {
 然後你應該可以找一個 GB Emu project，讓他也印出相同的東西，跟你的 log 一比，很快就會知道你錯在哪裡
 
 
-[從零開始的 Gameboy 模擬器開發 -- Step 3 ](https://wwssllabcd.github.io/2021/02/12/how-to-build-a-gameboy-emulator-3/)
+[下一篇: 從零開始的 Gameboy 模擬器開發 -- Step 3 ](https://wwssllabcd.github.io/2021/02/11/how-to-build-a-gameboy-emulator-3/)

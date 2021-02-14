@@ -8,3 +8,10 @@ type: adsense
 
 中斷
 ========
+富奸中
+
+
+
+
+
+[下一篇: 從零開始的 Gameboy 模擬器開發 -- Step 4 ](https://wwssllabcd.github.io/2021/02/12/how-to-build-a-gameboy-emulator-4/)

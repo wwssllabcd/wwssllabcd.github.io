@@ -767,3 +767,4 @@ void set_large_pixels(eu32 x, eu32 y, eu8 color) {
 
 
 
+[下一篇: 從零開始的 Gameboy 模擬器開發 -- Step 5 ](https://wwssllabcd.github.io/2021/02/14/how-to-build-a-gameboy-emulator-5/)
