@@ -80,6 +80,56 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-how-to-compile-single-module-in-linux-kernel" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2012/12/07/how-to-compile-single-module-in-linux-kernel/" class="article-date">
+  <time datetime="2012-12-06T16:02:00.000Z" itemprop="datePublished">2012-12-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2012/12/07/how-to-compile-single-module-in-linux-kernel/">在linux kernel中，編譯單一模組</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在學習linux driver 時總是需要 compile kernel，但是為了單一module而重新compile整個kernel可就浪費時間了
+所以最好的方式就是只compile單一module，這樣不但數度快，也方便debug</p>
+<h2 id="取得kernel-source-code"><a href="#取得kernel-source-code" class="headerlink" title="取得kernel source code "></a>取得kernel source code </h2><p>首先你要知道目前你系統的 kernel 的版本號，才可以去取回對應的 kernel source
+使用
+    uname -r
+查詢目前所使用的 kernel 版本是個不錯的選擇</p>
+        
+          <p class="article-more-link">
+            <a href="/2012/12/07/how-to-compile-single-module-in-linux-kernel/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wwssllabcd.github.io/2012/12/07/how-to-compile-single-module-in-linux-kernel/" data-id="ckky6jk15001qusha4nzc8dry" class="article-share-link">Share</a>
+      
+        <a href="http://wwssllabcd.github.io/2012/12/07/how-to-compile-single-module-in-linux-kernel/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-To/" rel="tag">How-To</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Lunux-kernel/" rel="tag">Lunux kernel</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-usb-emulation" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2012/11/28/usb-emulation/" class="article-date">
@@ -518,52 +568,6 @@ require &#39;open-uri&#39;</code></pre>
 
 
   
-    <article id="post-type-class" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2012/08/03/type-class/" class="article-date">
-  <time datetime="2012-08-03T10:22:00.000Z" itemprop="datePublished">2012-08-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2012/08/03/type-class/">Type Class 的寫法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>自從一年半前聽過文君講過一遍觀念，然後又看到 Effective C++ 後就一直很想把他寫出來的，我這邊稱為 Type Class，因為我不知道要叫這種東西是什麼，所以拿了這個詞來代替，希望有人可以糾正我這個可能是錯誤的 term 嚕  </p>
-<p>一個程式裡，或多或少都需要用一些 type，舉個例來說，如果要對人類性別有&quot;男&quot;還有&quot;女&quot;  </p>
-        
-          <p class="article-more-link">
-            <a href="/2012/08/03/type-class/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://wwssllabcd.github.io/2012/08/03/type-class/" data-id="ckky6jk0u0015usha3luu9ve7" class="article-share-link">Share</a>
-      
-        <a href="http://wwssllabcd.github.io/2012/08/03/type-class/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OO/" rel="tag">OO</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -614,11 +618,15 @@ require &#39;open-uri&#39;</code></pre>
       <ul>
         
           <li>
-            <a href="/2021/02/13/how-to-build-a-gameboy-emulator-4/">從零開始的 Gameboy 模擬器開發 -- Step 4</a>
+            <a href="/2021/02/14/how-to-build-a-gameboy-emulator-5/">從零開始的 Gameboy 模擬器開發 -- Step 5</a>
           </li>
         
           <li>
-            <a href="/2021/02/12/how-to-build-a-gameboy-emulator-3/">從零開始的 Gameboy 模擬器開發 -- Step 3</a>
+            <a href="/2021/02/12/how-to-build-a-gameboy-emulator-4/">從零開始的 Gameboy 模擬器開發 -- Step 4</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/11/how-to-build-a-gameboy-emulator-3/">從零開始的 Gameboy 模擬器開發 -- Step 3</a>
           </li>
         
           <li>
@@ -627,10 +635,6 @@ require &#39;open-uri&#39;</code></pre>
         
           <li>
             <a href="/2021/02/08/how-to-build-a-gameboy-emulator-1/">從零開始的 Gameboy 模擬器開發 -- Step 1</a>
-          </li>
-        
-          <li>
-            <a href="/2021/02/07/how-to-build-a-gameboy-emulator-0/">從零開始的 Gameboy 模擬器開發 -- Step 0</a>
           </li>
         
       </ul>

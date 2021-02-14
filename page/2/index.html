@@ -80,6 +80,64 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-how-to-install-python-on-windows" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/21/how-to-install-python-on-windows/" class="article-date">
+  <time datetime="2018-05-20T17:13:59.000Z" itemprop="datePublished">2018-05-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/21/how-to-install-python-on-windows/">Python windows 安裝, 心得, 教學</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="下載並安裝-Python"><a href="#下載並安裝-Python" class="headerlink" title="下載並安裝 Python"></a>下載並安裝 Python</h2><p>請至 <a target="_blank" rel="noopener" href="https://www.python.org/downloads/windows/">Python windows 下載頁面</a>, 不是每個版本都有 window 的安裝版</p>
+<ol>
+<li>最好選擇 Python 3.x, 因為選 2.7 會有檔名多國語言問題, dos 下讀檔會亂碼, py 3 就沒有這問題  </li>
+<li>最好選 32bit 的, 因為如果要打包成單一執行檔(exe file), 打包完在 32 bit 的環境跑不起來, 且有 include dll 批配的問題  </li>
+<li>要選 32bit 還是 64 bit, 基本上要看你用到的 DLL 決定, 例如你有些額外的 dll 是使用 w32 的, 那基本上你使用 64bit 的 ptyhon 就不行, 使用而且 64 bit dll 還有 ctype call address 的問題, 建議如果不想搞死自己, 那就最好是選 32bit 的比較保險</li>
+</ol>
+<p>這邊是選 <a target="_blank" rel="noopener" href="https://www.python.org/ftp/python/3.6.5/python-3.6.5.exe">Python 3.6.5</a> 下載</p>
+<p>安裝時請注意以下幾點</p>
+<ul>
+<li>請注意安裝路徑, 他預設是在&quot;使用者&quot;目錄下面, 最好換到非中文目錄底下</li>
+<li>要移除時, 必須執行安裝程式後, 裡面有個uninstall, 在 window 那邊好像找不到移除方式</li>
+<li>安裝時選 customize install, 這樣才可以自選安裝路徑</li>
+<li>也順便選 Add python 3.6 to path</li>
+</ul>
+        
+          <p class="article-more-link">
+            <a href="/2018/05/21/how-to-install-python-on-windows/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wwssllabcd.github.io/2018/05/21/how-to-install-python-on-windows/" data-id="ckky6jk1r0031ushabitybeat" class="article-share-link">Share</a>
+      
+        <a href="http://wwssllabcd.github.io/2018/05/21/how-to-install-python-on-windows/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-how-to-install-pyqt" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/05/21/how-to-install-pyqt/" class="article-date">
@@ -633,57 +691,6 @@ bin\activate</code></pre>
 
 
   
-    <article id="post-how-to-install-archlinux-on-raspberrypi" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2013/11/14/how-to-install-archlinux-on-raspberrypi/" class="article-date">
-  <time datetime="2013-11-14T11:48:00.000Z" itemprop="datePublished">2013-11-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/11/14/how-to-install-archlinux-on-raspberrypi/">Raspberry Pi 安裝 Archlinux</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>簡短的紀錄一下 Raspberry pi 如何安裝 Archlinux，並且使用 pacman 安裝幾個套件  </p>
-<p>一樣去下載頁面下載 arch linux OS 回來後，解壓縮可以得到 img 檔，
-安裝完後，開機，使用使用 pietty(talnet 軟體) 連線後登入，此時的安裝方式都與 wheezy 相同  </p>
-<h1 id="更新-pacman"><a href="#更新-pacman" class="headerlink" title="更新 pacman"></a>更新 pacman</h1><p>要先更新 pacman ，否則某些套件會找不到</p>
-<p>輸入以下指令</p>
-<pre><code>pacman -Syy
-pacman -Syu</code></pre>
-        
-          <p class="article-more-link">
-            <a href="/2013/11/14/how-to-install-archlinux-on-raspberrypi/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://wwssllabcd.github.io/2013/11/14/how-to-install-archlinux-on-raspberrypi/" data-id="ckky6jk1g002fushaa9cgeoie" class="article-share-link">Share</a>
-      
-        <a href="http://wwssllabcd.github.io/2013/11/14/how-to-install-archlinux-on-raspberrypi/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-To/" rel="tag">How-To</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Raspberry-Pi/" rel="tag">Raspberry Pi</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -734,11 +741,15 @@ pacman -Syu</code></pre>
       <ul>
         
           <li>
-            <a href="/2021/02/13/how-to-build-a-gameboy-emulator-4/">從零開始的 Gameboy 模擬器開發 -- Step 4</a>
+            <a href="/2021/02/14/how-to-build-a-gameboy-emulator-5/">從零開始的 Gameboy 模擬器開發 -- Step 5</a>
           </li>
         
           <li>
-            <a href="/2021/02/12/how-to-build-a-gameboy-emulator-3/">從零開始的 Gameboy 模擬器開發 -- Step 3</a>
+            <a href="/2021/02/12/how-to-build-a-gameboy-emulator-4/">從零開始的 Gameboy 模擬器開發 -- Step 4</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/11/how-to-build-a-gameboy-emulator-3/">從零開始的 Gameboy 模擬器開發 -- Step 3</a>
           </li>
         
           <li>
@@ -747,10 +758,6 @@ pacman -Syu</code></pre>
         
           <li>
             <a href="/2021/02/08/how-to-build-a-gameboy-emulator-1/">從零開始的 Gameboy 模擬器開發 -- Step 1</a>
-          </li>
-        
-          <li>
-            <a href="/2021/02/07/how-to-build-a-gameboy-emulator-0/">從零開始的 Gameboy 模擬器開發 -- Step 0</a>
           </li>
         
       </ul>

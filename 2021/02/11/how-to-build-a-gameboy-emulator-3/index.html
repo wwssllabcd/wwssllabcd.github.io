@@ -19,20 +19,21 @@ ga('send', 'pageview');
 
   <script data-ad-client="ca-pub-1911244070880149" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   
-  <title>Firefox addon-SDK 介紹, page-mod | printf(&#34; I&#39;m EricWang &#34;)</title>
+  <title>從零開始的 Gameboy 模擬器開發 -- Step 3 | printf(&#34; I&#39;m EricWang &#34;)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="使用時機今天要介紹的是 Firefox addon-SDK 中的 page-mod, 使用時機為想要把讀回來的網頁, 再加以修改,  例如  把某網站的排版重新排一下, 例如台鐵的火車時刻表 想把某些網站廣告區塊移除掉 想把網頁中特定資訊給顯現出來, 例如某影音網站的影片下載連結  就可以使用這個, 使用的方式如下 page-mode 簡介官方給的範例如下   var pageMod &#x3D; requ">
+  <meta name="description" content="中斷">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Firefox addon-SDK 介紹, page-mod">
-<meta property="og:url" content="http://wwssllabcd.github.io/2014/12/21/building-an-extension-for-firefox-PageMod/index.html">
+<meta property="og:title" content="從零開始的 Gameboy 模擬器開發 -- Step 3">
+<meta property="og:url" content="http://wwssllabcd.github.io/2021/02/11/how-to-build-a-gameboy-emulator-3/index.html">
 <meta property="og:site_name" content="printf(&quot; I&#39;m EricWang &quot;)">
-<meta property="og:description" content="使用時機今天要介紹的是 Firefox addon-SDK 中的 page-mod, 使用時機為想要把讀回來的網頁, 再加以修改,  例如  把某網站的排版重新排一下, 例如台鐵的火車時刻表 想把某些網站廣告區塊移除掉 想把網頁中特定資訊給顯現出來, 例如某影音網站的影片下載連結  就可以使用這個, 使用的方式如下 page-mode 簡介官方給的範例如下   var pageMod &#x3D; requ">
+<meta property="og:description" content="中斷">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2014-12-21T08:45:54.000Z">
-<meta property="article:modified_time" content="2016-06-05T16:01:22.000Z">
+<meta property="article:published_time" content="2021-02-10T16:24:46.000Z">
+<meta property="article:modified_time" content="2021-02-14T16:06:57.087Z">
 <meta property="article:author" content="EricWang">
 <meta property="article:tag" content="How-To">
-<meta property="article:tag" content="Firefox extension">
+<meta property="article:tag" content="C">
+<meta property="article:tag" content="Emulator">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="printf(&#34; I&#39;m EricWang &#34;)" type="application/atom+xml">
@@ -84,10 +85,10 @@ ga('send', 'pageview');
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-building-an-extension-for-firefox-PageMod" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-how-to-build-a-gameboy-emulator-3" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/12/21/building-an-extension-for-firefox-PageMod/" class="article-date">
-  <time datetime="2014-12-21T08:45:54.000Z" itemprop="datePublished">2014-12-21</time>
+    <a href="/2021/02/11/how-to-build-a-gameboy-emulator-3/" class="article-date">
+  <time datetime="2021-02-10T16:24:46.000Z" itemprop="datePublished">2021-02-11</time>
 </a>
     
   </div>
@@ -98,7 +99,7 @@ ga('send', 'pageview');
         
   
     <h1 class="article-title" itemprop="name">
-      Firefox addon-SDK 介紹, page-mod
+      從零開始的 Gameboy 模擬器開發 -- Step 3
     </h1>
   
 
@@ -109,105 +110,19 @@ ga('send', 'pageview');
 
 		
 			<div id="toc" class="toc-article">
-				<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%99%82%E6%A9%9F"><span class="toc-number">1.</span> <span class="toc-text">使用時機</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#page-mode-%E7%B0%A1%E4%BB%8B"><span class="toc-number">2.</span> <span class="toc-text">page-mode 簡介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%A6%E6%88%B0-%E8%A3%BD%E4%BD%9C%E6%9F%90%E5%BD%B1%E9%9F%B3%E7%B6%B2%E7%AB%99%E7%9A%84%E4%B8%8B%E8%BC%89%E5%99%A8"><span class="toc-number">3.</span> <span class="toc-text">實戰 -- 製作某影音網站的下載器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%BE%E5%87%BA%E4%B8%8B%E8%BC%89%E9%80%A3%E7%B5%90"><span class="toc-number">3.1.</span> <span class="toc-text">找出下載連結</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E5%8E%9F%E7%B6%B2%E9%A0%81%E4%B8%AD-%E5%8A%A0%E5%85%A5%E4%B8%8B%E8%BC%89%E9%80%A3%E7%B5%90"><span class="toc-number">3.2.</span> <span class="toc-text">在原網頁中, 加入下載連結</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%8A%E6%89%80%E6%9C%89%E6%9D%B1%E8%A5%BF%E7%B5%84%E8%A3%9D%E8%B5%B7%E4%BE%86"><span class="toc-number">3.3.</span> <span class="toc-text">把所有東西組裝起來</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E"><span class="toc-number">4.</span> <span class="toc-text">結語</span></a></li></ol>
+				<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%AD%E6%96%B7"><span class="toc-number">1.</span> <span class="toc-text">中斷</span></a></li></ol>
 			</div>
 		
-        <h1 id="使用時機"><a href="#使用時機" class="headerlink" title="使用時機"></a>使用時機</h1><p>今天要介紹的是 Firefox addon-SDK 中的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/Add-ons/SDK/High-Level_APIs/page-mod">page-mod</a>, 使用時機為<code>想要把讀回來的網頁, 再加以修改</code>, 
-例如</p>
-<ol>
-<li>把某網站的排版重新排一下, 例如台鐵的火車時刻表</li>
-<li>想把某些網站廣告區塊移除掉</li>
-<li>想把網頁中特定資訊給顯現出來, 例如某影音網站的影片下載連結</li>
-</ol>
-<p>就可以使用這個, 使用的方式如下</p>
-<h1 id="page-mode-簡介"><a href="#page-mode-簡介" class="headerlink" title="page-mode 簡介"></a>page-mode 簡介</h1><p>官方給的範例如下  </p>
-<pre><code>var pageMod = require(&quot;sdk/page-mod&quot;);
-pageMod.PageMod(&#123;
-    include: &quot;*.mozilla.org&quot;,
-    contentScript: &#39;window.alert(&quot;Page matches ruleset&quot;);&#39;
-&#125;);</code></pre>
-<a id="more"></a>
-<p>這邊簡單的說明使用方式  </p>
-<pre><code>include: 要對哪個 url 做動作, 符合的才會做接下來的動作  
-contentScript: 符合include 的條件後, 接下來的動作</code></pre>
-<p>以上程式碼意思為假若 url 是 <code>*.mozilla.org</code> 的話, 則會跳出訊息<code>Page matches ruleset</code>, 
-當然簡單的 JS 可以這樣弄, 比較複雜的 JS 建議使用 file, 如下所示</p>
-<pre><code>pageMod.PageMod(&#123;
-    include: &quot;*.mozilla.org&quot;,
-    contentScriptFile: &quot;./my-script.js&quot;
-&#125;);</code></pre>
-<p>這邊從 <code>contentScript</code> 變成了 <code>contentScriptFile</code>, 然後 <code>./my-script.js</code> 的路徑是在 <code>/data</code> 區, 來看看<code>my-script.js</code>裡面長怎樣吧   </p>
-<pre><code>//my-script.js
-window.alert(&quot;Page matches ruleset&quot;);   </code></pre>
-<p>只有一行, 其實就是把 contentScript 中的括號拿掉, 就是.js中的內容了</p>
-<h1 id="實戰-製作某影音網站的下載器"><a href="#實戰-製作某影音網站的下載器" class="headerlink" title="實戰 -- 製作某影音網站的下載器"></a>實戰 -- 製作某影音網站的下載器</h1><p>先來看一下 main.js, 當然, 目標網站的網址被我馬賽克掉了:D    </p>
-<pre><code>var pageMod = require(&quot;sdk/page-mod&quot;);
-var targeURL = &quot;http://www.thisXX.com/video/*&quot;
-pageMod.PageMod(&#123;
-    include: targeURL,
-    contentScriptFile: &quot;./my-script.js&quot;
-&#125;);</code></pre>
-<p>main.js 一如往常的簡單, 這邊說明了要針對哪個網站做動作外就沒事了, 一樣的我們把難的工作交給外部的 Java Script 檔案  </p>
-<h2 id="找出下載連結"><a href="#找出下載連結" class="headerlink" title="找出下載連結"></a>找出下載連結</h2><p>我們的目標就是該網頁的唯一的 flv 連結 -- <code>即 http 開頭, .flv結尾</code>, 先做一個 function 來取連結</p>
-<pre><code>var getFlvUrl = function(source)&#123;
-    // find .flv
-    var endWord = &quot;.flv&quot;;
-    var endPtr = source.indexOf(endWord);
-    var startIdx = source.lastIndexOf(&quot;http://&quot;, endPtr);
-    var len = endWord.length;
-    return source.substring(startIdx, endPtr + len  );
-&#125;</code></pre>
-<p>這邊使用 indexOf 來找連結, 事實上用 regualr express 應該會更簡單, 之後再改善即可  </p>
-<h2 id="在原網頁中-加入下載連結"><a href="#在原網頁中-加入下載連結" class="headerlink" title="在原網頁中, 加入下載連結"></a>在原網頁中, 加入下載連結</h2><p>接下來就是找一個地方放這個連結, 但如果隨便放的話, 有可能或破壞原始網頁的結構, 所以最好網頁還是一樣維持原狀, 只是在某個地方偷偷插入一段下載連結, 
-先來做一個超連結的 html code, 然後再把這段 code 插入原來的網頁</p>
-<pre><code>var downloadInfo = &quot;&lt;P&gt;&lt;a href=&quot; + url + &quot;&gt;&quot; + url + &quot;&lt;/a&gt;&lt;P&gt;&quot;;</code></pre>
-<p>接下來就是製作插入的 function, 這邊的概念也很簡單, 給定一個插入的目標還有字串, 先利用keyword 找出插入的點後, 利用substring 把原始網頁一分為二,
-接下來就是返還修改過的網頁, 一整個超簡單  </p>
-<pre><code>var insertString = function(source, msg, keyword)&#123;
-    var idx = source.indexOf(keyword) + keyword.length;
-    var front = source.substring(0, idx);
-    var back =  source.substring(idx, source.length);    
-    return front + msg + back;
-&#125;</code></pre>
-<h2 id="把所有東西組裝起來"><a href="#把所有東西組裝起來" class="headerlink" title="把所有東西組裝起來"></a>把所有東西組裝起來</h2><p>最後就是把工具都組合起來, 這邊採用<code>點擊</code>兩字當作插入的關鍵字位置, 利用 <code>getFlvUrl(</code>) 取出 url, 
-利用 <code>insertString()</code> 插入下載連結後, 返還修改過的 html code 給瀏覽器    </p>
-<pre><code>var url = getFlvUrl(document.body.innerHTML); 
-var insert = &quot;&lt;P&gt;&lt;a href=&quot; + url + &quot;&gt;&quot; + url + &quot;&lt;/a&gt;&lt;P&gt;&quot;;
-var html = insertString(document.body.innerHTML, insert, &quot;點擊&quot;);
-document.body.innerHTML = html;</code></pre>
-<p>整個<code>my-script.js</code>如下所示</p>
-<pre><code>//my-script.js
-var getFlvUrl = function(source)&#123;
-    // find .flv
-    var endWord = &quot;.flv&quot;;
-    var endPtr = source.indexOf(endWord);
-    var startIdx = source.lastIndexOf(&quot;http://&quot;, endPtr);
-    var len = endWord.length;
-    return source.substring(startIdx, endPtr + len  );
-&#125;
-
-var insertString = function(source, msg, keyword)&#123;
-    var idx = source.indexOf(keyword) + keyword.length;
-    var front = source.substring(0, idx);
-    var back =  source.substring(idx, source.length);
-    return front + msg + back;
-&#125;
-
-var url = getFlvUrl(document.body.innerHTML); 
-var insert = &quot;&lt;P&gt;&lt;a href=&quot; + url + &quot;&gt;&quot; + url + &quot;&lt;/a&gt;&lt;P&gt;&quot;;
-var html = insertString(document.body.innerHTML, insert, &quot;點擊&quot;);
-document.body.innerHTML = html;</code></pre>
-<h1 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h1><p>Firefox 的 addon-SDK 其實把很多事情都簡化了, 做一個附加元件其實很簡單的</p>
-
+        <h1 id="中斷"><a href="#中斷" class="headerlink" title="中斷"></a>中斷</h1>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wwssllabcd.github.io/2014/12/21/building-an-extension-for-firefox-PageMod/" data-id="ckky6jk1i002kushaep297lvh" class="article-share-link">Share</a>
+      <a data-url="http://wwssllabcd.github.io/2021/02/11/how-to-build-a-gameboy-emulator-3/" data-id="ckl5crvqe000074hahb4y9btq" class="article-share-link">Share</a>
       
-        <a href="http://wwssllabcd.github.io/2014/12/21/building-an-extension-for-firefox-PageMod/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://wwssllabcd.github.io/2021/02/11/how-to-build-a-gameboy-emulator-3/#disqus_thread" class="article-comment-link">Comments</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Firefox-extension/" rel="tag">Firefox extension</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-To/" rel="tag">How-To</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Emulator/" rel="tag">Emulator</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-To/" rel="tag">How-To</a></li></ul>
 
     </footer>
   </div>
@@ -215,19 +130,19 @@ document.body.innerHTML = html;</code></pre>
     
 <nav id="article-nav">
   
-    <a href="/2014/12/22/how-to-install-hexo/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/02/12/how-to-build-a-gameboy-emulator-4/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          Hexo 安裝教學、心得筆記
+          從零開始的 Gameboy 模擬器開發 -- Step 4
         
       </div>
     </a>
   
   
-    <a href="/2014/05/03/building-an-extension-for-firefox/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2021/02/10/how-to-build-a-gameboy-emulator-2/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">打造一個 Firefox 附加元件</div>
+      <div class="article-nav-title">從零開始的 Gameboy 模擬器開發 -- Step 2</div>
     </a>
   
 </nav>
@@ -334,7 +249,7 @@ document.body.innerHTML = html;</code></pre>
 <script>
   var disqus_shortname = 'ericwangsblog';
   
-  var disqus_url = 'http://wwssllabcd.github.io/2014/12/21/building-an-extension-for-firefox-PageMod/';
+  var disqus_url = 'http://wwssllabcd.github.io/2021/02/11/how-to-build-a-gameboy-emulator-3/';
   
   (function(){
     var dsq = document.createElement('script');

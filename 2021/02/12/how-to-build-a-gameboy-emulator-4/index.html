@@ -19,17 +19,17 @@ ga('send', 'pageview');
 
   <script data-ad-client="ca-pub-1911244070880149" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   
-  <title>從零開始的 Gameboy 模擬器開發 -- Step 3 | printf(&#34; I&#39;m EricWang &#34;)</title>
+  <title>從零開始的 Gameboy 模擬器開發 -- Step 4 | printf(&#34; I&#39;m EricWang &#34;)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Gameboy 的 tile 系統與繪圖接著要來做有關繪圖的部分，這部分說簡單也不簡單，說難也不會難，難的部分是因為我們沒有碰過 tile 系統，所以要花點時間去理解，當理解後，實作部分其實很簡單一點也不難，如果你還沒去看最前面介紹的影片，我建議你趕快去看，因為看完之後會比較好理解 首先我再幫大家整理一下概念  一個 tile 由 8*8 個 pixel 所組成 GB 整個顯示的部分是 256 *">
 <meta property="og:type" content="article">
-<meta property="og:title" content="從零開始的 Gameboy 模擬器開發 -- Step 3">
-<meta property="og:url" content="http://wwssllabcd.github.io/2021/02/12/how-to-build-a-gameboy-emulator-3/index.html">
+<meta property="og:title" content="從零開始的 Gameboy 模擬器開發 -- Step 4">
+<meta property="og:url" content="http://wwssllabcd.github.io/2021/02/12/how-to-build-a-gameboy-emulator-4/index.html">
 <meta property="og:site_name" content="printf(&quot; I&#39;m EricWang &quot;)">
 <meta property="og:description" content="Gameboy 的 tile 系統與繪圖接著要來做有關繪圖的部分，這部分說簡單也不簡單，說難也不會難，難的部分是因為我們沒有碰過 tile 系統，所以要花點時間去理解，當理解後，實作部分其實很簡單一點也不難，如果你還沒去看最前面介紹的影片，我建議你趕快去看，因為看完之後會比較好理解 首先我再幫大家整理一下概念  一個 tile 由 8*8 個 pixel 所組成 GB 整個顯示的部分是 256 *">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-02-11T16:24:46.000Z">
-<meta property="article:modified_time" content="2021-02-13T14:14:42.088Z">
+<meta property="article:modified_time" content="2021-02-14T16:53:49.071Z">
 <meta property="article:author" content="EricWang">
 <meta property="article:tag" content="How-To">
 <meta property="article:tag" content="C">
@@ -85,9 +85,9 @@ ga('send', 'pageview');
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-how-to-build-a-gameboy-emulator-3" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-how-to-build-a-gameboy-emulator-4" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2021/02/12/how-to-build-a-gameboy-emulator-3/" class="article-date">
+    <a href="/2021/02/12/how-to-build-a-gameboy-emulator-4/" class="article-date">
   <time datetime="2021-02-11T16:24:46.000Z" itemprop="datePublished">2021-02-12</time>
 </a>
     
@@ -99,7 +99,7 @@ ga('send', 'pageview');
         
   
     <h1 class="article-title" itemprop="name">
-      從零開始的 Gameboy 模擬器開發 -- Step 3
+      從零開始的 Gameboy 模擬器開發 -- Step 4
     </h1>
   
 
@@ -110,7 +110,7 @@ ga('send', 'pageview');
 
 		
 			<div id="toc" class="toc-article">
-				<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Gameboy-%E7%9A%84-tile-%E7%B3%BB%E7%B5%B1%E8%88%87%E7%B9%AA%E5%9C%96"><span class="toc-number">1.</span> <span class="toc-text">Gameboy 的 tile 系統與繪圖</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%96%8B%E5%A7%8B%E5%BB%BA%E7%BD%AE%E9%A1%AF%E7%A4%BA%E7%B3%BB%E7%B5%B1"><span class="toc-number">2.</span> <span class="toc-text">開始建置顯示系統</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A2%E7%94%9F-cpu-clock"><span class="toc-number">2.1.</span> <span class="toc-text">產生 cpu clock </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ACCESS-OAM"><span class="toc-number">2.2.</span> <span class="toc-text">ACCESS_OAM:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ACCESS-VRAM"><span class="toc-number">2.3.</span> <span class="toc-text">ACCESS_VRAM </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HBLANK"><span class="toc-number">2.4.</span> <span class="toc-text">HBLANK</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VBLANK"><span class="toc-number">2.5.</span> <span class="toc-text">VBLANK</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%BA%96%E5%82%99%E7%95%AB%E5%87%BA%E4%B8%80%E6%A2%9D%E7%B7%9A"><span class="toc-number">3.</span> <span class="toc-text">準備畫出一條線</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Sprite-%E7%9B%B8%E9%97%9C-type"><span class="toc-number">3.1.</span> <span class="toc-text">Sprite 相關 type</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tile-%E7%9B%B8%E9%97%9C-type"><span class="toc-number">3.2.</span> <span class="toc-text">Tile 相關 type</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96-type"><span class="toc-number">3.3.</span> <span class="toc-text">其他 type </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tile-pattern-map-%E8%88%87-tile-id-map-%E5%AD%98%E6%94%BE%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="toc-number">3.4.</span> <span class="toc-text">tile pattern map 與 tile id map 存放的位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GB-%E7%9A%84%E8%89%B2%E5%BD%A9%E9%81%B8%E6%93%87-palette"><span class="toc-number">3.5.</span> <span class="toc-text">GB 的色彩選擇 -- palette</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B5%84%E5%90%88%E6%89%80%E6%9C%89%E7%9A%84-function"><span class="toc-number">4.</span> <span class="toc-text">組合所有的 function</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%95%AB%E5%87%BA-window"><span class="toc-number">4.1.</span> <span class="toc-text">畫出 window </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%95%AB%E5%87%BA-window-1"><span class="toc-number">4.2.</span> <span class="toc-text">畫出 window </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%95%AB%E5%87%BA-sprite"><span class="toc-number">4.3.</span> <span class="toc-text">畫出 sprite </span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8E%A5%E4%B8%8A%E9%A1%AF%E7%A4%BA%E7%B3%BB%E7%B5%B1"><span class="toc-number">5.</span> <span class="toc-text">接上顯示系統</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%80%E5%BE%8C"><span class="toc-number">6.</span> <span class="toc-text">最後</span></a></li></ol>
+				<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Gameboy-%E7%9A%84-tile-%E7%B3%BB%E7%B5%B1%E8%88%87%E7%B9%AA%E5%9C%96"><span class="toc-number">1.</span> <span class="toc-text">Gameboy 的 tile 系統與繪圖</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%96%8B%E5%A7%8B%E5%BB%BA%E7%BD%AE%E9%A1%AF%E7%A4%BA%E7%B3%BB%E7%B5%B1"><span class="toc-number">2.</span> <span class="toc-text">開始建置顯示系統</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A2%E7%94%9F-cpu-clock"><span class="toc-number">2.1.</span> <span class="toc-text">產生 cpu clock </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ACCESS-OAM"><span class="toc-number">2.2.</span> <span class="toc-text">ACCESS_OAM:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ACCESS-VRAM"><span class="toc-number">2.3.</span> <span class="toc-text">ACCESS_VRAM </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HBLANK"><span class="toc-number">2.4.</span> <span class="toc-text">HBLANK</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VBLANK"><span class="toc-number">2.5.</span> <span class="toc-text">VBLANK</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%BA%96%E5%82%99%E7%95%AB%E5%87%BA%E4%B8%80%E6%A2%9D%E7%B7%9A"><span class="toc-number">3.</span> <span class="toc-text">準備畫出一條線</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Sprite-%E7%9B%B8%E9%97%9C-type"><span class="toc-number">3.1.</span> <span class="toc-text">Sprite 相關 type</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tile-%E7%9B%B8%E9%97%9C-type"><span class="toc-number">3.2.</span> <span class="toc-text">Tile 相關 type</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96-type"><span class="toc-number">3.3.</span> <span class="toc-text">其他 type </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tile-pattern-map-%E8%88%87-tile-id-map-%E5%AD%98%E6%94%BE%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="toc-number">3.4.</span> <span class="toc-text">tile pattern map 與 tile id map 存放的位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GB-%E7%9A%84%E8%89%B2%E5%BD%A9%E9%81%B8%E6%93%87-palette"><span class="toc-number">3.5.</span> <span class="toc-text">GB 的色彩選擇 -- palette</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B5%84%E5%90%88%E6%89%80%E6%9C%89%E7%9A%84-function"><span class="toc-number">4.</span> <span class="toc-text">組合所有的 function</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%95%AB%E5%87%BA-background"><span class="toc-number">4.1.</span> <span class="toc-text">畫出 background </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%95%AB%E5%87%BA-window"><span class="toc-number">4.2.</span> <span class="toc-text">畫出 window </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%95%AB%E5%87%BA-sprite"><span class="toc-number">4.3.</span> <span class="toc-text">畫出 sprite </span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8E%A5%E4%B8%8A%E9%A1%AF%E7%A4%BA%E7%B3%BB%E7%B5%B1"><span class="toc-number">5.</span> <span class="toc-text">接上顯示系統</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%80%E5%BE%8C"><span class="toc-number">6.</span> <span class="toc-text">最後</span></a></li></ol>
 			</div>
 		
         <h1 id="Gameboy-的-tile-系統與繪圖"><a href="#Gameboy-的-tile-系統與繪圖" class="headerlink" title="Gameboy 的 tile 系統與繪圖"></a>Gameboy 的 tile 系統與繪圖</h1><p>接著要來做有關繪圖的部分，這部分說簡單也不簡單，說難也不會難，難的部分是因為我們沒有碰過 tile 系統，所以要花點時間去理解，當理解後，實作部分其實很簡單一點也不難，如果你還沒去看最前面介紹的影片，我建議你趕快去看，因為看完之後會比較好理解</p>
@@ -238,21 +238,23 @@ ga('send', 'pageview');
 
 <p>到此準備工作就告個段落了</p>
 <hr>
-<h1 id="組合所有的-function"><a href="#組合所有的-function" class="headerlink" title="組合所有的 function"></a>組合所有的 function</h1><h2 id="畫出-window"><a href="#畫出-window" class="headerlink" title="畫出 window "></a>畫出 window </h2><p>一切準備就緒後，就可以把一切的東西組合起來嚕，開始寫 get_bg_line_data()，如下所示</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">void draw_bg_window_line(eu8 screen_x, eu8 screen_y, ScrollPx scroll_x, ScrollPx scroll_y) &#123;</span><br><span class="line">    TilePatternMap_sp tileDataTable &#x3D; get_tile_data_table_bg_window();</span><br><span class="line">    TileIdMap_sp screenTileIdTable &#x3D; get_screen_window_tile_id_table();</span><br><span class="line">    eu8 tile_id &#x3D; screenTileIdTable-&gt;map_xy[scroll_y.tile_id][scroll_x.tile_id];</span><br><span class="line"></span><br><span class="line">    if (!LCD_CTRL.bg_and_window_tile_data_select) &#123;</span><br><span class="line">        tile_id +&#x3D; 128;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    TileLine_sp tileLine &#x3D; &amp;tileDataTable-&gt;pattern_map[tile_id].line_map[scroll_y.tile_px];</span><br><span class="line">    write_screen_frame_buffer(screen_x, screen_y, get_bg_palette(get_pixel_data(tileLine-&gt;byte0, tileLine-&gt;byte1, scroll_x.tile_px)));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void get_bg_line_data(eu8 screen_y) &#123;</span><br><span class="line">    eu8 scrolled_x &#x3D; LCD.scx;</span><br><span class="line">    eu8 scrolled_y &#x3D; screen_y + LCD.scy;</span><br><span class="line"></span><br><span class="line">    for (eu8 screen_x &#x3D; 0; screen_x &lt; SCREEN_WIDTH; screen_x++) &#123;</span><br><span class="line">        ScrollPx scroll_x &#x3D; &#123;.all &#x3D; (scrolled_x + screen_x) % BG_MAP_PIXEL_SIZE&#125;;</span><br><span class="line">        ScrollPx scroll_y &#x3D; &#123;.all &#x3D; (scrolled_y) % BG_MAP_PIXEL_SIZE&#125;;</span><br><span class="line"></span><br><span class="line">        draw_bg_window_line(screen_x, screen_y, scroll_x, scroll_y);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="組合所有的-function"><a href="#組合所有的-function" class="headerlink" title="組合所有的 function"></a>組合所有的 function</h1><h2 id="畫出-background"><a href="#畫出-background" class="headerlink" title="畫出 background "></a>畫出 background </h2><p>一切準備就緒後，就可以把一切的東西組合起來嚕，開始寫 get_bg_line_data()，如下所示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">void draw_bg_window_line(eu8 screen_x, eu8 screen_y, ScrollPx scroll_x, ScrollPx scroll_y, </span><br><span class="line">                         TileIdMap_sp screenTileIdMap) </span><br><span class="line">&#123;</span><br><span class="line">    TilePatternMap_sp tileDataTable &#x3D; get_tile_data_table_bg_window();</span><br><span class="line">    eu8 tile_id &#x3D; screenTileIdMap-&gt;map_xy[scroll_y.tile_id][scroll_x.tile_id];</span><br><span class="line"></span><br><span class="line">    if (!LCD_CTRL.bg_and_window_tile_data_select) &#123;</span><br><span class="line">        tile_id -&#x3D; 0x80;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    TileLine_sp tileLine &#x3D; &amp;tileDataTable-&gt;pattern_map[tile_id].line_map[scroll_y.tile_px];</span><br><span class="line">    write_screen_frame_buffer(screen_x, screen_y, get_bg_palette(get_pixel_data(tileLine-&gt;byte0, tileLine-&gt;byte1, scroll_x.tile_px)));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void get_bg_line_data(eu8 screen_y) &#123;</span><br><span class="line">    eu8 scrolled_x &#x3D; LCD.scx;</span><br><span class="line">    eu8 scrolled_y &#x3D; screen_y + LCD.scy;</span><br><span class="line"></span><br><span class="line">    TileIdMap_usp screenTileIdMap &#x3D; get_bg_tile_id_map();</span><br><span class="line"></span><br><span class="line">    for (eu8 screen_x &#x3D; 0; screen_x &lt; SCREEN_WIDTH; screen_x++) &#123;</span><br><span class="line">        &#x2F;&#x2F; we need to roll back to 0 when scrolled_x &gt; 256</span><br><span class="line">        ScrollPx scroll_x &#x3D; &#123;.all &#x3D; (scrolled_x + screen_x) % BG_MAP_PIXEL_SIZE&#125;;</span><br><span class="line">        ScrollPx scroll_y &#x3D; &#123;.all &#x3D; (scrolled_y) % BG_MAP_PIXEL_SIZE&#125;;</span><br><span class="line"></span><br><span class="line">        draw_bg_window_line(screen_x, screen_y, scroll_x, scroll_y, screenTileIdMap);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>如果你有看過其他人的 code ，應該會對這邊簡短的 code 感到訝異，事實上 tile 的概念就是這樣，沒有很複雜，讓我解釋一下裡面用到的變數，這邊為了避免混淆虛擬螢幕與顯示螢幕，這邊命名 scroll 的是代表虛體螢幕(也就是256 * 256 的拼圖)，而 screen 代表顯示的螢幕(也就是 144 * 160 白色方框)</p>
+<p>算是蠻簡潔的 code，不過 tile 的概念就是這樣，沒有很複雜，讓我解釋一下裡面用到的變數，這邊為了避免混淆虛擬螢幕與顯示螢幕，這邊命名 scroll 的是代表虛體螢幕(也就是256 * 256 的拼圖)，而 screen 代表顯示的螢幕(也就是 144 * 160 白色方框)</p>
 <ul>
 <li>scrolled_x 與 scrolled_y : 代表 BG 要從 256 *256 的實體螢幕上的哪一點 x,y 開始畫，還記得我們之前拼圖，白色方框的比喻嗎? 這個就是決定白色方框的 x, y </li>
 <li>scroll_x 與 scroll_y: 代表每一次要取的 scroll x, y ，這邊有做一個取餘數 % 的動作，可以讓你畫到超出界外的時候，roll back 到最前面</li>
 </ul>
-<p>接下來講解 draw_bg_window_line ()</p>
+<p>接下來講解 draw_bg_window_line ()，而這邊的 code 有跟畫 window 共用的 code，所以這邊需要傳入一個參數進去，藉以區分 screenTileTidMap</p>
 <p>取出目前對應的 tileDataTable  與 screenTileIdTable，screenTileIdTable-&gt;map 代表著整個虛擬螢幕所對應的 tile id ，不過我們這邊是使用他的 map_xy 來取值，因為我們有他的 x,y 座標</p>
-<p>取到正確 id 後，就根據 tile id 去 tilePatternMap 去取出 tileline 的兩個 byte了，然後再利用我們剛剛提到的function 把他們通通組合起來就可以了</p>
-<p>這邊所有定位與計算的動作都是使用之前定義的 type 巧妙地閃過</p>
+<p>取到正確 id 後，就根據 tile id 去 tilePatternMap 去取出 tileline 的兩個 byte了，然後再利用我們剛剛提到的function 把他們通通組合起來就可以了，這邊所有定位與計算的動作都是使用之前定義的 type 巧妙地閃過</p>
+<p>比較特別的是， 如果 bg_and_window_tile_data_select == 0 的話，tileId 要減去 128，這是因為 tileId 的編號是從 0x8000 開始，每16 byte 一組。所以編到 0x8800 的時候，此時的 TileId 依然是 0x80，到了 0x9000 的時候，由於 u8 只能存 256 個號碼，所以這邊又變成 0，也就是即便他的 base address 是從 0x8800 開始的，tileId 編號規則也是相同的從 0x8000 開始編</p>
+<p>當使用 0x8000 當作 base address 的時候，編號 0 ~ 0xFF 的範圍就是 0x8000 ~ 0x8FFF，當使用 0x8800 當作 base address 的時候， 0x8800 的那組 TileId 的編號依然是 0x80，反而是 0x9000 那組的編號是 0</p>
+<p>所以當我們一旦使用 0x8800 當作 base address 的時候，我們的 tileId 反而要減掉 0x80，這樣才是正確的 array index ，當然加上 0x80 也是可以，因為運算過意思經過溢位其值是一樣的</p>
 <hr>
-<h2 id="畫出-window-1"><a href="#畫出-window-1" class="headerlink" title="畫出 window "></a>畫出 window </h2><p>也是利用類似方法，先取出 patternMap 與 screenTileIdMap之後，再查表即可，比較特別的是， 如果 bg_and_window_tile_data_select == 0 的話，tileId 要再加上 128</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">void draw_bg_window_line(eu8 screen_x, eu8 screen_y, ScrollPx scroll_x, ScrollPx scroll_y) &#123;</span><br><span class="line">    TilePatternMap_sp tileDataTable &#x3D; get_tile_data_table_bg_window();</span><br><span class="line">    TileIdMap_sp screenTileIdTable &#x3D; get_screen_window_tile_id_table();</span><br><span class="line">    eu8 tile_id &#x3D; screenTileIdTable-&gt;map_xy[scroll_y.tile_id][scroll_x.tile_id];</span><br><span class="line"></span><br><span class="line">    if (!LCD_CTRL.bg_and_window_tile_data_select) &#123;</span><br><span class="line">        &#x2F;&#x2F; In the second case, patterns have signed numbers from - 128 to 127</span><br><span class="line">        &#x2F;&#x2F;(i.e. pattern #0 lies at address $9000).</span><br><span class="line">        tile_id +&#x3D; 128;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    TileLine_sp tileLine &#x3D; &amp;tileDataTable-&gt;pattern_map[tile_id].line_map[scroll_y.tile_px];</span><br><span class="line">    write_screen_frame_buffer(screen_x, screen_y, get_bg_palette(get_pixel_data(tileLine-&gt;byte0, tileLine-&gt;byte1, scroll_x.tile_px)));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="畫出-window"><a href="#畫出-window" class="headerlink" title="畫出 window "></a>畫出 window </h2><p>也是利用類似方法，先取出 patternMap 與 screenTileIdMap之後，再查表即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">void draw_window_line(eu8 screen_y) &#123;</span><br><span class="line">    eu8 scrolled_x &#x3D; LCD.wx - 7;</span><br><span class="line">    eu8 scrolled_y &#x3D; screen_y - LCD.wy;</span><br><span class="line"></span><br><span class="line">    if (scrolled_y &gt;&#x3D; SCREEN_HEIGHT) &#123; return; &#125;</span><br><span class="line"></span><br><span class="line">    TileIdMap_usp screenTileIdMap &#x3D; get_window_tile_id_map();</span><br><span class="line"></span><br><span class="line">    for (eu8 screen_x &#x3D; 0; screen_x &lt; SCREEN_WIDTH; screen_x++) &#123;</span><br><span class="line">        ScrollPx scroll_x &#x3D; &#123; .all &#x3D; scrolled_x + screen_x &#125;;</span><br><span class="line">        ScrollPx scroll_y &#x3D; &#123; .all &#x3D; scrolled_y &#125;;</span><br><span class="line">        draw_bg_window_line(screen_x, screen_y, scroll_x, scroll_y, screenTileIdMap);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="畫出-sprite"><a href="#畫出-sprite" class="headerlink" title="畫出 sprite "></a>畫出 sprite </h2><p>sprite 的畫法就單純很多，去 oam 把 40 個 sprite 取出來後，再根據每個所指定 tile id 畫到指定的 x，y 即可，這邊有幾點說明</p>
 <ul>
@@ -275,14 +277,14 @@ ga('send', 'pageview');
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">void set_large_pixels(eu32 x, eu32 y, eu8 color) &#123;</span><br><span class="line">    for (eu8 w &#x3D; 0; w &lt; SDL_PIXEL_SIZE; w++) &#123;</span><br><span class="line">        for (eu8 h &#x3D; 0; h &lt; SDL_PIXEL_SIZE; h++) &#123;</span><br><span class="line">            eu32 fin_x &#x3D; x * SDL_PIXEL_SIZE + w;</span><br><span class="line">            eu32 fin_y &#x3D; y * SDL_PIXEL_SIZE + h;</span><br><span class="line">            set_pixel(fin_x, fin_y, color);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>這樣一來就可以顯示出較大的螢幕了，記得一開始的 init_sdl() 的參數也要一起替換喔</p>
-<h1 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h1><p>其實這個顯示的系統一開始沒接觸過的可能會不太好懂，這也是我這篇的目的，希望能寫得更清楚一點讓想要做模擬器的人不用在花太多精神在研究這種特殊的東西</p>
+<h1 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h1><p>其實這個顯示的系統一開始沒接觸過的可能會不太好懂，這也是我這篇的目的，希望能寫得更清楚一點，可以讓想要做模擬器的人不用在花太多精神在研究這種特殊的東西嚕</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wwssllabcd.github.io/2021/02/12/how-to-build-a-gameboy-emulator-3/" data-id="ckl3i56q10000j4ha5w1rhkl4" class="article-share-link">Share</a>
+      <a data-url="http://wwssllabcd.github.io/2021/02/12/how-to-build-a-gameboy-emulator-4/" data-id="ckl5crvqs000874ha4ku126ee" class="article-share-link">Share</a>
       
-        <a href="http://wwssllabcd.github.io/2021/02/12/how-to-build-a-gameboy-emulator-3/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://wwssllabcd.github.io/2021/02/12/how-to-build-a-gameboy-emulator-4/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Emulator/" rel="tag">Emulator</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-To/" rel="tag">How-To</a></li></ul>
@@ -293,19 +295,19 @@ ga('send', 'pageview');
     
 <nav id="article-nav">
   
-    <a href="/2021/02/13/how-to-build-a-gameboy-emulator-4/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/02/14/how-to-build-a-gameboy-emulator-5/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          從零開始的 Gameboy 模擬器開發 -- Step 4
+          從零開始的 Gameboy 模擬器開發 -- Step 5
         
       </div>
     </a>
   
   
-    <a href="/2021/02/10/how-to-build-a-gameboy-emulator-2/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2021/02/11/how-to-build-a-gameboy-emulator-3/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">從零開始的 Gameboy 模擬器開發 -- Step 2</div>
+      <div class="article-nav-title">從零開始的 Gameboy 模擬器開發 -- Step 3</div>
     </a>
   
 </nav>
@@ -362,11 +364,15 @@ ga('send', 'pageview');
       <ul>
         
           <li>
-            <a href="/2021/02/13/how-to-build-a-gameboy-emulator-4/">從零開始的 Gameboy 模擬器開發 -- Step 4</a>
+            <a href="/2021/02/14/how-to-build-a-gameboy-emulator-5/">從零開始的 Gameboy 模擬器開發 -- Step 5</a>
           </li>
         
           <li>
-            <a href="/2021/02/12/how-to-build-a-gameboy-emulator-3/">從零開始的 Gameboy 模擬器開發 -- Step 3</a>
+            <a href="/2021/02/12/how-to-build-a-gameboy-emulator-4/">從零開始的 Gameboy 模擬器開發 -- Step 4</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/11/how-to-build-a-gameboy-emulator-3/">從零開始的 Gameboy 模擬器開發 -- Step 3</a>
           </li>
         
           <li>
@@ -375,10 +381,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/2021/02/08/how-to-build-a-gameboy-emulator-1/">從零開始的 Gameboy 模擬器開發 -- Step 1</a>
-          </li>
-        
-          <li>
-            <a href="/2021/02/07/how-to-build-a-gameboy-emulator-0/">從零開始的 Gameboy 模擬器開發 -- Step 0</a>
           </li>
         
       </ul>
@@ -412,7 +414,7 @@ ga('send', 'pageview');
 <script>
   var disqus_shortname = 'ericwangsblog';
   
-  var disqus_url = 'http://wwssllabcd.github.io/2021/02/12/how-to-build-a-gameboy-emulator-3/';
+  var disqus_url = 'http://wwssllabcd.github.io/2021/02/12/how-to-build-a-gameboy-emulator-4/';
   
   (function(){
     var dsq = document.createElement('script');
