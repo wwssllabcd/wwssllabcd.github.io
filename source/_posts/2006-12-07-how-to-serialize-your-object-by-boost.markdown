@@ -117,8 +117,8 @@ Sample code 如下：
 #include <boost/serialization/vector.hpp>
 #include <boost/archive/xml_oarchive.hpp>
 #include <boost/archive/xml_iarchive.hpp>
-#include <iostream>
 
+#include <iostream>
 #pragma comment(lib, "libboost_serialization-vc143-mt-sgd-x32-1_79.lib")
 
 using namespace std;
@@ -130,25 +130,26 @@ public:
 	~SerializeService(void){};
 
 	template<class T>
-	void save(string filePath, const vector<T>& colls)
+	void save(string filename, const vector<T>& colls)
 	{
-		std::ofstream ofs(filePath.c_str());
+		// make an archive
+		ofstream ofs(filename.c_str());
 		assert(ofs.good());
 		boost::archive::xml_oarchive oa(ofs);
 		oa << BOOST_SERIALIZATION_NVP(colls);
-		ofs.close();	
 	}
 
 	template<class T>
-	void load(string filePath, vector<T>& colls)
+	void load(string filename, vector<T>& colls)
 	{
-		ifstream ifs(filePath.c_str());
+		// open the archive
+		ifstream ifs(filename.c_str());
 		assert(ifs.good());
 		boost::archive::xml_iarchive ia(ifs);
-		ia >> BOOST_SERIALIZATION_NVP(colls); 
-		ifs.close();
-	}
 
+		// restore the schedule from the archive
+		ia >> BOOST_SERIALIZATION_NVP(colls);
+	}
 };
 ```
 
@@ -164,6 +165,15 @@ public:
 
 ## 參考網站
 
+官方文件  
+https://www.boost.org/doc/libs/1_79_0/libs/serialization/doc/index.html  
+
+官方範例  
+https://www.boost.org/doc/libs/1_79_0/libs/serialization/example/demo_xml_load.cpp  
+https://www.boost.org/doc/libs/1_79_0/libs/serialization/example/demo_xml_save.cpp  
+
+其他參考網站  
+https://viml.nchc.org.tw/archive_blog_760/  
 http://blog.csdn.net/conyzhou/archive/2005/02/04/279871.aspx  
 http://blog.csdn.net/mslk/archive/2005/11/08/525278.aspx  
 http://blog.csdn.net/ShowLong/archive/2006/04/19/668923.aspx  
